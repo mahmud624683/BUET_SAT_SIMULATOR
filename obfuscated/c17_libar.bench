@@ -1,0 +1,39 @@
+# c17
+# 5 inputs
+# 2 outputs
+# 0 inverter
+# 6 gates (6 NANDs)
+
+INPUT(G1gat)
+INPUT(G2gat)
+INPUT(G3gat)
+INPUT(G6gat)
+INPUT(G7gat)
+
+OUTPUT(G22gat)
+OUTPUT(G23gat)
+
+INPUT(keyinput0)
+INPUT(keyinput1)
+INPUT(keyinput2)
+INPUT(keyinput3)
+
+G10gat = NAND(G1gat, G3gat)
+
+G11gat = NAND(G3gat, G6gat)
+
+CLK2 = NOR(G11gat, G10gat)
+LIBAR2 = DFF(CLK2, keyinput2)
+RLL2 = XOR(G11gat, LIBAR2)
+G16gat = NAND(G2gat, RLL2)
+
+CLK1 = NOR(G11gat, G16gat)
+LIBAR1 = DFF(CLK1, keyinput1)
+RLL1 = XNOR(G11gat, LIBAR1)
+RLL3 = XNOR(RLL1, keyinput3)
+G19gat = NAND(RLL3, G7gat)
+
+RLL0 = XOR(G10gat, keyinput0)
+G22gat = NAND(RLL0, G16gat)
+
+G23gat = NAND(G16gat, G19gat)

@@ -70,7 +70,7 @@ def bench2verilog(file_path, file_name):
     # Regular expressions to match INPUT, OUTPUT, and gate assignments
     input_pattern = re.compile(r'^INPUT\((\w+)\)')
     output_pattern = re.compile(r'^OUTPUT\((\w+)\)')
-    assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|AND|OR|XOR|NOT|DFF|BUF)\((.*)\)')
+    assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|NOR|AND|OR|XOR|XNOR|NOT|DFF|BUF)\((.*)\)')
 
     for line in lines:
         line = line.strip()

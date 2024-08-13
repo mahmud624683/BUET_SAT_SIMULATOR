@@ -5,7 +5,7 @@ import baseutils
 from collections import deque
 from random import randint
 import math 
-import re 
+import re ,os
 import converts
 
 
@@ -115,7 +115,6 @@ def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
             Monosat().newSolver()
     print("================ keyFind SAT call ================")
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
-    print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
             
 
 def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
@@ -158,7 +157,6 @@ def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
 
     print("================ keyFind SAT call ================")
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
-    print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
             
 
 
@@ -239,7 +237,6 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
 
     print("================ keyFind SAT call ================")
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
-    print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
             
 
 
@@ -529,6 +526,14 @@ def libar(org_name,obfs_name,key_str,libar_percent):
     with open(obfs_name, 'w') as file:
         file.write(txt_content)
         print("Libar bench file Unrolled!!!")
-    
+
+def convert_bench2verilog(input_file):
+    file_name = os.path.splitext(os.path.basename(input_file))[0]
+    v_text = converts.bench2verilog(input_file, file_name)
+    file_name += ".v"
+    output_file = os.path.join("bench_verilog",file_name)
+    with open(output_file, 'w') as file:
+        file.write(v_text)
+        print("Verilog file created. Please look at bench_verilog folder.")
     
 
