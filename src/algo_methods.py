@@ -527,6 +527,52 @@ def libar(org_name,obfs_name,key_str,libar_percent):
         file.write(txt_content)
         print("Libar bench file Unrolled!!!")
 
+
+def get_wire_io(lines):
+    input_vars = []
+    output_vars = []
+    assigned_vars = []
+    opr_lines=[]
+    gate_types=[]
+    # Regular expressions to match INPUT, OUTPUT, and gate assignments
+    input_pattern = re.compile(r'^INPUT\((\w+)\)')
+    output_pattern = re.compile(r'^OUTPUT\((\w+)\)')
+    assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|NOR|AND|OR|XOR|XNOR|NOT|DFF|BUF)\((.*)\)')
+
+    for line in lines:
+        line = line.strip()
+        if line.startswith("INPUT"):
+            match = input_pattern.match(line)
+            if match:
+                input_vars.append(match.group(1))
+        elif line.startswith("OUTPUT"):
+            match = output_pattern.match(line)
+            if match:
+                output_vars.append(match.group(1))
+        else:
+            match = assign_pattern.match(line)
+            if match:
+                assigned_vars.append(match.group(1))
+                gate_type,opr_line = converts.convert_gate_line(line,gate_count)
+                if opr_line is not None:
+                    opr_lines.append(opr_line)
+                    if gate_type not in gate_types:
+                        gate_types.append(gate_type) 
+                    gate_count += 1
+
+    # Intermediate variables are those assigned but not inputs or outputs
+    intermediate_vars = [var for var in assigned_vars if var not in input_vars and var not in output_vars]
+    return intermediate_vars,input_vars, output_vars, opr_lines,gate_types, gate_count
+
+def anti_sat(org_name,obfs_name,key_str):
+    with open(org_name, 'r') as file:
+        lines = file.readlines()
+    wire_vars,input_vars, output_vars, _,_,_ = converts.get_wire_io(lines)
+
+def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent):
+    pass
+
+
 def convert_bench2verilog(input_file):
     file_name = os.path.splitext(os.path.basename(input_file))[0]
     v_text = converts.bench2verilog(input_file, file_name)
