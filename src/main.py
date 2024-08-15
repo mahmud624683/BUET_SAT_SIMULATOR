@@ -30,15 +30,15 @@ def lock_unlock(algo,org_ckt_ls,obs_ckt_ls,key_str="",libar_percent=0):
 if __name__ == "__main__":
 
     #algo = "sat"
-    algo = "appsat"
+    #algo = "appsat"
     #algo = "sweep"
-    #algo = "sarlock"
+    algo = "sarlock"
     #algo = "rll"
     #algo = "libar"
     org_ckt_ls = "bench_ckt/c432.bench"
-    #obs_ckt_ls = "obfuscated/c432_libar.bench"
-    obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
-    key_str = "01011010000011110101011"
+    obs_ckt_ls = "obfuscated/c432_sar.bench"
+    #obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
+    key_str = "01011010101011"
     libar_percent = 0.3
     lock_unlock(algo,org_ckt_ls,obs_ckt_ls,key_str,libar_percent)
 

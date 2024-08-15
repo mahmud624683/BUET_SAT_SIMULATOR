@@ -239,168 +239,6 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
             
 
-
-    
-def sarlock(org_name,obfs_name,key_str):
-    rnd_obf_bench_address = org_name
-    sar_rnd_obf_bench_address = obfs_name
-
-    bench_file = open(rnd_obf_bench_address)
-    rnd_key_cnt = 0
-
-    inp_list = []
-
-    xor_gates = ""
-    flip_sig = ""
-    mask_sig = ""
-    not_key_list = ""
-    new_keys_str = ""
-
-    old_keys_str = ""
-    output_str = ""
-    input_str = ""
-    gates_str = ""
-
-    selected_output = ""
-
-
-    for line in bench_file:
-        if "INPUT(keyinput" in line:
-            rnd_key_cnt += 1
-            old_keys_str += line
-        elif "INPUT" in line:
-            inp_list.append(line[line.find("(") + 1:line.find(")")])
-            input_str += line
-        elif "OUTPUT" in line:
-            selected_output = line[line.find("(") + 1:line.find(")")]
-            output_str += line
-        elif " = " in line:
-            gates_str += line
-
-    bench_file.close()
-
-    for i in range(0, len(inp_list)):
-        xor_gates += "nXoR" + str(i) + " = XOR(" + inp_list[i] + ", " + "keyinput" + str(i+rnd_key_cnt) + ")\n"
-        new_keys_str += "INPUT(keyinput" + str(i+rnd_key_cnt) + ")\n"
-
-    flip_sig_list = ""
-    if len(inp_list) < 10:
-        for i in range(0, len(inp_list)):
-            if i == 0:
-                flip_sig = "flipSig = NOR(nXoR" + str(i) + ", "
-            elif i == len(inp_list) - 1:
-                flip_sig += "nXoR" + str(i) + ")\n"
-            else:
-                flip_sig += "nXoR" + str(i) + ", "
-    else:
-        cnt_flip_list = int(len(inp_list)/10) + 1
-        for i in range(0, int(len(inp_list)/10)):
-            for j in range(0, 10):
-                if j == 0:
-                    flip_sig = "flipSig" + str(i) + " = OR(nXoR" + str(i*10 + j) + ", "
-                elif j == 9:
-                    flip_sig += "nXoR" + str(i*10 + j) + ")\n"
-                else:
-                    flip_sig += "nXoR" + str(i*10 + j) + ", "
-            flip_sig_list += flip_sig
-        for i in range(int(len(inp_list)/10)*10 + 1, len(inp_list)):
-            if i == int(len(inp_list) / 10) * 10 + 1:
-                flip_sig = "flipSig" + str(int(len(inp_list)/10)) + " = OR(nXoR" + str(i) + ", "
-            elif i == len(inp_list) - 1:
-                flip_sig += "nXoR" + str(i) + ")\n"
-            else:
-                flip_sig += "nXoR" + str(i) + ", "
-        flip_sig_list += flip_sig
-
-        for i in range(0, cnt_flip_list):
-            if i == 0:
-                flip_sig = "flipSig = NOR(flipSig" + str(i) + ", "
-            elif i == cnt_flip_list - 1:
-                flip_sig += "flipSig" + str(i) + ")\n"
-            else:
-                flip_sig += "flipSig" + str(i) + ", "
-
-    for i in range(0, len(key_str)):
-        not_key_list += "not_keyinp" + str(i+rnd_key_cnt) + " = NOT(keyinput" + str(i+rnd_key_cnt) + ")\n"
-
-    mask_sig_list = ""
-    if len(inp_list) < 10:
-        for i in range(0, len(inp_list)):
-            if i == 0:
-                if key_str[i] == "0":
-                    mask_sig = "maskSig = AND(not_keyinp" + str(i+rnd_key_cnt) + ", "
-                elif key_str[i] == "1":
-                    mask_sig = "maskSig = AND(keyinput" + str(i + rnd_key_cnt) + ", "
-            elif i == len(inp_list) - 1:
-                if key_str[i] == "0":
-                    mask_sig += "not_keyinp" + str(i+rnd_key_cnt) + ")\n"
-                elif key_str[i] == "1":
-                    mask_sig += "keyinput" + str(i+rnd_key_cnt) + ")\n"
-            else:
-                if key_str[i] == "0":
-                    mask_sig += "not_keyinp" + str(i+rnd_key_cnt) + ", "
-                elif key_str[i] == "1":
-                    mask_sig += "keyinput" + str(i+rnd_key_cnt) + ", "
-    else:
-        cnt_mask_list = int(len(inp_list) / 10) + 1
-        for i in range(0, int(len(inp_list) / 10)):
-            for j in range(0, 10):
-                if j == 0:
-                    if key_str[j] == "0":
-                        mask_sig = "maskSig" + str(i) + " = AND(not_keyinp" + str(i*10 + j + rnd_key_cnt) + ", "
-                    elif key_str[i] == "1":
-                        mask_sig = "maskSig" + str(i) + " = AND(keyinput" + str(i * 10 + j + rnd_key_cnt) + ", "
-                elif j == 9:
-                    if key_str[j] == "0":
-                        mask_sig += "not_keyinp" + str(i*10 + j + rnd_key_cnt) + ")\n"
-                    elif key_str[i] == "1":
-                        mask_sig += "keyinput" + str(i*10 + j + rnd_key_cnt) + ")\n"
-                else:
-                    if key_str[i] == "0":
-                        mask_sig += "not_keyinp" + str(i*10 + j + rnd_key_cnt) + ", "
-                    elif key_str[i] == "1":
-                        mask_sig += "keyinput" + str(i*10 + j + rnd_key_cnt) + ", "
-            mask_sig_list += mask_sig
-
-        for i in range(int(len(inp_list) / 10) * 10, len(inp_list)):
-            if i == int(len(inp_list) / 10) * 10:
-                if key_str[i] == "0":
-                    mask_sig = "maskSig" + str(int(len(inp_list)/10)) + " = AND(not_keyinp" + str(i + rnd_key_cnt) + ", "
-                elif key_str[i] == "1":
-                    mask_sig = "maskSig" + str(int(len(inp_list)/10)) + " = AND(keyinput" + str(i + rnd_key_cnt) + ", "
-            elif i == len(inp_list) - 1:
-                if key_str[i] == "0":
-                    mask_sig += "not_keyinp" + str(i + rnd_key_cnt) + ")\n"
-                elif key_str[i] == "1":
-                    mask_sig += "keyinput" + str(i + rnd_key_cnt) + ")\n"
-            else:
-                if key_str[i] == "0":
-                    mask_sig += "not_keyinp" + str(i + rnd_key_cnt) + ", "
-                elif key_str[i] == "1":
-                    mask_sig += "keyinput" + str(i + rnd_key_cnt) + ", "
-        mask_sig_list += mask_sig
-
-        for i in range(0, cnt_mask_list):
-            if i == 0:
-                mask_sig = "maskSig = AND(maskSig" + str(i) + ", "
-            elif i == cnt_mask_list - 1:
-                mask_sig += "maskSig" + str(i) + ")\n"
-            else:
-                mask_sig += "maskSig" + str(i) + ", "
-
-    not_mask = "not_mask = NOT(maskSig)\n"
-    mask_flip = "flip_mask = AND(flipSig, not_mask)\n"
-
-    new_bench = input_str + "\n" + old_keys_str + "\n" + new_keys_str + "\n" + output_str + "\n" + gates_str + "\n" + xor_gates + "\n" + not_key_list + "\n" + flip_sig_list + "\n" + flip_sig + "\n" + mask_sig_list + "\n" + mask_sig + "\n" + not_mask + "\n" + mask_flip + "\n"
-    new_bench = new_bench.replace(selected_output + " = ", selected_output + "_enc = ")
-
-    new_bench += selected_output + " = XOR(" + selected_output + "_enc, flip_mask)\n"
-
-    bench_file = open(sar_rnd_obf_bench_address, "w")
-    bench_file.write(new_bench)
-    bench_file.close()
-
-
 def get_rand(end_pt,list):
     end_pt -= 1
     rand_pos = randint(0,end_pt)
@@ -531,16 +369,18 @@ def libar(org_name,obfs_name,key_str,libar_percent):
 def get_wire_io(lines):
     input_vars = []
     output_vars = []
+    output_vars_pos =[]
     assigned_vars = []
-    opr_lines=[]
-    gate_types=[]
+    assigned_vars_pos = []
+    io_lines = []
+    gate_lines = []
     # Regular expressions to match INPUT, OUTPUT, and gate assignments
     input_pattern = re.compile(r'^INPUT\((\w+)\)')
     output_pattern = re.compile(r'^OUTPUT\((\w+)\)')
-    assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|NOR|AND|OR|XOR|XNOR|NOT|DFF|BUF)\((.*)\)')
+    
 
-    for line in lines:
-        line = line.strip()
+    for i in range(len(lines)):
+        line = lines[i].strip()
         if line.startswith("INPUT"):
             match = input_pattern.match(line)
             if match:
@@ -549,28 +389,55 @@ def get_wire_io(lines):
             match = output_pattern.match(line)
             if match:
                 output_vars.append(match.group(1))
+                output_vars_pos.append(i)
         else:
-            match = assign_pattern.match(line)
-            if match:
-                assigned_vars.append(match.group(1))
-                gate_type,opr_line = converts.convert_gate_line(line,gate_count)
-                if opr_line is not None:
-                    opr_lines.append(opr_line)
-                    if gate_type not in gate_types:
-                        gate_types.append(gate_type) 
-                    gate_count += 1
+            gate_match = re.findall(r'\b\w+\b', line)
+            try:
+                var_name = gate_match[0].strip()
+                if var_name in output_vars:
+                    index_out = output_vars.index(var_name)
+                    output_vars_pos[index_out]=i
+                else:    
+                    assigned_vars.append(var_name)
+                    assigned_vars_pos.append(i)
+                
+            except:
+                pass
 
-    # Intermediate variables are those assigned but not inputs or outputs
-    intermediate_vars = [var for var in assigned_vars if var not in input_vars and var not in output_vars]
-    return intermediate_vars,input_vars, output_vars, opr_lines,gate_types, gate_count
+    return input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos
 
 def anti_sat(org_name,obfs_name,key_str):
     with open(org_name, 'r') as file:
         lines = file.readlines()
-    wire_vars,input_vars, output_vars, _,_,_ = converts.get_wire_io(lines)
+    
+def sarlock(org_name,obfs_name,key_str,init_key_pos=0):
+    with open(org_name, 'r') as file:
+        lines = file.readlines()
+    input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos = get_wire_io(lines)
 
-def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent):
-    pass
+    index_out = randint(0,len(output_vars)-1)
+    selected_output = output_vars[index_out]
+
+    if len(key_str)>len(input_vars):
+        print("Number of key is greater than the number of inputs")
+        return [None]*6
+
+    #sarlock building starts here 
+    
+
+
+    return input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos, selected_output
+
+
+def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent, other_algo, other_algo_str):
+    if other_algo == "sarlock":
+        input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos, selected_output=sarlock(org_name,obfs_name,other_algo_str,selected_output = "")
+
+    
+    if input_vars == None:
+        return None
+    
+    
 
 
 def convert_bench2verilog(input_file):
