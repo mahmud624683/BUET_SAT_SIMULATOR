@@ -248,7 +248,7 @@ def get_rand(end_pt,list):
     return rand_pos
 
 
-def RLL(org_name,obfs_name,key_str):
+def RLL(org_name,obfs_name,key_str, write_file = True):
     bench_gates = 0
     io_lines = ""
     gate_lines =[]
@@ -308,18 +308,19 @@ def RLL(org_name,obfs_name,key_str):
             print("Number of keybits are more than the number of non input gates")
             return None
 
-
-    with open(obfs_name, 'w') as file:
-        file.write(io_lines+ "\n" + "\n".join(gate_lines))
-
-    return io_lines,gate_lines
+    if write_file:
+        with open(obfs_name, 'w') as file:
+            file.write(io_lines+ "\n" + "\n".join(gate_lines))
+            print("RLL bench file created")
+    else:
+        return io_lines,gate_lines
 
 def libar(org_name,obfs_name,key_str,libar_percent):
     wires = []
     pin_a = []
     pin_b = []
 
-    io_lines,gate_lines = RLL(org_name,obfs_name,key_str)
+    io_lines,gate_lines = RLL(org_name,obfs_name,key_str, write_file= False)
     libar_number = int(math.ceil(len(key_str)*libar_percent))
     i=0
     gate_num=len(gate_lines)
@@ -369,70 +370,261 @@ def libar(org_name,obfs_name,key_str,libar_percent):
 def get_wire_io(lines):
     input_vars = []
     output_vars = []
-    output_vars_pos =[]
-    assigned_vars = []
-    assigned_vars_pos = []
-    io_lines = []
+    outvarpos_in_gatelines =[]
+    assigned_vars = [] #wire list
+    io_lines = ""
     gate_lines = []
     # Regular expressions to match INPUT, OUTPUT, and gate assignments
     input_pattern = re.compile(r'^INPUT\((\w+)\)')
     output_pattern = re.compile(r'^OUTPUT\((\w+)\)')
     
-
-    for i in range(len(lines)):
-        line = lines[i].strip()
-        if line.startswith("INPUT"):
-            match = input_pattern.match(line)
-            if match:
-                input_vars.append(match.group(1))
-        elif line.startswith("OUTPUT"):
-            match = output_pattern.match(line)
-            if match:
-                output_vars.append(match.group(1))
-                output_vars_pos.append(i)
-        else:
+    gate_count = 0
+    for line in lines:
+        line = line.strip()
+        if "=" in line:
+            gate_lines.append(line)
             gate_match = re.findall(r'\b\w+\b', line)
-            try:
-                var_name = gate_match[0].strip()
-                if var_name in output_vars:
-                    index_out = output_vars.index(var_name)
-                    output_vars_pos[index_out]=i
-                else:    
-                    assigned_vars.append(var_name)
-                    assigned_vars_pos.append(i)
-                
-            except:
-                pass
+            var_name = gate_match[0].strip()
+            if var_name in output_vars:
+                outvarpos_in_gatelines.append(gate_count)
 
-    return input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos
+            assigned_vars.append(var_name)
+            gate_count += 1
 
-def anti_sat(org_name,obfs_name,key_str):
+        elif len(line)>3:
+            io_lines += line+"\n"
+            if line.startswith("INPUT"):
+                match = input_pattern.match(line)
+                if match:
+                    input_vars.append(match.group(1))
+            elif line.startswith("OUTPUT"):
+                match = output_pattern.match(line)
+                if match:
+                    output_vars.append(match.group(1))
+            
+    return input_vars, output_vars, outvarpos_in_gatelines, assigned_vars, io_lines, gate_lines
+
+def backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars):
+    if wire in input_vars:
+        if wire not in as_cone_wires:
+            as_cone_wires.append(wire)
+        return None
+    gate_index = assigned_vars.index(wire)
+    if gate_visited[gate_index]:
+        return None
+    else:
+        as_cone_wires.append(wire)
+        gate_visited[gate_index] = True
+        gate_match = re.findall(r'\b\w+\b', gate_lines[gate_index])
+        for wire in gate_match[2:]:
+            backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+        return None
+
+
+def forward_propagation(as_cone_wires, src_gate, prev_gate_index, gate_visited, gate_lines, input_vars, output_vars, assigned_vars):
+    if src_gate in output_vars:
+        return None
+    else:
+        for j in range(prev_gate_index,len(gate_lines)):
+            if not(gate_visited[j]):
+                if src_gate in gate_lines[j]:
+                    gate_visited[j]=True
+                    gate_match = re.findall(r'\b\w+\b', gate_lines[j])
+                    as_cone_wires.append(gate_match[0])
+                    forward_propagation(as_cone_wires, gate_match[0], j, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+                    for wire in gate_match[2:]:
+                        backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+                    break  
+        return None
+
+def cone4minput(lines, wire_name):
+    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
+
+    as_cone_wires=[]
+    gate_visited = [False]*len(gate_lines)
+    for i in range(len(gate_lines)):
+        gate = gate_lines[i]
+        if wire_name in gate:
+            gate_visited[i]=True
+            gate_match = re.findall(r'\b\w+\b', gate)
+            as_cone_wires.append(gate_match[0])
+            forward_propagation(as_cone_wires, gate_match[0], i, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+            for wire in gate_match[2:]:
+                backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+
+
+    logic_cone=[]
+    for gate in gate_lines:
+        gate_match = re.findall(r'\b\w+\b', gate)
+        if gate_match[0] in as_cone_wires:
+            logic_cone.append(gate)
+
+    io_lines=[]
+    for wire in as_cone_wires:
+        if wire in input_vars:
+            io_lines.append(f"INPUT({wire})")
+        elif wire in output_vars:
+            io_lines.append(f"OUTPUT({wire})")
+    return io_lines,logic_cone
+
+def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
+    loop_len = int(len(key_str)/2)
+    if len(key_str)%2 == 1:
+        print("In anti-sat key bit must be in even length. last bit will be omitted")
+    if key_str[:loop_len] != key_str[loop_len:(2*loop_len)]:
+        print(f"The key bit should be equal if half splitted. but here your key: {key_str} is not.")
+        return [None]*7
+        
     with open(org_name, 'r') as file:
         lines = file.readlines()
+    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
+    if loop_len>=len(input_vars):
+        print("Number of key is greater than the number of inputs")
+        return [None]*7
+    index_out = randint(0,len(output_vars)-1)
+    sig_ins_index = output_vars_pos[index_out]
+    out_line = gate_lines[sig_ins_index]
+    gate_match = re.findall(r'\b\w+\b', out_line)
+    target_index = assigned_vars.index(gate_match[2])
+    selected_output = gate_match[2].strip()
+    sig_bit_index = randint(0,len(key_str)-1)
     
-def sarlock(org_name,obfs_name,key_str,init_key_pos=0):
+
+    #antisat building starts here 
+    main_bit_inps = []
+    cmplmnt_bit_inps = []
+    key_str = key_str.strip()
+
+    for i in range(loop_len):
+        io_lines += f"INPUT(keyinput{i+init_key_pos})\n"
+        io_lines += f"INPUT(keyinput{i+loop_len+init_key_pos})\n"
+        input_vars += [f"keyinput{i+init_key_pos}", f"keyinput{i+loop_len+init_key_pos}"]
+        gate_lines.append(f"CMP1_{i} = XOR(keyinput{i+init_key_pos}, {input_vars[i]})")
+        gate_lines.append(f"CMP2_{i} = XOR(keyinput{i+loop_len+init_key_pos}, {input_vars[i]})")
+        assigned_vars += [f"CMP1_{i}",f"CMP2_{i}"]
+        main_bit_inps.append(f"CMP1_{i}")
+        cmplmnt_bit_inps.append(f"CMP2_{i}")
+        i += 1
+
+    gate_lines.append("MAIN_BIT = AND(" + ", ".join(main_bit_inps)+")")
+    gate_lines.append("CMPLMNT_BIT = NAND(" + ", ".join(cmplmnt_bit_inps)+")")
+    gate_lines.append("SIG_BIT_0 = AND(MAIN_BIT, CMPLMNT_BIT)")
+    assigned_vars += ["MAIN_BIT", "CMPLMNT_BIT", "SIG_BIT_0"]
+
+    
+    gate_lines[target_index] = gate_lines[target_index].replace(selected_output,selected_output+"_enc")
+    assigned_vars[target_index] = selected_output+"_enc"
+    
+    if key_str[sig_bit_index]=="0":
+        gate_lines.append(f"{selected_output} = XOR(SIG_BIT_0, {selected_output}_enc)")
+        assigned_vars.append(selected_output)
+    else:
+        gate_lines.append("SIG_BIT_1 = NOT(SIG_BIT_0)")
+        assigned_vars.append(f"SIG_BIT_1")
+        gate_lines.append(f"{selected_output} = XNOR(SIG_BIT_1, {selected_output}_enc)")
+        assigned_vars.append(selected_output)
+        
+    if write_file:
+        with open(obfs_name, 'w') as file:
+            file.write(io_lines+ "\n" + "\n".join(gate_lines))
+            print("AntiSAT bench file created")
+    else:
+        return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
+    
+
+    
+def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     with open(org_name, 'r') as file:
         lines = file.readlines()
-    input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos = get_wire_io(lines)
+    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
 
     index_out = randint(0,len(output_vars)-1)
-    selected_output = output_vars[index_out]
+    selected_output = output_vars[index_out].strip()
 
     if len(key_str)>len(input_vars):
         print("Number of key is greater than the number of inputs")
-        return [None]*6
+        return [None]*7
 
-    #sarlock building starts here 
+    #sarlock building starts here     
+    select_bit_inps = []
+    err_bit_inps = []
+    key_str = key_str.strip()
+    i=0
+    for key_bit in key_str:
+        io_lines += f"INPUT(keyinput{i+init_key_pos})\n"
+        if key_bit == "0":
+            gate_lines.append(f"keyinput{i+init_key_pos}_INV = NOT(keyinput{i+init_key_pos})")
+            select_bit_inps.append(f"keyinput{i+init_key_pos}_INV")
+        else:
+            select_bit_inps.append(f"keyinput{i+init_key_pos}")
+
+        gate_lines.append(f"CMP2_{i} = XOR(keyinput{i+init_key_pos}, {input_vars[i]})")
+        err_bit_inps.append(f"CMP2_{i}")
+        i += 1
+
+    gate_lines.append("SELECT_BIT = NAND(" + ", ".join(select_bit_inps)+")")
+    gate_lines.append("ERR_BIT = NOR(" + ", ".join(err_bit_inps)+")")
+    gate_lines.append("SIG_BIT = AND(SELECT_BIT, ERR_BIT)")
+
+    sig_ins_index = output_vars_pos[index_out]
+    gate_lines[sig_ins_index] = gate_lines[sig_ins_index].replace(selected_output,selected_output+"_enc")
+    gate_lines.append(f"{selected_output} = XOR(SIG_BIT, {selected_output}_enc)")
+        
+    if write_file:
+        with open(obfs_name, 'w') as file:
+            file.write(io_lines+ "\n" + "\n".join(gate_lines))
+            print("SARLock bench file created")
+    else:
+        return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
+
+def asob(org_name,obfs_name,key_str,no_rll_keybit):
+    rll_key = key_str[:no_rll_keybit+2]
+    as_key=key_str[no_rll_keybit:]
+    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output = \
+        anti_sat(org_name,obfs_name,as_key,init_key_pos=no_rll_keybit,write_file=False)
     
+    if gate_lines == None:
+        return
+    gate_visited = [False]*len(gate_lines)
+    as_cone_wires = []
+    backward_propagation(as_cone_wires, selected_output, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+    as_cone_wires = list(set(as_cone_wires))
+    cone_len = len(as_cone_wires)
+    gate_num = len(gate_lines)-1
+    if (gate_num-cone_len+len(input_vars))<1:
+        print("Not enough gate exist outside the antisat locked cone")
+        return None
+    i=0
+    for key in rll_key:
+        target_pin =""
+        rand_pos = -1
+        while rand_pos<0:
+            wire_index = randint(0,gate_num)
+            target_pin = assigned_vars[wire_index]
+            if target_pin not in as_cone_wires:
+                rand_pos = wire_index
+                gate_match = re.findall(r'\b\w+\b', gate_lines[wire_index])
+                target_pin = gate_match[2].strip()
+                break
+        if f"INPUT(keyinput{i})" not in io_lines:
+            io_lines += f"INPUT(keyinput{i})\n"
+        gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
+        if key=="1":
+            gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
+        else:
+            gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
+        i += 1
 
-
-    return input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos, selected_output
+    with open(obfs_name, 'w') as file:
+        file.write(io_lines+ "\n" + "\n".join(gate_lines))
+        print("Anti-SAT, Obfuscation hybrid bench file created")
 
 
 def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent, other_algo, other_algo_str):
     if other_algo == "sarlock":
-        input_vars, output_vars, output_vars_pos, assigned_vars, assigned_vars_pos, selected_output=sarlock(org_name,obfs_name,other_algo_str,selected_output = "")
-
+        input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=sarlock(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
+    elif other_algo == "antisat":
+        input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=anti_sat(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
     
     if input_vars == None:
         return None
@@ -449,4 +641,3 @@ def convert_bench2verilog(input_file):
         file.write(v_text)
         print("Verilog file created. Please look at bench_verilog folder.")
     
-

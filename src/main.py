@@ -24,21 +24,27 @@ def lock_unlock(algo,org_ckt_ls,obs_ckt_ls,key_str="",libar_percent=0):
         algo_methods.rll(org_ckt_ls,obs_ckt_ls,key_str)
     elif algo == "libar":
         algo_methods.libar(org_ckt_ls,obs_ckt_ls,key_str,libar_percent)
+    elif algo == "antisat":
+        algo_methods.anti_sat(org_ckt_ls,obs_ckt_ls,key_str)
+    elif algo == "asob":
+        algo_methods.asob(org_ckt_ls,obs_ckt_ls,key_str,6)
     else:
         print("Wrong Algorithm Name")
 
 if __name__ == "__main__":
 
     #algo = "sat"
-    #algo = "appsat"
+    algo = "appsat"
     #algo = "sweep"
-    algo = "sarlock"
+    #algo = "sarlock"
     #algo = "rll"
     #algo = "libar"
+    #algo = "antisat"
+    #algo = "asob"
     org_ckt_ls = "bench_ckt/c432.bench"
-    obs_ckt_ls = "obfuscated/c432_sar.bench"
+    obs_ckt_ls = "obfuscated/c432_asob.bench"
     #obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
-    key_str = "01011010101011"
+    key_str = "10111010001000"
     libar_percent = 0.3
     lock_unlock(algo,org_ckt_ls,obs_ckt_ls,key_str,libar_percent)
 

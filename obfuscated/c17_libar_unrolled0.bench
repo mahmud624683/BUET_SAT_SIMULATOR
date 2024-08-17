@@ -66,3 +66,4 @@ G19gat_2 = NAND(RLL3_2, G7gat)
 RLL0_2 = XOR(G10gat_2, keyinput0)
 G22gat = NAND(RLL0_2, G16gat_2)
 G23gat = NAND(G16gat_2, G19gat_2)
+

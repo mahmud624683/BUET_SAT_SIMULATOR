@@ -1,6 +1,7 @@
 from monosat import *
 import converts
 import time
+import math
 
 LOGIC_VALUE_ZERO = "0"
 LOGIC_VALUE_ONE = "1"
@@ -193,6 +194,54 @@ def findkey(keyin_wires, interwires, poutwires, list_dip, list_orgcirc, keyinc):
     else:
         #print("UNSAT")
         return 0,None
+
+def int2var(int_val,len_val):
+    var_list=[]
+    bin_val = converts.int2bin(int_val,len_val)
+    for bit in bin_val:
+        if bit == "0":
+            var_list.append(Var(false()))
+        else:
+            var_list.append(Var(true()))
+    return var_list
+
+
+def findkey_list(keyin_wires, interwires, poutwires, list_dip, list_orgcirc, keyinc, list_keys):
+
+    keyin = [None] * len(keyin_wires)
+    loop_len = int(math.pow(2,len(keyin)))
+    for i in range(loop_len):
+        bin_val = converts.int2bin(i,len(keyin))
+        outxnored = []
+        for i in range(0, len(keyin)):
+            if bin_val[i] == "0":
+                keyin[i] = Var(false())
+            else:
+                keyin[i] = Var(true())
+            keyin[i].symbol = keyinc[i].symbol
+
+        for i in range(0, len(list_dip)):
+
+            output_list_temp = converts.circuit2bool(interwires, poutwires, list_dip[i], keyin)
+
+            for j in range(0, len(poutwires)):
+                outxnored.append(Xnor(output_list_temp[j], list_orgcirc[i][j]))
+
+        keyfinding = And(outxnored)
+
+        # result, intr = Solve(keyfinding)  # Solve the instance in MonoSAT, return either True if the instance is SAT, and False if it is UNSAT
+        result = Solve(keyfinding)
+        
+        for i in range(0, len(keyin_wires)):
+            keyin[i].symbol = keyinc[i].symbol
+
+        if result:
+            #print("SAT")
+            return keyin
+
+    return None
+        
+
 
 def finddipham(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc, keyin1, keyin2, exe_time, interval, timeout_array, const_solve):
 
