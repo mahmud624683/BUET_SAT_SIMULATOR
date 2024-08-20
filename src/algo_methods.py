@@ -552,24 +552,29 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     i=0
     for key_bit in key_str:
         io_lines += f"INPUT(keyinput{i+init_key_pos})\n"
+        input_vars.append(f"keyinput{i+init_key_pos}")
         if key_bit == "0":
             gate_lines.append(f"keyinput{i+init_key_pos}_INV = NOT(keyinput{i+init_key_pos})")
+            assigned_vars.append(f"keyinput{i+init_key_pos}_INV")
             select_bit_inps.append(f"keyinput{i+init_key_pos}_INV")
         else:
             select_bit_inps.append(f"keyinput{i+init_key_pos}")
 
         gate_lines.append(f"CMP2_{i} = XOR(keyinput{i+init_key_pos}, {input_vars[i]})")
+        assigned_vars.append(f"CMP2_{i}")
         err_bit_inps.append(f"CMP2_{i}")
         i += 1
 
     gate_lines.append("SELECT_BIT = NAND(" + ", ".join(select_bit_inps)+")")
     gate_lines.append("ERR_BIT = NOR(" + ", ".join(err_bit_inps)+")")
     gate_lines.append("SIG_BIT = AND(SELECT_BIT, ERR_BIT)")
+    assigned_vars += ["SELECT_BIT","ERR_BIT","SIG_BIT"]
 
     sig_ins_index = output_vars_pos[index_out]
     gate_lines[sig_ins_index] = gate_lines[sig_ins_index].replace(selected_output,selected_output+"_enc")
+    assigned_vars[sig_ins_index] = selected_output+"_enc"
     gate_lines.append(f"{selected_output} = XOR(SIG_BIT, {selected_output}_enc)")
-        
+    assigned_vars.append(selected_output)    
     if write_file:
         with open(obfs_name, 'w') as file:
             file.write(io_lines+ "\n" + "\n".join(gate_lines))
@@ -625,9 +630,46 @@ def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent, other_algo, oth
         input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=sarlock(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
     elif other_algo == "antisat":
         input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=anti_sat(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
+    else:
+        print("The entered method don't match with anything")
     
     if input_vars == None:
         return None
+    
+    gate_visited = [False]*len(gate_lines)
+    as_cone_wires = []
+    backward_propagation(as_cone_wires, selected_output, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
+    as_cone_wires = list(set(as_cone_wires))
+    cone_len = len(as_cone_wires)
+    gate_num = len(gate_lines)-1
+    if (gate_num-cone_len+len(input_vars))<1:
+        print("Not enough gate exist outside the antisat locked cone")
+        return None
+    i=0
+    for key in libar_key_str:
+        target_pin =""
+        rand_pos = -1
+        while rand_pos<0:
+            wire_index = randint(0,gate_num)
+            target_pin = assigned_vars[wire_index]
+            if target_pin not in as_cone_wires:
+                rand_pos = wire_index
+                gate_match = re.findall(r'\b\w+\b', gate_lines[wire_index])
+                target_pin = gate_match[2].strip()
+                break
+        if f"INPUT(keyinput{i})" not in io_lines:
+            io_lines += f"INPUT(keyinput{i})\n"
+        gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
+        if key=="1":
+            gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
+        else:
+            gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
+        i += 1
+
+    with open(obfs_name, 'w') as file:
+        file.write(io_lines+ "\n" + "\n".join(gate_lines))
+        print(f"Libar, {other_algo} hybrid bench file created")
+
     
     
 
