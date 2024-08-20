@@ -421,51 +421,6 @@ def backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_va
         return None
 
 
-def forward_propagation(as_cone_wires, src_gate, prev_gate_index, gate_visited, gate_lines, input_vars, output_vars, assigned_vars):
-    if src_gate in output_vars:
-        return None
-    else:
-        for j in range(prev_gate_index,len(gate_lines)):
-            if not(gate_visited[j]):
-                if src_gate in gate_lines[j]:
-                    gate_visited[j]=True
-                    gate_match = re.findall(r'\b\w+\b', gate_lines[j])
-                    as_cone_wires.append(gate_match[0])
-                    forward_propagation(as_cone_wires, gate_match[0], j, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
-                    for wire in gate_match[2:]:
-                        backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
-                    break  
-        return None
-
-def cone4minput(lines, wire_name):
-    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
-
-    as_cone_wires=[]
-    gate_visited = [False]*len(gate_lines)
-    for i in range(len(gate_lines)):
-        gate = gate_lines[i]
-        if wire_name in gate:
-            gate_visited[i]=True
-            gate_match = re.findall(r'\b\w+\b', gate)
-            as_cone_wires.append(gate_match[0])
-            forward_propagation(as_cone_wires, gate_match[0], i, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
-            for wire in gate_match[2:]:
-                backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
-
-
-    logic_cone=[]
-    for gate in gate_lines:
-        gate_match = re.findall(r'\b\w+\b', gate)
-        if gate_match[0] in as_cone_wires:
-            logic_cone.append(gate)
-
-    io_lines=[]
-    for wire in as_cone_wires:
-        if wire in input_vars:
-            io_lines.append(f"INPUT({wire})")
-        elif wire in output_vars:
-            io_lines.append(f"OUTPUT({wire})")
-    return io_lines,logic_cone
 
 def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     loop_len = int(len(key_str)/2)
@@ -625,7 +580,7 @@ def asob(org_name,obfs_name,key_str,no_rll_keybit):
         print("Anti-SAT, Obfuscation hybrid bench file created")
 
 
-def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent, other_algo, other_algo_str):
+def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,libar_percent):
     if other_algo == "sarlock":
         input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=sarlock(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
     elif other_algo == "antisat":
@@ -642,10 +597,14 @@ def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent, other_algo, oth
     as_cone_wires = list(set(as_cone_wires))
     cone_len = len(as_cone_wires)
     gate_num = len(gate_lines)-1
+    libar_no = math.ceil(len(libar_key_str)*libar_percent)
     if (gate_num-cone_len+len(input_vars))<1:
         print("Not enough gate exist outside the antisat locked cone")
         return None
+    
     i=0
+    pin_a = []
+    j=0
     for key in libar_key_str:
         target_pin =""
         rand_pos = -1
@@ -659,12 +618,33 @@ def hybrid_libar(org_name,obfs_name,libar_key_str,libar_percent, other_algo, oth
                 break
         if f"INPUT(keyinput{i})" not in io_lines:
             io_lines += f"INPUT(keyinput{i})\n"
-        gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
-        if key=="1":
-            gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
+        if libar_no>0:
+            if len(as_cone_wires)<j+2:
+                if len(pin_a)==0:
+                    clk_pin_a = as_cone_wires[j]
+                    pin_a.append(clk_pin_a)
+                else:
+                    clk_pin_a = pin_a[0]
+            else: 
+                if len(pin_a)==0:
+                    clk_pin_a = as_cone_wires[j]
+                    pin_a.append(clk_pin_a)
+                else:
+                    clk_pin_a = pin_a.pop()
+            
+            clk_pin_b = assigned_vars[j]
+            j += 1 
+            gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"LIBAR{str(libar_no)}")
+            gate_lines.insert(rand_pos,f"LIBAR{str(libar_no)} = DFF(CLK{str(libar_no)}, keyinput{str(i)})")
+            gate_lines.insert(rand_pos,f"CLK{str(libar_no)} = NOR({clk_pin_a}, {clk_pin_b})")
+            libar_no -= 1
         else:
-            gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
-        i += 1
+            gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
+            if key=="1":
+                gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
+            else:
+                gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
+            i += 1
 
     with open(obfs_name, 'w') as file:
         file.write(io_lines+ "\n" + "\n".join(gate_lines))
