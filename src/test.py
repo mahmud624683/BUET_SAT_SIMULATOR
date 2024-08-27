@@ -1,8 +1,9 @@
-""" import algo_methods
+import algo_methods
 
 #algo_methods.sarlock("bench_ckt/c17.bench","obfuscated/c17_sar.bench","1010")
+algo_methods.hybrid_libar("bench_ckt/c17.bench","obfuscated/c17_sar_libar.bench", "sarlock", "1110","1",1)
 
-import random
+"""import random
 
 def int2bin(value, size):
     string_val = list("0" * size)
@@ -26,7 +27,7 @@ for i in range(16):
         y=((str2bool[key[0]]^str2bool[inp[0]])&(str2bool[key[1]]^str2bool[inp[1]])) & \
         (not((str2bool[key[2]]^str2bool[inp[0]])&(str2bool[key[3]]^str2bool[inp[1]])))
         print(key, inp, y)
- """
+ 
 
 
 import re
@@ -139,7 +140,5 @@ for wire in as_cone_wires:
 with open("obfuscated/as.bench", 'w') as file:
     file.write("\n".join(io_lines)+"\n\n"+"\n".join(logic_cone))
     print("AntiSAT bench file created")
-         
 
-
-                
+"""

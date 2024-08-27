@@ -139,9 +139,9 @@ def unroll_bench(file_path,unroll_iter_no):
 
                 dff_match = re.findall(r'\b\w+\b', line)
                 if dff_match[0] in output_vars:
-                    new_out =dff_match[0]+"_"+str(unroll_iter_no)
+                    new_out =dff_match[0]+"_"+str(unroll_iter_no)+" "
                     final_file.pop()
-                    final_file.append(line.replace(dff_match[0],new_out)+"\n")   
+                    final_file.append(line.replace(dff_match[0]+" ",new_out)+"\n")   
                 elif "CLK" in dff_match[0]:
                     final_file.pop()          
                 if "DFF" in line:

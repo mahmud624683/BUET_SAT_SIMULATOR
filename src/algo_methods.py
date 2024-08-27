@@ -587,6 +587,7 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
         input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=anti_sat(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
     else:
         print("The entered method don't match with anything")
+        return None
     
     if input_vars == None:
         return None
@@ -603,8 +604,8 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
         return None
     
     i=0
+    pin_b = []
     pin_a = []
-    j=0
     for key in libar_key_str:
         target_pin =""
         rand_pos = -1
@@ -616,44 +617,37 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
                 gate_match = re.findall(r'\b\w+\b', gate_lines[wire_index])
                 target_pin = gate_match[2].strip()
                 break
+
         if f"INPUT(keyinput{i})" not in io_lines:
             io_lines += f"INPUT(keyinput{i})\n"
-        if libar_no>0:
-            if len(as_cone_wires)<j+2:
-                if len(pin_a)==0:
-                    clk_pin_a = as_cone_wires[j]
-                    pin_a.append(clk_pin_a)
-                else:
-                    clk_pin_a = pin_a[0]
-            else: 
-                if len(pin_a)==0:
-                    clk_pin_a = as_cone_wires[j]
-                    pin_a.append(clk_pin_a)
-                else:
-                    clk_pin_a = pin_a.pop()
-            
-            clk_pin_b = assigned_vars[j]
-            j += 1 
-            gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"LIBAR{str(libar_no)}")
+        
+        gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
+        if key=="1":
+            gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
+        else:
+            gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
+
+        if (libar_no>0) & (rand_pos>1):
+            #
+            gate_lines[rand_pos]= gate_lines[rand_pos].replace(f"keyinput{str(i)}",f"LIBAR{str(libar_no)}")   
             gate_lines.insert(rand_pos,f"LIBAR{str(libar_no)} = DFF(CLK{str(libar_no)}, keyinput{str(i)})")
             gate_lines.insert(rand_pos,f"CLK{str(libar_no)} = NOR({clk_pin_a}, {clk_pin_b})")
+
             libar_no -= 1
-        else:
-            gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
-            if key=="1":
-                gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
-            else:
-                gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
-            i += 1
+            as_cone_wires.append(target_pin)
+        i += 1
 
     with open(obfs_name, 'w') as file:
         file.write(io_lines+ "\n" + "\n".join(gate_lines))
         print(f"Libar, {other_algo} hybrid bench file created")
 
+    txt_content = converts.unroll_bench(obfs_name,  math.ceil(len(libar_key_str)*libar_percent))
+    obfs_name = obfs_name.replace(".bench","_unrolled.bench")
+    with open(obfs_name, 'w') as file:
+        file.write(txt_content)
+        print("Libar bench file Unrolled!!!")
     
     
-
-
 def convert_bench2verilog(input_file):
     file_name = os.path.splitext(os.path.basename(input_file))[0]
     v_text = converts.bench2verilog(input_file, file_name)
