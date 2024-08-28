@@ -41,10 +41,10 @@ if __name__ == "__main__":
     #algo = "libar"
     #algo = "antisat"
     #algo = "asob"
-    org_ckt_ls = "bench_ckt/c17.bench"
-    obs_ckt_ls = "obfuscated/c17_sar_libar_unrolled.bench"
+    org_ckt_ls = "bench_ckt/c432.bench"
+    obs_ckt_ls = "obfuscated/c432_asob.bench"
     #obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
-    key_str = "10111010001000"
+    key_str = "110111010001000"
     libar_percent = 0.3
     lock_unlock(algo,org_ckt_ls,obs_ckt_ls,key_str,libar_percent)
 

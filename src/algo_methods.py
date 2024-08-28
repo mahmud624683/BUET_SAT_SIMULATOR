@@ -604,16 +604,6 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
         return None
     
     i=0
-    pin_b = []
-    pin_a = []
-    k=0
-    lim_k = len(assigned_vars)-2
-    while k<lim_k:
-        pin_a.append(k)
-        pin_b.append(k+1)
-        pin_b.append(k+2)
-        k += 3
-
     for key in libar_key_str:
         target_pin =""
         rand_pos = -1
@@ -625,32 +615,13 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
                 gate_match = re.findall(r'\b\w+\b', gate_lines[wire_index])
                 target_pin = gate_match[2].strip()
                 break
-
         if f"INPUT(keyinput{i})" not in io_lines:
             io_lines += f"INPUT(keyinput{i})\n"
-        
         gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
         if key=="1":
             gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
         else:
             gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
-
-        if (libar_no>0) & (rand_pos>1):
-            for a in pin_a:
-                if a> rand_pos:
-                    break
-                clk_pin_a = assigned_vars[a]
-            for b in pin_b:
-                if b> rand_pos:
-                    break
-                clk_pin_b = assigned_vars[b]
-
-            gate_lines[rand_pos]= gate_lines[rand_pos].replace(f"keyinput{str(i)}",f"LIBAR{str(libar_no)}")   
-            gate_lines.insert(rand_pos,f"LIBAR{str(libar_no)} = DFF(CLK{str(libar_no)}, keyinput{str(i)})")
-            gate_lines.insert(rand_pos,f"CLK{str(libar_no)} = NOR({clk_pin_a}, {clk_pin_b})")
-
-            libar_no -= 1
-            as_cone_wires.append(target_pin)
         i += 1
 
     with open(obfs_name, 'w') as file:

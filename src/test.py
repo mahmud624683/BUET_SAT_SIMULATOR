@@ -1,7 +1,8 @@
 import algo_methods
 
 #algo_methods.sarlock("bench_ckt/c17.bench","obfuscated/c17_sar.bench","1010")
-algo_methods.hybrid_libar("bench_ckt/c17.bench","obfuscated/c17_sar_libar.bench", "sarlock", "1110","1",1)
+#algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_sar_libar.bench", "sarlock", "00001111","10101010111100101010",.3)
+algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_asob.bench","110111010001000",7)
 
 """import random
 
