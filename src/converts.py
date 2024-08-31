@@ -119,7 +119,7 @@ def unroll_bench(file_path,unroll_iter_no):
 
     input_pattern = re.compile(r'^INPUT\((\w+)\)')
     output_pattern = re.compile(r'^OUTPUT\((\w+)\)')
-    assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|AND|NOR|OR|XOR|XNOR|NOT|DFF|BUF)\((.*)\)')
+    assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|AND|NOR|OR|XOR|XNOR|NOT|DFF|BUFF)\((.*)\)')
 
     for line in lines:
         final_file.append(line)

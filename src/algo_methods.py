@@ -249,31 +249,18 @@ def get_rand(end_pt,list):
 
 
 def RLL(org_name,obfs_name,key_str, write_file = True):
-    bench_gates = 0
-    io_lines = ""
-    gate_lines =[]
-    io_pins = []
-    gate_limit_flag = False
 
-    bench_file = open(org_name)
-    for line in bench_file:
-        if " = " in line:
-            bench_gates += 1
-            gate_lines.append(line)
-        else:
-            io_lines += line
-            matches = re.findall(r'\b\w+\b', line)
-            if len(matches)==2:
-                if (matches[0].strip() == "INPUT") | (matches[0].strip() == "OUTPUT"):
-                    io_pins.append(matches[1].strip())
+    with open(org_name, 'r') as file:
+        lines = file.readlines()
+    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
 
-    bench_file.close()
-
+    bench_gates = len(gate_lines)
     randins_number = len(key_str)
     if randins_number >= bench_gates:
         print("Number of keybits are more than the number of gates")
         return None
     obfs_gates=[]
+    gate_limit_flag = False
 
     for i in range(randins_number):
         inserting_gate_flag = True
@@ -286,18 +273,15 @@ def RLL(org_name,obfs_name,key_str, write_file = True):
             gate_match = re.findall(r'\b\w+\b', gate_lines[rand_pos])
             target_pin = ""
             while target_pin=="":
-                for pin in gate_match[2:]:
-                    if pin not in io_pins:
-                        target_pin = pin
-                        break
-                if target_pin != "":
-                        gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
-                        if key_str[i]=="1":
-                            gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
-                        else:
-                            gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
-                        inserting_gate_flag = False
-                        break
+                if gate_match[0] not in output_vars:
+                    target_pin = gate_match[0]
+                    gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"{target_pin}_enc")
+                    if key_str[i]=="1":
+                        gate_lines.insert(rand_pos+1,f"{target_pin} = XNOR({target_pin}_enc, keyinput{str(i)})")
+                    else:
+                        gate_lines.insert(rand_pos+1,f"{target_pin} = XOR({target_pin}_enc, keyinput{str(i)})")
+                    inserting_gate_flag = False
+                    break
                 else:
                     if len(obfs_gates)>=bench_gates:
                         gate_limit_flag = True
@@ -315,12 +299,23 @@ def RLL(org_name,obfs_name,key_str, write_file = True):
     else:
         return io_lines,gate_lines
 
-def libar(org_name,obfs_name,key_str,libar_percent):
+def libar(org_name,obfs_name,key_str,libar_percent,rll_file=False):
     wires = []
     pin_a = []
     pin_b = []
+    if rll_file:
+        io_lines = ""
+        gate_lines =[]
+        bench_file = open(org_name)
+        for line in bench_file:
+            if " = " in line:
+                gate_lines.append(line)
+            elif len(line)>5:
+                io_lines += line
+        bench_file.close()
+    else:
+        io_lines,gate_lines = RLL(org_name,obfs_name,key_str, write_file= False)
 
-    io_lines,gate_lines = RLL(org_name,obfs_name,key_str, write_file= False)
     libar_number = int(math.ceil(len(key_str)*libar_percent))
     i=0
     gate_num=len(gate_lines)
@@ -360,11 +355,13 @@ def libar(org_name,obfs_name,key_str,libar_percent):
     with open(obfs_name, 'w') as file:
         file.write(io_lines+ "\n" + "\n".join(gate_lines))
         print("Libar bench file created")
-    txt_content = converts.unroll_bench(obfs_name, int(math.ceil(len(key_str)*libar_percent)))
-    obfs_name = obfs_name.replace(".bench","_unrolled.bench")
-    with open(obfs_name, 'w') as file:
-        file.write(txt_content)
-        print("Libar bench file Unrolled!!!")
+    libar_number = int(math.ceil(len(key_str)*libar_percent))
+    if libar_percent>0:
+        txt_content = converts.unroll_bench(obfs_name, libar_number)
+        obfs_name = obfs_name.replace(".bench","_unrolled.bench")
+        with open(obfs_name, 'w') as file:
+            file.write(txt_content)
+            print("Libar bench file Unrolled!!!")
 
 
 def get_wire_io(lines):
@@ -538,7 +535,7 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
 
 def asob(org_name,obfs_name,key_str,no_rll_keybit):
-    rll_key = key_str[:no_rll_keybit+2]
+    rll_key = key_str[:no_rll_keybit]
     as_key=key_str[no_rll_keybit:]
     input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output = \
         anti_sat(org_name,obfs_name,as_key,init_key_pos=no_rll_keybit,write_file=False)

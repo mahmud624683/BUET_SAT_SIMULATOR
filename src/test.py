@@ -2,8 +2,14 @@ import algo_methods
 
 #algo_methods.sarlock("bench_ckt/c17.bench","obfuscated/c17_sar.bench","1010")
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_sar_libar.bench", "sarlock", "00001111","10101010111100101010",.3)
-algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_asob.bench","110111010001000",7)
+#algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_asob.bench","101111011001100",7)
+algo_methods.RLL("bench_ckt/c432.bench","obfuscated/c432_rll.bench","10011000111110101001100011111010")
+#algo_methods.RLL("bench_ckt/c3540.bench","obfuscated/c3540_rll.bench","000011111110101001000111000011111110101001000111")
 
+libar_prcnt=[0,5,10,50,100,250,500,750,1000]
+
+#for prcnt in libar_prcnt:
+#    algo_methods.libar("obfuscated/c3540_rll.bench",f"obfuscated/c3540_libar_{prcnt}.bench","000011111110101001000111000011111110101001000111",prcnt/1000,True)
 """import random
 
 def int2bin(value, size):
