@@ -3,10 +3,12 @@ from monosat import *
 import logicwire
 import baseutils
 from collections import deque
-from random import randint
+import random
 import math 
-import re ,os
+
+import re, os
 import converts
+
 
 
 def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time):
@@ -239,14 +241,6 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
             
 
-def get_rand(end_pt,list):
-    end_pt -= 1
-    rand_pos = randint(0,end_pt)
-    while rand_pos in list:
-        rand_pos = randint(0,end_pt)
-    list.append(rand_pos)
-    return rand_pos
-
 
 def RLL(org_name,obfs_name,key_str, write_file = True):
 
@@ -259,38 +253,30 @@ def RLL(org_name,obfs_name,key_str, write_file = True):
     if randins_number >= bench_gates:
         print("Number of keybits are more than the number of gates")
         return None
-    obfs_gates=[]
-    gate_limit_flag = False
-
-    for i in range(randins_number):
-        inserting_gate_flag = True
-        io_lines += f"INPUT(keyinput{str(i)})\n"
-        while inserting_gate_flag:
-            if len(obfs_gates)>=bench_gates:
-                gate_limit_flag = True
-                break
-            rand_pos = get_rand(bench_gates,obfs_gates)
-            gate_match = re.findall(r'\b\w+\b', gate_lines[rand_pos])
-            target_pin = ""
-            while target_pin=="":
-                if gate_match[0] not in output_vars:
-                    target_pin = gate_match[0]
-                    gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"{target_pin}_enc")
-                    if key_str[i]=="1":
-                        gate_lines.insert(rand_pos+1,f"{target_pin} = XNOR({target_pin}_enc, keyinput{str(i)})")
-                    else:
-                        gate_lines.insert(rand_pos+1,f"{target_pin} = XOR({target_pin}_enc, keyinput{str(i)})")
-                    inserting_gate_flag = False
-                    break
-                else:
-                    if len(obfs_gates)>=bench_gates:
-                        gate_limit_flag = True
-                        break
-                    rand_pos = get_rand(bench_gates,obfs_gates)
-                    gate_match = re.findall(r'\b\w+\b', gate_lines[rand_pos])
-        if gate_limit_flag:
-            print("Number of keybits are more than the number of non input gates")
-            return None
+    
+    inserted = 0
+    line_no=0
+    while inserted<randins_number:
+        gate_match = re.findall(r'\b\w+\b', gate_lines[line_no])
+        rand_val = random.random()
+        if line_no==bench_gates-1:
+            print("Number of gates are less than the key length")
+            return None 
+        elif gate_match[0] not in output_vars:
+            gate_out = gate_match[0]
+            if rand_val > 0.5 and key_str[inserted]=="1":
+                io_lines += f"INPUT(keyinput{str(inserted)})\n"
+                gate_lines[line_no] = gate_lines[line_no].replace(" = ", "_enc = ")
+                gate_lines.insert(line_no+1,gate_out + " = XNOR(keyinput" + str(inserted) + ", " + gate_out + "_enc)")
+                inserted +=1
+                line_no += 1
+            elif key_str[inserted]=="0":
+                io_lines += f"INPUT(keyinput{str(inserted)})\n"
+                gate_lines[line_no] = gate_lines[line_no].replace(" = ", "_enc = ")
+                gate_lines.insert(line_no+1,gate_out + " = XOR(keyinput" + str(inserted) + ", " + gate_out + "_enc)")
+                inserted +=1
+                line_no += 1
+        line_no += 1
 
     if write_file:
         with open(obfs_name, 'w') as file:
@@ -433,13 +419,13 @@ def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     if loop_len>=len(input_vars):
         print("Number of key is greater than the number of inputs")
         return [None]*7
-    index_out = randint(0,len(output_vars)-1)
+    index_out = random.randint(0,len(output_vars)-1)
     sig_ins_index = output_vars_pos[index_out]
     out_line = gate_lines[sig_ins_index]
     gate_match = re.findall(r'\b\w+\b', out_line)
     target_index = assigned_vars.index(gate_match[2])
     selected_output = gate_match[2].strip()
-    sig_bit_index = randint(0,len(key_str)-1)
+    sig_bit_index = random.randint(0,len(key_str)-1)
     
 
     #antisat building starts here 
@@ -484,48 +470,95 @@ def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
     
 
-    
 def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     with open(org_name, 'r') as file:
         lines = file.readlines()
     input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
 
-    index_out = randint(0,len(output_vars)-1)
-    selected_output = output_vars[index_out].strip()
-
     if len(key_str)>len(input_vars):
         print("Number of key is greater than the number of inputs")
         return [None]*7
 
-    #sarlock building starts here     
-    select_bit_inps = []
-    err_bit_inps = []
-    key_str = key_str.strip()
-    i=0
-    for key_bit in key_str:
+    #sarlock building starts here
+    xor_gates =[]
+    not_key_list=[]
+    for i in range(0,len(key_str)):
         io_lines += f"INPUT(keyinput{i+init_key_pos})\n"
         input_vars.append(f"keyinput{i+init_key_pos}")
-        if key_bit == "0":
-            gate_lines.append(f"keyinput{i+init_key_pos}_INV = NOT(keyinput{i+init_key_pos})")
-            assigned_vars.append(f"keyinput{i+init_key_pos}_INV")
-            select_bit_inps.append(f"keyinput{i+init_key_pos}_INV")
-        else:
-            select_bit_inps.append(f"keyinput{i+init_key_pos}")
+        xor_gates.append(f"nXOR{i} = XOR({input_vars[i]}, keyinput{i+init_key_pos})")
+        not_key_list.append(f"not_keyinp{str(i+init_key_pos)} = NOT(keyinput{i+init_key_pos})")
+        assigned_vars += [f"nXOR{i}",f"not_keyinp{str(i+init_key_pos)}"]
 
-        gate_lines.append(f"CMP2_{i} = XOR(keyinput{i+init_key_pos}, {input_vars[i]})")
-        assigned_vars.append(f"CMP2_{i}")
-        err_bit_inps.append(f"CMP2_{i}")
-        i += 1
+    xor_gates += not_key_list
 
-    gate_lines.append("SELECT_BIT = NAND(" + ", ".join(select_bit_inps)+")")
-    gate_lines.append("ERR_BIT = NOR(" + ", ".join(err_bit_inps)+")")
-    gate_lines.append("SIG_BIT = AND(SELECT_BIT, ERR_BIT)")
-    assigned_vars += ["SELECT_BIT","ERR_BIT","SIG_BIT"]
+    flip_sig_list = []
+    mask_sig_list = []
+    for i in range(0, int(len(key_str)/10)):
+        flip_sig = []
+        mask_sig = []
+        for j in range(0, 10):
+            flip_sig.append(f"nXOR{str(i*10 + j)}")
+            if j==9 and j==0:
+                if key_str[j] == "0":
+                    mask_sig.append(f"not_keyinp{str(i*10 + j + init_key_pos)}")
+                elif key_str[i] == "1":
+                    mask_sig.append(f"keyinput{str(i*10 + j + init_key_pos)}")
+            else:
+                if key_str[j] == "0":
+                    mask_sig.append(f"not_keyinp{str(i*10 + j + init_key_pos)}")
+                elif key_str[i] == "1":
+                    mask_sig.append(f"keyinput{str(i*10 + j + init_key_pos)}")
 
-    sig_ins_index = output_vars_pos[index_out]
+        xor_gates.append(f"flipSig{i} = OR({", ".join(flip_sig)})")
+        xor_gates.append(f"maskSig{i} = AND({", ".join(mask_sig)})")        
+        flip_sig_list.append(f"flipSig{i}")
+        mask_sig_list.append(f"maskSig{i}")
+        assigned_vars += [f"flipSig{i}",f"maskSig{i}"]
+        
+    flip_sig = []
+    mask_sig = []
+    for i in range(int(len(key_str)/10)*10, len(key_str)):
+        flip_sig.append(f"nXOR{str(i)}")
+        if key_str[i] == "0":
+            mask_sig.append(f"not_keyinp{str(i+ init_key_pos)}")
+        elif key_str[i] == "1":
+            mask_sig.append(f"keyinput{str(i+ init_key_pos)}")
+
+    if len(flip_sig)>1:
+        flip_sig_list.append(f"flipSig{int(len(key_str)/10)}")
+        mask_sig_list.append(f"maskSig{int(len(key_str)/10)}")
+        xor_gates.append(f"flipSig{int(len(key_str)/10)} = OR({", ".join(flip_sig)})")
+        xor_gates.append(f"maskSig{int(len(key_str)/10)} = AND({", ".join(mask_sig)})")
+        assigned_vars += [f"flipSig{int(len(key_str)/10)}"f"maskSig{int(len(key_str)/10)}"]
+    elif len(flip_sig)==1: 
+        flip_sig_list.append(flip_sig[0])
+        mask_sig_list.append(mask_sig[0])
+        
+    
+    if len(flip_sig_list)>1:
+        xor_gates.append(f"flipSig = NOR({", ".join(flip_sig_list)})")
+        xor_gates.append(f"maskSig = AND({", ".join(mask_sig_list)})")
+        assigned_vars += [f"flipSig", f"maskSig"]
+    elif len(flip_sig_list)==1:
+        xor_gates[-1] = xor_gates[-1].replace("maskSig0","maskSig")
+        xor_gates[-2] = xor_gates[-2].replace("flipSig0 = OR","flipSig = NOR")
+        assigned_vars[-1] = assigned_vars[-1].replace("maskSig0","maskSig")
+        assigned_vars[-2] = assigned_vars[-2].replace("flipSig0","flipSig")
+    else:
+        xor_gates.append(f"flipSig = NOR({", ".join(flip_sig)})") 
+        xor_gates.append(f"maskSig = AND({", ".join(mask_sig)})")
+        assigned_vars += [f"flipSig", f"maskSig"]
+
+    xor_gates.append("not_mask = NOT(maskSig)")
+    xor_gates.append("flip_mask = AND(flipSig, not_mask)")
+    assigned_vars += ["not_mask", "flip_mask"]
+
+    gate_lines += xor_gates
+    sig_ins_index = output_vars_pos[-1]
+    selected_output = output_vars[-1].strip()
     gate_lines[sig_ins_index] = gate_lines[sig_ins_index].replace(selected_output,selected_output+"_enc")
     assigned_vars[sig_ins_index] = selected_output+"_enc"
-    gate_lines.append(f"{selected_output} = XOR(SIG_BIT, {selected_output}_enc)")
+    gate_lines.append(f"{selected_output} = XOR(flip_mask, {selected_output}_enc)")
     assigned_vars.append(selected_output)    
     if write_file:
         with open(obfs_name, 'w') as file:
@@ -533,6 +566,7 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
             print("SARLock bench file created")
     else:
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
+
 
 def asob(org_name,obfs_name,key_str,no_rll_keybit):
     rll_key = key_str[:no_rll_keybit]
@@ -556,7 +590,7 @@ def asob(org_name,obfs_name,key_str,no_rll_keybit):
         target_pin =""
         rand_pos = -1
         while rand_pos<0:
-            wire_index = randint(0,gate_num)
+            wire_index = random.randint(0,gate_num)
             target_pin = assigned_vars[wire_index]
             if target_pin not in as_cone_wires:
                 rand_pos = wire_index
@@ -605,7 +639,7 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
         target_pin =""
         rand_pos = -1
         while rand_pos<0:
-            wire_index = randint(0,gate_num)
+            wire_index = random.randint(0,gate_num)
             target_pin = assigned_vars[wire_index]
             if target_pin not in as_cone_wires:
                 rand_pos = wire_index

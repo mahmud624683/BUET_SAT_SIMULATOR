@@ -34,15 +34,15 @@ def lock_unlock(algo,org_ckt_ls,obs_ckt_ls,key_str="",libar_percent=0):
 if __name__ == "__main__":
 
     #algo = "sat"
-    algo = "appsat"
-    #algo = "sweep"
+    #algo = "appsat"
+    algo = "sweep"
     #algo = "sarlock"
     #algo = "rll"
     #algo = "libar"
     #algo = "antisat"
     #algo = "asob"
     org_ckt_ls = "bench_ckt/c432.bench"
-    obs_ckt_ls = "obfuscated/c432_rll.bench"
+    obs_ckt_ls = "obfuscated/c432_sar_smt.bench"
     #obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
     key_str = "101111011001100"
     libar_percent = 0.3

@@ -1,9 +1,16 @@
 import algo_methods
+algo = "sar"
+org1 = "bench_ckt/c432.bench"
+obfs1 = f"obfuscated/c432_{algo}.bench"
+key1 = "10011000111110101001100011111010"
+org2 = "bench_ckt/c3540.bench"
+obfs2 = f"obfuscated/c3540_{algo}.bench"
+key2 = "000011111110101001000111000011111110101001000111"
 
-#algo_methods.sarlock("bench_ckt/c17.bench","obfuscated/c17_sar.bench","1010")
+algo_methods.sarlock(org1,obfs1,key1)
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_sar_libar.bench", "sarlock", "00001111","10101010111100101010",.3)
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_asob.bench","101111011001100",7)
-algo_methods.RLL("bench_ckt/c432.bench","obfuscated/c432_rll.bench","10011000111110101001100011111010")
+#algo_methods.RLL("bench_ckt/c432.bench","obfuscated/c432_rll.bench","10011000111110101001100011111010")
 #algo_methods.RLL("bench_ckt/c3540.bench","obfuscated/c3540_rll.bench","000011111110101001000111000011111110101001000111")
 
 libar_prcnt=[0,5,10,50,100,250,500,750,1000]
@@ -148,4 +155,5 @@ with open("obfuscated/as.bench", 'w') as file:
     file.write("\n".join(io_lines)+"\n\n"+"\n".join(logic_cone))
     print("AntiSAT bench file created")
 
+    python3 src/smt_tool.py --algorithm sarlock_enc --original /home/mahmudul-hasan/Downloads/SMTAttack-master/benchmarks/originals/c432.bench --obfuscated /home/mahmudul-hasan/Research/BUET_SAT_SIMULATOR/obfuscated/c432_sar_smt.bench --design_name c432 --key_str 111101010101010111000000000001101010
 """
