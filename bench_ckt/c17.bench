@@ -18,4 +18,5 @@ G11gat = NAND(G3gat, G6gat)
 G16gat = NAND(G2gat, G11gat)
 G19gat = NAND(G11gat, G7gat)
 G22gat = NAND(G10gat, G16gat)
-G23gat = NAND(G16gat, G19gat)
+G23gat_enc = NAND(G16gat, G19gat)
+

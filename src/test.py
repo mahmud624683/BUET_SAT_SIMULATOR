@@ -1,4 +1,4 @@
-import algo_methods
+"""import algo_methods
 algo = "sar"
 org1 = "bench_ckt/c432.bench"
 obfs1 = f"obfuscated/c432_{algo}.bench"
@@ -7,17 +7,18 @@ org2 = "bench_ckt/c3540.bench"
 obfs2 = f"obfuscated/c3540_{algo}.bench"
 key2 = "000011111110101001000111000011111110101001000111"
 
-algo_methods.sarlock(org1,obfs1,key1)
+#algo_methods.sarlock(org1,obfs1,key1)
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_sar_libar.bench", "sarlock", "00001111","10101010111100101010",.3)
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_asob.bench","101111011001100",7)
 #algo_methods.RLL("bench_ckt/c432.bench","obfuscated/c432_rll.bench","10011000111110101001100011111010")
 #algo_methods.RLL("bench_ckt/c3540.bench","obfuscated/c3540_rll.bench","000011111110101001000111000011111110101001000111")
 
-libar_prcnt=[0,5,10,50,100,250,500,750,1000]
+libar_prcnt=[1,2,3,4,5,7,10]
 
-#for prcnt in libar_prcnt:
-#    algo_methods.libar("obfuscated/c3540_rll.bench",f"obfuscated/c3540_libar_{prcnt}.bench","000011111110101001000111000011111110101001000111",prcnt/1000,True)
-"""import random
+for prcnt in libar_prcnt:
+    algo_methods.libar("c432/c432_rll_32k.bench",f"c432/c432_libar_bolINPclk_{prcnt}.bench","10011000111110101001100011111010",prcnt,True)
+"""
+import random
 
 def int2bin(value, size):
     string_val = list("0" * size)
@@ -119,7 +120,7 @@ def forward_propagation(as_cone_wires, src_gate, prev_gate_index, gate_visited, 
         return None
 
 
-with open("/Users/mahmudulhasan/Downloads/BUET_SAT_SIMULATOR/obfuscated/c2670_antisat_64k_1p_mapped.bench", 'r') as file:
+with open("c6288/c6288_sarlock_32k.bench", 'r') as file:
         lines = file.readlines()
 input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
 
@@ -151,9 +152,8 @@ for wire in as_cone_wires:
         io_lines.append(f"OUTPUT({wire})")
 
 
-with open("obfuscated/as.bench", 'w') as file:
+with open("obfuscated/sarlock.bench", 'w') as file:
     file.write("\n".join(io_lines)+"\n\n"+"\n".join(logic_cone))
     print("AntiSAT bench file created")
 
-    python3 src/smt_tool.py --algorithm sarlock_enc --original /home/mahmudul-hasan/Downloads/SMTAttack-master/benchmarks/originals/c432.bench --obfuscated /home/mahmudul-hasan/Research/BUET_SAT_SIMULATOR/obfuscated/c432_sar_smt.bench --design_name c432 --key_str 111101010101010111000000000001101010
-"""
+#python3 src/smt_tool.py --algorithm sarlock_enc --original /home/mahmudul-hasan/Downloads/SMTAttack-master/benchmarks/originals/c432.bench --obfuscated /home/mahmudul-hasan/Research/BUET_SAT_SIMULATOR/obfuscated/c432_sar_smt.bench --design_name c432 --key_str 111101010101010111000000000001101010

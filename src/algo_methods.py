@@ -285,7 +285,7 @@ def RLL(org_name,obfs_name,key_str, write_file = True):
     else:
         return io_lines,gate_lines
 
-def libar(org_name,obfs_name,key_str,libar_percent,rll_file=False):
+def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False):
     wires = []
     pin_a = []
     pin_b = []
@@ -302,7 +302,7 @@ def libar(org_name,obfs_name,key_str,libar_percent,rll_file=False):
     else:
         io_lines,gate_lines = RLL(org_name,obfs_name,key_str, write_file= False)
 
-    libar_number = int(math.ceil(len(key_str)*libar_percent))
+    libar_number = libar_bit_no
     i=0
     gate_num=len(gate_lines)
     while i<gate_num:
@@ -322,13 +322,19 @@ def libar(org_name,obfs_name,key_str,libar_percent,rll_file=False):
                     pin_a.append(clk_pin_a)
                 else:
                     clk_pin_a = pin_a.pop()
+                if len(pin_b)==0:
+                    clk_pin_b = wires.pop()
+                    pin_b.append(clk_pin_b)
+                else:
+                    clk_pin_b = pin_b.pop()
+                """ clk_pin_a = wires.pop()
                 clk_pin_b = wires.pop()
                 while clk_pin_b in pin_b:
                     if len(wires)==0:
                         print("Insufficient intermediate wires are available in the circuit for required number of libar block")
                         return None
                     clk_pin_b = wires.pop()
-                pin_b.append(clk_pin_b)
+                pin_b.append(clk_pin_b) """
                 gate_lines[i]= gate_lines[i].replace(key_pin,f"LIBAR{str(libar_number)}")
                 gate_lines.insert(i,f"LIBAR{str(libar_number)} = DFF(CLK{str(libar_number)}, {key_pin})")
                 gate_lines.insert(i,f"CLK{str(libar_number)} = NOR({clk_pin_a}, {clk_pin_b})")
@@ -341,9 +347,9 @@ def libar(org_name,obfs_name,key_str,libar_percent,rll_file=False):
     with open(obfs_name, 'w') as file:
         file.write(io_lines+ "\n" + "\n".join(gate_lines))
         print("Libar bench file created")
-    libar_number = int(math.ceil(len(key_str)*libar_percent))
-    if libar_percent>0:
-        txt_content = converts.unroll_bench(obfs_name, libar_number)
+    
+    if libar_bit_no>0:
+        txt_content = converts.unroll_bench(obfs_name, libar_bit_no)
         obfs_name = obfs_name.replace(".bench","_unrolled.bench")
         with open(obfs_name, 'w') as file:
             file.write(txt_content)
@@ -469,7 +475,6 @@ def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     else:
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
     
-""" 
 def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     with open(org_name, 'r') as file:
         lines = file.readlines()
@@ -509,8 +514,8 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
                 elif key_str[i] == "1":
                     mask_sig.append(f"keyinput{str(i*10 + j + init_key_pos)}")
 
-        xor_gates.append(f"flipSig{i} = OR({", ".join(flip_sig)})")
-        xor_gates.append(f"maskSig{i} = AND({", ".join(mask_sig)})")        
+        xor_gates.append(f"flipSig{i} = OR("+", ".join(flip_sig)+")")
+        xor_gates.append(f"maskSig{i} = AND("+", ".join(mask_sig)+")")        
         flip_sig_list.append(f"flipSig{i}")
         mask_sig_list.append(f"maskSig{i}")
         assigned_vars += [f"flipSig{i}",f"maskSig{i}"]
@@ -527,8 +532,8 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     if len(flip_sig)>1:
         flip_sig_list.append(f"flipSig{int(len(key_str)/10)}")
         mask_sig_list.append(f"maskSig{int(len(key_str)/10)}")
-        xor_gates.append(f"flipSig{int(len(key_str)/10)} = OR({", ".join(flip_sig)})")
-        xor_gates.append(f"maskSig{int(len(key_str)/10)} = AND({", ".join(mask_sig)})")
+        xor_gates.append(f"flipSig{int(len(key_str)/10)} = OR("+", ".join(flip_sig)+")")
+        xor_gates.append(f"maskSig{int(len(key_str)/10)} = AND("+", ".join(mask_sig)+")")
         assigned_vars += [f"flipSig{int(len(key_str)/10)}"f"maskSig{int(len(key_str)/10)}"]
     elif len(flip_sig)==1: 
         flip_sig_list.append(flip_sig[0])
@@ -536,8 +541,8 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
         
     
     if len(flip_sig_list)>1:
-        xor_gates.append(f"flipSig = NOR({", ".join(flip_sig_list)})")
-        xor_gates.append(f"maskSig = AND({", ".join(mask_sig_list)})")
+        xor_gates.append(f"flipSig = NOR("+", ".join(flip_sig_list)+")")
+        xor_gates.append(f"maskSig = AND("+", ".join(mask_sig_list)+")")
         assigned_vars += [f"flipSig", f"maskSig"]
     elif len(flip_sig_list)==1:
         xor_gates[-1] = xor_gates[-1].replace("maskSig0","maskSig")
@@ -545,8 +550,8 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
         assigned_vars[-1] = assigned_vars[-1].replace("maskSig0","maskSig")
         assigned_vars[-2] = assigned_vars[-2].replace("flipSig0","flipSig")
     else:
-        xor_gates.append(f"flipSig = NOR({", ".join(flip_sig)})") 
-        xor_gates.append(f"maskSig = AND({", ".join(mask_sig)})")
+        xor_gates.append(f"flipSig = NOR("+", ".join(flip_sig)+")") 
+        xor_gates.append(f"maskSig = AND("+", ".join(mask_sig)+")")
         assigned_vars += [f"flipSig", f"maskSig"]
 
     xor_gates.append("not_mask = NOT(maskSig)")
@@ -567,7 +572,7 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     else:
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
 
- """
+
 def asob(org_name,obfs_name,key_str,no_rll_keybit):
     rll_key = key_str[:no_rll_keybit]
     as_key=key_str[no_rll_keybit:]
