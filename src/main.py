@@ -41,8 +41,8 @@ if __name__ == "__main__":
     #algo = "libar"
     #algo = "antisat"
     #algo = "asob"
-    org_ckt_ls = "bench_ckt/c432.bench"
-    obs_ckt_ls = "obfuscated/c432_sar_smt.bench"
+    org_ckt_ls = "bench_ckt/c6288.bench"
+    obs_ckt_ls = "c6288/c6288_antisat_32k.bench"
     #obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
     key_str = "101111011001100"
     libar_percent = 0.3

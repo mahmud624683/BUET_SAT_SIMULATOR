@@ -469,7 +469,7 @@ def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     else:
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
     
-
+""" 
 def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     with open(org_name, 'r') as file:
         lines = file.readlines()
@@ -567,7 +567,7 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     else:
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
 
-
+ """
 def asob(org_name,obfs_name,key_str,no_rll_keybit):
     rll_key = key_str[:no_rll_keybit]
     as_key=key_str[no_rll_keybit:]
