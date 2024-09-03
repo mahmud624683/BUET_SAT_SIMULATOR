@@ -2,7 +2,7 @@ module ttlock(keyinput0,keyinput1,keyinput2,keyinput3,keyinput4,keyinput5,keyinp
 
 input keyinput0,keyinput1,keyinput2,keyinput3,keyinput4,keyinput5,keyinput6,keyinput7,keyinput8,keyinput9,keyinput10,keyinput11,keyinput12,keyinput13,keyinput14,keyinput15,keyinput16,keyinput17,keyinput18,keyinput19,keyinput20,keyinput21,keyinput22,keyinput23,keyinput24,keyinput25,keyinput26,keyinput27,keyinput28,keyinput29,keyinput30,keyinput31;
 output n6123;
-wire n_0,wire1316,wire1318,wire1419,wire1420,wire1328,wire1499,wire1500,wire1320,wire1322,wire1503,wire1504,wire1300,wire1302,wire1381,wire1385,wire1357,wire1393,wire1332,wire1365,wire1361,wire1415,wire1416,wire1308,wire1310,wire1373,wire1375,wire1405,wire1407,wire1312,wire1314,wire1389,wire1391,wire1508,wire1509,wire1340,wire1342,wire1324,wire1326,wire1304,wire1306,wire1423,wire1424,wire1401,wire1403,wire1369,wire1371,wire1397,wire1399,wire1377,wire1379,wire1336,wire1338,wire1353,wire1355,wire1285,wire1286,wire1317,wire1421,wire1329,wire1330,wire1501,wire1321,wire1505,wire1301,wire1382,wire1383,wire1386,wire1387,wire1358,wire1359,wire1394,wire1395,wire1333,wire1334,wire1366,wire1367,wire1362,wire1363,wire1417,wire1309,wire1374,wire1406,wire1313,wire1390,wire1510,wire1341,wire1325,wire1305,wire1425,wire1402,wire1370,wire1398,wire1378,wire1337,wire1354,wire1287,wire1319,wire1422,wire1331,wire1502,wire1323,wire1506,wire1303,wire1384,wire1388,wire1360,wire1396,wire1335,wire1368,wire1364,wire1418,wire1311,wire1376,wire1408,wire1315,wire1392,wire1511,wire1343,wire1327,wire1307,wire1426,wire1404,wire1372,wire1400,wire1380,wire1339,wire1356,n_73,n_31,n_69,n_5,n_72,n_4,n_78,n_48,n_47,n_54,n_45,n_68,n_52,n_53,n_32,n_76,n_50,n_42,n_75,n_46,n_1,n_66,n_71,n_77,n_30,n_43,n_51,n_44,n_49,n_67,n_56;
+wire n_0,wire1316,wire1318,wire1419,wire1420,wire1328,wire1499,wire1500,wire1320,wire1322,wire1503,wire1504,wire1300,wire1302,wire1381,wire1385,wire1357,wire1393,wire1332,wire1365,wire1361,wire1415,wire1416,wire1308,wire1310,wire1373,wire1375,wire1405,wire1407,wire1312,wire1314,wire1389,wire1391,wire1508,wire1509,wire1340,wire1342,wire1324,wire1326,wire1304,wire1306,wire1423,wire1424,wire1401,wire1403,wire1369,wire1371,wire1397,wire1399,wire1377,wire1379,wire1336,wire1338,wire1353,wire1355,wire1285,wire1286,wire1317,wire1421,wire1329,wire1330,wire1501,wire1321,wire1505,wire1301,wire1382,wire1383,wire1386,wire1387,wire1358,wire1359,wire1394,wire1395,wire1333,wire1334,wire1366,wire1367,wire1362,wire1363,wire1417,wire1309,wire1374,wire1406,wire1313,wire1390,wire1510,wire1341,wire1325,wire1305,wire1425,wire1402,wire1370,wire1398,wire1378,wire1337,wire1354,wire1287,wire1319,wire1422,wire1331,wire1502,wire1323,wire1506,wire1303,wire1384,wire1388,wire1360,wire1396,wire1335,wire1368,wire1364,wire1418,wire1311,wire1376,wire1408,wire1315,wire1392,wire1511,wire1343,wire1327,wire1307,wire1426,wire1404,wire1372,wire1400,wire1380,wire1339,wire1356,n_73,n_31,n_69,n_5,n_72,n_4,n_78,n_48,n_47,n_54,n_45,n_68,n_52,n_53,n_32,n_76,n_50,n_42,n_75,n_46,n_1,n_66,n_71,n_77,n_30,n_43,n_51,n_44,n_49,n_67,n_56,wire1288,wire1284,wire1290,wire1280,wire1282,wire1283,wire1281,wire1289,n_98,n_99,n_95,n_104,n_101,n_100,n_103,n_96,wire1246,wire1245,n_122,n_123,wire1222,n_1429,wire66,wire67,wire68,wire69;
 
 not NOT1_1 (n_0, keyinput0);
 not NOT1_2 (wire1316, keyinput1);
@@ -163,5 +163,32 @@ not NOT1_156 (n_44, wire1400);
 not NOT1_157 (n_49, wire1380);
 not NOT1_158 (n_67, wire1339);
 not NOT1_159 (n_56, wire1356);
+or OR2_160 (wire1288, wire1287, n_73);
+or OR4_161 (wire1284, n_72, n_78, n_4, n_5);
+and AND4_162 (wire1290, n_48, n_54, n_45, n_47);
+and AND4_163 (wire1280, n_53, n_68, n_52, n_32);
+or OR4_164 (wire1282, n_75, n_42, n_50, n_76);
+or OR4_165 (wire1283, n_66, n_46, n_71, n_1);
+or OR4_166 (wire1281, n_51, n_77, n_43, n_30);
+or OR4_167 (wire1289, n_56, n_67, n_49, n_44);
+not NOT1_168 (n_98, wire1288);
+not NOT1_169 (n_99, wire1284);
+not NOT1_170 (n_95, wire1290);
+not NOT1_171 (n_104, wire1280);
+not NOT1_172 (n_101, wire1282);
+not NOT1_173 (n_100, wire1283);
+not NOT1_174 (n_103, wire1281);
+not NOT1_175 (n_96, wire1289);
+and AND4_176 (wire1246, n_99, n_98, n_69, n_31);
+and AND4_177 (wire1245, n_101, n_96, n_100, n_103);
+not NOT1_178 (n_122, wire1246);
+not NOT1_179 (n_123, wire1245);
+or OR4_180 (wire1222, n_123, n_122, n_95, n_104);
+not NOT1_181 (n_1429, wire1222);
+or OR2_182 (wire66, n_1430, n_1429);
+and AND2_183 (wire67, n_1430, n_1429);
+not NOT1_184 (wire68, wire67);
+and AND2_185 (wire69, wire68, wire66);
+not NOT1_186 (n6123, wire69);
 
 endmodule
