@@ -27,8 +27,8 @@ if __name__ == "__main__":
     #algo = "appsat"
     #algo = "sweep"
 
-    org_ckt_ls = "bench_ckt/c6288.bench"
-    obs_ckt_ls = "src/c6288_antisat_32k.bench"
+    org_ckt_ls = "c432/c432.bench"
+    obs_ckt_ls = "c432/c432_rll_32k.bench"
     #obs_ckt_ls = "obfuscated/c432_libar_unrolled.bench"
     key_str = "101111011001100"
     libar_percent = 0.3
