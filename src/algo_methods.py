@@ -409,40 +409,27 @@ def backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_va
             backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
         return None
 
-def CAC(org_name,obfs_name,key_str,write_file=True):
+def CAC(org_name,obfs_name,key_str):
     with open(org_name, 'r') as file:
         lines = file.readlines()
     input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
 
     #CAC Starts here
-    xor_gates =[]
-    not_key_list=[]
+    xnor_gates =[]
+    keyinps = []
+
     for i in range(0,len(key_str)):
-        io_lines += f"INPUT(keyinput{i+init_key_pos})\n"
-        input_vars.append(f"keyinput{i+init_key_pos}")
-        xor_gates.append(f"nXOR{i} = XOR({input_vars[i]}, keyinput{i+init_key_pos})")
-        not_key_list.append(f"not_keyinp{str(i+init_key_pos)} = NOT(keyinput{i+init_key_pos})")
-        assigned_vars += [f"nXOR{i}",f"not_keyinp{str(i+init_key_pos)}"]
+        io_lines += f"INPUT(keyinput{i})\n"
+        gate_lines.append(f"nXNOR{i} = XNOR({input_vars[i]}, keyinput{i})")
+        xnor_gates.append(f"nXNOR{i}")
+        keyinps.append(f"keyinput{i})")
 
-    xor_gates += not_key_list
-
-    flip_sig_list = []
-    mask_sig_list = []
+        
     for i in range(0, int(len(key_str)/10)):
         flip_sig = []
         mask_sig = []
         for j in range(0, 10):
-            flip_sig.append(f"nXOR{str(i*10 + j)}")
-            if j==9 and j==0:
-                if key_str[j] == "0":
-                    mask_sig.append(f"not_keyinp{str(i*10 + j + init_key_pos)}")
-                elif key_str[i] == "1":
-                    mask_sig.append(f"keyinput{str(i*10 + j + init_key_pos)}")
-            else:
-                if key_str[j] == "0":
-                    mask_sig.append(f"not_keyinp{str(i*10 + j + init_key_pos)}")
-                elif key_str[i] == "1":
-                    mask_sig.append(f"keyinput{str(i*10 + j + init_key_pos)}")
+            
 
         xor_gates.append(f"flipSig{i} = OR("+", ".join(flip_sig)+")")
         xor_gates.append(f"maskSig{i} = AND("+", ".join(mask_sig)+")")        
@@ -495,13 +482,10 @@ def CAC(org_name,obfs_name,key_str,write_file=True):
     assigned_vars[sig_ins_index] = selected_output+"_enc"
     gate_lines.append(f"{selected_output} = XOR(flip_mask, {selected_output}_enc)")
     assigned_vars.append(selected_output)    
-    if write_file:
-        with open(obfs_name, 'w') as file:
-            file.write(io_lines+ "\n" + "\n".join(gate_lines))
-            print("SARLock bench file created")
-    else:
-        return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
-
+    
+    with open(obfs_name, 'w') as file:
+        file.write(io_lines+ "\n" + "\n".join(gate_lines))
+        print("SARLock bench file created")
 
     
 
