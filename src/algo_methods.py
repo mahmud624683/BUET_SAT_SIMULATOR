@@ -409,85 +409,6 @@ def backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_va
             backward_propagation(as_cone_wires, wire, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
         return None
 
-def CAC(org_name,obfs_name,key_str):
-    with open(org_name, 'r') as file:
-        lines = file.readlines()
-    input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines = get_wire_io(lines)
-
-    #CAC Starts here
-    xnor_gates =[]
-    keyinps = []
-
-    for i in range(0,len(key_str)):
-        io_lines += f"INPUT(keyinput{i})\n"
-        gate_lines.append(f"nXNOR{i} = XNOR({input_vars[i]}, keyinput{i})")
-        xnor_gates.append(f"nXNOR{i}")
-        keyinps.append(f"keyinput{i})")
-
-        
-    for i in range(0, int(len(key_str)/10)):
-        flip_sig = []
-        mask_sig = []
-        for j in range(0, 10):
-            
-
-        xor_gates.append(f"flipSig{i} = OR("+", ".join(flip_sig)+")")
-        xor_gates.append(f"maskSig{i} = AND("+", ".join(mask_sig)+")")        
-        flip_sig_list.append(f"flipSig{i}")
-        mask_sig_list.append(f"maskSig{i}")
-        assigned_vars += [f"flipSig{i}",f"maskSig{i}"]
-        
-    flip_sig = []
-    mask_sig = []
-    for i in range(int(len(key_str)/10)*10, len(key_str)):
-        flip_sig.append(f"nXOR{str(i)}")
-        if key_str[i] == "0":
-            mask_sig.append(f"not_keyinp{str(i+ init_key_pos)}")
-        elif key_str[i] == "1":
-            mask_sig.append(f"keyinput{str(i+ init_key_pos)}")
-
-    if len(flip_sig)>1:
-        flip_sig_list.append(f"flipSig{int(len(key_str)/10)}")
-        mask_sig_list.append(f"maskSig{int(len(key_str)/10)}")
-        xor_gates.append(f"flipSig{int(len(key_str)/10)} = OR("+", ".join(flip_sig)+")")
-        xor_gates.append(f"maskSig{int(len(key_str)/10)} = AND("+", ".join(mask_sig)+")")
-        assigned_vars += [f"flipSig{int(len(key_str)/10)}"f"maskSig{int(len(key_str)/10)}"]
-    elif len(flip_sig)==1: 
-        flip_sig_list.append(flip_sig[0])
-        mask_sig_list.append(mask_sig[0])
-        
-    
-    if len(flip_sig_list)>1:
-        xor_gates.append(f"flipSig = NOR("+", ".join(flip_sig_list)+")")
-        xor_gates.append(f"maskSig = AND("+", ".join(mask_sig_list)+")")
-        assigned_vars += [f"flipSig", f"maskSig"]
-    elif len(flip_sig_list)==1:
-        xor_gates[-1] = xor_gates[-1].replace("maskSig0","maskSig")
-        xor_gates[-2] = xor_gates[-2].replace("flipSig0 = OR","flipSig = NOR")
-        assigned_vars[-1] = assigned_vars[-1].replace("maskSig0","maskSig")
-        assigned_vars[-2] = assigned_vars[-2].replace("flipSig0","flipSig")
-    else:
-        xor_gates.append(f"flipSig = NOR("+", ".join(flip_sig)+")") 
-        xor_gates.append(f"maskSig = AND("+", ".join(mask_sig)+")")
-        assigned_vars += [f"flipSig", f"maskSig"]
-
-    xor_gates.append("not_mask = NOT(maskSig)")
-    xor_gates.append("flip_mask = AND(flipSig, not_mask)")
-    assigned_vars += ["not_mask", "flip_mask"]
-
-    gate_lines += xor_gates
-    sig_ins_index = output_vars_pos[-1]
-    selected_output = output_vars[-1].strip()
-    gate_lines[sig_ins_index] = gate_lines[sig_ins_index].replace(selected_output,selected_output+"_enc")
-    assigned_vars[sig_ins_index] = selected_output+"_enc"
-    gate_lines.append(f"{selected_output} = XOR(flip_mask, {selected_output}_enc)")
-    assigned_vars.append(selected_output)    
-    
-    with open(obfs_name, 'w') as file:
-        file.write(io_lines+ "\n" + "\n".join(gate_lines))
-        print("SARLock bench file created")
-
-    
 
 def anti_sat(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
     loop_len = int(len(key_str)/2)
@@ -649,8 +570,6 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
             print("SARLock bench file created")
     else:
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
-
-
 
 
 

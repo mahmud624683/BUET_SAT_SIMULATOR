@@ -10,7 +10,7 @@ key2 = "000011111110101001000111000011111110101001000111"
 #algo_methods.sarlock(org1,obfs1,key1)
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_sar_libar.bench", "sarlock", "00001111","10101010111100101010",.3)
 #algo_methods.asob("bench_ckt/c432.bench","obfuscated/c432_asob.bench","101111011001100",7)
-algo_methods.RLL("c432/c432.bench","obfuscated/c432_rll.bench","10011000111110101001100011111010")
+algo_methods.RLL("bench_ckt/b2.bench","obfuscated/b2_rll.bench","10011000111110101001100011111010")
 #algo_methods.RLL("bench_ckt/c3540.bench","obfuscated/c3540_rll.bench","000011111110101001000111000011111110101001000111")
 
 """
