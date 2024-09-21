@@ -1,18 +1,10 @@
 #   combinational logic example "c6288"
 # -------------------------------------------------------------
-# 
-# 
 #   total number of lines in the netlist ..............  6288
 #         lines from primary input  gates .......    32
 #         lines from primary output gates .......    32
 #         lines from interior gate outputs ......  2384
 #         lines from **  1456 ** fanout stems ...  3840
-# 
-# 
-# 
-# 
-# 
-# 
 INPUT(G1gat)
 INPUT(G18gat)
 INPUT(G35gat)
@@ -77,25 +69,41 @@ OUTPUT(G6270gat)
 OUTPUT(G6280gat)
 OUTPUT(G6287gat)
 OUTPUT(G6288gat)
+INPUT(keyinput0)
+INPUT(keyinput1)
+INPUT(keyinput2)
+INPUT(keyinput3)
+INPUT(keyinput4)
+INPUT(keyinput5)
+INPUT(keyinput6)
+INPUT(keyinput7)
 
 G545gat = and(G1gat, G273gat)
 G546gat = and(G1gat, G290gat)
 G549gat = and(G1gat, G307gat)
 G552gat = and(G1gat, G324gat)
-G555gat = and(G1gat, G341gat)
-G558gat = and(G1gat, G358gat)
-G561gat = and(G1gat, G375gat)
+G555gat_enc = and(G1gat, G341gat)
+G555gat = XNOR(keyinput0, G555gat_enc)
+G558gat_enc = and(G1gat, G358gat)
+G558gat = XOR(keyinput1, G558gat_enc)
+G561gat_enc = and(G1gat, G375gat)
+G561gat = XOR(keyinput2, G561gat_enc)
 G564gat = and(G1gat, G392gat)
 G567gat = and(G1gat, G409gat)
-G570gat = and(G1gat, G426gat)
+G570gat_enc = and(G1gat, G426gat)
+G570gat = XNOR(keyinput3, G570gat_enc)
 G573gat = and(G1gat, G443gat)
-G576gat = and(G1gat, G460gat)
-G579gat = and(G1gat, G477gat)
-G582gat = and(G1gat, G494gat)
+G576gat_enc = and(G1gat, G460gat)
+G576gat = XNOR(keyinput4, G576gat_enc)
+G579gat_enc = and(G1gat, G477gat)
+G579gat = XOR(keyinput5, G579gat_enc)
+G582gat_enc = and(G1gat, G494gat)
+G582gat = XOR(keyinput6, G582gat_enc)
 G585gat = and(G1gat, G511gat)
 G588gat = and(G1gat, G528gat)
 G591gat = and(G18gat, G273gat)
-G594gat = and(G18gat, G290gat)
+G594gat_enc = and(G18gat, G290gat)
+G594gat = XNOR(keyinput7, G594gat_enc)
 G597gat = and(G18gat, G307gat)
 G600gat = and(G18gat, G324gat)
 G603gat = and(G18gat, G341gat)
