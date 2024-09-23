@@ -36,7 +36,7 @@ def finddip(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc, k
     output_list2 = converts.circuit2bool(interwires, poutwires, discinp, keyin2)
 
     if list_dip:
-        print("============================================= iteration: {}".format(len(list_dip)))
+        #print("============================================= iteration: {}".format(len(list_dip)))
 
         output_list_temp1 = converts.circuit2bool(interwires, poutwires, list_dip[len(list_dip) - 1], keyin1)
         output_list_temp2 = converts.circuit2bool(interwires, poutwires, list_dip[len(list_dip) - 1], keyin2)
@@ -55,7 +55,7 @@ def finddip(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc, k
         Assert(And(outxnored_left))
 
     else:
-        print("============================================= iteration: {}".format(0))
+        #print("============================================= iteration: {}".format(0))
         left_codition = Var(true())
         dip_assert = Var(true())
 
@@ -108,7 +108,7 @@ def double_dip(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc
     output_list4 = converts.circuit2bool(interwires, poutwires, discinp, keyin4)
 
     if list_dip:
-        print("============================================= iteration: {}".format(len(list_dip)))
+        #print("============================================= iteration: {}".format(len(list_dip)))
 
         output_list_temp1 = converts.circuit2bool(interwires, poutwires, list_dip[len(list_dip) - 1], keyin1)
         output_list_temp2 = converts.circuit2bool(interwires, poutwires, list_dip[len(list_dip) - 1], keyin2)
@@ -131,7 +131,7 @@ def double_dip(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc
         Assert(And(outxnored_left))
 
     else:
-        print("============================================= iteration: {}".format(0))
+        #print("============================================= iteration: {}".format(0))
         left_codition = Var(true())
         dip_assert = Var(true())
 
@@ -282,7 +282,7 @@ def finddipham(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc
     output_list2 = converts.circuit2bool(interwires, poutwires, discinp, keyin2)
 
     if list_dip:
-        print("============================================= iteration: {}".format(len(list_dip)))
+        #print("============================================= iteration: {}".format(len(list_dip)))
 
         output_list_temp1 = converts.circuit2bool(interwires, poutwires, list_dip[len(list_dip) - 1], keyin1)
         output_list_temp2 = converts.circuit2bool(interwires, poutwires, list_dip[len(list_dip) - 1], keyin2)
@@ -302,7 +302,7 @@ def finddipham(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc
         
 
     else:
-        print("============================================= iteration: {}".format(0))
+        #print("============================================= iteration: {}".format(0))
         left_codition = Var(true())
         dip_assert = Var(true())
 

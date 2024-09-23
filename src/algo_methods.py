@@ -12,7 +12,7 @@ import converts
 
 
 def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time):
-    print("---------------- looking for key (Last SAT Call) ------------")
+    #print("---------------- looking for key (Last SAT Call) ------------")
     new_list_dips = Var(true())
     for i in range(0, len(list_str_dip)):
         for j in range(0, len(list_str_dip[i])):
@@ -39,7 +39,7 @@ def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, li
             else:
                 correct_key[i] = "0"
 
-        print("key= {}".format(''.join(correct_key)))
+        #print("key= {}".format(''.join(correct_key)))
         print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter, exe_func_time, exe_non_func_time))
 
     else:
@@ -115,7 +115,7 @@ def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
             exe_func_time = new_func_time
         else:
             Monosat().newSolver()
-    print("================ keyFind SAT call ================")
+    #print("================ keyFind SAT call ================")
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
             
 
@@ -157,7 +157,7 @@ def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
         else:
             Monosat().newSolver()
 
-    print("================ keyFind SAT call ================")
+    #print("================ keyFind SAT call ================")
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
             
 
@@ -180,7 +180,7 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
     timeout_array = deque([20] * 10)
     const_solve = []
 
-    print("########## looking for DIPs (Iterative SAT Calls)  ##########")
+    #print("########## looking for DIPs (Iterative SAT Calls)  ##########")
 
     iter = 0
     keyin1 = [None] * len(obfkeywires)
@@ -237,7 +237,7 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
             
             Monosat().newSolver()
 
-    print("================ keyFind SAT call ================")
+    #print("================ keyFind SAT call ================")
     get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
             
 
