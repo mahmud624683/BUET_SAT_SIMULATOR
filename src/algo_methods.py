@@ -572,6 +572,72 @@ def sarlock(org_name,obfs_name,key_str,init_key_pos=0, write_file = True):
         return input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output
 
 
+def bench2list(org_file, add_out=True):
+    with open(org_file, 'r') as file:
+            lines = file.readlines()
+        
+    output_vars=[]
+    input_vars=[]
+    io_lines = []
+    gate_lines = []
+    wires = []
+    input_pattern = re.compile(r'^INPUT\((\w+)\)')
+    output_pattern = re.compile(r'^OUTPUT\((\w+)\)')
+    
+    for line in lines:
+        line = line.strip()
+        
+        if "=" in line:
+            gate_lines.append(line)
+            gate_match = re.findall(r'\b\w+\b', line)
+            var_name = gate_match[0].strip()
+            wires.append(var_name)
+
+        elif len(line)>3:
+            if line.startswith("INPUT"):
+                match = input_pattern.match(line)
+                if match:
+                    input_vars.append(match.group(1))
+                    io_lines.append(line)
+            elif line.startswith("OUTPUT"):
+                match = output_pattern.match(line)
+                if match:
+                    if add_out:
+                        io_lines.append(line)
+                    output_vars.append(match.group(1))
+                    
+    
+    return gate_lines,io_lines,input_vars,output_vars,wires
+
+def cac(org_name,obfs_name,cac_file,key_bit_no):
+    org_gates, org_io, org_inputs, org_outputs, org_wires = bench2list(org_name)
+    lock_gates, lock_io, lock_inputs, lock_outputs, lock_wires = bench2list(cac_file, False)
+
+    bench = org_io
+    for i in range(key_bit_no):
+        bench.append(f"INPUT(keyinput{i})")
+
+    gate_index = org_wires.index(org_outputs[-1])
+    org_gates[gate_index] = org_gates[gate_index].replace(org_outputs[-1],org_outputs[-1]+"_enc")
+    lock_gates[-1] = lock_gates[-1].replace(lock_outputs[0],org_outputs[-1])
+    lock_gates[-3] = lock_gates[-3].replace("OPO",org_outputs[-1]+"_enc")
+
+    wirex=[]
+    for i in range(len(lock_gates)):
+        if "in_" in lock_gates[i]:
+            gate_match = re.findall(r'\b\w+\b', lock_gates[i])
+            for inp in gate_match[2:]:
+                if "in_" in inp:
+                    inp_index = int(inp.split("_")[-1].strip())
+                    lock_gates[i] = lock_gates[i].replace(inp,org_inputs[inp_index])
+        
+
+    bench += org_gates+lock_gates
+    with open(obfs_name, 'w') as file:
+        file.write("\n".join(bench))
+        print(obfs_name+" bench file created")
+
+
 
 def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,libar_percent):
     if other_algo == "sarlock":
