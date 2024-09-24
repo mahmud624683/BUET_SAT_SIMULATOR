@@ -1,0 +1,833 @@
+#   combinational logic example  "c499"
+# -------------------------------------------------------------
+#   total number of lines in the netlist ..............   499
+#         lines from primary input  gates .......    41
+#         lines from primary output gates .......    32
+#         lines from interior gate outputs ......   170
+#         lines from **    59 ** fanout stems ...   256
+INPUT(Gid0)
+INPUT(Gid1)
+INPUT(Gid2)
+INPUT(Gid3)
+INPUT(Gid4)
+INPUT(Gid5)
+INPUT(Gid6)
+INPUT(Gid7)
+INPUT(Gid8)
+INPUT(Gid9)
+INPUT(Gid10)
+INPUT(Gid11)
+INPUT(Gid12)
+INPUT(Gid13)
+INPUT(Gid14)
+INPUT(Gid15)
+INPUT(Gid16)
+INPUT(Gid17)
+INPUT(Gid18)
+INPUT(Gid19)
+INPUT(Gid20)
+INPUT(Gid21)
+INPUT(Gid22)
+INPUT(Gid23)
+INPUT(Gid24)
+INPUT(Gid25)
+INPUT(Gid26)
+INPUT(Gid27)
+INPUT(Gid28)
+INPUT(Gid29)
+INPUT(Gid30)
+INPUT(Gid31)
+INPUT(Gic0)
+INPUT(Gic1)
+INPUT(Gic2)
+INPUT(Gic3)
+INPUT(Gic4)
+INPUT(Gic5)
+INPUT(Gic6)
+INPUT(Gic7)
+INPUT(Gr)
+OUTPUT(God0)
+OUTPUT(God1)
+OUTPUT(God2)
+OUTPUT(God3)
+OUTPUT(God4)
+OUTPUT(God5)
+OUTPUT(God6)
+OUTPUT(God7)
+OUTPUT(God8)
+OUTPUT(God9)
+OUTPUT(God10)
+OUTPUT(God11)
+OUTPUT(God12)
+OUTPUT(God13)
+OUTPUT(God14)
+OUTPUT(God15)
+OUTPUT(God16)
+OUTPUT(God17)
+OUTPUT(God18)
+OUTPUT(God19)
+OUTPUT(God20)
+OUTPUT(God21)
+OUTPUT(God22)
+OUTPUT(God23)
+OUTPUT(God24)
+OUTPUT(God25)
+OUTPUT(God26)
+OUTPUT(God27)
+OUTPUT(God28)
+OUTPUT(God29)
+OUTPUT(God30)
+OUTPUT(God31)
+INPUT(keyinput0)
+INPUT(keyinput1)
+INPUT(keyinput2)
+INPUT(keyinput3)
+INPUT(keyinput4)
+INPUT(keyinput5)
+INPUT(keyinput6)
+INPUT(keyinput7)
+INPUT(keyinput8)
+INPUT(keyinput9)
+INPUT(keyinput10)
+INPUT(keyinput11)
+INPUT(keyinput12)
+INPUT(keyinput13)
+INPUT(keyinput14)
+INPUT(keyinput15)
+
+Gxa0 = xor(Gid0, Gid1)
+
+Gxa1_enc = xor(Gid2, Gid3)
+
+W1_INV = NOT(Gid0)
+ONE = OR(Gid0, W1_INV)
+LIBAR10 = AND(ONE, keyinput0)
+Gxa1 = XNOR(LIBAR10, Gxa1_enc)
+
+Gxa2_enc = xor(Gid4, Gid5)
+
+LIBAR9 = AND(ONE, keyinput1)
+Gxa2 = XNOR(LIBAR9, Gxa2_enc)
+
+Gxa3_enc = xor(Gid6, Gid7)
+
+LIBAR8 = AND(ONE, keyinput2)
+Gxa3 = XNOR(LIBAR8, Gxa3_enc)
+
+Gxa4_enc = xor(Gid8, Gid9)
+
+LIBAR7 = AND(ONE, keyinput3)
+Gxa4 = XOR(LIBAR7, Gxa4_enc)
+
+Gxa5 = xor(Gid10, Gid11)
+
+Gxa6 = xor(Gid12, Gid13)
+
+Gxa7_enc = xor(Gid14, Gid15)
+
+LIBAR6 = AND(ONE, keyinput4)
+Gxa7 = XNOR(LIBAR6, Gxa7_enc)
+
+Gxa8_enc = xor(Gid16, Gid17)
+
+LIBAR5 = AND(ONE, keyinput5)
+Gxa8 = XOR(LIBAR5, Gxa8_enc)
+
+Gxa9_enc = xor(Gid18, Gid19)
+
+LIBAR4 = AND(ONE, keyinput6)
+Gxa9 = XOR(LIBAR4, Gxa9_enc)
+
+Gxa10_enc = xor(Gid20, Gid21)
+
+LIBAR3 = AND(ONE, keyinput7)
+Gxa10 = XOR(LIBAR3, Gxa10_enc)
+
+Gxa11_enc = xor(Gid22, Gid23)
+
+LIBAR2 = AND(ONE, keyinput8)
+Gxa11 = XNOR(LIBAR2, Gxa11_enc)
+
+Gxa12 = xor(Gid24, Gid25)
+
+Gxa13 = xor(Gid26, Gid27)
+
+Gxa14_enc = xor(Gid28, Gid29)
+
+LIBAR1 = AND(ONE, keyinput9)
+Gxa14 = XNOR(LIBAR1, Gxa14_enc)
+
+Gxa15_enc = xor(Gid30, Gid31)
+
+Gxa15 = XNOR(keyinput10, Gxa15_enc)
+
+Gh0_enc = and(Gic0, Gr)
+
+Gh0 = XOR(keyinput11, Gh0_enc)
+
+Gh1_enc = and(Gic1, Gr)
+
+Gh1 = XNOR(keyinput12, Gh1_enc)
+
+Gh2_enc = and(Gic2, Gr)
+
+Gh2 = XOR(keyinput13, Gh2_enc)
+
+Gh3_enc = and(Gic3, Gr)
+
+Gh3 = XOR(keyinput14, Gh3_enc)
+
+Gh4_enc = and(Gic4, Gr)
+
+Gh4 = XOR(keyinput15, Gh4_enc)
+
+Gh5 = and(Gic5, Gr)
+
+Gh6 = and(Gic6, Gr)
+
+Gh7 = and(Gic7, Gr)
+
+Gxb0 = xor(Gid0, Gid4)
+
+Gxc0 = xor(Gid8, Gid12)
+
+Gxb1 = xor(Gid1, Gid5)
+
+Gxc1 = xor(Gid9, Gid13)
+
+Gxb2 = xor(Gid2, Gid6)
+
+Gxc2 = xor(Gid10, Gid14)
+
+Gxb3 = xor(Gid3, Gid7)
+
+Gxc3 = xor(Gid11, Gid15)
+
+Gxb4 = xor(Gid16, Gid20)
+
+Gxc4 = xor(Gid24, Gid28)
+
+Gxb5 = xor(Gid17, Gid21)
+
+Gxc5 = xor(Gid25, Gid29)
+
+Gxb6 = xor(Gid18, Gid22)
+
+Gxc6 = xor(Gid26, Gid30)
+
+Gxb7 = xor(Gid19, Gid23)
+
+Gxc7 = xor(Gid27, Gid31)
+
+Gf0 = xor(Gxa0, Gxa1)
+
+Gf1 = xor(Gxa2, Gxa3)
+
+Gf2 = xor(Gxa4, Gxa5)
+
+Gf3 = xor(Gxa6, Gxa7)
+
+Gf4 = xor(Gxa8, Gxa9)
+
+Gf5 = xor(Gxa10, Gxa11)
+
+Gf6 = xor(Gxa12, Gxa13)
+
+Gf7 = xor(Gxa14, Gxa15)
+
+Gxe0 = xor(Gxb0, Gxc0)
+
+Gxe1 = xor(Gxb1, Gxc1)
+
+Gxe2 = xor(Gxb2, Gxc2)
+
+Gxe3 = xor(Gxb3, Gxc3)
+
+Gxe4 = xor(Gxb4, Gxc4)
+
+Gxe5 = xor(Gxb5, Gxc5)
+
+Gxe6 = xor(Gxb6, Gxc6)
+
+Gxe7 = xor(Gxb7, Gxc7)
+
+Gg0 = xor(Gf0, Gf1)
+
+Gg1 = xor(Gf2, Gf3)
+
+Gg2 = xor(Gf0, Gf2)
+
+Gg3 = xor(Gf1, Gf3)
+
+Gg4 = xor(Gf4, Gf5)
+
+Gg5 = xor(Gf6, Gf7)
+
+Gg6 = xor(Gf4, Gf6)
+
+Gg7 = xor(Gf5, Gf7)
+
+Gxd0 = xor(Gh0, Gg4)
+
+Gxd1 = xor(Gh1, Gg5)
+
+Gxd2 = xor(Gh2, Gg6)
+
+Gxd3 = xor(Gh3, Gg7)
+
+Gxd4 = xor(Gh4, Gg0)
+
+Gxd5 = xor(Gh5, Gg1)
+
+Gxd6 = xor(Gh6, Gg2)
+
+Gxd7 = xor(Gh7, Gg3)
+
+Gs0 = xor(Gxe0, Gxd0)
+
+Gs1 = xor(Gxe1, Gxd1)
+
+Gs2 = xor(Gxe2, Gxd2)
+
+Gs3 = xor(Gxe3, Gxd3)
+
+Gs4 = xor(Gxe4, Gxd4)
+
+Gs5 = xor(Gxe5, Gxd5)
+
+Gs6 = xor(Gxe6, Gxd6)
+
+Gs7 = xor(Gxe7, Gxd7)
+
+Gy0a = not(Gs0)
+
+Gy1a = not(Gs1)
+
+Gy2a = not(Gs2)
+
+Gy0b = not(Gs0)
+
+Gy1b = not(Gs1)
+
+Gy3b = not(Gs3)
+
+Gy0c = not(Gs0)
+
+Gy2c = not(Gs2)
+
+Gy3c = not(Gs3)
+
+Gy1d = not(Gs1)
+
+Gy2d = not(Gs2)
+
+Gy3d = not(Gs3)
+
+Gy5i = not(Gs5)
+
+Gy7i = not(Gs7)
+
+Gy5j = not(Gs5)
+
+Gy6j = not(Gs6)
+
+Gy4k = not(Gs4)
+
+Gy7k = not(Gs7)
+
+Gy4l = not(Gs4)
+
+Gy6l = not(Gs6)
+
+Gy4a = not(Gs4)
+
+Gy5a = not(Gs5)
+
+Gy6a = not(Gs6)
+
+Gy4b = not(Gs4)
+
+Gy5b = not(Gs5)
+
+Gy7b = not(Gs7)
+
+Gy4c = not(Gs4)
+
+Gy6c = not(Gs6)
+
+Gy7c = not(Gs7)
+
+Gy5d = not(Gs5)
+
+Gy6d = not(Gs6)
+
+Gy7d = not(Gs7)
+
+Gy1i = not(Gs1)
+
+Gy3i = not(Gs3)
+
+Gy1j = not(Gs1)
+
+Gy2j = not(Gs2)
+
+Gy0k = not(Gs0)
+
+Gy3k = not(Gs3)
+
+Gy0l = not(Gs0)
+
+Gy2l = not(Gs2)
+
+Gt0 = and(Gy0a, Gy1a, Gy2a, Gs3)
+
+Gt1 = and(Gy0b, Gy1b, Gs2, Gy3b)
+
+Gt2 = and(Gy0c, Gs1, Gy2c, Gy3c)
+
+Gt3 = and(Gs0, Gy1d, Gy2d, Gy3d)
+
+Gt4 = and(Gy4a, Gy5a, Gy6a, Gs7)
+
+Gt5 = and(Gy4b, Gy5b, Gs6, Gy7b)
+
+Gt6 = and(Gy4c, Gs5, Gy6c, Gy7c)
+
+Gt7 = and(Gs4, Gy5d, Gy6d, Gy7d)
+
+Gu0 = or(Gt0, Gt1, Gt2, Gt3)
+
+Gu1 = or(Gt4, Gt5, Gt6, Gt7)
+
+Gwa = and(Gs4, Gy5i, Gs6, Gy7i, Gu0)
+
+Gwb = and(Gs4, Gy5j, Gy6j, Gs7, Gu0)
+
+Gwc = and(Gy4k, Gs5, Gs6, Gy7k, Gu0)
+
+Gwd = and(Gy4l, Gs5, Gy6l, Gs7, Gu0)
+
+Gwe = and(Gs0, Gy1i, Gs2, Gy3i, Gu1)
+
+Gwf = and(Gs0, Gy1j, Gy2j, Gs3, Gu1)
+
+Gwg = and(Gy0k, Gs1, Gs2, Gy3k, Gu1)
+
+Gwh = and(Gy0l, Gs1, Gy2l, Gs3, Gu1)
+
+Ge0 = and(Gs0, Gwa)
+
+Ge1 = and(Gs1, Gwa)
+
+Ge2 = and(Gs2, Gwa)
+
+Ge3 = and(Gs3, Gwa)
+
+Ge4 = and(Gs0, Gwb)
+
+Ge5 = and(Gs1, Gwb)
+
+Ge6 = and(Gs2, Gwb)
+
+Ge7 = and(Gs3, Gwb)
+
+Ge8 = and(Gs0, Gwc)
+
+Ge9 = and(Gs1, Gwc)
+
+Ge10 = and(Gs2, Gwc)
+
+Ge11 = and(Gs3, Gwc)
+
+Ge12 = and(Gs0, Gwd)
+
+Ge13 = and(Gs1, Gwd)
+
+Ge14 = and(Gs2, Gwd)
+
+Ge15 = and(Gs3, Gwd)
+
+Ge16 = and(Gs4, Gwe)
+
+Ge17 = and(Gs5, Gwe)
+
+Ge18 = and(Gs6, Gwe)
+
+CLK10_0 = NOR(Gxa1_enc_0, Gxa0_0)
+LIBAR10_0 = AND(CLK10_0, keyinput0)
+Gxa1_0 = XNOR(LIBAR10_0, Gxa1_enc_0)
+CLK9_0 = NOR(Gxa2_enc_0, Gxa1_0)
+LIBAR9_0 = AND(CLK9_0, keyinput1)
+Gxa2_0 = XNOR(LIBAR9_0, Gxa2_enc_0)
+CLK8_0 = NOR(Gxa3_enc_0, Gxa2_0)
+LIBAR8_0 = AND(CLK8_0, keyinput2)
+Gxa3_0 = XNOR(LIBAR8_0, Gxa3_enc_0)
+CLK7_0 = NOR(Gxa4_enc_0, Gxa3_0)
+LIBAR7_0 = AND(CLK7_0, keyinput3)
+Gxa4_0 = XOR(LIBAR7_0, Gxa4_enc_0)
+CLK6_0 = NOR(Gxa7_enc_0, Gxa6_0)
+LIBAR6_0 = AND(CLK6_0, keyinput4)
+Gxa7_0 = XNOR(LIBAR6_0, Gxa7_enc_0)
+CLK5_0 = NOR(Gxa8_enc_0, Gxa7_0)
+LIBAR5_0 = AND(CLK5_0, keyinput5)
+Gxa8_0 = XOR(LIBAR5_0, Gxa8_enc_0)
+CLK4_0 = NOR(Gxa9_enc_0, Gxa8_0)
+LIBAR4_0 = AND(CLK4_0, keyinput6)
+Gxa9_0 = XOR(LIBAR4_0, Gxa9_enc_0)
+CLK3_0 = NOR(Gxa10_enc_0, Gxa9_0)
+LIBAR3_0 = AND(CLK3_0, keyinput7)
+Gxa10_0 = XOR(LIBAR3_0, Gxa10_enc_0)
+CLK2_0 = NOR(Gxa11_enc_0, Gxa10_0)
+LIBAR2_0 = AND(CLK2_0, keyinput8)
+Gxa11_0 = XNOR(LIBAR2_0, Gxa11_enc_0)
+CLK1_0 = NOR(Gxa14_enc_0, Gxa13_0)
+LIBAR1_0 = AND(CLK1_0, keyinput9)
+Gxa14_0 = XNOR(LIBAR1_0, Gxa14_enc_0)
+Gxa15_0 = XNOR(keyinput10, Gxa15_enc_0)
+Gh0_0 = XOR(keyinput11, Gh0_enc_0)
+Gh1_0 = XNOR(keyinput12, Gh1_enc_0)
+Gh2_0 = XOR(keyinput13, Gh2_enc_0)
+Gh3_0 = XOR(keyinput14, Gh3_enc_0)
+Gh4_0 = XOR(keyinput15, Gh4_enc_0)
+
+
+CLK10_1 = NOR(Gxa1_enc_1, Gxa0_1)
+LIBAR10_1 = AND(CLK10_1, keyinput0)
+Gxa1_1 = XNOR(LIBAR10_1, Gxa1_enc_1)
+CLK9_1 = NOR(Gxa2_enc_1, Gxa1_1)
+LIBAR9_1 = AND(CLK9_1, keyinput1)
+Gxa2_1 = XNOR(LIBAR9_1, Gxa2_enc_1)
+CLK8_1 = NOR(Gxa3_enc_1, Gxa2_1)
+LIBAR8_1 = AND(CLK8_1, keyinput2)
+Gxa3_1 = XNOR(LIBAR8_1, Gxa3_enc_1)
+CLK7_1 = NOR(Gxa4_enc_1, Gxa3_1)
+LIBAR7_1 = AND(CLK7_1, keyinput3)
+Gxa4_1 = XOR(LIBAR7_1, Gxa4_enc_1)
+CLK6_1 = NOR(Gxa7_enc_1, Gxa6_1)
+LIBAR6_1 = AND(CLK6_1, keyinput4)
+Gxa7_1 = XNOR(LIBAR6_1, Gxa7_enc_1)
+CLK5_1 = NOR(Gxa8_enc_1, Gxa7_1)
+LIBAR5_1 = AND(CLK5_1, keyinput5)
+Gxa8_1 = XOR(LIBAR5_1, Gxa8_enc_1)
+CLK4_1 = NOR(Gxa9_enc_1, Gxa8_1)
+LIBAR4_1 = AND(CLK4_1, keyinput6)
+Gxa9_1 = XOR(LIBAR4_1, Gxa9_enc_1)
+CLK3_1 = NOR(Gxa10_enc_1, Gxa9_1)
+LIBAR3_1 = AND(CLK3_1, keyinput7)
+Gxa10_1 = XOR(LIBAR3_1, Gxa10_enc_1)
+CLK2_1 = NOR(Gxa11_enc_1, Gxa10_1)
+LIBAR2_1 = AND(CLK2_1, keyinput8)
+Gxa11_1 = XNOR(LIBAR2_1, Gxa11_enc_1)
+CLK1_1 = NOR(Gxa14_enc_1, Gxa13_1)
+LIBAR1_1 = AND(CLK1_1, keyinput9)
+Gxa14_1 = XNOR(LIBAR1_1, Gxa14_enc_1)
+Gxa15_1 = XNOR(keyinput10, Gxa15_enc_1)
+Gh0_1 = XOR(keyinput11, Gh0_enc_1)
+Gh1_1 = XNOR(keyinput12, Gh1_enc_1)
+Gh2_1 = XOR(keyinput13, Gh2_enc_1)
+Gh3_1 = XOR(keyinput14, Gh3_enc_1)
+Gh4_1 = XOR(keyinput15, Gh4_enc_1)
+
+
+CLK10_2 = NOR(Gxa1_enc_2, Gxa0_2)
+LIBAR10_2 = AND(CLK10_2, keyinput0)
+Gxa1_2 = XNOR(LIBAR10_2, Gxa1_enc_2)
+CLK9_2 = NOR(Gxa2_enc_2, Gxa1_2)
+LIBAR9_2 = AND(CLK9_2, keyinput1)
+Gxa2_2 = XNOR(LIBAR9_2, Gxa2_enc_2)
+CLK8_2 = NOR(Gxa3_enc_2, Gxa2_2)
+LIBAR8_2 = AND(CLK8_2, keyinput2)
+Gxa3_2 = XNOR(LIBAR8_2, Gxa3_enc_2)
+CLK7_2 = NOR(Gxa4_enc_2, Gxa3_2)
+LIBAR7_2 = AND(CLK7_2, keyinput3)
+Gxa4_2 = XOR(LIBAR7_2, Gxa4_enc_2)
+CLK6_2 = NOR(Gxa7_enc_2, Gxa6_2)
+LIBAR6_2 = AND(CLK6_2, keyinput4)
+Gxa7_2 = XNOR(LIBAR6_2, Gxa7_enc_2)
+CLK5_2 = NOR(Gxa8_enc_2, Gxa7_2)
+LIBAR5_2 = AND(CLK5_2, keyinput5)
+Gxa8_2 = XOR(LIBAR5_2, Gxa8_enc_2)
+CLK4_2 = NOR(Gxa9_enc_2, Gxa8_2)
+LIBAR4_2 = AND(CLK4_2, keyinput6)
+Gxa9_2 = XOR(LIBAR4_2, Gxa9_enc_2)
+CLK3_2 = NOR(Gxa10_enc_2, Gxa9_2)
+LIBAR3_2 = AND(CLK3_2, keyinput7)
+Gxa10_2 = XOR(LIBAR3_2, Gxa10_enc_2)
+CLK2_2 = NOR(Gxa11_enc_2, Gxa10_2)
+LIBAR2_2 = AND(CLK2_2, keyinput8)
+Gxa11_2 = XNOR(LIBAR2_2, Gxa11_enc_2)
+CLK1_2 = NOR(Gxa14_enc_2, Gxa13_2)
+LIBAR1_2 = AND(CLK1_2, keyinput9)
+Gxa14_2 = XNOR(LIBAR1_2, Gxa14_enc_2)
+Gxa15_2 = XNOR(keyinput10, Gxa15_enc_2)
+Gh0_2 = XOR(keyinput11, Gh0_enc_2)
+Gh1_2 = XNOR(keyinput12, Gh1_enc_2)
+Gh2_2 = XOR(keyinput13, Gh2_enc_2)
+Gh3_2 = XOR(keyinput14, Gh3_enc_2)
+Gh4_2 = XOR(keyinput15, Gh4_enc_2)
+
+
+CLK10_3 = NOR(Gxa1_enc_3, Gxa0_3)
+LIBAR10_3 = AND(CLK10_3, keyinput0)
+Gxa1_3 = XNOR(LIBAR10_3, Gxa1_enc_3)
+CLK9_3 = NOR(Gxa2_enc_3, Gxa1_3)
+LIBAR9_3 = AND(CLK9_3, keyinput1)
+Gxa2_3 = XNOR(LIBAR9_3, Gxa2_enc_3)
+CLK8_3 = NOR(Gxa3_enc_3, Gxa2_3)
+LIBAR8_3 = AND(CLK8_3, keyinput2)
+Gxa3_3 = XNOR(LIBAR8_3, Gxa3_enc_3)
+CLK7_3 = NOR(Gxa4_enc_3, Gxa3_3)
+LIBAR7_3 = AND(CLK7_3, keyinput3)
+Gxa4_3 = XOR(LIBAR7_3, Gxa4_enc_3)
+CLK6_3 = NOR(Gxa7_enc_3, Gxa6_3)
+LIBAR6_3 = AND(CLK6_3, keyinput4)
+Gxa7_3 = XNOR(LIBAR6_3, Gxa7_enc_3)
+CLK5_3 = NOR(Gxa8_enc_3, Gxa7_3)
+LIBAR5_3 = AND(CLK5_3, keyinput5)
+Gxa8_3 = XOR(LIBAR5_3, Gxa8_enc_3)
+CLK4_3 = NOR(Gxa9_enc_3, Gxa8_3)
+LIBAR4_3 = AND(CLK4_3, keyinput6)
+Gxa9_3 = XOR(LIBAR4_3, Gxa9_enc_3)
+CLK3_3 = NOR(Gxa10_enc_3, Gxa9_3)
+LIBAR3_3 = AND(CLK3_3, keyinput7)
+Gxa10_3 = XOR(LIBAR3_3, Gxa10_enc_3)
+CLK2_3 = NOR(Gxa11_enc_3, Gxa10_3)
+LIBAR2_3 = AND(CLK2_3, keyinput8)
+Gxa11_3 = XNOR(LIBAR2_3, Gxa11_enc_3)
+CLK1_3 = NOR(Gxa14_enc_3, Gxa13_3)
+LIBAR1_3 = AND(CLK1_3, keyinput9)
+Gxa14_3 = XNOR(LIBAR1_3, Gxa14_enc_3)
+Gxa15_3 = XNOR(keyinput10, Gxa15_enc_3)
+Gh0_3 = XOR(keyinput11, Gh0_enc_3)
+Gh1_3 = XNOR(keyinput12, Gh1_enc_3)
+Gh2_3 = XOR(keyinput13, Gh2_enc_3)
+Gh3_3 = XOR(keyinput14, Gh3_enc_3)
+Gh4_3 = XOR(keyinput15, Gh4_enc_3)
+
+
+CLK10_4 = NOR(Gxa1_enc_4, Gxa0_4)
+LIBAR10_4 = AND(CLK10_4, keyinput0)
+Gxa1_4 = XNOR(LIBAR10_4, Gxa1_enc_4)
+CLK9_4 = NOR(Gxa2_enc_4, Gxa1_4)
+LIBAR9_4 = AND(CLK9_4, keyinput1)
+Gxa2_4 = XNOR(LIBAR9_4, Gxa2_enc_4)
+CLK8_4 = NOR(Gxa3_enc_4, Gxa2_4)
+LIBAR8_4 = AND(CLK8_4, keyinput2)
+Gxa3_4 = XNOR(LIBAR8_4, Gxa3_enc_4)
+CLK7_4 = NOR(Gxa4_enc_4, Gxa3_4)
+LIBAR7_4 = AND(CLK7_4, keyinput3)
+Gxa4_4 = XOR(LIBAR7_4, Gxa4_enc_4)
+CLK6_4 = NOR(Gxa7_enc_4, Gxa6_4)
+LIBAR6_4 = AND(CLK6_4, keyinput4)
+Gxa7_4 = XNOR(LIBAR6_4, Gxa7_enc_4)
+CLK5_4 = NOR(Gxa8_enc_4, Gxa7_4)
+LIBAR5_4 = AND(CLK5_4, keyinput5)
+Gxa8_4 = XOR(LIBAR5_4, Gxa8_enc_4)
+CLK4_4 = NOR(Gxa9_enc_4, Gxa8_4)
+LIBAR4_4 = AND(CLK4_4, keyinput6)
+Gxa9_4 = XOR(LIBAR4_4, Gxa9_enc_4)
+CLK3_4 = NOR(Gxa10_enc_4, Gxa9_4)
+LIBAR3_4 = AND(CLK3_4, keyinput7)
+Gxa10_4 = XOR(LIBAR3_4, Gxa10_enc_4)
+CLK2_4 = NOR(Gxa11_enc_4, Gxa10_4)
+LIBAR2_4 = AND(CLK2_4, keyinput8)
+Gxa11_4 = XNOR(LIBAR2_4, Gxa11_enc_4)
+CLK1_4 = NOR(Gxa14_enc_4, Gxa13_4)
+LIBAR1_4 = AND(CLK1_4, keyinput9)
+Gxa14_4 = XNOR(LIBAR1_4, Gxa14_enc_4)
+Gxa15_4 = XNOR(keyinput10, Gxa15_enc_4)
+Gh0_4 = XOR(keyinput11, Gh0_enc_4)
+Gh1_4 = XNOR(keyinput12, Gh1_enc_4)
+Gh2_4 = XOR(keyinput13, Gh2_enc_4)
+Gh3_4 = XOR(keyinput14, Gh3_enc_4)
+Gh4_4 = XOR(keyinput15, Gh4_enc_4)
+
+
+CLK10_5 = NOR(Gxa1_enc_5, Gxa0_5)
+LIBAR10_5 = AND(CLK10_5, keyinput0)
+Gxa1_5 = XNOR(LIBAR10_5, Gxa1_enc_5)
+CLK9_5 = NOR(Gxa2_enc_5, Gxa1_5)
+LIBAR9_5 = AND(CLK9_5, keyinput1)
+Gxa2_5 = XNOR(LIBAR9_5, Gxa2_enc_5)
+CLK8_5 = NOR(Gxa3_enc_5, Gxa2_5)
+LIBAR8_5 = AND(CLK8_5, keyinput2)
+Gxa3_5 = XNOR(LIBAR8_5, Gxa3_enc_5)
+CLK7_5 = NOR(Gxa4_enc_5, Gxa3_5)
+LIBAR7_5 = AND(CLK7_5, keyinput3)
+Gxa4_5 = XOR(LIBAR7_5, Gxa4_enc_5)
+CLK6_5 = NOR(Gxa7_enc_5, Gxa6_5)
+LIBAR6_5 = AND(CLK6_5, keyinput4)
+Gxa7_5 = XNOR(LIBAR6_5, Gxa7_enc_5)
+CLK5_5 = NOR(Gxa8_enc_5, Gxa7_5)
+LIBAR5_5 = AND(CLK5_5, keyinput5)
+Gxa8_5 = XOR(LIBAR5_5, Gxa8_enc_5)
+CLK4_5 = NOR(Gxa9_enc_5, Gxa8_5)
+LIBAR4_5 = AND(CLK4_5, keyinput6)
+Gxa9_5 = XOR(LIBAR4_5, Gxa9_enc_5)
+CLK3_5 = NOR(Gxa10_enc_5, Gxa9_5)
+LIBAR3_5 = AND(CLK3_5, keyinput7)
+Gxa10_5 = XOR(LIBAR3_5, Gxa10_enc_5)
+CLK2_5 = NOR(Gxa11_enc_5, Gxa10_5)
+LIBAR2_5 = AND(CLK2_5, keyinput8)
+Gxa11_5 = XNOR(LIBAR2_5, Gxa11_enc_5)
+CLK1_5 = NOR(Gxa14_enc_5, Gxa13_5)
+LIBAR1_5 = AND(CLK1_5, keyinput9)
+Gxa14_5 = XNOR(LIBAR1_5, Gxa14_enc_5)
+Gxa15_5 = XNOR(keyinput10, Gxa15_enc_5)
+Gh0_5 = XOR(keyinput11, Gh0_enc_5)
+Gh1_5 = XNOR(keyinput12, Gh1_enc_5)
+Gh2_5 = XOR(keyinput13, Gh2_enc_5)
+Gh3_5 = XOR(keyinput14, Gh3_enc_5)
+Gh4_5 = XOR(keyinput15, Gh4_enc_5)
+
+
+CLK10_6 = NOR(Gxa1_enc_6, Gxa0_6)
+LIBAR10_6 = AND(CLK10_6, keyinput0)
+Gxa1_6 = XNOR(LIBAR10_6, Gxa1_enc_6)
+CLK9_6 = NOR(Gxa2_enc_6, Gxa1_6)
+LIBAR9_6 = AND(CLK9_6, keyinput1)
+Gxa2_6 = XNOR(LIBAR9_6, Gxa2_enc_6)
+CLK8_6 = NOR(Gxa3_enc_6, Gxa2_6)
+LIBAR8_6 = AND(CLK8_6, keyinput2)
+Gxa3_6 = XNOR(LIBAR8_6, Gxa3_enc_6)
+CLK7_6 = NOR(Gxa4_enc_6, Gxa3_6)
+LIBAR7_6 = AND(CLK7_6, keyinput3)
+Gxa4_6 = XOR(LIBAR7_6, Gxa4_enc_6)
+CLK6_6 = NOR(Gxa7_enc_6, Gxa6_6)
+LIBAR6_6 = AND(CLK6_6, keyinput4)
+Gxa7_6 = XNOR(LIBAR6_6, Gxa7_enc_6)
+CLK5_6 = NOR(Gxa8_enc_6, Gxa7_6)
+LIBAR5_6 = AND(CLK5_6, keyinput5)
+Gxa8_6 = XOR(LIBAR5_6, Gxa8_enc_6)
+CLK4_6 = NOR(Gxa9_enc_6, Gxa8_6)
+LIBAR4_6 = AND(CLK4_6, keyinput6)
+Gxa9_6 = XOR(LIBAR4_6, Gxa9_enc_6)
+CLK3_6 = NOR(Gxa10_enc_6, Gxa9_6)
+LIBAR3_6 = AND(CLK3_6, keyinput7)
+Gxa10_6 = XOR(LIBAR3_6, Gxa10_enc_6)
+CLK2_6 = NOR(Gxa11_enc_6, Gxa10_6)
+LIBAR2_6 = AND(CLK2_6, keyinput8)
+Gxa11_6 = XNOR(LIBAR2_6, Gxa11_enc_6)
+CLK1_6 = NOR(Gxa14_enc_6, Gxa13_6)
+LIBAR1_6 = AND(CLK1_6, keyinput9)
+Gxa14_6 = XNOR(LIBAR1_6, Gxa14_enc_6)
+Gxa15_6 = XNOR(keyinput10, Gxa15_enc_6)
+Gh0_6 = XOR(keyinput11, Gh0_enc_6)
+Gh1_6 = XNOR(keyinput12, Gh1_enc_6)
+Gh2_6 = XOR(keyinput13, Gh2_enc_6)
+Gh3_6 = XOR(keyinput14, Gh3_enc_6)
+Gh4_6 = XOR(keyinput15, Gh4_enc_6)
+
+
+CLK10_7 = NOR(Gxa1_enc_7, Gxa0_7)
+LIBAR10_7 = AND(CLK10_7, keyinput0)
+Gxa1_7 = XNOR(LIBAR10_7, Gxa1_enc_7)
+CLK9_7 = NOR(Gxa2_enc_7, Gxa1_7)
+LIBAR9_7 = AND(CLK9_7, keyinput1)
+Gxa2_7 = XNOR(LIBAR9_7, Gxa2_enc_7)
+CLK8_7 = NOR(Gxa3_enc_7, Gxa2_7)
+LIBAR8_7 = AND(CLK8_7, keyinput2)
+Gxa3_7 = XNOR(LIBAR8_7, Gxa3_enc_7)
+CLK7_7 = NOR(Gxa4_enc_7, Gxa3_7)
+LIBAR7_7 = AND(CLK7_7, keyinput3)
+Gxa4_7 = XOR(LIBAR7_7, Gxa4_enc_7)
+CLK6_7 = NOR(Gxa7_enc_7, Gxa6_7)
+LIBAR6_7 = AND(CLK6_7, keyinput4)
+Gxa7_7 = XNOR(LIBAR6_7, Gxa7_enc_7)
+CLK5_7 = NOR(Gxa8_enc_7, Gxa7_7)
+LIBAR5_7 = AND(CLK5_7, keyinput5)
+Gxa8_7 = XOR(LIBAR5_7, Gxa8_enc_7)
+CLK4_7 = NOR(Gxa9_enc_7, Gxa8_7)
+LIBAR4_7 = AND(CLK4_7, keyinput6)
+Gxa9_7 = XOR(LIBAR4_7, Gxa9_enc_7)
+CLK3_7 = NOR(Gxa10_enc_7, Gxa9_7)
+LIBAR3_7 = AND(CLK3_7, keyinput7)
+Gxa10_7 = XOR(LIBAR3_7, Gxa10_enc_7)
+CLK2_7 = NOR(Gxa11_enc_7, Gxa10_7)
+LIBAR2_7 = AND(CLK2_7, keyinput8)
+Gxa11_7 = XNOR(LIBAR2_7, Gxa11_enc_7)
+CLK1_7 = NOR(Gxa14_enc_7, Gxa13_7)
+LIBAR1_7 = AND(CLK1_7, keyinput9)
+Gxa14_7 = XNOR(LIBAR1_7, Gxa14_enc_7)
+Gxa15_7 = XNOR(keyinput10, Gxa15_enc_7)
+Gh0_7 = XOR(keyinput11, Gh0_enc_7)
+Gh1_7 = XNOR(keyinput12, Gh1_enc_7)
+Gh2_7 = XOR(keyinput13, Gh2_enc_7)
+Gh3_7 = XOR(keyinput14, Gh3_enc_7)
+Gh4_7 = XOR(keyinput15, Gh4_enc_7)
+
+
+CLK10_8 = NOR(Gxa1_enc_8, Gxa0_8)
+LIBAR10_8 = AND(CLK10_8, keyinput0)
+Gxa1_8 = XNOR(LIBAR10_8, Gxa1_enc_8)
+CLK9_8 = NOR(Gxa2_enc_8, Gxa1_8)
+LIBAR9_8 = AND(CLK9_8, keyinput1)
+Gxa2_8 = XNOR(LIBAR9_8, Gxa2_enc_8)
+CLK8_8 = NOR(Gxa3_enc_8, Gxa2_8)
+LIBAR8_8 = AND(CLK8_8, keyinput2)
+Gxa3_8 = XNOR(LIBAR8_8, Gxa3_enc_8)
+CLK7_8 = NOR(Gxa4_enc_8, Gxa3_8)
+LIBAR7_8 = AND(CLK7_8, keyinput3)
+Gxa4_8 = XOR(LIBAR7_8, Gxa4_enc_8)
+CLK6_8 = NOR(Gxa7_enc_8, Gxa6_8)
+LIBAR6_8 = AND(CLK6_8, keyinput4)
+Gxa7_8 = XNOR(LIBAR6_8, Gxa7_enc_8)
+CLK5_8 = NOR(Gxa8_enc_8, Gxa7_8)
+LIBAR5_8 = AND(CLK5_8, keyinput5)
+Gxa8_8 = XOR(LIBAR5_8, Gxa8_enc_8)
+CLK4_8 = NOR(Gxa9_enc_8, Gxa8_8)
+LIBAR4_8 = AND(CLK4_8, keyinput6)
+Gxa9_8 = XOR(LIBAR4_8, Gxa9_enc_8)
+CLK3_8 = NOR(Gxa10_enc_8, Gxa9_8)
+LIBAR3_8 = AND(CLK3_8, keyinput7)
+Gxa10_8 = XOR(LIBAR3_8, Gxa10_enc_8)
+CLK2_8 = NOR(Gxa11_enc_8, Gxa10_8)
+LIBAR2_8 = AND(CLK2_8, keyinput8)
+Gxa11_8 = XNOR(LIBAR2_8, Gxa11_enc_8)
+CLK1_8 = NOR(Gxa14_enc_8, Gxa13_8)
+LIBAR1_8 = AND(CLK1_8, keyinput9)
+Gxa14_8 = XNOR(LIBAR1_8, Gxa14_enc_8)
+Gxa15_8 = XNOR(keyinput10, Gxa15_enc_8)
+Gh0_8 = XOR(keyinput11, Gh0_enc_8)
+Gh1_8 = XNOR(keyinput12, Gh1_enc_8)
+Gh2_8 = XOR(keyinput13, Gh2_enc_8)
+Gh3_8 = XOR(keyinput14, Gh3_enc_8)
+Gh4_8 = XOR(keyinput15, Gh4_enc_8)
+
+
+CLK10_10 = NOR(Gxa1_enc_10, Gxa0_10)
+LIBAR10_10 = AND(CLK10_10, keyinput0)
+Gxa1_10 = XNOR(LIBAR10_10, Gxa1_enc_10)
+CLK9_10 = NOR(Gxa2_enc_10, Gxa1_10)
+LIBAR9_10 = AND(CLK9_10, keyinput1)
+Gxa2_10 = XNOR(LIBAR9_10, Gxa2_enc_10)
+CLK8_10 = NOR(Gxa3_enc_10, Gxa2_10)
+LIBAR8_10 = AND(CLK8_10, keyinput2)
+Gxa3_10 = XNOR(LIBAR8_10, Gxa3_enc_10)
+CLK7_10 = NOR(Gxa4_enc_10, Gxa3_10)
+LIBAR7_10 = AND(CLK7_10, keyinput3)
+Gxa4_10 = XOR(LIBAR7_10, Gxa4_enc_10)
+CLK6_10 = NOR(Gxa7_enc_10, Gxa6_10)
+LIBAR6_10 = AND(CLK6_10, keyinput4)
+Gxa7_10 = XNOR(LIBAR6_10, Gxa7_enc_10)
+CLK5_10 = NOR(Gxa8_enc_10, Gxa7_10)
+LIBAR5_10 = AND(CLK5_10, keyinput5)
+Gxa8_10 = XOR(LIBAR5_10, Gxa8_enc_10)
+CLK4_10 = NOR(Gxa9_enc_10, Gxa8_10)
+LIBAR4_10 = AND(CLK4_10, keyinput6)
+Gxa9_10 = XOR(LIBAR4_10, Gxa9_enc_10)
+CLK3_10 = NOR(Gxa10_enc_10, Gxa9_10)
+LIBAR3_10 = AND(CLK3_10, keyinput7)
+Gxa10_10 = XOR(LIBAR3_10, Gxa10_enc_10)
+CLK2_10 = NOR(Gxa11_enc_10, Gxa10_10)
+LIBAR2_10 = AND(CLK2_10, keyinput8)
+Gxa11_10 = XNOR(LIBAR2_10, Gxa11_enc_10)
+CLK1_10 = NOR(Gxa14_enc_10, Gxa13_10)
+LIBAR1_10 = AND(CLK1_10, keyinput9)
+Gxa14_10 = XNOR(LIBAR1_10, Gxa14_enc_10)
+Gxa15_10 = XNOR(keyinput10, Gxa15_enc_10)
+Gh0_10 = XOR(keyinput11, Gh0_enc_10)
+Gh1_10 = XNOR(keyinput12, Gh1_enc_10)
+Gh2_10 = XOR(keyinput13, Gh2_enc_10)
+Gh3_10 = XOR(keyinput14, Gh3_enc_10)
+Gh4_10 = XOR(keyinput15, Gh4_enc_10)

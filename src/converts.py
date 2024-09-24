@@ -66,15 +66,15 @@ def unroll_bench(file_path,unroll_iter_no):
                 if dff_match[0] in output_vars:
                     new_out =dff_match[0]+"_"+str(unroll_iter_no)+" "
                     final_file.pop()
-                    final_file.append(line.replace(dff_match[0]+" ",new_out)+"\n")   
+                    final_file.append(line.replace(dff_match[0]+" ",new_out))   
                 elif "CLK" in dff_match[0]:
                     final_file.pop()          
                 if "DFF" in line:
                     final_file.pop()
                     if one_flag:
-                        final_file +=[f"W1_INV = NOT({input_vars[0]})\n",f"ONE = OR({input_vars[0]}, W1_INV)\n"]
+                        final_file +=[f"W1_INV = NOT({input_vars[0]})\n",f"ONE = OR({input_vars[0]}, W1_INV)"]
                         one_flag = False
-                    final_file.append(f"{dff_match[0]} = AND(ONE, {dff_match[3]})\n")
+                    final_file.append(f"{dff_match[0]} = AND(ONE, {dff_match[3]})")
 
 
     temp = []

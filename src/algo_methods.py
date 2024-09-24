@@ -11,7 +11,7 @@ import converts
 
 
 
-def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time):
+def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time,print_str):
     #print("---------------- looking for key (Last SAT Call) ------------")
     new_list_dips = Var(true())
     for i in range(0, len(list_str_dip)):
@@ -40,10 +40,10 @@ def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, li
                 correct_key[i] = "0"
 
         #print("key= {}".format(''.join(correct_key)))
-        print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter, exe_func_time, exe_non_func_time))
+        print(print_str+"func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter, exe_func_time, exe_non_func_time))
 
     else:
-        print("Didn't Found Any Satisfiable Key")
+        print(print_str +"Didn't Found Any Satisfiable Key")
 
 
 def init_attack(orig_bench_address,obf_bench_address):
@@ -76,7 +76,7 @@ def init_attack(orig_bench_address,obf_bench_address):
     return obfpinwires, obfkeywires, obfinterwires, obfpoutwires, orgpoutwires, orgwires, str_dip, keyin1, keyin2, keyin3, keyin4, keyinc
     
 
-def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
+def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = ""):
 
     exe_func_time = 0
     exe_non_func_time = 0
@@ -116,10 +116,10 @@ def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
         else:
             Monosat().newSolver()
     #print("================ keyFind SAT call ================")
-    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
+    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str)
             
 
-def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
+def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = ""):
     exe_func_time = 0
     exe_non_func_time = 0
     res = 1
@@ -134,7 +134,7 @@ def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
     while res == 1:
         if iter>max_iter:
             print("MAX ITERATION LIMIT EXCEEDED!!!")
-            print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
+            print(print_str+"func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
             return None
         res, dscinp, new_func_time = baseutils.double_dip(obfpinwires, obfkeywires, obfinterwires, obfpoutwires, list_dip,
                                                        list_orgcirc, keyin1, keyin2, keyin3, keyin4, exe_func_time)
@@ -158,11 +158,11 @@ def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize):
             Monosat().newSolver()
 
     #print("================ keyFind SAT call ================")
-    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
+    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str)
             
 
 
-def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
+def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize,print_str = ""):
     exe_func_time = 0
     exe_non_func_time = 0
 
@@ -200,7 +200,7 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
     while res != -1 and interval != 0:
         if(iter>max_iter):
             print("MAX ITERATION LIMIT EXCEEDED!!!")
-            print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
+            print(print_str +"func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
             return None
         
         res, dscinp, new_func_time, interval, timeout_array, const_solve = baseutils.finddipham(obfpinwires, obfkeywires, obfinterwires, obfpoutwires, list_dip,
@@ -238,7 +238,7 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize):
             Monosat().newSolver()
 
     #print("================ keyFind SAT call ================")
-    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time)
+    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str)
             
 
 
@@ -330,7 +330,7 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False):
                     clk_pin_b = pin_b.pop() """
                 
                 #1 overlap
-                """ if len(pin_a)==0:
+                if len(pin_a)==0:
                     clk_pin_a = wires.pop()
                     pin_a.append(clk_pin_a)
                 else:
@@ -342,10 +342,10 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False):
                         print("Insufficient intermediate wires are available in the circuit for required number of libar block")
                         return None
                     clk_pin_b = wires.pop()
-                pin_b.append(clk_pin_b) """
+                pin_b.append(clk_pin_b)
 
                 #no overlap
-                clk_pin_a = wires.pop()
+                """ clk_pin_a = wires.pop()
                 while clk_pin_a in pin_a:
                     if len(wires)==0:
                         print("Insufficient intermediate wires are available in the circuit for required number of libar block")
@@ -359,7 +359,8 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False):
                         print("Insufficient intermediate wires are available in the circuit for required number of libar block")
                         return None
                     clk_pin_b = wires.pop()
-                pin_b.append(clk_pin_b) 
+                pin_b.append(clk_pin_b)  """
+
                 gate_lines[i]= gate_lines[i].replace(key_pin,f"LIBAR{str(libar_number)}")
                 gate_lines.insert(i,f"LIBAR{str(libar_number)} = DFF(CLK{str(libar_number)}, {key_pin})")
                 gate_lines.insert(i,f"CLK{str(libar_number)} = NOR({clk_pin_a}, {clk_pin_b})")
