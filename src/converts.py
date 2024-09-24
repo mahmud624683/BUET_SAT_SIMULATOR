@@ -47,38 +47,41 @@ def unroll_bench(file_path,unroll_iter_no):
     assign_pattern = re.compile(r'^(\w+)\s*=\s*(NAND|AND|NOR|OR|XOR|XNOR|NOT|DFF|BUFF)\((.*)\)')
 
     for line in lines:
-        final_file.append(line)
-        line = line.strip()
-        if line.startswith("INPUT"):
-            match = input_pattern.match(line)
-            if match:
-                input_vars.append(match.group(1))
-        elif line.startswith("OUTPUT"):
-            match = output_pattern.match(line)
-            if match:
-                output_vars.append(match.group(1))
-        else:
-            match = assign_pattern.match(line)
-            if match:
-                execution_code.append(line)
+        if len(line)>5:
+            final_file.append(line)
+            line = line.strip()
+            if line.startswith("INPUT"):
+                match = input_pattern.match(line)
+                if match:
+                    input_vars.append(match.group(1))
+            elif line.startswith("OUTPUT"):
+                match = output_pattern.match(line)
+                if match:
+                    output_vars.append(match.group(1))
+            else:
+                match = assign_pattern.match(line)
+                if match:
+                    execution_code.append(line)
 
-                dff_match = re.findall(r'\b\w+\b', line)
-                if dff_match[0] in output_vars:
-                    new_out =dff_match[0]+"_"+str(unroll_iter_no)+" "
-                    final_file.pop()
-                    final_file.append(line.replace(dff_match[0]+" ",new_out))   
-                elif "CLK" in dff_match[0]:
-                    final_file.pop()          
-                if "DFF" in line:
-                    final_file.pop()
-                    if one_flag:
-                        final_file +=[f"W1_INV = NOT({input_vars[0]})\n",f"ONE = OR({input_vars[0]}, W1_INV)"]
-                        one_flag = False
-                    final_file.append(f"{dff_match[0]} = AND(ONE, {dff_match[3]})")
+                    dff_match = re.findall(r'\b\w+\b', line)
+                    if dff_match[0] in output_vars:
+                        new_out =dff_match[0]+"_"+str(unroll_iter_no)+" "
+                        final_file.pop()
+                        final_file.append(line.replace(dff_match[0]+" ",new_out))   
+                    elif "CLK" in dff_match[0]:
+                        final_file.pop()          
+                    if "DFF" in line:
+                        final_file.pop()
+                        if one_flag:
+                            final_file +=[f"W1_INV = NOT({input_vars[0]})\n",f"ONE = OR({input_vars[0]}, W1_INV)\n"]
+                            one_flag = False
+                        final_file.append(f"{dff_match[0]} = AND(ONE, {dff_match[3]})\n")
 
-
+    
+    final_file.append("\n\n#unfold started here")
     temp = []
     for i in range(unroll_iter_no-1):
+        final_file.append(f"#unfold no --------------------------------------------------{i+1}")
         for line in execution_code:
             gate_match = re.findall(r'\b\w+\b', line)
             in_var = gate_match[2:]
@@ -93,7 +96,7 @@ def unroll_bench(file_path,unroll_iter_no):
                 temp.append(f"{gate_match[0]}_{i} = {gate_match[1]}({', '.join(in_var)})")
         temp.append("\n")
 
-
+    final_file.append(f"#unfold no --------------------------------------------------{unroll_iter_no}")
     for line in execution_code:
         gate_match = re.findall(r'\b\w+\b', line)
         in_var = gate_match[2:]
@@ -108,7 +111,7 @@ def unroll_bench(file_path,unroll_iter_no):
         else:
             temp.append(f"{gate_match[0]} = {gate_match[1]}({', '.join(in_var)})")
             
-    return "".join(final_file)+"\n"+"\n".join(temp)
+    return "\n".join(final_file+temp)
 
 
 

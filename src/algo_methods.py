@@ -285,7 +285,7 @@ def RLL(org_name,obfs_name,key_str, write_file = True):
     else:
         return io_lines,gate_lines
 
-def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False):
+def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap="1"):
     wires = []
     pin_a = []
     pin_b = []
@@ -317,49 +317,49 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False):
                 for pin in gate_match[2:]:
                     if "keyinput" in pin:
                         key_pin = pin
-                #both overlap
-                """ if len(pin_a)==0:
-                    clk_pin_a = wires.pop()
-                    pin_a.append(clk_pin_a)
-                else:
-                    clk_pin_a = pin_a.pop()
-                if len(pin_b)==0:
+
+                if clk_inp_overlap == 2: #bothpin overlap
+                    if len(pin_a)==0:
+                        clk_pin_a = wires.pop()
+                        pin_a.append(clk_pin_a)
+                    else:
+                        clk_pin_a = pin_a.pop()
+                    if len(pin_b)==0:
+                        clk_pin_b = wires.pop()
+                        pin_b.append(clk_pin_b)
+                    else:
+                        clk_pin_b = pin_b.pop()
+                elif clk_inp_overlap == 1: # one pin overlap
+                    if len(pin_a)==0:
+                        clk_pin_a = wires.pop()
+                        pin_a.append(clk_pin_a)
+                    else:
+                        clk_pin_a = pin_a.pop()
+
                     clk_pin_b = wires.pop()
+                    while clk_pin_b in pin_b:
+                        if len(wires)==0:
+                            print("Insufficient intermediate wires are available in the circuit for required number of libar block")
+                            return None
+                        clk_pin_b = wires.pop()
                     pin_b.append(clk_pin_b)
-                else:
-                    clk_pin_b = pin_b.pop() """
-                
-                #1 overlap
-                if len(pin_a)==0:
+
+                else: #no overlap
                     clk_pin_a = wires.pop()
-                    pin_a.append(clk_pin_a)
-                else:
-                    clk_pin_a = pin_a.pop()
+                    while clk_pin_a in pin_a:
+                        if len(wires)==0:
+                            print("Insufficient intermediate wires are available in the circuit for required number of libar block")
+                            return None
+                        clk_pin_a = wires.pop()
+                    pin_a.append(clk_pin_a) 
 
-                clk_pin_b = wires.pop()
-                while clk_pin_b in pin_b:
-                    if len(wires)==0:
-                        print("Insufficient intermediate wires are available in the circuit for required number of libar block")
-                        return None
                     clk_pin_b = wires.pop()
-                pin_b.append(clk_pin_b)
-
-                #no overlap
-                """ clk_pin_a = wires.pop()
-                while clk_pin_a in pin_a:
-                    if len(wires)==0:
-                        print("Insufficient intermediate wires are available in the circuit for required number of libar block")
-                        return None
-                    clk_pin_a = wires.pop()
-                pin_a.append(clk_pin_a) 
-
-                clk_pin_b = wires.pop()
-                while clk_pin_b in pin_b:
-                    if len(wires)==0:
-                        print("Insufficient intermediate wires are available in the circuit for required number of libar block")
-                        return None
-                    clk_pin_b = wires.pop()
-                pin_b.append(clk_pin_b)  """
+                    while clk_pin_b in pin_b:
+                        if len(wires)==0:
+                            print("Insufficient intermediate wires are available in the circuit for required number of libar block")
+                            return None
+                        clk_pin_b = wires.pop()
+                    pin_b.append(clk_pin_b)
 
                 gate_lines[i]= gate_lines[i].replace(key_pin,f"LIBAR{str(libar_number)}")
                 gate_lines.insert(i,f"LIBAR{str(libar_number)} = DFF(CLK{str(libar_number)}, {key_pin})")

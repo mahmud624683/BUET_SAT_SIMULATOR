@@ -1,577 +1,1051 @@
-#   combinational logic example  "c499"
+#   COMBINATIONAL LOGIC EXAMPLE  "C499"
+
 # -------------------------------------------------------------
-#   total number of lines in the netlist ..............   499
-#         lines from primary input  gates .......    41
-#         lines from primary output gates .......    32
-#         lines from interior gate outputs ......   170
-#         lines from **    59 ** fanout stems ...   256
-INPUT(Gid0)
-INPUT(Gid1)
-INPUT(Gid2)
-INPUT(Gid3)
-INPUT(Gid4)
-INPUT(Gid5)
-INPUT(Gid6)
-INPUT(Gid7)
-INPUT(Gid8)
-INPUT(Gid9)
-INPUT(Gid10)
-INPUT(Gid11)
-INPUT(Gid12)
-INPUT(Gid13)
-INPUT(Gid14)
-INPUT(Gid15)
-INPUT(Gid16)
-INPUT(Gid17)
-INPUT(Gid18)
-INPUT(Gid19)
-INPUT(Gid20)
-INPUT(Gid21)
-INPUT(Gid22)
-INPUT(Gid23)
-INPUT(Gid24)
-INPUT(Gid25)
-INPUT(Gid26)
-INPUT(Gid27)
-INPUT(Gid28)
-INPUT(Gid29)
-INPUT(Gid30)
-INPUT(Gid31)
-INPUT(Gic0)
-INPUT(Gic1)
-INPUT(Gic2)
-INPUT(Gic3)
-INPUT(Gic4)
-INPUT(Gic5)
-INPUT(Gic6)
-INPUT(Gic7)
-INPUT(Gr)
-OUTPUT(God0)
-OUTPUT(God1)
-OUTPUT(God2)
-OUTPUT(God3)
-OUTPUT(God4)
-OUTPUT(God5)
-OUTPUT(God6)
-OUTPUT(God7)
-OUTPUT(God8)
-OUTPUT(God9)
-OUTPUT(God10)
-OUTPUT(God11)
-OUTPUT(God12)
-OUTPUT(God13)
-OUTPUT(God14)
-OUTPUT(God15)
-OUTPUT(God16)
-OUTPUT(God17)
-OUTPUT(God18)
-OUTPUT(God19)
-OUTPUT(God20)
-OUTPUT(God21)
-OUTPUT(God22)
-OUTPUT(God23)
-OUTPUT(God24)
-OUTPUT(God25)
-OUTPUT(God26)
-OUTPUT(God27)
-OUTPUT(God28)
-OUTPUT(God29)
-OUTPUT(God30)
-OUTPUT(God31)
+
+#   TOTAL NUMBER OF LINES IN THE NETLIST ..............   499
+
+#         LINES FROM PRIMARY INPUT  GATES .......    41
+
+#         LINES FROM PRIMARY OUTPUT GATES .......    32
+
+#         LINES FROM INTERIOR GATE OUTPUTS ......   170
+
+#         LINES FROM **    59 ** FANOUT STEMS ...   256
+
+INPUT(GID0)
+
+INPUT(GID1)
+
+INPUT(GID2)
+
+INPUT(GID3)
+
+INPUT(GID4)
+
+INPUT(GID5)
+
+INPUT(GID6)
+
+INPUT(GID7)
+
+INPUT(GID8)
+
+INPUT(GID9)
+
+INPUT(GID10)
+
+INPUT(GID11)
+
+INPUT(GID12)
+
+INPUT(GID13)
+
+INPUT(GID14)
+
+INPUT(GID15)
+
+INPUT(GID16)
+
+INPUT(GID17)
+
+INPUT(GID18)
+
+INPUT(GID19)
+
+INPUT(GID20)
+
+INPUT(GID21)
+
+INPUT(GID22)
+
+INPUT(GID23)
+
+INPUT(GID24)
+
+INPUT(GID25)
+
+INPUT(GID26)
+
+INPUT(GID27)
+
+INPUT(GID28)
+
+INPUT(GID29)
+
+INPUT(GID30)
+
+INPUT(GID31)
+
+INPUT(GIC0)
+
+INPUT(GIC1)
+
+INPUT(GIC2)
+
+INPUT(GIC3)
+
+INPUT(GIC4)
+
+INPUT(GIC5)
+
+INPUT(GIC6)
+
+INPUT(GIC7)
+
+INPUT(GR)
+
+OUTPUT(GOD0)
+
+OUTPUT(GOD1)
+
+OUTPUT(GOD2)
+
+OUTPUT(GOD3)
+
+OUTPUT(GOD4)
+
+OUTPUT(GOD5)
+
+OUTPUT(GOD6)
+
+OUTPUT(GOD7)
+
+OUTPUT(GOD8)
+
+OUTPUT(GOD9)
+
+OUTPUT(GOD10)
+
+OUTPUT(GOD11)
+
+OUTPUT(GOD12)
+
+OUTPUT(GOD13)
+
+OUTPUT(GOD14)
+
+OUTPUT(GOD15)
+
+OUTPUT(GOD16)
+
+OUTPUT(GOD17)
+
+OUTPUT(GOD18)
+
+OUTPUT(GOD19)
+
+OUTPUT(GOD20)
+
+OUTPUT(GOD21)
+
+OUTPUT(GOD22)
+
+OUTPUT(GOD23)
+
+OUTPUT(GOD24)
+
+OUTPUT(GOD25)
+
+OUTPUT(GOD26)
+
+OUTPUT(GOD27)
+
+OUTPUT(GOD28)
+
+OUTPUT(GOD29)
+
+OUTPUT(GOD30)
+
+OUTPUT(GOD31)
+
 INPUT(keyinput0)
+
 INPUT(keyinput1)
+
 INPUT(keyinput2)
+
 INPUT(keyinput3)
+
 INPUT(keyinput4)
+
 INPUT(keyinput5)
+
 INPUT(keyinput6)
+
 INPUT(keyinput7)
+
 INPUT(keyinput8)
+
 INPUT(keyinput9)
+
 INPUT(keyinput10)
+
 INPUT(keyinput11)
+
 INPUT(keyinput12)
+
 INPUT(keyinput13)
+
 INPUT(keyinput14)
+
 INPUT(keyinput15)
 
-Gxa0 = xor(Gid0, Gid1)
+GXA0 = XOR(GID0, GID1)
 
-Gxa1_enc = xor(Gid2, Gid3)
+GXA1_enc = XOR(GID2, GID3)
 
-W1_INV = NOT(Gid0)
-ONE = OR(Gid0, W1_INV)
+W1_INV = NOT(GID0)
+
+ONE = OR(GID0, W1_INV)
+
 LIBAR2 = AND(ONE, keyinput0)
-Gxa1 = XNOR(LIBAR2, Gxa1_enc)
 
-Gxa2_enc = xor(Gid4, Gid5)
+GXA1 = XNOR(LIBAR2, GXA1_enc)
+
+GXA2_enc = XOR(GID4, GID5)
 
 LIBAR1 = AND(ONE, keyinput1)
-Gxa2 = XNOR(LIBAR1, Gxa2_enc)
 
-Gxa3_enc = xor(Gid6, Gid7)
+GXA2 = XNOR(LIBAR1, GXA2_enc)
 
-Gxa3 = XNOR(keyinput2, Gxa3_enc)
+GXA3 = XOR(GID6, GID7)
 
-Gxa4_enc = xor(Gid8, Gid9)
+GXA4_enc = XOR(GID8, GID9)
 
-Gxa4 = XOR(keyinput3, Gxa4_enc)
+GXA4 = XNOR(keyinput2, GXA4_enc)
 
-Gxa5 = xor(Gid10, Gid11)
+GXA5_enc = XOR(GID10, GID11)
 
-Gxa6 = xor(Gid12, Gid13)
+GXA5 = XOR(keyinput3, GXA5_enc)
 
-Gxa7_enc = xor(Gid14, Gid15)
+GXA6_enc = XOR(GID12, GID13)
 
-Gxa7 = XNOR(keyinput4, Gxa7_enc)
+GXA6 = XNOR(keyinput4, GXA6_enc)
 
-Gxa8_enc = xor(Gid16, Gid17)
+GXA7_enc = XOR(GID14, GID15)
 
-Gxa8 = XOR(keyinput5, Gxa8_enc)
+GXA7 = XOR(keyinput5, GXA7_enc)
 
-Gxa9_enc = xor(Gid18, Gid19)
+GXA8_enc = XOR(GID16, GID17)
 
-Gxa9 = XOR(keyinput6, Gxa9_enc)
+GXA8 = XOR(keyinput6, GXA8_enc)
 
-Gxa10_enc = xor(Gid20, Gid21)
+GXA9_enc = XOR(GID18, GID19)
 
-Gxa10 = XOR(keyinput7, Gxa10_enc)
+GXA9 = XOR(keyinput7, GXA9_enc)
 
-Gxa11_enc = xor(Gid22, Gid23)
+GXA10 = XOR(GID20, GID21)
 
-Gxa11 = XNOR(keyinput8, Gxa11_enc)
+GXA11 = XOR(GID22, GID23)
 
-Gxa12 = xor(Gid24, Gid25)
+GXA12 = XOR(GID24, GID25)
 
-Gxa13 = xor(Gid26, Gid27)
+GXA13 = XOR(GID26, GID27)
 
-Gxa14_enc = xor(Gid28, Gid29)
+GXA14 = XOR(GID28, GID29)
 
-Gxa14 = XNOR(keyinput9, Gxa14_enc)
+GXA15 = XOR(GID30, GID31)
 
-Gxa15_enc = xor(Gid30, Gid31)
+GH0 = AND(GIC0, GR)
 
-Gxa15 = XNOR(keyinput10, Gxa15_enc)
+GH1 = AND(GIC1, GR)
 
-Gh0_enc = and(Gic0, Gr)
+GH2_enc = AND(GIC2, GR)
 
-Gh0 = XOR(keyinput11, Gh0_enc)
+GH2 = XNOR(keyinput8, GH2_enc)
 
-Gh1_enc = and(Gic1, Gr)
+GH3 = AND(GIC3, GR)
 
-Gh1 = XNOR(keyinput12, Gh1_enc)
+GH4_enc = AND(GIC4, GR)
 
-Gh2_enc = and(Gic2, Gr)
+GH4 = XNOR(keyinput9, GH4_enc)
 
-Gh2 = XOR(keyinput13, Gh2_enc)
+GH5_enc = AND(GIC5, GR)
 
-Gh3_enc = and(Gic3, Gr)
+GH5 = XNOR(keyinput10, GH5_enc)
 
-Gh3 = XOR(keyinput14, Gh3_enc)
+GH6_enc = AND(GIC6, GR)
 
-Gh4_enc = and(Gic4, Gr)
+GH6 = XOR(keyinput11, GH6_enc)
 
-Gh4 = XOR(keyinput15, Gh4_enc)
+GH7 = AND(GIC7, GR)
 
-Gh5 = and(Gic5, Gr)
+GXB0 = XOR(GID0, GID4)
 
-Gh6 = and(Gic6, Gr)
+GXC0 = XOR(GID8, GID12)
 
-Gh7 = and(Gic7, Gr)
+GXB1 = XOR(GID1, GID5)
 
-Gxb0 = xor(Gid0, Gid4)
+GXC1_enc = XOR(GID9, GID13)
 
-Gxc0 = xor(Gid8, Gid12)
+GXC1 = XNOR(keyinput12, GXC1_enc)
 
-Gxb1 = xor(Gid1, Gid5)
+GXB2_enc = XOR(GID2, GID6)
 
-Gxc1 = xor(Gid9, Gid13)
+GXB2 = XOR(keyinput13, GXB2_enc)
 
-Gxb2 = xor(Gid2, Gid6)
+GXC2_enc = XOR(GID10, GID14)
 
-Gxc2 = xor(Gid10, Gid14)
+GXC2 = XOR(keyinput14, GXC2_enc)
 
-Gxb3 = xor(Gid3, Gid7)
+GXB3_enc = XOR(GID3, GID7)
 
-Gxc3 = xor(Gid11, Gid15)
+GXB3 = XOR(keyinput15, GXB3_enc)
 
-Gxb4 = xor(Gid16, Gid20)
+GXC3 = XOR(GID11, GID15)
 
-Gxc4 = xor(Gid24, Gid28)
+GXB4 = XOR(GID16, GID20)
 
-Gxb5 = xor(Gid17, Gid21)
+GXC4 = XOR(GID24, GID28)
 
-Gxc5 = xor(Gid25, Gid29)
+GXB5 = XOR(GID17, GID21)
 
-Gxb6 = xor(Gid18, Gid22)
+GXC5 = XOR(GID25, GID29)
 
-Gxc6 = xor(Gid26, Gid30)
+GXB6 = XOR(GID18, GID22)
 
-Gxb7 = xor(Gid19, Gid23)
+GXC6 = XOR(GID26, GID30)
 
-Gxc7 = xor(Gid27, Gid31)
+GXB7 = XOR(GID19, GID23)
 
-Gf0 = xor(Gxa0, Gxa1)
+GXC7 = XOR(GID27, GID31)
 
-Gf1 = xor(Gxa2, Gxa3)
+GF0 = XOR(GXA0, GXA1)
 
-Gf2 = xor(Gxa4, Gxa5)
+GF1 = XOR(GXA2, GXA3)
 
-Gf3 = xor(Gxa6, Gxa7)
+GF2 = XOR(GXA4, GXA5)
 
-Gf4 = xor(Gxa8, Gxa9)
+GF3 = XOR(GXA6, GXA7)
 
-Gf5 = xor(Gxa10, Gxa11)
+GF4 = XOR(GXA8, GXA9)
 
-Gf6 = xor(Gxa12, Gxa13)
+GF5 = XOR(GXA10, GXA11)
 
-Gf7 = xor(Gxa14, Gxa15)
+GF6 = XOR(GXA12, GXA13)
 
-Gxe0 = xor(Gxb0, Gxc0)
+GF7 = XOR(GXA14, GXA15)
 
-Gxe1 = xor(Gxb1, Gxc1)
+GXE0 = XOR(GXB0, GXC0)
 
-Gxe2 = xor(Gxb2, Gxc2)
+GXE1 = XOR(GXB1, GXC1)
 
-Gxe3 = xor(Gxb3, Gxc3)
+GXE2 = XOR(GXB2, GXC2)
 
-Gxe4 = xor(Gxb4, Gxc4)
+GXE3 = XOR(GXB3, GXC3)
 
-Gxe5 = xor(Gxb5, Gxc5)
+GXE4 = XOR(GXB4, GXC4)
 
-Gxe6 = xor(Gxb6, Gxc6)
+GXE5 = XOR(GXB5, GXC5)
 
-Gxe7 = xor(Gxb7, Gxc7)
+GXE6 = XOR(GXB6, GXC6)
 
-Gg0 = xor(Gf0, Gf1)
+GXE7 = XOR(GXB7, GXC7)
 
-Gg1 = xor(Gf2, Gf3)
+GG0 = XOR(GF0, GF1)
 
-Gg2 = xor(Gf0, Gf2)
+GG1 = XOR(GF2, GF3)
 
-Gg3 = xor(Gf1, Gf3)
+GG2 = XOR(GF0, GF2)
 
-Gg4 = xor(Gf4, Gf5)
+GG3 = XOR(GF1, GF3)
 
-Gg5 = xor(Gf6, Gf7)
+GG4 = XOR(GF4, GF5)
 
-Gg6 = xor(Gf4, Gf6)
+GG5 = XOR(GF6, GF7)
 
-Gg7 = xor(Gf5, Gf7)
+GG6 = XOR(GF4, GF6)
 
-Gxd0 = xor(Gh0, Gg4)
+GG7 = XOR(GF5, GF7)
 
-Gxd1 = xor(Gh1, Gg5)
+GXD0 = XOR(GH0, GG4)
 
-Gxd2 = xor(Gh2, Gg6)
+GXD1 = XOR(GH1, GG5)
 
-Gxd3 = xor(Gh3, Gg7)
+GXD2 = XOR(GH2, GG6)
 
-Gxd4 = xor(Gh4, Gg0)
+GXD3 = XOR(GH3, GG7)
 
-Gxd5 = xor(Gh5, Gg1)
+GXD4 = XOR(GH4, GG0)
 
-Gxd6 = xor(Gh6, Gg2)
+GXD5 = XOR(GH5, GG1)
 
-Gxd7 = xor(Gh7, Gg3)
+GXD6 = XOR(GH6, GG2)
 
-Gs0 = xor(Gxe0, Gxd0)
+GXD7 = XOR(GH7, GG3)
 
-Gs1 = xor(Gxe1, Gxd1)
+GS0 = XOR(GXE0, GXD0)
 
-Gs2 = xor(Gxe2, Gxd2)
+GS1 = XOR(GXE1, GXD1)
 
-Gs3 = xor(Gxe3, Gxd3)
+GS2 = XOR(GXE2, GXD2)
 
-Gs4 = xor(Gxe4, Gxd4)
+GS3 = XOR(GXE3, GXD3)
 
-Gs5 = xor(Gxe5, Gxd5)
+GS4 = XOR(GXE4, GXD4)
 
-Gs6 = xor(Gxe6, Gxd6)
+GS5 = XOR(GXE5, GXD5)
 
-Gs7 = xor(Gxe7, Gxd7)
+GS6 = XOR(GXE6, GXD6)
 
-Gy0a = not(Gs0)
+GS7 = XOR(GXE7, GXD7)
 
-Gy1a = not(Gs1)
+GY0A = NOT(GS0)
 
-Gy2a = not(Gs2)
+GY1A = NOT(GS1)
 
-Gy0b = not(Gs0)
+GY2A = NOT(GS2)
 
-Gy1b = not(Gs1)
+GY0B = NOT(GS0)
 
-Gy3b = not(Gs3)
+GY1B = NOT(GS1)
 
-Gy0c = not(Gs0)
+GY3B = NOT(GS3)
 
-Gy2c = not(Gs2)
+GY0C = NOT(GS0)
 
-Gy3c = not(Gs3)
+GY2C = NOT(GS2)
 
-Gy1d = not(Gs1)
+GY3C = NOT(GS3)
 
-Gy2d = not(Gs2)
+GY1D = NOT(GS1)
 
-Gy3d = not(Gs3)
+GY2D = NOT(GS2)
 
-Gy5i = not(Gs5)
+GY3D = NOT(GS3)
 
-Gy7i = not(Gs7)
+GY5I = NOT(GS5)
 
-Gy5j = not(Gs5)
+GY7I = NOT(GS7)
 
-Gy6j = not(Gs6)
+GY5J = NOT(GS5)
 
-Gy4k = not(Gs4)
+GY6J = NOT(GS6)
 
-Gy7k = not(Gs7)
+GY4K = NOT(GS4)
 
-Gy4l = not(Gs4)
+GY7K = NOT(GS7)
 
-Gy6l = not(Gs6)
+GY4L = NOT(GS4)
 
-Gy4a = not(Gs4)
+GY6L = NOT(GS6)
 
-Gy5a = not(Gs5)
+GY4A = NOT(GS4)
 
-Gy6a = not(Gs6)
+GY5A = NOT(GS5)
 
-Gy4b = not(Gs4)
+GY6A = NOT(GS6)
 
-Gy5b = not(Gs5)
+GY4B = NOT(GS4)
 
-Gy7b = not(Gs7)
+GY5B = NOT(GS5)
 
-Gy4c = not(Gs4)
+GY7B = NOT(GS7)
 
-Gy6c = not(Gs6)
+GY4C = NOT(GS4)
 
-Gy7c = not(Gs7)
+GY6C = NOT(GS6)
 
-Gy5d = not(Gs5)
+GY7C = NOT(GS7)
 
-Gy6d = not(Gs6)
+GY5D = NOT(GS5)
 
-Gy7d = not(Gs7)
+GY6D = NOT(GS6)
 
-Gy1i = not(Gs1)
+GY7D = NOT(GS7)
 
-Gy3i = not(Gs3)
+GY1I = NOT(GS1)
 
-Gy1j = not(Gs1)
+GY3I = NOT(GS3)
 
-Gy2j = not(Gs2)
+GY1J = NOT(GS1)
 
-Gy0k = not(Gs0)
+GY2J = NOT(GS2)
 
-Gy3k = not(Gs3)
+GY0K = NOT(GS0)
 
-Gy0l = not(Gs0)
+GY3K = NOT(GS3)
 
-Gy2l = not(Gs2)
+GY0L = NOT(GS0)
 
-Gt0 = and(Gy0a, Gy1a, Gy2a, Gs3)
+GY2L = NOT(GS2)
 
-Gt1 = and(Gy0b, Gy1b, Gs2, Gy3b)
+GT0 = AND(GY0A, GY1A, GY2A, GS3)
 
-Gt2 = and(Gy0c, Gs1, Gy2c, Gy3c)
+GT1 = AND(GY0B, GY1B, GS2, GY3B)
 
-Gt3 = and(Gs0, Gy1d, Gy2d, Gy3d)
+GT2 = AND(GY0C, GS1, GY2C, GY3C)
 
-Gt4 = and(Gy4a, Gy5a, Gy6a, Gs7)
+GT3 = AND(GS0, GY1D, GY2D, GY3D)
 
-Gt5 = and(Gy4b, Gy5b, Gs6, Gy7b)
+GT4 = AND(GY4A, GY5A, GY6A, GS7)
 
-Gt6 = and(Gy4c, Gs5, Gy6c, Gy7c)
+GT5 = AND(GY4B, GY5B, GS6, GY7B)
 
-Gt7 = and(Gs4, Gy5d, Gy6d, Gy7d)
+GT6 = AND(GY4C, GS5, GY6C, GY7C)
 
-Gu0 = or(Gt0, Gt1, Gt2, Gt3)
+GT7 = AND(GS4, GY5D, GY6D, GY7D)
 
-Gu1 = or(Gt4, Gt5, Gt6, Gt7)
+GU0 = OR(GT0, GT1, GT2, GT3)
 
-Gwa = and(Gs4, Gy5i, Gs6, Gy7i, Gu0)
+GU1 = OR(GT4, GT5, GT6, GT7)
 
-Gwb = and(Gs4, Gy5j, Gy6j, Gs7, Gu0)
+GWA = AND(GS4, GY5I, GS6, GY7I, GU0)
 
-Gwc = and(Gy4k, Gs5, Gs6, Gy7k, Gu0)
+GWB = AND(GS4, GY5J, GY6J, GS7, GU0)
 
-Gwd = and(Gy4l, Gs5, Gy6l, Gs7, Gu0)
+GWC = AND(GY4K, GS5, GS6, GY7K, GU0)
 
-Gwe = and(Gs0, Gy1i, Gs2, Gy3i, Gu1)
+GWD = AND(GY4L, GS5, GY6L, GS7, GU0)
 
-Gwf = and(Gs0, Gy1j, Gy2j, Gs3, Gu1)
+GWE = AND(GS0, GY1I, GS2, GY3I, GU1)
 
-Gwg = and(Gy0k, Gs1, Gs2, Gy3k, Gu1)
+GWF = AND(GS0, GY1J, GY2J, GS3, GU1)
 
-Gwh = and(Gy0l, Gs1, Gy2l, Gs3, Gu1)
+GWG = AND(GY0K, GS1, GS2, GY3K, GU1)
 
-Ge0 = and(Gs0, Gwa)
+GWH = AND(GY0L, GS1, GY2L, GS3, GU1)
 
-Ge1 = and(Gs1, Gwa)
+GE0 = AND(GS0, GWA)
 
-Ge2 = and(Gs2, Gwa)
+GE1 = AND(GS1, GWA)
 
-Ge3 = and(Gs3, Gwa)
+GE2 = AND(GS2, GWA)
 
-Ge4 = and(Gs0, Gwb)
+GE3 = AND(GS3, GWA)
 
-Ge5 = and(Gs1, Gwb)
+GE4 = AND(GS0, GWB)
 
-Ge6 = and(Gs2, Gwb)
+GE5 = AND(GS1, GWB)
 
-Ge7 = and(Gs3, Gwb)
+GE6 = AND(GS2, GWB)
 
-Ge8 = and(Gs0, Gwc)
+GE7 = AND(GS3, GWB)
 
-Ge9 = and(Gs1, Gwc)
+GE8 = AND(GS0, GWC)
 
-Ge10 = and(Gs2, Gwc)
+GE9 = AND(GS1, GWC)
 
-Ge11 = and(Gs3, Gwc)
+GE10 = AND(GS2, GWC)
 
-Ge12 = and(Gs0, Gwd)
+GE11 = AND(GS3, GWC)
 
-Ge13 = and(Gs1, Gwd)
+GE12 = AND(GS0, GWD)
 
-Ge14 = and(Gs2, Gwd)
+GE13 = AND(GS1, GWD)
 
-Ge15 = and(Gs3, Gwd)
+GE14 = AND(GS2, GWD)
 
-Ge16 = and(Gs4, Gwe)
+GE15 = AND(GS3, GWD)
 
-Ge17 = and(Gs5, Gwe)
+GE16 = AND(GS4, GWE)
 
-Ge18 = and(Gs6, Gwe)
+GE17 = AND(GS5, GWE)
 
-Ge19 = and(Gs7, Gwe)
+GE18 = AND(GS6, GWE)
 
-Ge20 = and(Gs4, Gwf)
+GE19 = AND(GS7, GWE)
 
-Ge21 = and(Gs5, Gwf)
+GE20 = AND(GS4, GWF)
 
-Ge22 = and(Gs6, Gwf)
+GE21 = AND(GS5, GWF)
 
-Ge23 = and(Gs7, Gwf)
+GE22 = AND(GS6, GWF)
 
-Ge24 = and(Gs4, Gwg)
+GE23 = AND(GS7, GWF)
 
-Ge25 = and(Gs5, Gwg)
+GE24 = AND(GS4, GWG)
 
-Ge26 = and(Gs6, Gwg)
+GE25 = AND(GS5, GWG)
 
-Ge27 = and(Gs7, Gwg)
+GE26 = AND(GS6, GWG)
 
-Ge28 = and(Gs4, Gwh)
+GE27 = AND(GS7, GWG)
 
-Ge29 = and(Gs5, Gwh)
+GE28 = AND(GS4, GWH)
 
-Ge30 = and(Gs6, Gwh)
+GE29 = AND(GS5, GWH)
 
-Ge31 = and(Gs7, Gwh)
+GE30 = AND(GS6, GWH)
 
-God0 = xor(Gid0, Ge0)
+GE31 = AND(GS7, GWH)
 
-God1 = xor(Gid1, Ge1)
-
-God2 = xor(Gid2, Ge2)
-
-God3 = xor(Gid3, Ge3)
-
-God4 = xor(Gid4, Ge4)
-
-God5 = xor(Gid5, Ge5)
-
-God6 = xor(Gid6, Ge6)
-
-God7 = xor(Gid7, Ge7)
-
-God8 = xor(Gid8, Ge8)
-
-God9 = xor(Gid9, Ge9)
-
-God10 = xor(Gid10, Ge10)
-
-God11 = xor(Gid11, Ge11)
-
-God12 = xor(Gid12, Ge12)
-
-God13 = xor(Gid13, Ge13)
-
-God14 = xor(Gid14, Ge14)
-
-God15 = xor(Gid15, Ge15)
-
-God16 = xor(Gid16, Ge16)
-
-God17 = xor(Gid17, Ge17)
-
-God18 = xor(Gid18, Ge18)
-
-God19 = xor(Gid19, Ge19)
-
-God20 = xor(Gid20, Ge20)
-
-God21 = xor(Gid21, Ge21)
-
-God22 = xor(Gid22, Ge22)
-
-God23 = xor(Gid23, Ge23)
-
-God24 = xor(Gid24, Ge24)
-
-God25 = xor(Gid25, Ge25)
-
-God26 = xor(Gid26, Ge26)
-
-God27 = xor(Gid27, Ge27)
-
-God28 = xor(Gid28, Ge28)
-
-God29 = xor(Gid29, Ge29)
-
-God30 = xor(Gid30, Ge30)
-
-CLK2_0 = NOR(Gxa1_enc_0, Gxa0_0)
+GOD0_2 = XOR(GID0, GE0)
+GOD1_2 = XOR(GID1, GE1)
+GOD2_2 = XOR(GID2, GE2)
+GOD3_2 = XOR(GID3, GE3)
+GOD4_2 = XOR(GID4, GE4)
+GOD5_2 = XOR(GID5, GE5)
+GOD6_2 = XOR(GID6, GE6)
+GOD7_2 = XOR(GID7, GE7)
+GOD8_2 = XOR(GID8, GE8)
+GOD9_2 = XOR(GID9, GE9)
+GOD10_2 = XOR(GID10, GE10)
+GOD11_2 = XOR(GID11, GE11)
+GOD12_2 = XOR(GID12, GE12)
+GOD13_2 = XOR(GID13, GE13)
+GOD14_2 = XOR(GID14, GE14)
+GOD15_2 = XOR(GID15, GE15)
+GOD16_2 = XOR(GID16, GE16)
+GOD17_2 = XOR(GID17, GE17)
+GOD18_2 = XOR(GID18, GE18)
+GOD19_2 = XOR(GID19, GE19)
+GOD20_2 = XOR(GID20, GE20)
+GOD21_2 = XOR(GID21, GE21)
+GOD22_2 = XOR(GID22, GE22)
+GOD23_2 = XOR(GID23, GE23)
+GOD24_2 = XOR(GID24, GE24)
+GOD25_2 = XOR(GID25, GE25)
+GOD26_2 = XOR(GID26, GE26)
+GOD27_2 = XOR(GID27, GE27)
+GOD28_2 = XOR(GID28, GE28)
+GOD29_2 = XOR(GID29, GE29)
+GOD30_2 = XOR(GID30, GE30)
+GOD31_2 = XOR(GID31, GE31)
+#unfold no --------------------------------------------------2
+GXA0_0 = XOR(GID0, GID1)
+GXA1_enc_0 = XOR(GID2, GID3)
+CLK2_0 = NOR(GXA1_enc_0, GXA0_0)
 LIBAR2_0 = AND(CLK2_0, keyinput0)
-Gxa1_0 = XNOR(LIBAR2_0, Gxa1_enc_0)
-CLK1_0 = NOR(Gxa2_enc_0, Gxa1_0)
+GXA1_0 = XNOR(LIBAR2_0, GXA1_enc_0)
+GXA2_enc_0 = XOR(GID4, GID5)
+CLK1_0 = NOR(GXA1_enc_0, GXA2_enc_0)
 LIBAR1_0 = AND(CLK1_0, keyinput1)
-Gxa2_0 = XNOR(LIBAR1_0, Gxa2_enc_0)
-Gxa3_0 = XNOR(keyinput2, Gxa3_enc_0)
-Gxa4_0 = XOR(keyinput3, Gxa4_enc_0)
-Gxa7_0 = XNOR(keyinput4, Gxa7_enc_0)
-Gxa8_0 = XOR(keyinput5, Gxa8_enc_0)
-Gxa9_0 = XOR(keyinput6, Gxa9_enc_0)
-Gxa10_0 = XOR(keyinput7, Gxa10_enc_0)
-Gxa11_0 = XNOR(keyinput8, Gxa11_enc_0)
-Gxa14_0 = XNOR(keyinput9, Gxa14_enc_0)
-Gxa15_0 = XNOR(keyinput10, Gxa15_enc_0)
-Gh0_0 = XOR(keyinput11, Gh0_enc_0)
-Gh1_0 = XNOR(keyinput12, Gh1_enc_0)
-Gh2_0 = XOR(keyinput13, Gh2_enc_0)
-Gh3_0 = XOR(keyinput14, Gh3_enc_0)
-Gh4_0 = XOR(keyinput15, Gh4_enc_0)
+GXA2_0 = XNOR(LIBAR1_0, GXA2_enc_0)
+GXA3_0 = XOR(GID6, GID7)
+GXA4_enc_0 = XOR(GID8, GID9)
+GXA4_0 = XNOR(keyinput2, GXA4_enc_0)
+GXA5_enc_0 = XOR(GID10, GID11)
+GXA5_0 = XOR(keyinput3, GXA5_enc_0)
+GXA6_enc_0 = XOR(GID12, GID13)
+GXA6_0 = XNOR(keyinput4, GXA6_enc_0)
+GXA7_enc_0 = XOR(GID14, GID15)
+GXA7_0 = XOR(keyinput5, GXA7_enc_0)
+GXA8_enc_0 = XOR(GID16, GID17)
+GXA8_0 = XOR(keyinput6, GXA8_enc_0)
+GXA9_enc_0 = XOR(GID18, GID19)
+GXA9_0 = XOR(keyinput7, GXA9_enc_0)
+GXA10_0 = XOR(GID20, GID21)
+GXA11_0 = XOR(GID22, GID23)
+GXA12_0 = XOR(GID24, GID25)
+GXA13_0 = XOR(GID26, GID27)
+GXA14_0 = XOR(GID28, GID29)
+GXA15_0 = XOR(GID30, GID31)
+GH0_0 = AND(GIC0, GR)
+GH1_0 = AND(GIC1, GR)
+GH2_enc_0 = AND(GIC2, GR)
+GH2_0 = XNOR(keyinput8, GH2_enc_0)
+GH3_0 = AND(GIC3, GR)
+GH4_enc_0 = AND(GIC4, GR)
+GH4_0 = XNOR(keyinput9, GH4_enc_0)
+GH5_enc_0 = AND(GIC5, GR)
+GH5_0 = XNOR(keyinput10, GH5_enc_0)
+GH6_enc_0 = AND(GIC6, GR)
+GH6_0 = XOR(keyinput11, GH6_enc_0)
+GH7_0 = AND(GIC7, GR)
+GXB0_0 = XOR(GID0, GID4)
+GXC0_0 = XOR(GID8, GID12)
+GXB1_0 = XOR(GID1, GID5)
+GXC1_enc_0 = XOR(GID9, GID13)
+GXC1_0 = XNOR(keyinput12, GXC1_enc_0)
+GXB2_enc_0 = XOR(GID2, GID6)
+GXB2_0 = XOR(keyinput13, GXB2_enc_0)
+GXC2_enc_0 = XOR(GID10, GID14)
+GXC2_0 = XOR(keyinput14, GXC2_enc_0)
+GXB3_enc_0 = XOR(GID3, GID7)
+GXB3_0 = XOR(keyinput15, GXB3_enc_0)
+GXC3_0 = XOR(GID11, GID15)
+GXB4_0 = XOR(GID16, GID20)
+GXC4_0 = XOR(GID24, GID28)
+GXB5_0 = XOR(GID17, GID21)
+GXC5_0 = XOR(GID25, GID29)
+GXB6_0 = XOR(GID18, GID22)
+GXC6_0 = XOR(GID26, GID30)
+GXB7_0 = XOR(GID19, GID23)
+GXC7_0 = XOR(GID27, GID31)
+GF0_0 = XOR(GXA0_0, GXA1_0)
+GF1_0 = XOR(GXA2_0, GXA3_0)
+GF2_0 = XOR(GXA4_0, GXA5_0)
+GF3_0 = XOR(GXA6_0, GXA7_0)
+GF4_0 = XOR(GXA8_0, GXA9_0)
+GF5_0 = XOR(GXA10_0, GXA11_0)
+GF6_0 = XOR(GXA12_0, GXA13_0)
+GF7_0 = XOR(GXA14_0, GXA15_0)
+GXE0_0 = XOR(GXB0_0, GXC0_0)
+GXE1_0 = XOR(GXB1_0, GXC1_0)
+GXE2_0 = XOR(GXB2_0, GXC2_0)
+GXE3_0 = XOR(GXB3_0, GXC3_0)
+GXE4_0 = XOR(GXB4_0, GXC4_0)
+GXE5_0 = XOR(GXB5_0, GXC5_0)
+GXE6_0 = XOR(GXB6_0, GXC6_0)
+GXE7_0 = XOR(GXB7_0, GXC7_0)
+GG0_0 = XOR(GF0_0, GF1_0)
+GG1_0 = XOR(GF2_0, GF3_0)
+GG2_0 = XOR(GF0_0, GF2_0)
+GG3_0 = XOR(GF1_0, GF3_0)
+GG4_0 = XOR(GF4_0, GF5_0)
+GG5_0 = XOR(GF6_0, GF7_0)
+GG6_0 = XOR(GF4_0, GF6_0)
+GG7_0 = XOR(GF5_0, GF7_0)
+GXD0_0 = XOR(GH0_0, GG4_0)
+GXD1_0 = XOR(GH1_0, GG5_0)
+GXD2_0 = XOR(GH2_0, GG6_0)
+GXD3_0 = XOR(GH3_0, GG7_0)
+GXD4_0 = XOR(GH4_0, GG0_0)
+GXD5_0 = XOR(GH5_0, GG1_0)
+GXD6_0 = XOR(GH6_0, GG2_0)
+GXD7_0 = XOR(GH7_0, GG3_0)
+GS0_0 = XOR(GXE0_0, GXD0_0)
+GS1_0 = XOR(GXE1_0, GXD1_0)
+GS2_0 = XOR(GXE2_0, GXD2_0)
+GS3_0 = XOR(GXE3_0, GXD3_0)
+GS4_0 = XOR(GXE4_0, GXD4_0)
+GS5_0 = XOR(GXE5_0, GXD5_0)
+GS6_0 = XOR(GXE6_0, GXD6_0)
+GS7_0 = XOR(GXE7_0, GXD7_0)
+GY0A_0 = NOT(GS0_0)
+GY1A_0 = NOT(GS1_0)
+GY2A_0 = NOT(GS2_0)
+GY0B_0 = NOT(GS0_0)
+GY1B_0 = NOT(GS1_0)
+GY3B_0 = NOT(GS3_0)
+GY0C_0 = NOT(GS0_0)
+GY2C_0 = NOT(GS2_0)
+GY3C_0 = NOT(GS3_0)
+GY1D_0 = NOT(GS1_0)
+GY2D_0 = NOT(GS2_0)
+GY3D_0 = NOT(GS3_0)
+GY5I_0 = NOT(GS5_0)
+GY7I_0 = NOT(GS7_0)
+GY5J_0 = NOT(GS5_0)
+GY6J_0 = NOT(GS6_0)
+GY4K_0 = NOT(GS4_0)
+GY7K_0 = NOT(GS7_0)
+GY4L_0 = NOT(GS4_0)
+GY6L_0 = NOT(GS6_0)
+GY4A_0 = NOT(GS4_0)
+GY5A_0 = NOT(GS5_0)
+GY6A_0 = NOT(GS6_0)
+GY4B_0 = NOT(GS4_0)
+GY5B_0 = NOT(GS5_0)
+GY7B_0 = NOT(GS7_0)
+GY4C_0 = NOT(GS4_0)
+GY6C_0 = NOT(GS6_0)
+GY7C_0 = NOT(GS7_0)
+GY5D_0 = NOT(GS5_0)
+GY6D_0 = NOT(GS6_0)
+GY7D_0 = NOT(GS7_0)
+GY1I_0 = NOT(GS1_0)
+GY3I_0 = NOT(GS3_0)
+GY1J_0 = NOT(GS1_0)
+GY2J_0 = NOT(GS2_0)
+GY0K_0 = NOT(GS0_0)
+GY3K_0 = NOT(GS3_0)
+GY0L_0 = NOT(GS0_0)
+GY2L_0 = NOT(GS2_0)
+GT0_0 = AND(GY0A_0, GY1A_0, GY2A_0, GS3_0)
+GT1_0 = AND(GY0B_0, GY1B_0, GS2_0, GY3B_0)
+GT2_0 = AND(GY0C_0, GS1_0, GY2C_0, GY3C_0)
+GT3_0 = AND(GS0_0, GY1D_0, GY2D_0, GY3D_0)
+GT4_0 = AND(GY4A_0, GY5A_0, GY6A_0, GS7_0)
+GT5_0 = AND(GY4B_0, GY5B_0, GS6_0, GY7B_0)
+GT6_0 = AND(GY4C_0, GS5_0, GY6C_0, GY7C_0)
+GT7_0 = AND(GS4_0, GY5D_0, GY6D_0, GY7D_0)
+GU0_0 = OR(GT0_0, GT1_0, GT2_0, GT3_0)
+GU1_0 = OR(GT4_0, GT5_0, GT6_0, GT7_0)
+GWA_0 = AND(GS4_0, GY5I_0, GS6_0, GY7I_0, GU0_0)
+GWB_0 = AND(GS4_0, GY5J_0, GY6J_0, GS7_0, GU0_0)
+GWC_0 = AND(GY4K_0, GS5_0, GS6_0, GY7K_0, GU0_0)
+GWD_0 = AND(GY4L_0, GS5_0, GY6L_0, GS7_0, GU0_0)
+GWE_0 = AND(GS0_0, GY1I_0, GS2_0, GY3I_0, GU1_0)
+GWF_0 = AND(GS0_0, GY1J_0, GY2J_0, GS3_0, GU1_0)
+GWG_0 = AND(GY0K_0, GS1_0, GS2_0, GY3K_0, GU1_0)
+GWH_0 = AND(GY0L_0, GS1_0, GY2L_0, GS3_0, GU1_0)
+GE0_0 = AND(GS0_0, GWA_0)
+GE1_0 = AND(GS1_0, GWA_0)
+GE2_0 = AND(GS2_0, GWA_0)
+GE3_0 = AND(GS3_0, GWA_0)
+GE4_0 = AND(GS0_0, GWB_0)
+GE5_0 = AND(GS1_0, GWB_0)
+GE6_0 = AND(GS2_0, GWB_0)
+GE7_0 = AND(GS3_0, GWB_0)
+GE8_0 = AND(GS0_0, GWC_0)
+GE9_0 = AND(GS1_0, GWC_0)
+GE10_0 = AND(GS2_0, GWC_0)
+GE11_0 = AND(GS3_0, GWC_0)
+GE12_0 = AND(GS0_0, GWD_0)
+GE13_0 = AND(GS1_0, GWD_0)
+GE14_0 = AND(GS2_0, GWD_0)
+GE15_0 = AND(GS3_0, GWD_0)
+GE16_0 = AND(GS4_0, GWE_0)
+GE17_0 = AND(GS5_0, GWE_0)
+GE18_0 = AND(GS6_0, GWE_0)
+GE19_0 = AND(GS7_0, GWE_0)
+GE20_0 = AND(GS4_0, GWF_0)
+GE21_0 = AND(GS5_0, GWF_0)
+GE22_0 = AND(GS6_0, GWF_0)
+GE23_0 = AND(GS7_0, GWF_0)
+GE24_0 = AND(GS4_0, GWG_0)
+GE25_0 = AND(GS5_0, GWG_0)
+GE26_0 = AND(GS6_0, GWG_0)
+GE27_0 = AND(GS7_0, GWG_0)
+GE28_0 = AND(GS4_0, GWH_0)
+GE29_0 = AND(GS5_0, GWH_0)
+GE30_0 = AND(GS6_0, GWH_0)
+GE31_0 = AND(GS7_0, GWH_0)
+GOD0_0 = XOR(GID0, GE0_0)
+GOD1_0 = XOR(GID1, GE1_0)
+GOD2_0 = XOR(GID2, GE2_0)
+GOD3_0 = XOR(GID3, GE3_0)
+GOD4_0 = XOR(GID4, GE4_0)
+GOD5_0 = XOR(GID5, GE5_0)
+GOD6_0 = XOR(GID6, GE6_0)
+GOD7_0 = XOR(GID7, GE7_0)
+GOD8_0 = XOR(GID8, GE8_0)
+GOD9_0 = XOR(GID9, GE9_0)
+GOD10_0 = XOR(GID10, GE10_0)
+GOD11_0 = XOR(GID11, GE11_0)
+GOD12_0 = XOR(GID12, GE12_0)
+GOD13_0 = XOR(GID13, GE13_0)
+GOD14_0 = XOR(GID14, GE14_0)
+GOD15_0 = XOR(GID15, GE15_0)
+GOD16_0 = XOR(GID16, GE16_0)
+GOD17_0 = XOR(GID17, GE17_0)
+GOD18_0 = XOR(GID18, GE18_0)
+GOD19_0 = XOR(GID19, GE19_0)
+GOD20_0 = XOR(GID20, GE20_0)
+GOD21_0 = XOR(GID21, GE21_0)
+GOD22_0 = XOR(GID22, GE22_0)
+GOD23_0 = XOR(GID23, GE23_0)
+GOD24_0 = XOR(GID24, GE24_0)
+GOD25_0 = XOR(GID25, GE25_0)
+GOD26_0 = XOR(GID26, GE26_0)
+GOD27_0 = XOR(GID27, GE27_0)
+GOD28_0 = XOR(GID28, GE28_0)
+GOD29_0 = XOR(GID29, GE29_0)
+GOD30_0 = XOR(GID30, GE30_0)
+GOD31_0 = XOR(GID31, GE31_0)
 
 
-CLK2_2 = NOR(Gxa1_enc_2, Gxa0_2)
+GXA0_2 = XOR(GID0, GID1)
+GXA1_enc_2 = XOR(GID2, GID3)
+CLK2_2 = NOR(GXA1_enc_2, GXA0_2)
 LIBAR2_2 = AND(CLK2_2, keyinput0)
-Gxa1_2 = XNOR(LIBAR2_2, Gxa1_enc_2)
-CLK1_2 = NOR(Gxa2_enc_2, Gxa1_2)
+GXA1_2 = XNOR(LIBAR2_2, GXA1_enc_2)
+GXA2_enc_2 = XOR(GID4, GID5)
+CLK1_2 = NOR(GXA1_enc_2, GXA2_enc_2)
 LIBAR1_2 = AND(CLK1_2, keyinput1)
-Gxa2_2 = XNOR(LIBAR1_2, Gxa2_enc_2)
-Gxa3_2 = XNOR(keyinput2, Gxa3_enc_2)
-Gxa4_2 = XOR(keyinput3, Gxa4_enc_2)
-Gxa7_2 = XNOR(keyinput4, Gxa7_enc_2)
-Gxa8_2 = XOR(keyinput5, Gxa8_enc_2)
-Gxa9_2 = XOR(keyinput6, Gxa9_enc_2)
-Gxa10_2 = XOR(keyinput7, Gxa10_enc_2)
-Gxa11_2 = XNOR(keyinput8, Gxa11_enc_2)
-Gxa14_2 = XNOR(keyinput9, Gxa14_enc_2)
-Gxa15_2 = XNOR(keyinput10, Gxa15_enc_2)
-Gh0_2 = XOR(keyinput11, Gh0_enc_2)
-Gh1_2 = XNOR(keyinput12, Gh1_enc_2)
-Gh2_2 = XOR(keyinput13, Gh2_enc_2)
-Gh3_2 = XOR(keyinput14, Gh3_enc_2)
-Gh4_2 = XOR(keyinput15, Gh4_enc_2)
+GXA2_2 = XNOR(LIBAR1_2, GXA2_enc_2)
+GXA3_2 = XOR(GID6, GID7)
+GXA4_enc_2 = XOR(GID8, GID9)
+GXA4_2 = XNOR(keyinput2, GXA4_enc_2)
+GXA5_enc_2 = XOR(GID10, GID11)
+GXA5_2 = XOR(keyinput3, GXA5_enc_2)
+GXA6_enc_2 = XOR(GID12, GID13)
+GXA6_2 = XNOR(keyinput4, GXA6_enc_2)
+GXA7_enc_2 = XOR(GID14, GID15)
+GXA7_2 = XOR(keyinput5, GXA7_enc_2)
+GXA8_enc_2 = XOR(GID16, GID17)
+GXA8_2 = XOR(keyinput6, GXA8_enc_2)
+GXA9_enc_2 = XOR(GID18, GID19)
+GXA9_2 = XOR(keyinput7, GXA9_enc_2)
+GXA10_2 = XOR(GID20, GID21)
+GXA11_2 = XOR(GID22, GID23)
+GXA12_2 = XOR(GID24, GID25)
+GXA13_2 = XOR(GID26, GID27)
+GXA14_2 = XOR(GID28, GID29)
+GXA15_2 = XOR(GID30, GID31)
+GH0_2 = AND(GIC0, GR)
+GH1_2 = AND(GIC1, GR)
+GH2_enc_2 = AND(GIC2, GR)
+GH2_2 = XNOR(keyinput8, GH2_enc_2)
+GH3_2 = AND(GIC3, GR)
+GH4_enc_2 = AND(GIC4, GR)
+GH4_2 = XNOR(keyinput9, GH4_enc_2)
+GH5_enc_2 = AND(GIC5, GR)
+GH5_2 = XNOR(keyinput10, GH5_enc_2)
+GH6_enc_2 = AND(GIC6, GR)
+GH6_2 = XOR(keyinput11, GH6_enc_2)
+GH7_2 = AND(GIC7, GR)
+GXB0_2 = XOR(GID0, GID4)
+GXC0_2 = XOR(GID8, GID12)
+GXB1_2 = XOR(GID1, GID5)
+GXC1_enc_2 = XOR(GID9, GID13)
+GXC1_2 = XNOR(keyinput12, GXC1_enc_2)
+GXB2_enc_2 = XOR(GID2, GID6)
+GXB2_2 = XOR(keyinput13, GXB2_enc_2)
+GXC2_enc_2 = XOR(GID10, GID14)
+GXC2_2 = XOR(keyinput14, GXC2_enc_2)
+GXB3_enc_2 = XOR(GID3, GID7)
+GXB3_2 = XOR(keyinput15, GXB3_enc_2)
+GXC3_2 = XOR(GID11, GID15)
+GXB4_2 = XOR(GID16, GID20)
+GXC4_2 = XOR(GID24, GID28)
+GXB5_2 = XOR(GID17, GID21)
+GXC5_2 = XOR(GID25, GID29)
+GXB6_2 = XOR(GID18, GID22)
+GXC6_2 = XOR(GID26, GID30)
+GXB7_2 = XOR(GID19, GID23)
+GXC7_2 = XOR(GID27, GID31)
+GF0_2 = XOR(GXA0_2, GXA1_2)
+GF1_2 = XOR(GXA2_2, GXA3_2)
+GF2_2 = XOR(GXA4_2, GXA5_2)
+GF3_2 = XOR(GXA6_2, GXA7_2)
+GF4_2 = XOR(GXA8_2, GXA9_2)
+GF5_2 = XOR(GXA10_2, GXA11_2)
+GF6_2 = XOR(GXA12_2, GXA13_2)
+GF7_2 = XOR(GXA14_2, GXA15_2)
+GXE0_2 = XOR(GXB0_2, GXC0_2)
+GXE1_2 = XOR(GXB1_2, GXC1_2)
+GXE2_2 = XOR(GXB2_2, GXC2_2)
+GXE3_2 = XOR(GXB3_2, GXC3_2)
+GXE4_2 = XOR(GXB4_2, GXC4_2)
+GXE5_2 = XOR(GXB5_2, GXC5_2)
+GXE6_2 = XOR(GXB6_2, GXC6_2)
+GXE7_2 = XOR(GXB7_2, GXC7_2)
+GG0_2 = XOR(GF0_2, GF1_2)
+GG1_2 = XOR(GF2_2, GF3_2)
+GG2_2 = XOR(GF0_2, GF2_2)
+GG3_2 = XOR(GF1_2, GF3_2)
+GG4_2 = XOR(GF4_2, GF5_2)
+GG5_2 = XOR(GF6_2, GF7_2)
+GG6_2 = XOR(GF4_2, GF6_2)
+GG7_2 = XOR(GF5_2, GF7_2)
+GXD0_2 = XOR(GH0_2, GG4_2)
+GXD1_2 = XOR(GH1_2, GG5_2)
+GXD2_2 = XOR(GH2_2, GG6_2)
+GXD3_2 = XOR(GH3_2, GG7_2)
+GXD4_2 = XOR(GH4_2, GG0_2)
+GXD5_2 = XOR(GH5_2, GG1_2)
+GXD6_2 = XOR(GH6_2, GG2_2)
+GXD7_2 = XOR(GH7_2, GG3_2)
+GS0_2 = XOR(GXE0_2, GXD0_2)
+GS1_2 = XOR(GXE1_2, GXD1_2)
+GS2_2 = XOR(GXE2_2, GXD2_2)
+GS3_2 = XOR(GXE3_2, GXD3_2)
+GS4_2 = XOR(GXE4_2, GXD4_2)
+GS5_2 = XOR(GXE5_2, GXD5_2)
+GS6_2 = XOR(GXE6_2, GXD6_2)
+GS7_2 = XOR(GXE7_2, GXD7_2)
+GY0A_2 = NOT(GS0_2)
+GY1A_2 = NOT(GS1_2)
+GY2A_2 = NOT(GS2_2)
+GY0B_2 = NOT(GS0_2)
+GY1B_2 = NOT(GS1_2)
+GY3B_2 = NOT(GS3_2)
+GY0C_2 = NOT(GS0_2)
+GY2C_2 = NOT(GS2_2)
+GY3C_2 = NOT(GS3_2)
+GY1D_2 = NOT(GS1_2)
+GY2D_2 = NOT(GS2_2)
+GY3D_2 = NOT(GS3_2)
+GY5I_2 = NOT(GS5_2)
+GY7I_2 = NOT(GS7_2)
+GY5J_2 = NOT(GS5_2)
+GY6J_2 = NOT(GS6_2)
+GY4K_2 = NOT(GS4_2)
+GY7K_2 = NOT(GS7_2)
+GY4L_2 = NOT(GS4_2)
+GY6L_2 = NOT(GS6_2)
+GY4A_2 = NOT(GS4_2)
+GY5A_2 = NOT(GS5_2)
+GY6A_2 = NOT(GS6_2)
+GY4B_2 = NOT(GS4_2)
+GY5B_2 = NOT(GS5_2)
+GY7B_2 = NOT(GS7_2)
+GY4C_2 = NOT(GS4_2)
+GY6C_2 = NOT(GS6_2)
+GY7C_2 = NOT(GS7_2)
+GY5D_2 = NOT(GS5_2)
+GY6D_2 = NOT(GS6_2)
+GY7D_2 = NOT(GS7_2)
+GY1I_2 = NOT(GS1_2)
+GY3I_2 = NOT(GS3_2)
+GY1J_2 = NOT(GS1_2)
+GY2J_2 = NOT(GS2_2)
+GY0K_2 = NOT(GS0_2)
+GY3K_2 = NOT(GS3_2)
+GY0L_2 = NOT(GS0_2)
+GY2L_2 = NOT(GS2_2)
+GT0_2 = AND(GY0A_2, GY1A_2, GY2A_2, GS3_2)
+GT1_2 = AND(GY0B_2, GY1B_2, GS2_2, GY3B_2)
+GT2_2 = AND(GY0C_2, GS1_2, GY2C_2, GY3C_2)
+GT3_2 = AND(GS0_2, GY1D_2, GY2D_2, GY3D_2)
+GT4_2 = AND(GY4A_2, GY5A_2, GY6A_2, GS7_2)
+GT5_2 = AND(GY4B_2, GY5B_2, GS6_2, GY7B_2)
+GT6_2 = AND(GY4C_2, GS5_2, GY6C_2, GY7C_2)
+GT7_2 = AND(GS4_2, GY5D_2, GY6D_2, GY7D_2)
+GU0_2 = OR(GT0_2, GT1_2, GT2_2, GT3_2)
+GU1_2 = OR(GT4_2, GT5_2, GT6_2, GT7_2)
+GWA_2 = AND(GS4_2, GY5I_2, GS6_2, GY7I_2, GU0_2)
+GWB_2 = AND(GS4_2, GY5J_2, GY6J_2, GS7_2, GU0_2)
+GWC_2 = AND(GY4K_2, GS5_2, GS6_2, GY7K_2, GU0_2)
+GWD_2 = AND(GY4L_2, GS5_2, GY6L_2, GS7_2, GU0_2)
+GWE_2 = AND(GS0_2, GY1I_2, GS2_2, GY3I_2, GU1_2)
+GWF_2 = AND(GS0_2, GY1J_2, GY2J_2, GS3_2, GU1_2)
+GWG_2 = AND(GY0K_2, GS1_2, GS2_2, GY3K_2, GU1_2)
+GWH_2 = AND(GY0L_2, GS1_2, GY2L_2, GS3_2, GU1_2)
+GE0_2 = AND(GS0_2, GWA_2)
+GE1_2 = AND(GS1_2, GWA_2)
+GE2_2 = AND(GS2_2, GWA_2)
+GE3_2 = AND(GS3_2, GWA_2)
+GE4_2 = AND(GS0_2, GWB_2)
+GE5_2 = AND(GS1_2, GWB_2)
+GE6_2 = AND(GS2_2, GWB_2)
+GE7_2 = AND(GS3_2, GWB_2)
+GE8_2 = AND(GS0_2, GWC_2)
+GE9_2 = AND(GS1_2, GWC_2)
+GE10_2 = AND(GS2_2, GWC_2)
+GE11_2 = AND(GS3_2, GWC_2)
+GE12_2 = AND(GS0_2, GWD_2)
+GE13_2 = AND(GS1_2, GWD_2)
+GE14_2 = AND(GS2_2, GWD_2)
+GE15_2 = AND(GS3_2, GWD_2)
+GE16_2 = AND(GS4_2, GWE_2)
+GE17_2 = AND(GS5_2, GWE_2)
+GE18_2 = AND(GS6_2, GWE_2)
+GE19_2 = AND(GS7_2, GWE_2)
+GE20_2 = AND(GS4_2, GWF_2)
+GE21_2 = AND(GS5_2, GWF_2)
+GE22_2 = AND(GS6_2, GWF_2)
+GE23_2 = AND(GS7_2, GWF_2)
+GE24_2 = AND(GS4_2, GWG_2)
+GE25_2 = AND(GS5_2, GWG_2)
+GE26_2 = AND(GS6_2, GWG_2)
+GE27_2 = AND(GS7_2, GWG_2)
+GE28_2 = AND(GS4_2, GWH_2)
+GE29_2 = AND(GS5_2, GWH_2)
+GE30_2 = AND(GS6_2, GWH_2)
+GE31_2 = AND(GS7_2, GWH_2)
+GOD0 = XOR(GID0, GE0_2)
+GOD1 = XOR(GID1, GE1_2)
+GOD2 = XOR(GID2, GE2_2)
+GOD3 = XOR(GID3, GE3_2)
+GOD4 = XOR(GID4, GE4_2)
+GOD5 = XOR(GID5, GE5_2)
+GOD6 = XOR(GID6, GE6_2)
+GOD7 = XOR(GID7, GE7_2)
+GOD8 = XOR(GID8, GE8_2)
+GOD9 = XOR(GID9, GE9_2)
+GOD10 = XOR(GID10, GE10_2)
+GOD11 = XOR(GID11, GE11_2)
+GOD12 = XOR(GID12, GE12_2)
+GOD13 = XOR(GID13, GE13_2)
+GOD14 = XOR(GID14, GE14_2)
+GOD15 = XOR(GID15, GE15_2)
+GOD16 = XOR(GID16, GE16_2)
+GOD17 = XOR(GID17, GE17_2)
+GOD18 = XOR(GID18, GE18_2)
+GOD19 = XOR(GID19, GE19_2)
+GOD20 = XOR(GID20, GE20_2)
+GOD21 = XOR(GID21, GE21_2)
+GOD22 = XOR(GID22, GE22_2)
+GOD23 = XOR(GID23, GE23_2)
+GOD24 = XOR(GID24, GE24_2)
+GOD25 = XOR(GID25, GE25_2)
+GOD26 = XOR(GID26, GE26_2)
+GOD27 = XOR(GID27, GE27_2)
+GOD28 = XOR(GID28, GE28_2)
+GOD29 = XOR(GID29, GE29_2)
+GOD30 = XOR(GID30, GE30_2)
+GOD31 = XOR(GID31, GE31_2)

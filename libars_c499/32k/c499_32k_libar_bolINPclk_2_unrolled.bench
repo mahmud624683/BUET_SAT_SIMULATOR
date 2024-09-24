@@ -190,19 +190,43 @@ INPUT(keyinput14)
 
 INPUT(keyinput15)
 
+INPUT(keyinput16)
+
+INPUT(keyinput17)
+
+INPUT(keyinput18)
+
+INPUT(keyinput19)
+
+INPUT(keyinput20)
+
+INPUT(keyinput21)
+
+INPUT(keyinput22)
+
+INPUT(keyinput23)
+
+INPUT(keyinput24)
+
+INPUT(keyinput25)
+
+INPUT(keyinput26)
+
+INPUT(keyinput27)
+
+INPUT(keyinput28)
+
+INPUT(keyinput29)
+
+INPUT(keyinput30)
+
+INPUT(keyinput31)
+
 GXA0_enc = XOR(GID0, GID1)
 
 GXA0 = XNOR(keyinput0, GXA0_enc)
 
-GXA1 = XOR(GID2, GID3)
-
-GXA2 = XOR(GID4, GID5)
-
-GXA3 = XOR(GID6, GID7)
-
-GXA4 = XOR(GID8, GID9)
-
-GXA5_enc = XOR(GID10, GID11)
+GXA1_enc = XOR(GID2, GID3)
 
 W1_INV = NOT(GID0)
 
@@ -210,79 +234,93 @@ ONE = OR(GID0, W1_INV)
 
 LIBAR2 = AND(ONE, keyinput1)
 
-GXA5 = XNOR(LIBAR2, GXA5_enc)
+GXA1 = XOR(LIBAR2, GXA1_enc)
 
-GXA6_enc = XOR(GID12, GID13)
+GXA2_enc = XOR(GID4, GID5)
 
 LIBAR1 = AND(ONE, keyinput2)
 
-GXA6 = XNOR(LIBAR1, GXA6_enc)
+GXA2 = XOR(LIBAR1, GXA2_enc)
+
+GXA3 = XOR(GID6, GID7)
+
+GXA4 = XOR(GID8, GID9)
+
+GXA5_enc = XOR(GID10, GID11)
+
+GXA5 = XNOR(keyinput3, GXA5_enc)
+
+GXA6_enc = XOR(GID12, GID13)
+
+GXA6 = XNOR(keyinput4, GXA6_enc)
 
 GXA7_enc = XOR(GID14, GID15)
 
-GXA7 = XOR(keyinput3, GXA7_enc)
+GXA7 = XOR(keyinput5, GXA7_enc)
 
 GXA8_enc = XOR(GID16, GID17)
 
-GXA8 = XNOR(keyinput4, GXA8_enc)
+GXA8 = XOR(keyinput6, GXA8_enc)
 
 GXA9_enc = XOR(GID18, GID19)
 
-GXA9 = XOR(keyinput5, GXA9_enc)
+GXA9 = XOR(keyinput7, GXA9_enc)
 
 GXA10_enc = XOR(GID20, GID21)
 
-GXA10 = XOR(keyinput6, GXA10_enc)
+GXA10 = XNOR(keyinput8, GXA10_enc)
 
 GXA11_enc = XOR(GID22, GID23)
 
-GXA11 = XOR(keyinput7, GXA11_enc)
+GXA11 = XNOR(keyinput9, GXA11_enc)
 
 GXA12 = XOR(GID24, GID25)
 
-GXA13 = XOR(GID26, GID27)
+GXA13_enc = XOR(GID26, GID27)
 
-GXA14_enc = XOR(GID28, GID29)
+GXA13 = XNOR(keyinput10, GXA13_enc)
 
-GXA14 = XNOR(keyinput8, GXA14_enc)
+GXA14 = XOR(GID28, GID29)
 
 GXA15 = XOR(GID30, GID31)
 
-GH0 = AND(GIC0, GR)
+GH0_enc = AND(GIC0, GR)
+
+GH0 = XNOR(keyinput11, GH0_enc)
 
 GH1 = AND(GIC1, GR)
 
-GH2_enc = AND(GIC2, GR)
+GH2 = AND(GIC2, GR)
 
-GH2 = XNOR(keyinput9, GH2_enc)
+GH3_enc = AND(GIC3, GR)
 
-GH3 = AND(GIC3, GR)
+GH3 = XNOR(keyinput12, GH3_enc)
 
 GH4_enc = AND(GIC4, GR)
 
-GH4 = XNOR(keyinput10, GH4_enc)
+GH4 = XOR(keyinput13, GH4_enc)
 
-GH5_enc = AND(GIC5, GR)
-
-GH5 = XOR(keyinput11, GH5_enc)
+GH5 = AND(GIC5, GR)
 
 GH6_enc = AND(GIC6, GR)
 
-GH6 = XNOR(keyinput12, GH6_enc)
+GH6 = XNOR(keyinput14, GH6_enc)
 
 GH7_enc = AND(GIC7, GR)
 
-GH7 = XOR(keyinput13, GH7_enc)
+GH7 = XOR(keyinput15, GH7_enc)
 
 GXB0_enc = XOR(GID0, GID4)
 
-GXB0 = XOR(keyinput14, GXB0_enc)
+GXB0 = XNOR(keyinput16, GXB0_enc)
 
 GXC0_enc = XOR(GID8, GID12)
 
-GXC0 = XOR(keyinput15, GXC0_enc)
+GXC0 = XOR(keyinput17, GXC0_enc)
 
-GXB1 = XOR(GID1, GID5)
+GXB1_enc = XOR(GID1, GID5)
+
+GXB1 = XOR(keyinput18, GXB1_enc)
 
 GXC1 = XOR(GID9, GID13)
 
@@ -292,39 +330,65 @@ GXC2 = XOR(GID10, GID14)
 
 GXB3 = XOR(GID3, GID7)
 
-GXC3 = XOR(GID11, GID15)
+GXC3_enc = XOR(GID11, GID15)
+
+GXC3 = XNOR(keyinput19, GXC3_enc)
 
 GXB4 = XOR(GID16, GID20)
 
 GXC4 = XOR(GID24, GID28)
 
-GXB5 = XOR(GID17, GID21)
+GXB5_enc = XOR(GID17, GID21)
 
-GXC5 = XOR(GID25, GID29)
+GXB5 = XNOR(keyinput20, GXB5_enc)
 
-GXB6 = XOR(GID18, GID22)
+GXC5_enc = XOR(GID25, GID29)
 
-GXC6 = XOR(GID26, GID30)
+GXC5 = XOR(keyinput21, GXC5_enc)
+
+GXB6_enc = XOR(GID18, GID22)
+
+GXB6 = XOR(keyinput22, GXB6_enc)
+
+GXC6_enc = XOR(GID26, GID30)
+
+GXC6 = XOR(keyinput23, GXC6_enc)
 
 GXB7 = XOR(GID19, GID23)
 
-GXC7 = XOR(GID27, GID31)
+GXC7_enc = XOR(GID27, GID31)
+
+GXC7 = XNOR(keyinput24, GXC7_enc)
 
 GF0 = XOR(GXA0, GXA1)
 
-GF1 = XOR(GXA2, GXA3)
+GF1_enc = XOR(GXA2, GXA3)
 
-GF2 = XOR(GXA4, GXA5)
+GF1 = XNOR(keyinput25, GF1_enc)
 
-GF3 = XOR(GXA6, GXA7)
+GF2_enc = XOR(GXA4, GXA5)
 
-GF4 = XOR(GXA8, GXA9)
+GF2 = XNOR(keyinput26, GF2_enc)
 
-GF5 = XOR(GXA10, GXA11)
+GF3_enc = XOR(GXA6, GXA7)
 
-GF6 = XOR(GXA12, GXA13)
+GF3 = XNOR(keyinput27, GF3_enc)
 
-GF7 = XOR(GXA14, GXA15)
+GF4_enc = XOR(GXA8, GXA9)
+
+GF4 = XNOR(keyinput28, GF4_enc)
+
+GF5_enc = XOR(GXA10, GXA11)
+
+GF5 = XOR(keyinput29, GF5_enc)
+
+GF6_enc = XOR(GXA12, GXA13)
+
+GF6 = XNOR(keyinput30, GF6_enc)
+
+GF7_enc = XOR(GXA14, GXA15)
+
+GF7 = XOR(keyinput31, GF7_enc)
 
 GXE0 = XOR(GXB0, GXC0)
 
@@ -605,72 +669,88 @@ GOD31_2 = XOR(GID31, GE31)
 #unfold no --------------------------------------------------2
 GXA0_enc_0 = XOR(GID0, GID1)
 GXA0_0 = XNOR(keyinput0, GXA0_enc_0)
-GXA1_0 = XOR(GID2, GID3)
-GXA2_0 = XOR(GID4, GID5)
+GXA1_enc_0 = XOR(GID2, GID3)
+CLK2_0 = NOR(GXA1_enc_0, GXA0_0)
+LIBAR2_0 = AND(CLK2_0, keyinput1)
+GXA1_0 = XOR(LIBAR2_0, GXA1_enc_0)
+GXA2_enc_0 = XOR(GID4, GID5)
+CLK1_0 = NOR(GXA1_enc_0, GXA0_0)
+LIBAR1_0 = AND(CLK1_0, keyinput2)
+GXA2_0 = XOR(LIBAR1_0, GXA2_enc_0)
 GXA3_0 = XOR(GID6, GID7)
 GXA4_0 = XOR(GID8, GID9)
 GXA5_enc_0 = XOR(GID10, GID11)
-CLK2_0 = NOR(GXA5_enc_0, GXA4_0)
-LIBAR2_0 = AND(CLK2_0, keyinput1)
-GXA5_0 = XNOR(LIBAR2_0, GXA5_enc_0)
+GXA5_0 = XNOR(keyinput3, GXA5_enc_0)
 GXA6_enc_0 = XOR(GID12, GID13)
-CLK1_0 = NOR(GXA5_enc_0, GXA4_0)
-LIBAR1_0 = AND(CLK1_0, keyinput2)
-GXA6_0 = XNOR(LIBAR1_0, GXA6_enc_0)
+GXA6_0 = XNOR(keyinput4, GXA6_enc_0)
 GXA7_enc_0 = XOR(GID14, GID15)
-GXA7_0 = XOR(keyinput3, GXA7_enc_0)
+GXA7_0 = XOR(keyinput5, GXA7_enc_0)
 GXA8_enc_0 = XOR(GID16, GID17)
-GXA8_0 = XNOR(keyinput4, GXA8_enc_0)
+GXA8_0 = XOR(keyinput6, GXA8_enc_0)
 GXA9_enc_0 = XOR(GID18, GID19)
-GXA9_0 = XOR(keyinput5, GXA9_enc_0)
+GXA9_0 = XOR(keyinput7, GXA9_enc_0)
 GXA10_enc_0 = XOR(GID20, GID21)
-GXA10_0 = XOR(keyinput6, GXA10_enc_0)
+GXA10_0 = XNOR(keyinput8, GXA10_enc_0)
 GXA11_enc_0 = XOR(GID22, GID23)
-GXA11_0 = XOR(keyinput7, GXA11_enc_0)
+GXA11_0 = XNOR(keyinput9, GXA11_enc_0)
 GXA12_0 = XOR(GID24, GID25)
-GXA13_0 = XOR(GID26, GID27)
-GXA14_enc_0 = XOR(GID28, GID29)
-GXA14_0 = XNOR(keyinput8, GXA14_enc_0)
+GXA13_enc_0 = XOR(GID26, GID27)
+GXA13_0 = XNOR(keyinput10, GXA13_enc_0)
+GXA14_0 = XOR(GID28, GID29)
 GXA15_0 = XOR(GID30, GID31)
-GH0_0 = AND(GIC0, GR)
+GH0_enc_0 = AND(GIC0, GR)
+GH0_0 = XNOR(keyinput11, GH0_enc_0)
 GH1_0 = AND(GIC1, GR)
-GH2_enc_0 = AND(GIC2, GR)
-GH2_0 = XNOR(keyinput9, GH2_enc_0)
-GH3_0 = AND(GIC3, GR)
+GH2_0 = AND(GIC2, GR)
+GH3_enc_0 = AND(GIC3, GR)
+GH3_0 = XNOR(keyinput12, GH3_enc_0)
 GH4_enc_0 = AND(GIC4, GR)
-GH4_0 = XNOR(keyinput10, GH4_enc_0)
-GH5_enc_0 = AND(GIC5, GR)
-GH5_0 = XOR(keyinput11, GH5_enc_0)
+GH4_0 = XOR(keyinput13, GH4_enc_0)
+GH5_0 = AND(GIC5, GR)
 GH6_enc_0 = AND(GIC6, GR)
-GH6_0 = XNOR(keyinput12, GH6_enc_0)
+GH6_0 = XNOR(keyinput14, GH6_enc_0)
 GH7_enc_0 = AND(GIC7, GR)
-GH7_0 = XOR(keyinput13, GH7_enc_0)
+GH7_0 = XOR(keyinput15, GH7_enc_0)
 GXB0_enc_0 = XOR(GID0, GID4)
-GXB0_0 = XOR(keyinput14, GXB0_enc_0)
+GXB0_0 = XNOR(keyinput16, GXB0_enc_0)
 GXC0_enc_0 = XOR(GID8, GID12)
-GXC0_0 = XOR(keyinput15, GXC0_enc_0)
-GXB1_0 = XOR(GID1, GID5)
+GXC0_0 = XOR(keyinput17, GXC0_enc_0)
+GXB1_enc_0 = XOR(GID1, GID5)
+GXB1_0 = XOR(keyinput18, GXB1_enc_0)
 GXC1_0 = XOR(GID9, GID13)
 GXB2_0 = XOR(GID2, GID6)
 GXC2_0 = XOR(GID10, GID14)
 GXB3_0 = XOR(GID3, GID7)
-GXC3_0 = XOR(GID11, GID15)
+GXC3_enc_0 = XOR(GID11, GID15)
+GXC3_0 = XNOR(keyinput19, GXC3_enc_0)
 GXB4_0 = XOR(GID16, GID20)
 GXC4_0 = XOR(GID24, GID28)
-GXB5_0 = XOR(GID17, GID21)
-GXC5_0 = XOR(GID25, GID29)
-GXB6_0 = XOR(GID18, GID22)
-GXC6_0 = XOR(GID26, GID30)
+GXB5_enc_0 = XOR(GID17, GID21)
+GXB5_0 = XNOR(keyinput20, GXB5_enc_0)
+GXC5_enc_0 = XOR(GID25, GID29)
+GXC5_0 = XOR(keyinput21, GXC5_enc_0)
+GXB6_enc_0 = XOR(GID18, GID22)
+GXB6_0 = XOR(keyinput22, GXB6_enc_0)
+GXC6_enc_0 = XOR(GID26, GID30)
+GXC6_0 = XOR(keyinput23, GXC6_enc_0)
 GXB7_0 = XOR(GID19, GID23)
-GXC7_0 = XOR(GID27, GID31)
+GXC7_enc_0 = XOR(GID27, GID31)
+GXC7_0 = XNOR(keyinput24, GXC7_enc_0)
 GF0_0 = XOR(GXA0_0, GXA1_0)
-GF1_0 = XOR(GXA2_0, GXA3_0)
-GF2_0 = XOR(GXA4_0, GXA5_0)
-GF3_0 = XOR(GXA6_0, GXA7_0)
-GF4_0 = XOR(GXA8_0, GXA9_0)
-GF5_0 = XOR(GXA10_0, GXA11_0)
-GF6_0 = XOR(GXA12_0, GXA13_0)
-GF7_0 = XOR(GXA14_0, GXA15_0)
+GF1_enc_0 = XOR(GXA2_0, GXA3_0)
+GF1_0 = XNOR(keyinput25, GF1_enc_0)
+GF2_enc_0 = XOR(GXA4_0, GXA5_0)
+GF2_0 = XNOR(keyinput26, GF2_enc_0)
+GF3_enc_0 = XOR(GXA6_0, GXA7_0)
+GF3_0 = XNOR(keyinput27, GF3_enc_0)
+GF4_enc_0 = XOR(GXA8_0, GXA9_0)
+GF4_0 = XNOR(keyinput28, GF4_enc_0)
+GF5_enc_0 = XOR(GXA10_0, GXA11_0)
+GF5_0 = XOR(keyinput29, GF5_enc_0)
+GF6_enc_0 = XOR(GXA12_0, GXA13_0)
+GF6_0 = XNOR(keyinput30, GF6_enc_0)
+GF7_enc_0 = XOR(GXA14_0, GXA15_0)
+GF7_0 = XOR(keyinput31, GF7_enc_0)
 GXE0_0 = XOR(GXB0_0, GXC0_0)
 GXE1_0 = XOR(GXB1_0, GXC1_0)
 GXE2_0 = XOR(GXB2_0, GXC2_0)
@@ -829,72 +909,88 @@ GOD31_0 = XOR(GID31, GE31_0)
 
 GXA0_enc_2 = XOR(GID0, GID1)
 GXA0_2 = XNOR(keyinput0, GXA0_enc_2)
-GXA1_2 = XOR(GID2, GID3)
-GXA2_2 = XOR(GID4, GID5)
+GXA1_enc_2 = XOR(GID2, GID3)
+CLK2_2 = NOR(GXA1_enc_2, GXA0_2)
+LIBAR2_2 = AND(CLK2_2, keyinput1)
+GXA1_2 = XOR(LIBAR2_2, GXA1_enc_2)
+GXA2_enc_2 = XOR(GID4, GID5)
+CLK1_2 = NOR(GXA1_enc_2, GXA0_2)
+LIBAR1_2 = AND(CLK1_2, keyinput2)
+GXA2_2 = XOR(LIBAR1_2, GXA2_enc_2)
 GXA3_2 = XOR(GID6, GID7)
 GXA4_2 = XOR(GID8, GID9)
 GXA5_enc_2 = XOR(GID10, GID11)
-CLK2_2 = NOR(GXA5_enc_2, GXA4_2)
-LIBAR2_2 = AND(CLK2_2, keyinput1)
-GXA5_2 = XNOR(LIBAR2_2, GXA5_enc_2)
+GXA5_2 = XNOR(keyinput3, GXA5_enc_2)
 GXA6_enc_2 = XOR(GID12, GID13)
-CLK1_2 = NOR(GXA5_enc_2, GXA4_2)
-LIBAR1_2 = AND(CLK1_2, keyinput2)
-GXA6_2 = XNOR(LIBAR1_2, GXA6_enc_2)
+GXA6_2 = XNOR(keyinput4, GXA6_enc_2)
 GXA7_enc_2 = XOR(GID14, GID15)
-GXA7_2 = XOR(keyinput3, GXA7_enc_2)
+GXA7_2 = XOR(keyinput5, GXA7_enc_2)
 GXA8_enc_2 = XOR(GID16, GID17)
-GXA8_2 = XNOR(keyinput4, GXA8_enc_2)
+GXA8_2 = XOR(keyinput6, GXA8_enc_2)
 GXA9_enc_2 = XOR(GID18, GID19)
-GXA9_2 = XOR(keyinput5, GXA9_enc_2)
+GXA9_2 = XOR(keyinput7, GXA9_enc_2)
 GXA10_enc_2 = XOR(GID20, GID21)
-GXA10_2 = XOR(keyinput6, GXA10_enc_2)
+GXA10_2 = XNOR(keyinput8, GXA10_enc_2)
 GXA11_enc_2 = XOR(GID22, GID23)
-GXA11_2 = XOR(keyinput7, GXA11_enc_2)
+GXA11_2 = XNOR(keyinput9, GXA11_enc_2)
 GXA12_2 = XOR(GID24, GID25)
-GXA13_2 = XOR(GID26, GID27)
-GXA14_enc_2 = XOR(GID28, GID29)
-GXA14_2 = XNOR(keyinput8, GXA14_enc_2)
+GXA13_enc_2 = XOR(GID26, GID27)
+GXA13_2 = XNOR(keyinput10, GXA13_enc_2)
+GXA14_2 = XOR(GID28, GID29)
 GXA15_2 = XOR(GID30, GID31)
-GH0_2 = AND(GIC0, GR)
+GH0_enc_2 = AND(GIC0, GR)
+GH0_2 = XNOR(keyinput11, GH0_enc_2)
 GH1_2 = AND(GIC1, GR)
-GH2_enc_2 = AND(GIC2, GR)
-GH2_2 = XNOR(keyinput9, GH2_enc_2)
-GH3_2 = AND(GIC3, GR)
+GH2_2 = AND(GIC2, GR)
+GH3_enc_2 = AND(GIC3, GR)
+GH3_2 = XNOR(keyinput12, GH3_enc_2)
 GH4_enc_2 = AND(GIC4, GR)
-GH4_2 = XNOR(keyinput10, GH4_enc_2)
-GH5_enc_2 = AND(GIC5, GR)
-GH5_2 = XOR(keyinput11, GH5_enc_2)
+GH4_2 = XOR(keyinput13, GH4_enc_2)
+GH5_2 = AND(GIC5, GR)
 GH6_enc_2 = AND(GIC6, GR)
-GH6_2 = XNOR(keyinput12, GH6_enc_2)
+GH6_2 = XNOR(keyinput14, GH6_enc_2)
 GH7_enc_2 = AND(GIC7, GR)
-GH7_2 = XOR(keyinput13, GH7_enc_2)
+GH7_2 = XOR(keyinput15, GH7_enc_2)
 GXB0_enc_2 = XOR(GID0, GID4)
-GXB0_2 = XOR(keyinput14, GXB0_enc_2)
+GXB0_2 = XNOR(keyinput16, GXB0_enc_2)
 GXC0_enc_2 = XOR(GID8, GID12)
-GXC0_2 = XOR(keyinput15, GXC0_enc_2)
-GXB1_2 = XOR(GID1, GID5)
+GXC0_2 = XOR(keyinput17, GXC0_enc_2)
+GXB1_enc_2 = XOR(GID1, GID5)
+GXB1_2 = XOR(keyinput18, GXB1_enc_2)
 GXC1_2 = XOR(GID9, GID13)
 GXB2_2 = XOR(GID2, GID6)
 GXC2_2 = XOR(GID10, GID14)
 GXB3_2 = XOR(GID3, GID7)
-GXC3_2 = XOR(GID11, GID15)
+GXC3_enc_2 = XOR(GID11, GID15)
+GXC3_2 = XNOR(keyinput19, GXC3_enc_2)
 GXB4_2 = XOR(GID16, GID20)
 GXC4_2 = XOR(GID24, GID28)
-GXB5_2 = XOR(GID17, GID21)
-GXC5_2 = XOR(GID25, GID29)
-GXB6_2 = XOR(GID18, GID22)
-GXC6_2 = XOR(GID26, GID30)
+GXB5_enc_2 = XOR(GID17, GID21)
+GXB5_2 = XNOR(keyinput20, GXB5_enc_2)
+GXC5_enc_2 = XOR(GID25, GID29)
+GXC5_2 = XOR(keyinput21, GXC5_enc_2)
+GXB6_enc_2 = XOR(GID18, GID22)
+GXB6_2 = XOR(keyinput22, GXB6_enc_2)
+GXC6_enc_2 = XOR(GID26, GID30)
+GXC6_2 = XOR(keyinput23, GXC6_enc_2)
 GXB7_2 = XOR(GID19, GID23)
-GXC7_2 = XOR(GID27, GID31)
+GXC7_enc_2 = XOR(GID27, GID31)
+GXC7_2 = XNOR(keyinput24, GXC7_enc_2)
 GF0_2 = XOR(GXA0_2, GXA1_2)
-GF1_2 = XOR(GXA2_2, GXA3_2)
-GF2_2 = XOR(GXA4_2, GXA5_2)
-GF3_2 = XOR(GXA6_2, GXA7_2)
-GF4_2 = XOR(GXA8_2, GXA9_2)
-GF5_2 = XOR(GXA10_2, GXA11_2)
-GF6_2 = XOR(GXA12_2, GXA13_2)
-GF7_2 = XOR(GXA14_2, GXA15_2)
+GF1_enc_2 = XOR(GXA2_2, GXA3_2)
+GF1_2 = XNOR(keyinput25, GF1_enc_2)
+GF2_enc_2 = XOR(GXA4_2, GXA5_2)
+GF2_2 = XNOR(keyinput26, GF2_enc_2)
+GF3_enc_2 = XOR(GXA6_2, GXA7_2)
+GF3_2 = XNOR(keyinput27, GF3_enc_2)
+GF4_enc_2 = XOR(GXA8_2, GXA9_2)
+GF4_2 = XNOR(keyinput28, GF4_enc_2)
+GF5_enc_2 = XOR(GXA10_2, GXA11_2)
+GF5_2 = XOR(keyinput29, GF5_enc_2)
+GF6_enc_2 = XOR(GXA12_2, GXA13_2)
+GF6_2 = XNOR(keyinput30, GF6_enc_2)
+GF7_enc_2 = XOR(GXA14_2, GXA15_2)
+GF7_2 = XOR(keyinput31, GF7_enc_2)
 GXE0_2 = XOR(GXB0_2, GXC0_2)
 GXE1_2 = XOR(GXB1_2, GXC1_2)
 GXE2_2 = XOR(GXB2_2, GXC2_2)
