@@ -2,37 +2,51 @@ from pathlib import Path
 import algo_methods
 from multiprocessing import Pool, cpu_count
 import os
+import resource,signal
 
-folder_path = Path("libars_c499/")
-src_file = "bench_ckt/c499.bench"
+folder_path = Path("libars_c1355/")
+src_file = "bench_ckt/c1355.bench"
+memory_limit_mb = 15  # Memory limit per process (in GB)
 
-def list_files_in_directory(directory):
-    # List to store absolute paths of files
-    file_paths = []
+def limit_memory():
+    soft_limit = memory_limit_mb * 1024 * 1024 * 1024
+    resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
+
+def memory_limit_exceeded(signum, frame):
+    raise MemoryError("Memory limit exceeded")
+
+def memory_limited_attack(file):
+    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    limit_memory()
+
+    try:
+        if file.is_file():
+            print(file.name)
+            #algo_methods.sat(src_file, str(file), max_iter=1000, print_str = f"{file.name} SAT Attack: ", show_key = False)
+            #algo_methods.appsat(src_file, str(file), max_iter=1000, print_str = f"{file.name} APPSAT Attack: ", show_key = False)
+            algo_methods.hamming_sweep(src_file, str(file), max_iter=1000, print_str=f"{file.name} SWEEP Attack: ", show_key = False)
+    except MemoryError as e:
+        print(f"{file.name} Hamming Sweep : memory limit exceeded")
+        os._exit(1)
     
-    # Walk through directory and its subdirectories
-    for dirpath, _, filenames in os.walk(directory):
-        for filename in filenames:
-            # Construct absolute path of file
-            file_path = os.path.abspath(os.path.join(dirpath, filename))
-            file_paths.append(file_path)
-    
-    return file_paths
 
-# Define a function that handles the task for each file
 def process_file(file):
     if file.is_file():
-        algo_methods.sat(src_file, str(file), max_iter=1000, print_str = f"{file.name} SAT Attack: ")
-        algo_methods.appsat(src_file, str(file), max_iter=1000, print_str = f"{file.name} APPSAT Attack: ")
-        algo_methods.hamming_sweep(src_file, str(file), max_iter=1000, print_str = f"{file.name} SWEEP Attack: ")
+        algo_methods.sat(src_file, str(file), max_iter=1000, print_str = f"{file.name} SAT Attack: ", show_key = False)
+        algo_methods.appsat(src_file, str(file), max_iter=1000, print_str = f"{file.name} APPSAT Attack: ", show_key = False)
+        #algo_methods.hamming_sweep(src_file, str(file), max_iter=1000, print_str = f"{file.name} SWEEP Attack: ", show_key = False)
+
 
 if __name__ == "__main__":
-    # Get all files in the directory
+    
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
 
     # Use all available CPU cores
-    num_workers = cpu_count()
+    """ num_workers = cpu_count()
+        with Pool(num_workers) as pool:
+        pool.map(process_file, files) """
 
-    # Create a pool of workers
+    # Use all available CPU cores
+    num_workers = 1
     with Pool(num_workers) as pool:
-        pool.map(process_file, files)
+        pool.map(memory_limited_attack, files)

@@ -11,7 +11,7 @@ import converts
 
 
 
-def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time,print_str):
+def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time,print_str,show_key):
     #print("---------------- looking for key (Last SAT Call) ------------")
     new_list_dips = Var(true())
     for i in range(0, len(list_str_dip)):
@@ -38,8 +38,8 @@ def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, li
                 correct_key[i] = "1"
             else:
                 correct_key[i] = "0"
-
-        #print("key= {}".format(''.join(correct_key)))
+        if show_key:
+            print("key= {}".format(''.join(correct_key)))
         print(print_str+"func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter, exe_func_time, exe_non_func_time))
 
     else:
@@ -76,7 +76,7 @@ def init_attack(orig_bench_address,obf_bench_address):
     return obfpinwires, obfkeywires, obfinterwires, obfpoutwires, orgpoutwires, orgwires, str_dip, keyin1, keyin2, keyin3, keyin4, keyinc
     
 
-def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = ""):
+def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = "",show_key = True):
 
     exe_func_time = 0
     exe_non_func_time = 0
@@ -116,10 +116,11 @@ def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = "
         else:
             Monosat().newSolver()
     #print("================ keyFind SAT call ================")
-    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str)
+    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, 
+            list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str, show_key)
             
 
-def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = ""):
+def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = "", show_key = True):
     exe_func_time = 0
     exe_non_func_time = 0
     res = 1
@@ -158,11 +159,12 @@ def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str 
             Monosat().newSolver()
 
     #print("================ keyFind SAT call ================")
-    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str)
+    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip,
+             list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str, show_key)
             
 
 
-def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize,print_str = ""):
+def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize,print_str = "", show_key = True):
     exe_func_time = 0
     exe_non_func_time = 0
 
@@ -204,8 +206,7 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize,pri
             return None
         
         res, dscinp, new_func_time, interval, timeout_array, const_solve = baseutils.finddipham(obfpinwires, obfkeywires, obfinterwires, obfpoutwires, list_dip,
-                                                       list_orgcirc, keyin1, keyin2,
-                                                       exe_func_time, interval, timeout_array, const_solve)  # duplicate and find dip
+                                                       list_orgcirc, keyin1, keyin2, exe_func_time, interval, timeout_array, const_solve)  # duplicate and find dip
 
         if len(const_solve) > 50:
             interval = 0
@@ -238,7 +239,8 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize,pri
             Monosat().newSolver()
 
     #print("================ keyFind SAT call ================")
-    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str)
+    get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip,
+             list_orgcirc, keyinc,iter, exe_func_time, exe_non_func_time, print_str, show_key)
             
 
 
