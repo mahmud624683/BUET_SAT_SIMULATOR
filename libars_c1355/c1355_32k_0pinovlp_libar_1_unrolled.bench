@@ -218,7 +218,9 @@ INPUT(keyinput30)
 
 INPUT(keyinput31)
 
-G242gat = AND(G225gat, G233gat)
+G242gat_enc = AND(G225gat, G233gat)
+
+G242gat = XNOR(keyinput0, G242gat_enc)
 
 G245gat_enc = AND(G226gat, G233gat)
 
@@ -226,141 +228,131 @@ W1_INV = NOT(G1gat)
 
 ONE = OR(G1gat, W1_INV)
 
-LIBAR1 = AND(ONE, keyinput0)
+LIBAR1 = AND(ONE, keyinput1)
 
-G245gat = XNOR(LIBAR1, G245gat_enc)
+G245gat = XOR(LIBAR1, G245gat_enc)
 
 G248gat_enc = AND(G227gat, G233gat)
 
-G248gat = XOR(keyinput1, G248gat_enc)
+G248gat = XOR(keyinput2, G248gat_enc)
 
-G251gat_enc = AND(G228gat, G233gat)
+G251gat = AND(G228gat, G233gat)
 
-G251gat = XOR(keyinput2, G251gat_enc)
+G254gat_enc = AND(G229gat, G233gat)
 
-G254gat = AND(G229gat, G233gat)
+G254gat = XNOR(keyinput3, G254gat_enc)
 
-G257gat_enc = AND(G230gat, G233gat)
+G257gat = AND(G230gat, G233gat)
 
-G257gat = XNOR(keyinput3, G257gat_enc)
+G260gat = AND(G231gat, G233gat)
 
-G260gat_enc = AND(G231gat, G233gat)
+G263gat = AND(G232gat, G233gat)
 
-G260gat = XNOR(keyinput4, G260gat_enc)
-
-G263gat_enc = AND(G232gat, G233gat)
-
-G263gat = XOR(keyinput5, G263gat_enc)
-
-G266gat_enc = NAND(G1gat, G8gat)
-
-G266gat = XOR(keyinput6, G266gat_enc)
+G266gat = NAND(G1gat, G8gat)
 
 G269gat_enc = NAND(G15gat, G22gat)
 
-G269gat = XOR(keyinput7, G269gat_enc)
+G269gat = XNOR(keyinput4, G269gat_enc)
 
 G272gat_enc = NAND(G29gat, G36gat)
 
-G272gat = XNOR(keyinput8, G272gat_enc)
+G272gat = XOR(keyinput5, G272gat_enc)
 
-G275gat = NAND(G43gat, G50gat)
+G275gat_enc = NAND(G43gat, G50gat)
 
-G278gat = NAND(G57gat, G64gat)
+G275gat = XOR(keyinput6, G275gat_enc)
+
+G278gat_enc = NAND(G57gat, G64gat)
+
+G278gat = XOR(keyinput7, G278gat_enc)
 
 G281gat_enc = NAND(G71gat, G78gat)
 
-G281gat = XNOR(keyinput9, G281gat_enc)
+G281gat = XNOR(keyinput8, G281gat_enc)
 
-G284gat = NAND(G85gat, G92gat)
+G284gat_enc = NAND(G85gat, G92gat)
 
-G287gat_enc = NAND(G99gat, G106gat)
+G284gat = XNOR(keyinput9, G284gat_enc)
 
-G287gat = XNOR(keyinput10, G287gat_enc)
+G287gat = NAND(G99gat, G106gat)
 
-G290gat = NAND(G113gat, G120gat)
+G290gat_enc = NAND(G113gat, G120gat)
 
-G293gat_enc = NAND(G127gat, G134gat)
+G290gat = XNOR(keyinput10, G290gat_enc)
 
-G293gat = XNOR(keyinput11, G293gat_enc)
+G293gat = NAND(G127gat, G134gat)
 
 G296gat = NAND(G141gat, G148gat)
 
 G299gat_enc = NAND(G155gat, G162gat)
 
-G299gat = XNOR(keyinput12, G299gat_enc)
+G299gat = XNOR(keyinput11, G299gat_enc)
 
-G302gat_enc = NAND(G169gat, G176gat)
+G302gat = NAND(G169gat, G176gat)
 
-G302gat = XOR(keyinput13, G302gat_enc)
+G305gat_enc = NAND(G183gat, G190gat)
 
-G305gat = NAND(G183gat, G190gat)
+G305gat = XNOR(keyinput12, G305gat_enc)
 
 G308gat_enc = NAND(G197gat, G204gat)
 
-G308gat = XNOR(keyinput14, G308gat_enc)
+G308gat = XOR(keyinput13, G308gat_enc)
 
 G311gat_enc = NAND(G211gat, G218gat)
 
-G311gat = XOR(keyinput15, G311gat_enc)
+G311gat = XNOR(keyinput14, G311gat_enc)
 
-G314gat = NAND(G1gat, G29gat)
+G314gat_enc = NAND(G1gat, G29gat)
 
-G317gat = NAND(G57gat, G85gat)
+G314gat = XOR(keyinput15, G314gat_enc)
+
+G317gat_enc = NAND(G57gat, G85gat)
+
+G317gat = XNOR(keyinput16, G317gat_enc)
 
 G320gat_enc = NAND(G8gat, G36gat)
 
-G320gat = XNOR(keyinput16, G320gat_enc)
+G320gat = XOR(keyinput17, G320gat_enc)
 
 G323gat_enc = NAND(G64gat, G92gat)
 
-G323gat = XOR(keyinput17, G323gat_enc)
+G323gat = XOR(keyinput18, G323gat_enc)
 
-G326gat_enc = NAND(G15gat, G43gat)
+G326gat = NAND(G15gat, G43gat)
 
-G326gat = XOR(keyinput18, G326gat_enc)
+G329gat = NAND(G71gat, G99gat)
 
-G329gat_enc = NAND(G71gat, G99gat)
+G332gat = NAND(G22gat, G50gat)
 
-G329gat = XNOR(keyinput19, G329gat_enc)
+G335gat = NAND(G78gat, G106gat)
 
-G332gat_enc = NAND(G22gat, G50gat)
+G338gat = NAND(G113gat, G141gat)
 
-G332gat = XNOR(keyinput20, G332gat_enc)
-
-G335gat_enc = NAND(G78gat, G106gat)
-
-G335gat = XOR(keyinput21, G335gat_enc)
-
-G338gat_enc = NAND(G113gat, G141gat)
-
-G338gat = XOR(keyinput22, G338gat_enc)
-
-G341gat_enc = NAND(G169gat, G197gat)
-
-G341gat = XOR(keyinput23, G341gat_enc)
+G341gat = NAND(G169gat, G197gat)
 
 G344gat = NAND(G120gat, G148gat)
 
 G347gat_enc = NAND(G176gat, G204gat)
 
-G347gat = XNOR(keyinput24, G347gat_enc)
+G347gat = XNOR(keyinput19, G347gat_enc)
 
-G350gat = NAND(G127gat, G155gat)
+G350gat_enc = NAND(G127gat, G155gat)
+
+G350gat = XNOR(keyinput20, G350gat_enc)
 
 G353gat_enc = NAND(G183gat, G211gat)
 
-G353gat = XNOR(keyinput25, G353gat_enc)
+G353gat = XOR(keyinput21, G353gat_enc)
 
-G356gat = NAND(G134gat, G162gat)
+G356gat_enc = NAND(G134gat, G162gat)
+
+G356gat = XOR(keyinput22, G356gat_enc)
 
 G359gat_enc = NAND(G190gat, G218gat)
 
-G359gat = XNOR(keyinput26, G359gat_enc)
+G359gat = XOR(keyinput23, G359gat_enc)
 
-G362gat_enc = NAND(G1gat, G266gat)
-
-G362gat = XNOR(keyinput27, G362gat_enc)
+G362gat = NAND(G1gat, G266gat)
 
 G363gat = NAND(G8gat, G266gat)
 
@@ -370,27 +362,25 @@ G365gat = NAND(G22gat, G269gat)
 
 G366gat = NAND(G29gat, G272gat)
 
-G367gat_enc = NAND(G36gat, G272gat)
+G367gat = NAND(G36gat, G272gat)
 
-G367gat = XNOR(keyinput28, G367gat_enc)
-
-G368gat_enc = NAND(G43gat, G275gat)
-
-G368gat = XOR(keyinput29, G368gat_enc)
+G368gat = NAND(G43gat, G275gat)
 
 G369gat_enc = NAND(G50gat, G275gat)
 
-G369gat = XNOR(keyinput30, G369gat_enc)
+G369gat = XNOR(keyinput24, G369gat_enc)
 
 G370gat_enc = NAND(G57gat, G278gat)
 
-G370gat = XOR(keyinput31, G370gat_enc)
+G370gat = XNOR(keyinput25, G370gat_enc)
 
 G371gat = NAND(G64gat, G278gat)
 
 G372gat = NAND(G71gat, G281gat)
 
-G373gat = NAND(G78gat, G281gat)
+G373gat_enc = NAND(G78gat, G281gat)
+
+G373gat = XNOR(keyinput26, G373gat_enc)
 
 G374gat = NAND(G85gat, G284gat)
 
@@ -404,17 +394,27 @@ G378gat = NAND(G113gat, G290gat)
 
 G379gat = NAND(G120gat, G290gat)
 
-G380gat = NAND(G127gat, G293gat)
+G380gat_enc = NAND(G127gat, G293gat)
 
-G381gat = NAND(G134gat, G293gat)
+G380gat = XNOR(keyinput27, G380gat_enc)
 
-G382gat = NAND(G141gat, G296gat)
+G381gat_enc = NAND(G134gat, G293gat)
+
+G381gat = XNOR(keyinput28, G381gat_enc)
+
+G382gat_enc = NAND(G141gat, G296gat)
+
+G382gat = XOR(keyinput29, G382gat_enc)
 
 G383gat = NAND(G148gat, G296gat)
 
-G384gat = NAND(G155gat, G299gat)
+G384gat_enc = NAND(G155gat, G299gat)
 
-G385gat = NAND(G162gat, G299gat)
+G384gat = XNOR(keyinput30, G384gat_enc)
+
+G385gat_enc = NAND(G162gat, G299gat)
+
+G385gat = XOR(keyinput31, G385gat_enc)
 
 G386gat = NAND(G169gat, G302gat)
 
@@ -1352,104 +1352,104 @@ G1355gat_1 = BUFF(G1323gat)
 
 #unfold started here
 #unfold no --------------------------------------------------1
-G242gat_1 = AND(G225gat, G233gat)
+G242gat_enc_1 = AND(G225gat, G233gat)
+G242gat_1 = XNOR(keyinput0, G242gat_enc_1)
 G245gat_enc_1 = AND(G226gat, G233gat)
 CLK1_1 = NOR(G245gat_enc_1, G242gat_1)
-LIBAR1_1 = AND(CLK1_1, keyinput0)
-G245gat_1 = XNOR(LIBAR1_1, G245gat_enc_1)
+LIBAR1_1 = AND(CLK1_1, keyinput1)
+G245gat_1 = XOR(LIBAR1_1, G245gat_enc_1)
 G248gat_enc_1 = AND(G227gat, G233gat)
-G248gat_1 = XOR(keyinput1, G248gat_enc_1)
-G251gat_enc_1 = AND(G228gat, G233gat)
-G251gat_1 = XOR(keyinput2, G251gat_enc_1)
-G254gat_1 = AND(G229gat, G233gat)
-G257gat_enc_1 = AND(G230gat, G233gat)
-G257gat_1 = XNOR(keyinput3, G257gat_enc_1)
-G260gat_enc_1 = AND(G231gat, G233gat)
-G260gat_1 = XNOR(keyinput4, G260gat_enc_1)
-G263gat_enc_1 = AND(G232gat, G233gat)
-G263gat_1 = XOR(keyinput5, G263gat_enc_1)
-G266gat_enc_1 = NAND(G1gat, G8gat)
-G266gat_1 = XOR(keyinput6, G266gat_enc_1)
+G248gat_1 = XOR(keyinput2, G248gat_enc_1)
+G251gat_1 = AND(G228gat, G233gat)
+G254gat_enc_1 = AND(G229gat, G233gat)
+G254gat_1 = XNOR(keyinput3, G254gat_enc_1)
+G257gat_1 = AND(G230gat, G233gat)
+G260gat_1 = AND(G231gat, G233gat)
+G263gat_1 = AND(G232gat, G233gat)
+G266gat_1 = NAND(G1gat, G8gat)
 G269gat_enc_1 = NAND(G15gat, G22gat)
-G269gat_1 = XOR(keyinput7, G269gat_enc_1)
+G269gat_1 = XNOR(keyinput4, G269gat_enc_1)
 G272gat_enc_1 = NAND(G29gat, G36gat)
-G272gat_1 = XNOR(keyinput8, G272gat_enc_1)
-G275gat_1 = NAND(G43gat, G50gat)
-G278gat_1 = NAND(G57gat, G64gat)
+G272gat_1 = XOR(keyinput5, G272gat_enc_1)
+G275gat_enc_1 = NAND(G43gat, G50gat)
+G275gat_1 = XOR(keyinput6, G275gat_enc_1)
+G278gat_enc_1 = NAND(G57gat, G64gat)
+G278gat_1 = XOR(keyinput7, G278gat_enc_1)
 G281gat_enc_1 = NAND(G71gat, G78gat)
-G281gat_1 = XNOR(keyinput9, G281gat_enc_1)
-G284gat_1 = NAND(G85gat, G92gat)
-G287gat_enc_1 = NAND(G99gat, G106gat)
-G287gat_1 = XNOR(keyinput10, G287gat_enc_1)
-G290gat_1 = NAND(G113gat, G120gat)
-G293gat_enc_1 = NAND(G127gat, G134gat)
-G293gat_1 = XNOR(keyinput11, G293gat_enc_1)
+G281gat_1 = XNOR(keyinput8, G281gat_enc_1)
+G284gat_enc_1 = NAND(G85gat, G92gat)
+G284gat_1 = XNOR(keyinput9, G284gat_enc_1)
+G287gat_1 = NAND(G99gat, G106gat)
+G290gat_enc_1 = NAND(G113gat, G120gat)
+G290gat_1 = XNOR(keyinput10, G290gat_enc_1)
+G293gat_1 = NAND(G127gat, G134gat)
 G296gat_1 = NAND(G141gat, G148gat)
 G299gat_enc_1 = NAND(G155gat, G162gat)
-G299gat_1 = XNOR(keyinput12, G299gat_enc_1)
-G302gat_enc_1 = NAND(G169gat, G176gat)
-G302gat_1 = XOR(keyinput13, G302gat_enc_1)
-G305gat_1 = NAND(G183gat, G190gat)
+G299gat_1 = XNOR(keyinput11, G299gat_enc_1)
+G302gat_1 = NAND(G169gat, G176gat)
+G305gat_enc_1 = NAND(G183gat, G190gat)
+G305gat_1 = XNOR(keyinput12, G305gat_enc_1)
 G308gat_enc_1 = NAND(G197gat, G204gat)
-G308gat_1 = XNOR(keyinput14, G308gat_enc_1)
+G308gat_1 = XOR(keyinput13, G308gat_enc_1)
 G311gat_enc_1 = NAND(G211gat, G218gat)
-G311gat_1 = XOR(keyinput15, G311gat_enc_1)
-G314gat_1 = NAND(G1gat, G29gat)
-G317gat_1 = NAND(G57gat, G85gat)
+G311gat_1 = XNOR(keyinput14, G311gat_enc_1)
+G314gat_enc_1 = NAND(G1gat, G29gat)
+G314gat_1 = XOR(keyinput15, G314gat_enc_1)
+G317gat_enc_1 = NAND(G57gat, G85gat)
+G317gat_1 = XNOR(keyinput16, G317gat_enc_1)
 G320gat_enc_1 = NAND(G8gat, G36gat)
-G320gat_1 = XNOR(keyinput16, G320gat_enc_1)
+G320gat_1 = XOR(keyinput17, G320gat_enc_1)
 G323gat_enc_1 = NAND(G64gat, G92gat)
-G323gat_1 = XOR(keyinput17, G323gat_enc_1)
-G326gat_enc_1 = NAND(G15gat, G43gat)
-G326gat_1 = XOR(keyinput18, G326gat_enc_1)
-G329gat_enc_1 = NAND(G71gat, G99gat)
-G329gat_1 = XNOR(keyinput19, G329gat_enc_1)
-G332gat_enc_1 = NAND(G22gat, G50gat)
-G332gat_1 = XNOR(keyinput20, G332gat_enc_1)
-G335gat_enc_1 = NAND(G78gat, G106gat)
-G335gat_1 = XOR(keyinput21, G335gat_enc_1)
-G338gat_enc_1 = NAND(G113gat, G141gat)
-G338gat_1 = XOR(keyinput22, G338gat_enc_1)
-G341gat_enc_1 = NAND(G169gat, G197gat)
-G341gat_1 = XOR(keyinput23, G341gat_enc_1)
+G323gat_1 = XOR(keyinput18, G323gat_enc_1)
+G326gat_1 = NAND(G15gat, G43gat)
+G329gat_1 = NAND(G71gat, G99gat)
+G332gat_1 = NAND(G22gat, G50gat)
+G335gat_1 = NAND(G78gat, G106gat)
+G338gat_1 = NAND(G113gat, G141gat)
+G341gat_1 = NAND(G169gat, G197gat)
 G344gat_1 = NAND(G120gat, G148gat)
 G347gat_enc_1 = NAND(G176gat, G204gat)
-G347gat_1 = XNOR(keyinput24, G347gat_enc_1)
-G350gat_1 = NAND(G127gat, G155gat)
+G347gat_1 = XNOR(keyinput19, G347gat_enc_1)
+G350gat_enc_1 = NAND(G127gat, G155gat)
+G350gat_1 = XNOR(keyinput20, G350gat_enc_1)
 G353gat_enc_1 = NAND(G183gat, G211gat)
-G353gat_1 = XNOR(keyinput25, G353gat_enc_1)
-G356gat_1 = NAND(G134gat, G162gat)
+G353gat_1 = XOR(keyinput21, G353gat_enc_1)
+G356gat_enc_1 = NAND(G134gat, G162gat)
+G356gat_1 = XOR(keyinput22, G356gat_enc_1)
 G359gat_enc_1 = NAND(G190gat, G218gat)
-G359gat_1 = XNOR(keyinput26, G359gat_enc_1)
-G362gat_enc_1 = NAND(G1gat, G266gat_1)
-G362gat_1 = XNOR(keyinput27, G362gat_enc_1)
+G359gat_1 = XOR(keyinput23, G359gat_enc_1)
+G362gat_1 = NAND(G1gat, G266gat_1)
 G363gat_1 = NAND(G8gat, G266gat_1)
 G364gat_1 = NAND(G15gat, G269gat_1)
 G365gat_1 = NAND(G22gat, G269gat_1)
 G366gat_1 = NAND(G29gat, G272gat_1)
-G367gat_enc_1 = NAND(G36gat, G272gat_1)
-G367gat_1 = XNOR(keyinput28, G367gat_enc_1)
-G368gat_enc_1 = NAND(G43gat, G275gat_1)
-G368gat_1 = XOR(keyinput29, G368gat_enc_1)
+G367gat_1 = NAND(G36gat, G272gat_1)
+G368gat_1 = NAND(G43gat, G275gat_1)
 G369gat_enc_1 = NAND(G50gat, G275gat_1)
-G369gat_1 = XNOR(keyinput30, G369gat_enc_1)
+G369gat_1 = XNOR(keyinput24, G369gat_enc_1)
 G370gat_enc_1 = NAND(G57gat, G278gat_1)
-G370gat_1 = XOR(keyinput31, G370gat_enc_1)
+G370gat_1 = XNOR(keyinput25, G370gat_enc_1)
 G371gat_1 = NAND(G64gat, G278gat_1)
 G372gat_1 = NAND(G71gat, G281gat_1)
-G373gat_1 = NAND(G78gat, G281gat_1)
+G373gat_enc_1 = NAND(G78gat, G281gat_1)
+G373gat_1 = XNOR(keyinput26, G373gat_enc_1)
 G374gat_1 = NAND(G85gat, G284gat_1)
 G375gat_1 = NAND(G92gat, G284gat_1)
 G376gat_1 = NAND(G99gat, G287gat_1)
 G377gat_1 = NAND(G106gat, G287gat_1)
 G378gat_1 = NAND(G113gat, G290gat_1)
 G379gat_1 = NAND(G120gat, G290gat_1)
-G380gat_1 = NAND(G127gat, G293gat_1)
-G381gat_1 = NAND(G134gat, G293gat_1)
-G382gat_1 = NAND(G141gat, G296gat_1)
+G380gat_enc_1 = NAND(G127gat, G293gat_1)
+G380gat_1 = XNOR(keyinput27, G380gat_enc_1)
+G381gat_enc_1 = NAND(G134gat, G293gat_1)
+G381gat_1 = XNOR(keyinput28, G381gat_enc_1)
+G382gat_enc_1 = NAND(G141gat, G296gat_1)
+G382gat_1 = XOR(keyinput29, G382gat_enc_1)
 G383gat_1 = NAND(G148gat, G296gat_1)
-G384gat_1 = NAND(G155gat, G299gat_1)
-G385gat_1 = NAND(G162gat, G299gat_1)
+G384gat_enc_1 = NAND(G155gat, G299gat_1)
+G384gat_1 = XNOR(keyinput30, G384gat_enc_1)
+G385gat_enc_1 = NAND(G162gat, G299gat_1)
+G385gat_1 = XOR(keyinput31, G385gat_enc_1)
 G386gat_1 = NAND(G169gat, G302gat_1)
 G387gat_1 = NAND(G176gat, G302gat_1)
 G388gat_1 = NAND(G183gat, G305gat_1)
