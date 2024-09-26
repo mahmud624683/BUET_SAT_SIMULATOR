@@ -1,0 +1,251 @@
+File: c1355_32k_0pinovlp_libar_4_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00000000111110111001000011111011
+func_iteration= 25; func_exe_time= 35.35439848899841; nonfunc_exe_time= 0
+
+
+File: c1355_32k_2pinovlp_libar_10_unrolled.bench
+SAT Attack: key= 00000000001111101011100011111000
+func_iteration= 21; func_exe_time= 13.04744029045105; nonfunc_exe_time= 0
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_1pinovlp_libar_8_unrolled.bench
+SAT Attack: key= 00000000101110100010011011011000
+func_iteration= 28; func_exe_time= 22.565524339675903; nonfunc_exe_time= 0
+APPSAT Attack: key= 00100000111111011011100000111010
+func_iteration= 46; func_exe_time= 448.63972878456116; nonfunc_exe_time= 0
+
+
+File: c1355_16k_0pinovlp_libar_2_unrolled.bench
+SAT Attack: key= 01111000100000011
+func_iteration= 18; func_exe_time= 4.088620901107788; nonfunc_exe_time= 0
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_1pinovlp_libar_7_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00000000101111101011100011111010
+func_iteration= 28; func_exe_time= 112.70075345039368; nonfunc_exe_time= 0
+
+
+File: c1355_32k_0pinovlp_libar_3_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 01011100111110101101101011110010
+func_iteration= 20; func_exe_time= 23.467092275619507; nonfunc_exe_time= 0
+
+
+File: c1355_16k_0pinovlp_libar_5_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_0pinovlp_libar_4_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_1pinovlp_libar_8_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_0pinovlp_libar_2_unrolled.bench
+SAT Attack: key= 00010101111110001001000011111000
+func_iteration= 26; func_exe_time= 6.684687376022339; nonfunc_exe_time= 0
+APPSAT Attack: key= 00001000111110100001100001111010
+func_iteration= 19; func_exe_time= 11.92752718925476; nonfunc_exe_time= 0
+
+
+File: c1355_16k_1pinovlp_libar_7_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_0pinovlp_libar_3_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_0pinovlp_libar_5_unrolled.bench
+SAT Attack: key= 00000111011110100001101011111011
+func_iteration= 29; func_exe_time= 16.401020765304565; nonfunc_exe_time= 0
+APPSAT Attack: key= 00000100101110100001100111111110
+func_iteration= 28; func_exe_time= 58.961047887802124; nonfunc_exe_time= 0
+
+
+File: c1355_16k_0pinovlp_libar_1_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_1pinovlp_libar_5_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_0pinovlp_libar_7_unrolled.bench
+SAT Attack: key= 00001001011110100001101001110000
+func_iteration= 26; func_exe_time= 7.805784463882446; nonfunc_exe_time= 0
+APPSAT Attack: key= 00000000111110100001100011111011
+func_iteration= 22; func_exe_time= 39.52608585357666; nonfunc_exe_time= 0
+
+
+File: c1355_16k_2pinovlp_libar_10_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_1pinovlp_libar_3_unrolled.bench
+SAT Attack: key= 00101100110110111001000011111010
+func_iteration= 29; func_exe_time= 7.200510025024414; nonfunc_exe_time= 0
+APPSAT Attack: key= 00001000111110100001100001111010
+func_iteration= 33; func_exe_time= 51.286211252212524; nonfunc_exe_time= 0
+
+
+File: c1355_16k_1pinovlp_libar_2_unrolled.bench
+SAT Attack: key= 01010001011010001
+func_iteration= 18; func_exe_time= 1.8936078548431396; nonfunc_exe_time= 0
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_0pinovlp_libar_8_unrolled.bench
+SAT Attack: key= 00010000111110111001000000111010
+func_iteration= 35; func_exe_time= 23.91746973991394; nonfunc_exe_time= 0
+APPSAT Attack: key= 00001001001111101011100011110010
+func_iteration= 39; func_exe_time= 198.9757421016693; nonfunc_exe_time= 0
+
+
+File: c1355_32k_1pinovlp_libar_4_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00001000001111101000101011101000
+func_iteration= 42; func_exe_time= 147.41797971725464; nonfunc_exe_time= 0
+
+
+File: c1355_32k_0pinovlp_libar_1_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00001000111110100001100001111010
+func_iteration= 15; func_exe_time= 5.011277437210083; nonfunc_exe_time= 0
+
+
+File: c1355_32k_1pinovlp_libar_5_unrolled.bench
+SAT Attack: key= 00100000101111001100110011111010
+func_iteration= 34; func_exe_time= 17.436230659484863; nonfunc_exe_time= 0
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_0pinovlp_libar_7_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_1pinovlp_libar_3_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_1pinovlp_libar_2_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00110001001110100010111011111111
+func_iteration= 44; func_exe_time= 85.13185453414917; nonfunc_exe_time= 0
+
+
+File: c1355_16k_0pinovlp_libar_8_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_1pinovlp_libar_4_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 11000001011000101
+func_iteration= 8; func_exe_time= 1.7702124118804932; nonfunc_exe_time= 0
+
+
+File: c1355_32k_2pinovlp_libar_5_unrolled.bench
+SAT Attack: key= 00000010010111101000100011101010
+func_iteration= 30; func_exe_time= 16.26810050010681; nonfunc_exe_time= 0
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_2pinovlp_libar_3_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 01111101010101001
+func_iteration= 15; func_exe_time= 6.547718524932861; nonfunc_exe_time= 0
+
+
+File: c1355_32k_0pinovlp_libar_10_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00000000001110111010110011111110
+func_iteration= 21; func_exe_time= 22.518198490142822; nonfunc_exe_time= 0
+
+
+File: c1355_32k_2pinovlp_libar_2_unrolled.bench
+SAT Attack: key= 00111000111110111001100011111010
+func_iteration= 33; func_exe_time= 9.343498945236206; nonfunc_exe_time= 0
+APPSAT Attack: key= 00010000001111101000101101110000
+func_iteration= 31; func_exe_time= 24.21596074104309; nonfunc_exe_time= 0
+
+
+File: c1355_16k_1pinovlp_libar_10_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_2pinovlp_libar_4_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_2pinovlp_libar_5_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_2pinovlp_libar_3_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00000000101111101000100011111010
+func_iteration= 36; func_exe_time= 69.40171098709106; nonfunc_exe_time= 0
+
+
+File: c1355_16k_2pinovlp_libar_2_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_2pinovlp_libar_4_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: key= 00000000101111101011100011111010
+func_iteration= 30; func_exe_time= 40.2133207321167; nonfunc_exe_time= 0
+
+
+File: c1355_16k_2pinovlp_libar_8_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_2pinovlp_libar_7_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_1pinovlp_libar_10_unrolled.bench
+SAT Attack: key= 11011000001110101101100000110111
+func_iteration= 27; func_exe_time= 17.938073873519897; nonfunc_exe_time= 0
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_16k_0pinovlp_libar_10_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_2pinovlp_libar_8_unrolled.bench
+SAT Attack: Didn't Found Any Satisfiable Key
+APPSAT Attack: Didn't Found Any Satisfiable Key
+
+
+File: c1355_32k_2pinovlp_libar_7_unrolled.bench
+SAT Attack: key= 00000000111110010001011111110101
+func_iteration= 27; func_exe_time= 11.53964114189148; nonfunc_exe_time= 0
+APPSAT Attack: key= 11010100100000011111110001111010
+func_iteration= 40; func_exe_time= 235.0191366672516; nonfunc_exe_time= 0

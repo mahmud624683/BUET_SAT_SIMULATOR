@@ -42,11 +42,11 @@ if __name__ == "__main__":
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
 
     # Use all available CPU cores
-    """ num_workers = cpu_count()
-        with Pool(num_workers) as pool:
-        pool.map(process_file, files) """
+    num_workers = 2#cpu_count()
+    with Pool(num_workers) as pool:
+        pool.map(process_file, files)
 
-    # Use all available CPU cores
+    """ # Use all available CPU cores
     num_workers = 1
     with Pool(num_workers) as pool:
-        pool.map(memory_limited_attack, files)
+        pool.map(memory_limited_attack, files) """
