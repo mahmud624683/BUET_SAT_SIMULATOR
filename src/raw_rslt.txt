@@ -432,3 +432,11 @@ c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration=
 c1355_15k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.7970383167266846; nonfunc_exe_time= 0
 c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.018702983856201172; nonfunc_exe_time= 0
 c1355_15k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.7418515682220459; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.02347087860107422; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.02452540397644043; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.4038999080657959; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.022623062133789062; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.5973050594329834; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.029268264770507812; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.033390045166015625; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.017395734786987305; nonfunc_exe_time= 0

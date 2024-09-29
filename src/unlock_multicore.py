@@ -8,7 +8,6 @@ import time
 
 class ThreadController:
     def __init__(self,algo_name,src_file,obfs_file,rslt_file):
-        print("constructor")
         self.thread = threading.Thread(target=self.child_thread,args=())
         self.pid = None
         self.algo = algo_name
@@ -20,7 +19,7 @@ class ThreadController:
 
     def child_thread(self):
         self.pid = os.getpid()
-        print(f"PID - {self.pid} {self.file.name} attacked by {self.algo}")
+        print(f"{self.pid} - {self.file.name} attacked by : {self.algo}")
         if self.algo == "SAT Attack":
             result = algo_methods.sat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SAT Attack: ")
         elif self.algo == "APPSAT Attack":
@@ -67,9 +66,14 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
 
     # Use all available CPU cores
-    num_workers = 2#cpu_count()
+    """ num_workers = 2#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
+        pool.close()
+        pool.join() """
+    
+    for file in files:
+        process_file(file,1200)
 
 
 
