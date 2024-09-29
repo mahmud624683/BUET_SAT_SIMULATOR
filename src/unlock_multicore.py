@@ -1,109 +1,76 @@
 from pathlib import Path
 import algo_methods
 import os
-import platform
-import resource
-import sys
-import multiprocessing as mp
+import signal
+import threading
+from multiprocessing import Pool,cpu_count,freeze_support
 import time
-import queue
 
-# Memory Limiter Functions
-def memory_limit(percentage: float):
-    if platform.system() != "Linux":
-        print('Only works on Linux!')
-        return
-    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
-    mem_total = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')  # e.g. 4015976448
-    resource.setrlimit(resource.RLIMIT_AS, (int(mem_total * percentage), hard))
+class ThreadController:
+    def __init__(self,algo_name,src_file,obfs_file,rslt_file):
+        print("constructor")
+        self.thread = threading.Thread(target=self.child_thread,args=())
+        self.pid = None
+        self.algo = algo_name
+        self.src = src_file
+        self.file = obfs_file
+        self.rslt = rslt_file
+        self.op_running = True
 
-""" def memory(percentage=0.4):
-    def decorator(function):
-        def wrapper(*args, **kwargs):
-            memory_limit(percentage)
+
+    def child_thread(self):
+        self.pid = os.getpid()
+        print(f"PID - {self.pid} {self.file.name} attacked by {self.algo}")
+        if self.algo == "SAT Attack":
+            result = algo_methods.sat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SAT Attack: ")
+        elif self.algo == "APPSAT Attack":
+            result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
+        else:
+            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
+        
+        open(self.rslt, 'a').write(result)
+        self.op_running = False
+
+    def start(self):
+        self.thread.start()
+
+    def stop(self):
+        if self.pid != None:
             try:
-                return function(*args, **kwargs)
-            except MemoryError:
-                sys.stderr.write('\n\nERROR: Memory Exception\n')
-                sys.exit(1)
-        return wrapper
-    return decorator
- """
+                if self.op_running:
+                    open(self.rslt, 'a').write(f"{self.file.name} {self.algo}: TIME LIMIT EXCEEDED")
+                os.kill(self.pid, signal.SIGTERM)
+            except:
+                print("error in terminating the process")
+        self.thread.join()
 
-def enforce_memory_limit():
-    """Sets memory limits for processes"""
-    memory_limit(0.4)
 
-# File processing and multiprocessing functions
-folder_path = Path("libars/")
-src_des = "bench_ckt"
-rslt = "src/raw_rslt.txt"
-
-# Worker Process
-#@memory(percentage=0.4)  # Set memory limit to 80%
-def process_file(file, q, worker_id):
-    enforce_memory_limit()
+def process_file(file, time_limit = 300, memory_limit = 0.4):
+    src_des = "bench_ckt"
+    rslt = "src/raw_rslt.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
-    count = 0  # Message counter for monitoring progress
-    try:
-        if file.is_file():
-            result = algo_methods.sat(src_file, str(file), max_iter=1000, print_str=f"{file.name} SAT Attack: ")
-            open(rslt, 'a').write(result)
-            q.put(f"Worker {worker_id} - SAT done")
-            
-            result = algo_methods.appsat(src_file, str(file), max_iter=1000, print_str=f"{file.name} APPSAT Attack: ")
-            open(rslt, 'a').write(result)
-            q.put(f"Worker {worker_id} - APPSAT done")
-            
-            result = algo_methods.hamming_sweep(src_file, str(file), max_iter=1000, print_str=f"{file.name} SWEEP Attack: ")
-            open(rslt, 'a').write(result)
-            q.put(f"Worker {worker_id} - SWEEP done")
-            
-            q.put(f"Worker {worker_id} - Finished Processing")
-            time.sleep(1)  # Simulate work delay
-    except Exception as e:
-        q.put(f"Worker {worker_id} - Error: {e}")
 
-# Watchdog process
-def watchdog(q, num_workers, timeout=10.0):
-    """
-    Monitor worker activity via the queue. If no messages are received within
-    the `timeout` period, assume a worker is hanging and issue a termination signal.
-    """
-    workers_alive = num_workers
-    while workers_alive > 0:
-        try:
-            msg = q.get(timeout=timeout)
-            print(f"[WATCHDOG] Received: {msg}")
-            if "Finished" in msg or "Error" in msg:
-                workers_alive -= 1  # Worker finished or encountered an error
-        except queue.Empty:
-            print("[WATCHDOG] No response from worker, possibly hanging")
-            q.put("KILL WORKER")
+    if file.is_file():
+        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
+        for algo in algo_name:
+            controller = ThreadController(algo,src_file,file,rslt)
+            controller.start()
+            time.sleep(time_limit)
+            controller.stop()
+            
+
 
 # Main Function
 def main():
+    folder_path = Path("libars/")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
 
     # Use all available CPU cores
-    num_workers = min(len(files), 2)
-    q = mp.Queue()  # Communication queue
-    with mp.Pool(processes=num_workers) as pool:
-        # Start the watchdog process
-        wdog = mp.Process(target=watchdog, args=(q, num_workers, 600))
-        wdog.daemon = True
-        wdog.start()
+    num_workers = 2#cpu_count()
+    with Pool(num_workers) as pool:
+        pool.map(process_file, files)
 
-        # Map the files to the worker processes
-        for i, file in enumerate(files):
-            pool.apply_async(process_file, args=(file, q, i))
-
-        pool.close()
-        pool.join()  # Wait for all worker processes to complete
-
-        print("[MAIN] All processes completed.")
-        wdog.join()  # Wait for the watchdog to complete if necessary
 
 
 if __name__ == "__main__":
