@@ -440,3 +440,364 @@ c1355_15k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001;
 c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.029268264770507812; nonfunc_exe_time= 0
 c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.033390045166015625; nonfunc_exe_time= 0
 c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.017395734786987305; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.01152801513671875; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.013988733291625977; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.013458967208862305; nonfunc_exe_time= 0
+c432_10k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.015480995178222656; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.01882028579711914; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.4332451820373535; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.4439847469329834; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.37479424476623535; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.44844603538513184; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10000000101110101001; func_iteration= 21; func_exe_time= 2.039767026901245; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.008768320083618164; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.008553266525268555; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.008682489395141602; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.007686138153076172; nonfunc_exe_time= 0
+c432_10k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.020251750946044922; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.18899226188659668; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.19622468948364258; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.24131345748901367; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.3229968547821045; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.006913900375366211; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.08170151710510254; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06140923500061035; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06626272201538086; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.07645630836486816; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.07117533683776855; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06615614891052246; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.09006118774414062; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.5302200317382812; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.4425036907196045; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.6189656257629395; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.12360858917236328; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.1645216941833496; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.15361857414245605; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.3908069133758545; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_15_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.5599298477172852; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_0pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.13942790031433105; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10111; func_iteration= 3; func_exe_time= 0.13545727729797363; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 5; func_exe_time= 0.16915297508239746; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: key= 11011; func_iteration= 2; func_exe_time= 0.19731950759887695; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_25_unrolled.bench SAT Attack: key= 10000000101110101001; func_iteration= 14; func_exe_time= 1.1195695400238037; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 5.288424730300903; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_100_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_0pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 24; func_exe_time= 2.4833810329437256; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: key= 10111; func_iteration= 4; func_exe_time= 0.4296402931213379; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_100_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 18; func_exe_time= 6.878904819488525; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_75_unrolled.bench SAT Attack: TIME LIMIT EXCEEDED
+c1355_10k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.5842821598052979; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 5.0496110916137695; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_10_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_5k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_25_unrolled.bench SAT Attack: key= 10000010010110011001; func_iteration= 19; func_exe_time= 2.404505968093872; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_50_unrolled.bench SAT Attack: key= 10000010010110011001; func_iteration= 19; func_exe_time= 2.457709312438965; nonfunc_exe_time= 0
+c432_5k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: key= 11011; func_iteration= 2; func_exe_time= 0.10570669174194336; nonfunc_exe_time= 0
+c432_5k_0pinovlp_libar_100_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 3; func_exe_time= 0.10529661178588867; nonfunc_exe_time= 0
+c1355_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 0.9040541648864746; nonfunc_exe_time= 0
+c1355_5k_1pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 00011000111110101011; func_iteration= 18; func_exe_time= 5.525249719619751; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_25_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_15k_2pinovlp_libar_50_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_10k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06674695014953613; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.4345436096191406; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.15848183631896973; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_25_unrolled.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1355_10k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1355_5k_2pinovlp_libar_50_unrolled.bench SAT Attack: key= 10001100110110101001; func_iteration= 9; func_exe_time= 0.4588775634765625; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.48827552795410156; nonfunc_exe_time= 0
+c1355_20k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 17; func_exe_time= 1.0973803997039795; nonfunc_exe_time= 0
+c1355_5k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: key= 10010000101110101001; func_iteration= 10; func_exe_time= 2.28607439994812; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 4.658592939376831; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_75_unrolled.bench SAT Attack: key= 01000000101001000111; func_iteration= 16; func_exe_time= 2.486142873764038; nonfunc_exe_time= 0
+c1355_5k_1pinovlp_libar_15_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_20k_1pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.08006715774536133; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: TIME LIMIT EXCEEDED
+c432_20k_1pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10001; func_iteration= 4; func_exe_time= 0.2486870288848877; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.08628320693969727; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_25_unrolled.bench APPSAT Attack: key= 10001; func_iteration= 4; func_exe_time= 0.22797083854675293; nonfunc_exe_time= 0
+c432_20k_1pinovlp_libar_10_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.13882732391357422; nonfunc_exe_time= 0
+c432_15k_1pinovlp_libar_10_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_15k_1pinovlp_libar_10_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_5k_1pinovlp_libar_25_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.12881040573120117; nonfunc_exe_time= 0
+c432_20k_1pinovlp_libar_2_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_1pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 00011; func_iteration= 3; func_exe_time= 0.20601534843444824; nonfunc_exe_time= 0
+c432_15k_1pinovlp_libar_10_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 5; func_exe_time= 0.20754671096801758; nonfunc_exe_time= 0
+c432_20k_1pinovlp_libar_2_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 5; func_exe_time= 0.2057967185974121; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_10k_2pinovlp_libar_75_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 2; func_exe_time= 0.147047758102417; nonfunc_exe_time= 0
+c1355_20k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 25; func_exe_time= 16.53609585762024; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_75_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c432_10k_2pinovlp_libar_2_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_10k_2pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 00011; func_iteration= 3; func_exe_time= 0.1667487621307373; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_2_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 3; func_exe_time= 0.06706881523132324; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 15; func_exe_time= 0.7602519989013672; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 17; func_exe_time= 5.009223937988281; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_2_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_10k_1pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_10k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_75_unrolled.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c432_10k_1pinovlp_libar_50_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.1516280174255371; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_75_unrolled.bench SAT Attack: TIME LIMIT EXCEEDED
+c1355_15k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 17; func_exe_time= 1.100404977798462; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.49332523345947266; nonfunc_exe_time= 0
+c1355_20k_0pinovlp_libar_10_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_10k_1pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_1pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.5512526035308838; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 25; func_exe_time= 16.46393918991089; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+
+c1355_20k_1pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10001100110110101001; func_iteration= 20; func_exe_time= 12.81030011177063; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_5k_2pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06151580810546875; nonfunc_exe_time= 0
+c432_5k_2pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.38680529594421387; nonfunc_exe_time= 0
+c432_5k_2pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.14342308044433594; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10001100110110101001; func_iteration= 20; func_exe_time= 13.039898157119751; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_10_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+
+c1355_20k_1pinovlp_libar_100_unrolled.bench SAT Attack: TIME LIMIT EXCEEDED
+
+c1355_15k_1pinovlp_libar_100_unrolled.bench SAT Attack: TIME LIMIT EXCEEDED
+
+c432_20k_0pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.050768375396728516; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.062479257583618164; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.03269481658935547; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.05772662162780762; nonfunc_exe_time= 0
+c432_10k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.08041238784790039; nonfunc_exe_time= 0
+c432_10k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: key= 11011; func_iteration= 2; func_exe_time= 0.07515358924865723; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.14405107498168945; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.12093424797058105; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.17026495933532715; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.1601266860961914; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 5; func_exe_time= 0.1248319149017334; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.05791115760803223; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_5_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.05928969383239746; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.04833507537841797; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_2_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.051029205322265625; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.6544334888458252; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.9227674007415771; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.7397618293762207; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.8930869102478027; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_15_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_10k_0pinovlp_libar_50_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 3; func_exe_time= 0.056260108947753906; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06884360313415527; nonfunc_exe_time= 0
+c432_20k_2pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10111; func_iteration= 3; func_exe_time= 0.1095571517944336; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_15_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 5; func_exe_time= 0.06967401504516602; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: key= 11011; func_iteration= 2; func_exe_time= 0.16756939888000488; nonfunc_exe_time= 0
+c1355_5k_1pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_25_unrolled.bench SAT Attack: key= 10000000101110101001; func_iteration= 14; func_exe_time= 2.8403053283691406; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10000000101110101001; func_iteration= 21; func_exe_time= 5.5828564167022705; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 7.667901515960693; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 7.920750379562378; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 7.4785449504852295; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 8.574102640151978; nonfunc_exe_time= 0
+c432_20k_0pinovlp_libar_100_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_0pinovlp_libar_25_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 24; func_exe_time= 6.430937051773071; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: key= 10111; func_iteration= 4; func_exe_time= 0.45531201362609863; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_2pinovlp_libar_100_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 18; func_exe_time= 11.433931350708008; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 01000010010010111000; func_iteration= 16; func_exe_time= 13.00926160812378; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_75_unrolled.bench SAT Attack: key= 10000001010110101001; func_iteration= 19; func_exe_time= 15.889883041381836; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.7351047992706299; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 4.925224304199219; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_0pinovlp_libar_2_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_2_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_5k_0pinovlp_libar_10_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_10k_1pinovlp_libar_5_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 12; func_exe_time= 0.6281907558441162; nonfunc_exe_time= 0
+c1355_5k_1pinovlp_libar_50_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_10k_2pinovlp_libar_75_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_5k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 5.1173415184021; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 17; func_exe_time= 2.356625556945801; nonfunc_exe_time= 0
+c432_5k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: key= 11011; func_iteration= 2; func_exe_time= 0.06729745864868164; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_25_unrolled.bench SAT Attack: key= 10000010010110011001; func_iteration= 19; func_exe_time= 4.196286201477051; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_50_unrolled.bench SAT Attack: key= 10000010010110011001; func_iteration= 19; func_exe_time= 4.752710819244385; nonfunc_exe_time= 0
+c432_5k_0pinovlp_libar_100_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 3; func_exe_time= 0.06418919563293457; nonfunc_exe_time= 0
+c1355_5k_0pinovlp_libar_25_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_5k_1pinovlp_libar_15_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 16; func_exe_time= 1.927788257598877; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_0pinovlp_libar_15_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_5k_1pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 00011000111110101011; func_iteration= 18; func_exe_time= 7.912698268890381; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_50_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_5k_2pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.03942155838012695; nonfunc_exe_time= 0
+c432_5k_2pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.1513526439666748; nonfunc_exe_time= 0
+c432_5k_2pinovlp_libar_10_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.08605599403381348; nonfunc_exe_time= 0
+c432_15k_0pinovlp_libar_2_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.08763384819030762; nonfunc_exe_time= 0
+c432_15k_0pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 00011; func_iteration= 3; func_exe_time= 0.05375194549560547; nonfunc_exe_time= 0
+c432_15k_0pinovlp_libar_2_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06176900863647461; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 25; func_exe_time= 27.602412939071655; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_1pinovlp_libar_75_unrolled.bench SAT Attack: key= 10000000101110101001; func_iteration= 11; func_exe_time= 2.354346990585327; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_75_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_10k_2pinovlp_libar_5_unrolled.bench SAT Attack: key= 10011; func_iteration= 4; func_exe_time= 0.06096506118774414; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 10011; func_iteration= 7; func_exe_time= 0.15642118453979492; nonfunc_exe_time= 0
+c432_10k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.061827659606933594; nonfunc_exe_time= 0
+c1355_5k_1pinovlp_libar_75_unrolled.bench APPSAT Attack: key= 10000000101110101001; func_iteration= 15; func_exe_time= 13.280696392059326; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_75_unrolled.bench SAT Attack: key= 01000000101001000111; func_iteration= 16; func_exe_time= 6.575885534286499; nonfunc_exe_time= 0
+c432_20k_1pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_25_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_20k_1pinovlp_libar_100_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c1355_5k_1pinovlp_libar_25_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_5k_1pinovlp_libar_25_unrolled.bench APPSAT Attack: key= 10011000111101101001; func_iteration= 11; func_exe_time= 2.3352367877960205; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_5k_2pinovlp_libar_50_unrolled.bench SAT Attack: key= 10001100110110101001; func_iteration= 9; func_exe_time= 0.5756638050079346; nonfunc_exe_time= 0
+c1355_5k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: key= 10010000101110101001; func_iteration= 10; func_exe_time= 1.8952295780181885; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_15_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_10_unrolled.bench SAT Attack: key= 10011000111110101001; func_iteration= 17; func_exe_time= 2.2342886924743652; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 10101100110110101001; func_iteration= 18; func_exe_time= 14.854983568191528; nonfunc_exe_time= 0
+c432_5k_1pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c432_5k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c432_5k_1pinovlp_libar_100_unrolled.bench SWEEP Attack: key= 10011; func_iteration= 4; func_exe_time= 0.07591438293457031; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 10011000111110101001; func_iteration= 25; func_exe_time= 22.970527410507202; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_75_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_5_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_5k_1pinovlp_libar_15_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_10k_0pinovlp_libar_15_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_10k_0pinovlp_libar_75_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_15k_0pinovlp_libar_50_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_25_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_10k_2pinovlp_libar_50_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_100_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 21; func_exe_time= 7.4602086544036865; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_75_unrolled.bench APPSAT Attack: func_iteration= 21; func_exe_time= 24.958979606628418; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_0pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 26; func_exe_time= 8.294949054718018; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 23; func_exe_time= 27.297728776931763; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 18; func_exe_time= 4.152361631393433; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 18; func_exe_time= 18.324065446853638; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_1pinovlp_libar_25_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_1pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 20; func_exe_time= 29.36398220062256; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_10_unrolled.bench SAT Attack: func_iteration= 22; func_exe_time= 3.886552333831787; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: func_iteration= 21; func_exe_time= 19.419244289398193; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 32; func_exe_time= 29.27768087387085; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: func_iteration= 21; func_exe_time= 58.82425808906555; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_25_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 54; func_exe_time= 470.2572650909424; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: func_iteration= 18; func_exe_time= 5.431944847106934; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_75_unrolled.bench SAT Attack: func_iteration= 24; func_exe_time= 14.649415016174316; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_1pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 31; func_exe_time= 43.34431719779968; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: func_iteration= 22; func_exe_time= 46.00462794303894; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: func_iteration= 21; func_exe_time= 22.984771251678467; nonfunc_exe_time= 0
+c1355_20k_0pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 31; func_exe_time= 31.747702598571777; nonfunc_exe_time= 0
+c1355_20k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 22; func_exe_time= 16.86051368713379; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: func_iteration= 30; func_exe_time= 102.46013522148132; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 35; func_exe_time= 20.216808795928955; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 34; func_exe_time= 106.6457622051239; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: func_iteration= 35; func_exe_time= 101.6338267326355; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 39; func_exe_time= 25.242149829864502; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 26; func_exe_time= 32.33276104927063; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 35; func_exe_time= 57.32924270629883; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: func_iteration= 35; func_exe_time= 72.11740446090698; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_75_unrolled.bench APPSAT Attack: func_iteration= 14; func_exe_time= 16.09091353416443; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 24; func_exe_time= 14.81753158569336; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_0pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 12; func_exe_time= 3.65102481842041; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_1pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 33; func_exe_time= 16.963347911834717; nonfunc_exe_time= 0
+c1355_15k_1pinovlp_libar_25_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 35; func_exe_time= 11.00632357597351; nonfunc_exe_time= 0
+c1355_10k_2pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 24; func_exe_time= 22.00023651123047; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: func_iteration= 31; func_exe_time= 214.99582147598267; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 26; func_exe_time= 5.402700901031494; nonfunc_exe_time= 0
+c1355_15k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 23; func_exe_time= 19.820178508758545; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 18; func_exe_time= 2.8039472103118896; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 18; func_exe_time= 12.900937795639038; nonfunc_exe_time= 0
+c1355_20k_0pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_0pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_0pinovlp_libar_10_unrolled.bench SAT Attack: func_iteration= 28; func_exe_time= 5.542205572128296; nonfunc_exe_time= 0
+c1355_10k_0pinovlp_libar_10_unrolled.bench APPSAT Attack: func_iteration= 28; func_exe_time= 21.925726652145386; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: func_iteration= 28; func_exe_time= 66.41678023338318; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_25_unrolled.bench SAT Attack: func_iteration= 23; func_exe_time= 6.611352443695068; nonfunc_exe_time= 0
+c1355_10k_1pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 19; func_exe_time= 10.042256832122803; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_100_unrolled.bench SAT Attack: func_iteration= 15; func_exe_time= 8.215512037277222; nonfunc_exe_time= 0
+c1355_20k_1pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_25_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_25_unrolled.bench APPSAT Attack: func_iteration= 17; func_exe_time= 16.697702169418335; nonfunc_exe_time= 0
+c1355_20k_2pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_2pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_50_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_20k_1pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_75_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1355_10k_2pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1355_15k_2pinovlp_libar_50_unrolled.bench SAT Attack: func_iteration= 24; func_exe_time= 18.547356367111206; nonfunc_exe_time= 0
+c1355_15k_2pinovlp_libar_50_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+
