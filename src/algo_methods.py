@@ -285,7 +285,7 @@ def RLL(org_name,obfs_name,key_str, write_file = True):
     else:
         return io_lines,gate_lines
 
-def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap="1"):
+def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap="0"):
     wires = []
     pin_a = []
     pin_b = []
@@ -375,6 +375,8 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap
         print("Libar bench file created")
     
     if libar_bit_no>0:
+        if libar_bit_no>5:
+            libar_bit_no = 5
         txt_content = converts.unroll_bench(obfs_name, libar_bit_no)
         obfs_name = obfs_name.replace(".bench","_unrolled.bench")
         with open(obfs_name, 'w') as file:
