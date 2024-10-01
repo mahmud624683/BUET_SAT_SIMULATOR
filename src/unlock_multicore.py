@@ -46,24 +46,23 @@ class ThreadController:
         self.thread.join()
 
 
-
-
-def limit_memory(memory_limit_percent):
+def limit_memory(memory_limit_percent, filename):
     mem_total = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')
     soft_limit = int(memory_limit_percent * mem_total)
     memory_info = os.popen('free -b').readlines()
     available_memory = int(memory_info[1].split()[6]) # Extract available memory (in bytes)
     if available_memory<soft_limit:
         soft_limit = available_memory
+    print("{} process was allocated {}GB".format(filename, soft_limit/(1024**2)))
     resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
 
 def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
 
-def process_file(file, time_limit = 1800, memory_limit = 0.8):
+def process_file(file, time_limit = 1800, memory_limit = 0.6):
     signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    limit_memory(memory_limit)
+    limit_memory(memory_limit, file.name)
 
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -71,7 +70,7 @@ def process_file(file, time_limit = 1800, memory_limit = 0.8):
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
     if file.is_file():
-        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
+        algo_name = ["SAT Attack", "APPSAT Attack"]#+["SWEEP Attack"]
         for algo in algo_name:
             start_time = datetime.now()
             controller = ThreadController(algo,src_file,file,rslt)

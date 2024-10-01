@@ -303,6 +303,7 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap
         io_lines,gate_lines = RLL(org_name,obfs_name,key_str, write_file= False)
 
     libar_number = libar_bit_no
+    non_libar = len(key_str)-libar_bit_no
     i=0
     gate_num=len(gate_lines)
     while i<gate_num:
@@ -311,62 +312,66 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap
         if libar_number == 0:
             break
         if "keyinput" in gate:
-            if (len(wires)+len(pin_a))>=2:
-                gate_match = re.findall(r'\b\w+\b', gate)
-                key_pin = ""
-                for pin in gate_match[2:]:
-                    if "keyinput" in pin:
-                        key_pin = pin
+            bool_rand = random.choice([True, False])
+            if bool_rand and (non_libar !=0):
+                non_libar -= 1
+            else:
+                if (len(wires)+len(pin_a))>=2:
+                    gate_match = re.findall(r'\b\w+\b', gate)
+                    key_pin = ""
+                    for pin in gate_match[2:]:
+                        if "keyinput" in pin:
+                            key_pin = pin
 
-                if clk_inp_overlap == 2: #bothpin overlap
-                    if len(pin_a)==0:
-                        clk_pin_a = wires.pop()
-                        pin_a.append(clk_pin_a)
-                    else:
-                        clk_pin_a = pin_a.pop()
-                    if len(pin_b)==0:
+                    if clk_inp_overlap == 2: #bothpin overlap
+                        if len(pin_a)==0:
+                            clk_pin_a = wires.pop()
+                            pin_a.append(clk_pin_a)
+                        else:
+                            clk_pin_a = pin_a.pop()
+                        if len(pin_b)==0:
+                            clk_pin_b = wires.pop()
+                            pin_b.append(clk_pin_b)
+                        else:
+                            clk_pin_b = pin_b.pop()
+                    elif clk_inp_overlap == 1: # one pin overlap
+                        if len(pin_a)==0:
+                            clk_pin_a = wires.pop()
+                            pin_a.append(clk_pin_a)
+                        else:
+                            clk_pin_a = pin_a.pop()
+
                         clk_pin_b = wires.pop()
+                        while clk_pin_b in pin_b:
+                            if len(wires)==0:
+                                print("Insufficient intermediate wires are available in the circuit for required number of libar block")
+                                return None
+                            clk_pin_b = wires.pop()
                         pin_b.append(clk_pin_b)
-                    else:
-                        clk_pin_b = pin_b.pop()
-                elif clk_inp_overlap == 1: # one pin overlap
-                    if len(pin_a)==0:
+
+                    else: #no overlap
                         clk_pin_a = wires.pop()
-                        pin_a.append(clk_pin_a)
-                    else:
-                        clk_pin_a = pin_a.pop()
+                        while clk_pin_a in pin_a:
+                            if len(wires)==0:
+                                print("Insufficient intermediate wires are available in the circuit for required number of libar block")
+                                return None
+                            clk_pin_a = wires.pop()
+                        pin_a.append(clk_pin_a) 
 
-                    clk_pin_b = wires.pop()
-                    while clk_pin_b in pin_b:
-                        if len(wires)==0:
-                            print("Insufficient intermediate wires are available in the circuit for required number of libar block")
-                            return None
                         clk_pin_b = wires.pop()
-                    pin_b.append(clk_pin_b)
+                        while clk_pin_b in pin_b:
+                            if len(wires)==0:
+                                print("Insufficient intermediate wires are available in the circuit for required number of libar block")
+                                return None
+                            clk_pin_b = wires.pop()
+                        pin_b.append(clk_pin_b)
 
-                else: #no overlap
-                    clk_pin_a = wires.pop()
-                    while clk_pin_a in pin_a:
-                        if len(wires)==0:
-                            print("Insufficient intermediate wires are available in the circuit for required number of libar block")
-                            return None
-                        clk_pin_a = wires.pop()
-                    pin_a.append(clk_pin_a) 
-
-                    clk_pin_b = wires.pop()
-                    while clk_pin_b in pin_b:
-                        if len(wires)==0:
-                            print("Insufficient intermediate wires are available in the circuit for required number of libar block")
-                            return None
-                        clk_pin_b = wires.pop()
-                    pin_b.append(clk_pin_b)
-
-                gate_lines[i]= gate_lines[i].replace(key_pin,f"LIBAR{str(libar_number)}")
-                gate_lines.insert(i,f"LIBAR{str(libar_number)} = DFF(CLK{str(libar_number)}, {key_pin})")
-                gate_lines.insert(i,f"CLK{str(libar_number)} = NOR({clk_pin_a}, {clk_pin_b})")
-                libar_number -= 1
-                gate_num += 2
-                i += 2        
+                    gate_lines[i]= gate_lines[i].replace(key_pin,f"LIBAR{str(libar_number)}")
+                    gate_lines.insert(i,f"LIBAR{str(libar_number)} = DFF(CLK{str(libar_number)}, {key_pin})")
+                    gate_lines.insert(i,f"CLK{str(libar_number)} = NOR({clk_pin_a}, {clk_pin_b})")
+                    libar_number -= 1
+                    gate_num += 2
+                    i += 2        
         wires.append(wire)
         i += 1
     
@@ -375,8 +380,8 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap
         print("Libar bench file created")
     
     if libar_bit_no>0:
-        if libar_bit_no>5:
-            libar_bit_no = 5
+        if libar_bit_no>8:
+            libar_bit_no = 8
         txt_content = converts.unroll_bench(obfs_name, libar_bit_no)
         obfs_name = obfs_name.replace(".bench","_unrolled.bench")
         with open(obfs_name, 'w') as file:
