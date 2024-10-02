@@ -61,8 +61,8 @@ def memory_limit_exceeded(signum, frame):
 
 
 def process_file(file, time_limit = 1800, memory_limit = 0.5):
-    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    #limit_memory(memory_limit, file.name)
+    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    limit_memory(memory_limit, file.name)
 
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -71,7 +71,7 @@ def process_file(file, time_limit = 1800, memory_limit = 0.5):
 
     if file.is_file():
         algo_name = []
-        algo_name += ["SAT Attack", "APPSAT Attack"]#
+        #algo_name += ["SAT Attack", "APPSAT Attack"]#
         algo_name += ["SWEEP Attack"]
         for algo in algo_name:
             start_time = datetime.now()
