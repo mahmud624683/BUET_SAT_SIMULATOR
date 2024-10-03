@@ -180,3 +180,11 @@ c1908_10k_9pinovlp_libar_10_unrolled.bench APPSAT Attack: key= 1101001010; func_
 c1908_10k_9pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
 c1908_20k_9pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
 c1908_10k_9pinovlp_libar_75_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
+c1908_10k_9pinovlp_libar_2_unrolled.bench SAT Attack: key= 1101001010; func_iteration= 3; func_exe_time= 0.5562238693237305; nonfunc_exe_time= 0
+c1908_10k_9pinovlp_libar_5_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1908_10k_9pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1908_10k_9pinovlp_libar_15_unrolled.bench SAT Attack: key= 1101001010; func_iteration= 4; func_exe_time= 0.6836025714874268; nonfunc_exe_time= 0
+c1908_10k_9pinovlp_libar_2_unrolled.bench APPSAT Attack: key= 1101001010; func_iteration= 2; func_exe_time= 1.0551764965057373; nonfunc_exe_time= 0
+c1908_10k_9pinovlp_libar_5_unrolled.bench APPSAT Attack: key= 1110100010; func_iteration= 2; func_exe_time= 1.2309682369232178; nonfunc_exe_time= 0
+c1908_15k_9pinovlp_libar_100_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
+c1908_15k_9pinovlp_libar_15_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key
