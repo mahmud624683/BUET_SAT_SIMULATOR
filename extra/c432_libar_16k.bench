@@ -62,132 +62,108 @@ INPUT(keyinput12)
 INPUT(keyinput13)
 INPUT(keyinput14)
 INPUT(keyinput15)
-INPUT(keyinput16)
-INPUT(keyinput17)
-INPUT(keyinput18)
-INPUT(keyinput19)
-INPUT(keyinput20)
-INPUT(keyinput21)
-INPUT(keyinput22)
-INPUT(keyinput23)
 
-G118gat_enc = NOT(G1gat)
+G118gat = NOT(G1gat)
 
-G118gat = XOR(keyinput0, G118gat_enc)
-
-G119gat_enc = NOT(G4gat)
-
-CLK8 = NOR(G119gat_enc, G118gat)
-LIBAR8 = DFF(CLK8, keyinput1)
-G119gat = XOR(LIBAR8, G119gat_enc)
+G119gat = NOT(G4gat)
 
 G122gat_enc = NOT(G11gat)
 
-CLK7 = NOR(G122gat_enc, G119gat)
-LIBAR7 = DFF(CLK7, keyinput2)
-G122gat = XNOR(LIBAR7, G122gat_enc)
+G122gat = XNOR(keyinput0, G122gat_enc)
 
-G123gat_enc = NOT(G17gat)
+G123gat = NOT(G17gat)
 
-G123gat = XOR(keyinput3, G123gat_enc)
-
-G126gat_enc = NOT(G24gat)
-
-CLK6 = NOR(G126gat_enc, G123gat)
-LIBAR6 = DFF(CLK6, keyinput4)
-G126gat = XNOR(LIBAR6, G126gat_enc)
+G126gat = NOT(G24gat)
 
 G127gat_enc = NOT(G30gat)
 
-CLK5 = NOR(G127gat_enc, G126gat)
-LIBAR5 = DFF(CLK5, keyinput5)
-G127gat = XOR(LIBAR5, G127gat_enc)
+G127gat = XNOR(keyinput1, G127gat_enc)
 
 G130gat_enc = NOT(G37gat)
 
-CLK4 = NOR(G130gat_enc, G127gat)
-LIBAR4 = DFF(CLK4, keyinput6)
-G130gat = XNOR(LIBAR4, G130gat_enc)
+G130gat = XOR(keyinput2, G130gat_enc)
 
 G131gat_enc = NOT(G43gat)
 
-G131gat = XOR(keyinput7, G131gat_enc)
+CLK8 = NOR(G131gat_enc, G130gat)
+LIBAR8 = DFF(CLK8, keyinput3)
+G131gat = XOR(LIBAR8, G131gat_enc)
 
 G134gat_enc = NOT(G50gat)
 
-CLK3 = NOR(G134gat_enc, G131gat)
-LIBAR3 = DFF(CLK3, keyinput8)
-G134gat = XNOR(LIBAR3, G134gat_enc)
+G134gat = XOR(keyinput4, G134gat_enc)
 
-G135gat_enc = NOT(G56gat)
-
-CLK2 = NOR(G135gat_enc, G134gat)
-LIBAR2 = DFF(CLK2, keyinput9)
-G135gat = XNOR(LIBAR2, G135gat_enc)
+G135gat = NOT(G56gat)
 
 G138gat = NOT(G63gat)
 
 G139gat_enc = NOT(G69gat)
 
-G139gat = XNOR(keyinput10, G139gat_enc)
+G139gat = XNOR(keyinput5, G139gat_enc)
 
 G142gat_enc = NOT(G76gat)
 
-G142gat = XNOR(keyinput11, G142gat_enc)
+G142gat = XNOR(keyinput6, G142gat_enc)
 
 G143gat_enc = NOT(G82gat)
 
-CLK1 = NOR(G143gat_enc, G142gat)
-LIBAR1 = DFF(CLK1, keyinput12)
-G143gat = XOR(LIBAR1, G143gat_enc)
+G143gat = XOR(keyinput7, G143gat_enc)
 
-G146gat_enc = NOT(G89gat)
-
-G146gat = XOR(keyinput13, G146gat_enc)
+G146gat = NOT(G89gat)
 
 G147gat_enc = NOT(G95gat)
 
-G147gat = XOR(keyinput14, G147gat_enc)
+G147gat = XNOR(keyinput8, G147gat_enc)
 
 G150gat_enc = NOT(G102gat)
 
-G150gat = XNOR(keyinput15, G150gat_enc)
+CLK7 = NOR(G150gat_enc, G147gat)
+LIBAR7 = DFF(CLK7, keyinput9)
+G150gat = XOR(LIBAR7, G150gat_enc)
 
 G151gat_enc = NOT(G108gat)
 
-G151gat = XOR(keyinput16, G151gat_enc)
+CLK6 = NOR(G151gat_enc, G150gat)
+LIBAR6 = DFF(CLK6, keyinput10)
+G151gat = XNOR(LIBAR6, G151gat_enc)
 
 G154gat_enc = NAND(G118gat, G4gat)
 
-G154gat = XNOR(keyinput17, G154gat_enc)
+CLK5 = NOR(G154gat_enc, G151gat)
+LIBAR5 = DFF(CLK5, keyinput11)
+G154gat = XOR(LIBAR5, G154gat_enc)
 
 G157gat_enc = NOR(G8gat, G119gat)
 
-G157gat = XOR(keyinput18, G157gat_enc)
+CLK4 = NOR(G157gat_enc, G154gat)
+LIBAR4 = DFF(CLK4, keyinput12)
+G157gat = XNOR(LIBAR4, G157gat_enc)
 
-G158gat = NOR(G14gat, G119gat)
+G158gat_enc = NOR(G14gat, G119gat)
+
+CLK3 = NOR(G158gat_enc, G157gat)
+LIBAR3 = DFF(CLK3, keyinput13)
+G158gat = XNOR(LIBAR3, G158gat_enc)
 
 G159gat_enc = NAND(G122gat, G17gat)
 
-G159gat = XNOR(keyinput19, G159gat_enc)
+CLK2 = NOR(G159gat_enc, G158gat)
+LIBAR2 = DFF(CLK2, keyinput14)
+G159gat = XOR(LIBAR2, G159gat_enc)
 
 G162gat_enc = NAND(G126gat, G30gat)
 
-G162gat = XNOR(keyinput20, G162gat_enc)
+CLK1 = NOR(G162gat_enc, G159gat)
+LIBAR1 = DFF(CLK1, keyinput15)
+G162gat = XOR(LIBAR1, G162gat_enc)
 
 G165gat = NAND(G130gat, G43gat)
 
-G168gat_enc = NAND(G134gat, G56gat)
+G168gat = NAND(G134gat, G56gat)
 
-G168gat = XNOR(keyinput21, G168gat_enc)
+G171gat = NAND(G138gat, G69gat)
 
-G171gat_enc = NAND(G138gat, G69gat)
-
-G171gat = XOR(keyinput22, G171gat_enc)
-
-G174gat_enc = NAND(G142gat, G82gat)
-
-G174gat = XNOR(keyinput23, G174gat_enc)
+G174gat = NAND(G142gat, G82gat)
 
 G177gat = NAND(G146gat, G95gat)
 

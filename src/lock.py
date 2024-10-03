@@ -1,7 +1,7 @@
 import algo_methods
 import os, math
 
-ckt_name=["c432","c1355","c1908","c3540"]
+ckt_name=["c6288"]
 algo_name=["rll","sarlock","antisat","libar","cac"]
 keys=["1100011010101100","001010101111000101011101","10011000111110101010111101010101"]#,"111111111001010101000000000011111101010111110101"]
 
@@ -18,7 +18,7 @@ for ckt in ckt_name:
                 if algo == "rll": algo_methods.RLL(src_file,lk_file,key)
                 elif algo == "sarlock": algo_methods.sarlock(src_file,lk_file,key)
                 elif algo == "antisat": 
-                    bit_no /= 2 
+                    bit_no //= 2 
                     key = key[:bit_no]+key[:bit_no]
                     algo_methods.anti_sat(src_file,lk_file,key)
                 elif algo == "libar": 
