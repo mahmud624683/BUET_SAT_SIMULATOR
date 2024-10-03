@@ -56,7 +56,7 @@ def limit_memory(memory_limit_percent, filename):
     available_memory = int(memory_info[1].split()[6]) # Extract available memory (in bytes)
     if available_memory<soft_limit:
         soft_limit = available_memory
-    print("{} process was allocated {}GB".format(filename, soft_limit/(1024**2)))
+    print("{} process was allocated {}GB".format(filename, soft_limit/(1024**3)))
     resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
 
 def memory_limit_exceeded(signum, frame):

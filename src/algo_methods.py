@@ -380,9 +380,7 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap
         print("Libar bench file created")
     
     if libar_bit_no>0:
-        if libar_bit_no>8:
-            libar_bit_no = 8
-        txt_content = converts.unroll_bench(obfs_name, libar_bit_no)
+        txt_content = converts.unroll_bench(obfs_name, 6)
         obfs_name = obfs_name.replace(".bench","_unrolled.bench")
         with open(obfs_name, 'w') as file:
             file.write(txt_content)
@@ -655,7 +653,6 @@ def cac(org_name,obfs_name,cac_file,key_bit_no):
     lock_gates[-1] = lock_gates[-1].replace(lock_outputs[0],org_outputs[-1])
     lock_gates[-3] = lock_gates[-3].replace("OPO",org_outputs[-1]+"_enc")
 
-    wirex=[]
     for i in range(len(lock_gates)):
         if "in_" in lock_gates[i]:
             gate_match = re.findall(r'\b\w+\b', lock_gates[i])
