@@ -25,7 +25,10 @@ class ThreadController:
         elif self.algo == "APPSAT Attack":
             result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
         else:
-            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
+            try:
+                result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
+            except:
+                result = f"{self.file.name} {self.algo}: monosat memory size error\n"
         
         open(self.rslt, 'a').write(result)
         self.op_running = False
@@ -61,8 +64,8 @@ def memory_limit_exceeded(signum, frame):
 
 
 def process_file(file, time_limit = 3600, memory_limit = 0.25):
-    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    #limit_memory(memory_limit, file.name)
+    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    limit_memory(memory_limit, file.name)
 
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
