@@ -724,12 +724,3 @@ def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,li
         print("Libar bench file Unrolled!!!")
     
     
-def convert_bench2verilog(input_file):
-    file_name = os.path.splitext(os.path.basename(input_file))[0]
-    v_text = converts.bench2verilog(input_file, file_name)
-    file_name += ".v"
-    output_file = os.path.join("bench_verilog",file_name)
-    with open(output_file, 'w') as file:
-        file.write(v_text)
-        print("Verilog file created. Please look at bench_verilog folder.")
-    
