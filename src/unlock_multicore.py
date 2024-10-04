@@ -111,7 +111,7 @@ def sweep_attack(file, time_limit = 6*3600, memory_limit = 40):
 
 # Main Function
 def main():
-    folder_path = Path("k8bit/")
+    folder_path = Path("obfuscated_ckt/k8")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
