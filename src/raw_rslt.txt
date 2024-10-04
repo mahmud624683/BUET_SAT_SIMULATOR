@@ -212,3 +212,35 @@ c1908_10k_9pinovlp_libar_5_unrolled.bench SWEEP Attack: monosat memory size erro
 c1908_10k_9pinovlp_libar_100_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key
 c1908_15k_9pinovlp_libar_2_unrolled.bench SAT Attack: key= 000001111111101; func_iteration= 4; func_exe_time= 0.9273154735565186; nonfunc_exe_time= 0
 c1908_10k_9pinovlp_libar_15_unrolled.bench APPSAT Attack: key= 1101001010; func_iteration= 4; func_exe_time= 3.8875725269317627; nonfunc_exe_time= 0
+c1908_10k_9pinovlp_libar_5_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_25_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_2_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_75_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_50_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_100_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_10_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_100_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_15_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_10_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_10k_9pinovlp_libar_15_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_2_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_25_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_50_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_15_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_75_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_15k_9pinovlp_libar_5_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_50_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_5_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_100_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_10_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_25_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_100_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_10_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_15_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_75_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_25_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_5_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_75_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_20k_9pinovlp_libar_2_unrolled.bench SWEEP Attack: key= 00011100101100101001; func_iteration= 4; func_exe_time= 16.658203840255737; nonfunc_exe_time= 0
+c1908_5k_9pinovlp_libar_2_unrolled.bench SWEEP Attack: monosat memory size error
+c1908_5k_9pinovlp_libar_50_unrolled.bench SWEEP Attack: monosat memory size error

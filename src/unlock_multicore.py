@@ -64,8 +64,8 @@ def memory_limit_exceeded(signum, frame):
 
 
 def process_file(file, time_limit = 3600, memory_limit = 0.25):
-    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    limit_memory(memory_limit, file.name)
+    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    #limit_memory(memory_limit, file.name)
 
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -74,7 +74,7 @@ def process_file(file, time_limit = 3600, memory_limit = 0.25):
 
     if file.is_file():
         algo_name = []
-        algo_name += ["SAT Attack", "APPSAT Attack"]#
+        #algo_name += ["SAT Attack", "APPSAT Attack"]#
         algo_name += ["SWEEP Attack"]
         for algo in algo_name:
             start_time = datetime.now()
@@ -98,7 +98,7 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
 
     # Use all available CPU cores
-    num_workers = 6# cpu_count()
+    num_workers = 3 # cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
