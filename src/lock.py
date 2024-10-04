@@ -1,9 +1,9 @@
 import algo_methods
 import os, math
 
-ckt_name=["c432","c1355","c1908","c3540"]
+ckt_name=["c6288"]
 algo_name=["rll","sarlock","antisat","libar","cac"]
-keys=["1100011010101100","001010101111000101011101","10011000111110101010111101010101","111111111001010101000000000011111101010111110101"]
+keys=["1100011010101100","001010101111000101011101","10011000111110101010111101010101"]#,"111111111001010101000000000011111101010111110101"]
 
 
 for ckt in ckt_name:
@@ -18,13 +18,14 @@ for ckt in ckt_name:
                 if algo == "rll": algo_methods.RLL(src_file,lk_file,key)
                 elif algo == "sarlock": algo_methods.sarlock(src_file,lk_file,key)
                 elif algo == "antisat": 
-                    bit_no /= 2 
+                    bit_no //= 2 
                     key = key[:bit_no]+key[:bit_no]
                     algo_methods.anti_sat(src_file,lk_file,key)
                 elif algo == "libar": 
                     src_file = f"obfuscated_ckt/{ckt}_rll_{bit_no}k.bench"
-                    libar_bit_no = math.ceil(60*int(bit_no)/100)
-                    algo_methods.libar(src_file,lk_file,key,libar_bit_no=5,rll_file=True)
+                    libar_bit_no = math.ceil(33*int(bit_no)/100)
+                    if libar_bit_no<8: libar_bit_no=8
+                    algo_methods.libar(src_file,lk_file,key,libar_bit_no,rll_file=True)
                 else:
                     cac_file = f"cac_module/cac{bit_no}.bench"
                     algo_methods.cac(src_file,lk_file,cac_file,bit_no)
