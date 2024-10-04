@@ -50,8 +50,8 @@ class ThreadController:
 
 
 def limit_memory(memory_limit_percent, filename):
-    mem_total = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')
-    soft_limit = int(memory_limit_percent * mem_total)
+    
+    soft_limit = memory_limit_percent*(1024**3)
     memory_info = os.popen('free -b').readlines()
     available_memory = int(memory_info[1].split()[6]) # Extract available memory (in bytes)
     if available_memory<soft_limit:
@@ -63,9 +63,7 @@ def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
 
-def process_file(file, time_limit = 6*3600, memory_limit = 0.25):
-    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    #limit_memory(memory_limit, file.name)
+def process_file(file, time_limit = 12*3600):
 
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -73,9 +71,7 @@ def process_file(file, time_limit = 6*3600, memory_limit = 0.25):
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
     if file.is_file():
-        algo_name = []
-        algo_name += ["SAT Attack", "APPSAT Attack"]#
-        algo_name += ["SWEEP Attack"]
+        algo_name = ["SAT Attack", "APPSAT Attack"]
         for algo in algo_name:
             start_time = datetime.now()
             controller = ThreadController(algo,src_file,file,rslt)
@@ -89,7 +85,28 @@ def process_file(file, time_limit = 6*3600, memory_limit = 0.25):
                 elif not(controller.get_op_running()):
                     break
             
-            
+
+def sweep_attack(file, time_limit = 12*3600, memory_limit = 50):
+    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    limit_memory(memory_limit, file.name)
+
+    src_des = "bench_ckt"
+    rslt = "src/raw_rslt.txt"
+    ckt_name = (file.name).split("_")[0]
+    src_file = os.path.join(src_des, ckt_name + ".bench")
+
+    if file.is_file():
+        start_time = datetime.now()
+        controller = ThreadController("SWEEP Attack",src_file,file,rslt)
+        controller.start()
+        while True:
+            current_time = datetime.now()
+            op_time = (current_time-start_time).total_seconds()
+            if op_time>time_limit:
+                controller.stop()
+                break
+            elif not(controller.get_op_running()):
+                break            
 
 
 # Main Function
@@ -98,16 +115,31 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers =  25# cpu_count()
+    num_workers =  15# cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
         pool.join()
+
+    #sweep attack 
+    num_workers =  3# cpu_count()
+    with Pool(num_workers) as pool:
+        pool.map(sweep_attack, files)
+        pool.close()
+        pool.join()
     
-    #single core
-    """ for file in files:
-        process_file(file,1200)
- """
+    #single file run
+    """ org = ""
+    obfs = ""
+    filename = ""
+
+    result = algo_methods.sat(org, obfs, max_iter=1000, print_str=f"{filename} SAT Attack: ")
+
+    result = algo_methods.appsat(org, obfs, max_iter=1000, print_str=f"{filename} APPSAT Attack: ")
+
+    result = algo_methods.hamming_sweep(org, obfs, max_iter=1000, print_str=f"{filename} SWEEP Attack: ")
+    
+    open("src/raw_rslt.txt", 'a').write(result) """
 
 
 if __name__ == "__main__":
