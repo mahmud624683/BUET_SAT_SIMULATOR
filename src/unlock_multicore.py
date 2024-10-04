@@ -1,6 +1,6 @@
 from pathlib import Path
 import algo_methods
-import os
+import os, random
 import signal,resource
 import threading
 from multiprocessing import Pool,cpu_count,freeze_support
@@ -63,7 +63,7 @@ def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
 
-def process_file(file, time_limit = 3600, memory_limit = 0.25):
+def process_file(file, time_limit = 3*3600, memory_limit = 0.25):
     #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     #limit_memory(memory_limit, file.name)
 
@@ -74,8 +74,8 @@ def process_file(file, time_limit = 3600, memory_limit = 0.25):
 
     if file.is_file():
         algo_name = []
-        #algo_name += ["SAT Attack", "APPSAT Attack"]#
-        algo_name += ["SWEEP Attack"]
+        algo_name += ["SAT Attack", "APPSAT Attack"]#
+        #algo_name += ["SWEEP Attack"]
         for algo in algo_name:
             start_time = datetime.now()
             controller = ThreadController(algo,src_file,file,rslt)
@@ -94,11 +94,11 @@ def process_file(file, time_limit = 3600, memory_limit = 0.25):
 
 # Main Function
 def main():
-    folder_path = Path("libars/")
+    folder_path = Path("obfuscated_ckt/")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-
+    random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 3 # cpu_count()
+    num_workers =  10# cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
