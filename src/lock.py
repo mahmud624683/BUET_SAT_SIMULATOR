@@ -1,17 +1,19 @@
 import algo_methods
 import os, math
 
-ckt_name=["c6288","c432", "c1355","c1908","c3540"]
+#ckt_name=["c6288","c432", "c1355","c1908","c3540"]
+ckt_name = ["c17"]
 algo_name=["rll","sarlock","antisat","libar","cac"]
-keys=["10110010"]#"1100011010101100","001010101111000101011101","10011000111110101010111101010101"]#,"111111111001010101000000000011111101010111110101"]
+keys=["1011"]#,"1100011010101100","001010101111000101011101","10011000111110101010111101010101"]#,"111111111001010101000000000011111101010111110101"]
 
+des_folder = "hlibar"
 
 for ckt in ckt_name:
     for algo in algo_name:
         for key in keys:
             bit_no = len(key)
             src_file = f"bench_ckt/{ckt}.bench"
-            lk_file =f"k8bit/{ckt}_{algo}_{bit_no}k.bench"
+            lk_file =f"{des_folder}/{ckt}_{algo}_{bit_no}k.bench"
             if os.path.exists(lk_file):
                 print(f"{lk_file} file already exist")
             else:
@@ -22,9 +24,9 @@ for ckt in ckt_name:
                     key = key[:bit_no]+key[:bit_no]
                     algo_methods.anti_sat(src_file,lk_file,key)
                 elif algo == "libar": 
-                    src_file = f"k8bit/{ckt}_rll_{bit_no}k.bench"
+                    src_file = f"{des_folder}/{ckt}_rll_{bit_no}k.bench"
                     libar_bit_no = math.ceil(33*int(bit_no)/100)
-                    if libar_bit_no<8: libar_bit_no=8
+                    if libar_bit_no<8: libar_bit_no=2
                     algo_methods.libar(src_file,lk_file,key,libar_bit_no,rll_file=True)
                 else:
                     cac_file = f"cac_module/cac{bit_no}.bench"

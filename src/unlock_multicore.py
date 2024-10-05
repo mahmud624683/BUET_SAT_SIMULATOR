@@ -87,7 +87,7 @@ def process_file(file, time_limit = 6*3600):
             
 
 
-def sweep_attack(file, time_limit = 48*3600, memory_limit = 75):
+def sweep_attack(file, time_limit = 24*3600, memory_limit = 75):
     signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     limit_memory(memory_limit, file.name)
 
@@ -129,7 +129,7 @@ def main():
         pool.map(sweep_attack, files)
         pool.close()
         pool.join()
-    
+
     #single file run
     """ org = ""
     obfs = ""

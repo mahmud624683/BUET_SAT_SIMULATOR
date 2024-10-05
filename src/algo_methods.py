@@ -380,7 +380,9 @@ def libar(org_name,obfs_name,key_str,libar_bit_no,rll_file=False,clk_inp_overlap
         print("Libar bench file created")
     
     if libar_bit_no>0:
-        txt_content = converts.unroll_bench(obfs_name, 6)
+        if libar_bit_no>6:
+            libar_bit_no = 6
+        txt_content = converts.unroll_bench(obfs_name, libar_bit_no)
         obfs_name = obfs_name.replace(".bench","_unrolled.bench")
         with open(obfs_name, 'w') as file:
             file.write(txt_content)

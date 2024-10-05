@@ -50,17 +50,10 @@ c1908_antisat_8k.bench SWEEP Attack: monosat memory size error
 c3540_rll_8k.bench SWEEP Attack: monosat memory size error
 c1355_cac_8k.bench SWEEP Attack: monosat memory size error
 c432_antisat_8k.bench SWEEP Attack: key= 01010101; func_iteration= 16; func_exe_time= 3.567680597305298; nonfunc_exe_time= 0
-c1908_rll_8k.bench SWEEP Attack: monosat memory size error
 c432_rll_8k.bench SWEEP Attack: key= 10110010; func_iteration= 5; func_exe_time= 6.508460760116577; nonfunc_exe_time= 0
 c432_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 8.758313179016113; nonfunc_exe_time= 0
 c432_cac_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 22.765910625457764; nonfunc_exe_time= 0
-c1908_libar_8k_unrolled.bench SWEEP Attack: monosat memory size error
-c3540_libar_8k_unrolled.bench SWEEP Attack: monosat memory size error
 c1908_sarlock_8k.bench SWEEP Attack: key= 01000000; func_iteration= 50; func_exe_time= 44.25986099243164; nonfunc_exe_time= 0
-c1908_cac_8k.bench SWEEP Attack: monosat memory size error
-c3540_sarlock_8k.bench SWEEP Attack: monosat memory size error
-c1355_rll_8k.bench SWEEP Attack: monosat memory size error
 c432_libar_8k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
 c3540_cac_8k.bench SWEEP Attack: key= 01000000; func_iteration= 50; func_exe_time= 33.865683794021606; nonfunc_exe_time= 0
 c3540_antisat_8k.bench SWEEP Attack: key= 11001100; func_iteration= 16; func_exe_time= 41.65327429771423; nonfunc_exe_time= 0
-c1355_sarlock_8k.bench SWEEP Attack: monosat memory size error
