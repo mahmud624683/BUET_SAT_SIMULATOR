@@ -53,7 +53,7 @@ def limit_memory(memory_limit_percent, filename):
     
     soft_limit = memory_limit_percent*(1024**3)
     memory_info = os.popen('free -b').readlines()
-    available_memory = int(memory_info[1].split()[6]) # Extract available memory (in bytes)
+    available_memory = int(memory_info[1].split()[3]) # Extract available memory (in bytes)
     if available_memory<soft_limit:
         soft_limit = available_memory
     print("{} process was allocated {}GB".format(filename, soft_limit/(1024**3)))
@@ -115,11 +115,11 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    """ num_workers =  25# cpu_count()
+    num_workers =  25# cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
-        pool.join() """
+        pool.join() 
 
     #sweep attack 
     num_workers =  4# cpu_count()
