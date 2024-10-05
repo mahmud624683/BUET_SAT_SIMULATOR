@@ -124,3 +124,7 @@ c6288_antisat_8k.bench SAT Attack: TIME LIMIT EXCEEDED
 c6288_sarlock_8k.bench SAT Attack: TIME LIMIT EXCEEDED
 c3540_sarlock_8k.bench SAT Attack: TIME LIMIT EXCEEDED
 c3540_cac_8k.bench SAT Attack: TIME LIMIT EXCEEDED
+c1355_sarlock_8k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1908_cac_8k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1908_sarlock_8k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1355_cac_8k.bench APPSAT Attack: TIME LIMIT EXCEEDED
