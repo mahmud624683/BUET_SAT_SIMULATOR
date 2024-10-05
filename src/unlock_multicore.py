@@ -86,7 +86,8 @@ def process_file(file, time_limit = 6*3600):
                     break
             
 
-def sweep_attack(file, time_limit = 6*3600, memory_limit = 40):
+
+def sweep_attack(file, time_limit = 48*3600, memory_limit = 75):
     signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     limit_memory(memory_limit, file.name)
 
@@ -115,14 +116,15 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers =  25# cpu_count()
+    """ num_workers =  25# cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
-        pool.join() 
+        pool.join() """
 
     #sweep attack 
-    num_workers =  4# cpu_count()
+
+    num_workers = 2 # cpu_count()
     with Pool(num_workers) as pool:
         pool.map(sweep_attack, files)
         pool.close()
