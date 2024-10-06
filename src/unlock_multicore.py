@@ -94,7 +94,7 @@ def process_file(file, time_limit = 6*3600):
             
 
 
-def sweep_attack(file, time_limit = 24*3600):
+def sweep_attack(file, time_limit = 6*3600):
     #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     #limit_memory(memory_limit, file.name)
     global op_list
@@ -130,18 +130,18 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    """ num_workers =  cpu_count()
+    num_workers =  len(files)#cpu_count()
     with Pool(num_workers) as pool:
-        pool.map(process_file, files)
+        pool.map(sweep_attack, files)
         pool.close()
-        pool.join() """
+        pool.join()
 
     #sweep attack 
 
-    for file in files:
+    """ for file in files:
         sweep_attack(file)
         time.sleep(60)
-        gc.collect()
+        gc.collect() """
 
 
     with open('src/op_list.txt', 'w') as file:

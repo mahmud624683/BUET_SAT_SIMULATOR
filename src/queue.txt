@@ -1,6 +1,5 @@
 python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_rll_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx
 python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1908_cac_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c3540_sarlock_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
 python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_sarlock_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
 python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1908_rll_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
 python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_antisat_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
