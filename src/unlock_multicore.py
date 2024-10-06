@@ -1,10 +1,13 @@
 from pathlib import Path
 import algo_methods
-import os, random
+import os, random, time, gc 
 import signal,resource
 import threading
 from multiprocessing import Pool,cpu_count,freeze_support
 from datetime import datetime
+
+global op_list
+op_list = []
 
 class ThreadController:
     def __init__(self,algo_name,src_file,obfs_file,rslt_file):
@@ -18,6 +21,7 @@ class ThreadController:
 
 
     def child_thread(self):
+        global op_list
         self.pid = os.getpid()
         print(f"{self.pid} - {self.file.name} attacked by : {self.algo}\n")
         if self.algo == "SAT Attack":
@@ -25,12 +29,12 @@ class ThreadController:
         elif self.algo == "APPSAT Attack":
             result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
         else:
-            try:
-                result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
-            except:
-                result = f"{self.file.name} {self.algo}: monosat memory size error\n"
+            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
         
         open(self.rslt, 'a').write(result)
+        result_split = result.split(" Attack:")
+        op_list.append(result_split[0].strip())
+        
         self.op_running = False
 
     def start(self):
@@ -64,7 +68,7 @@ def memory_limit_exceeded(signum, frame):
 
 
 def process_file(file, time_limit = 6*3600):
-
+    global op_list
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
     ckt_name = (file.name).split("_")[0]
@@ -73,8 +77,37 @@ def process_file(file, time_limit = 6*3600):
     if file.is_file():
         algo_name = ["SAT Attack", "APPSAT Attack"]
         for algo in algo_name:
+            op_name = os.path.basename(file.name)+" "+algo
+            if op_name not in op_list:
+                start_time = datetime.now()
+                controller = ThreadController(algo,src_file,file,rslt)
+                controller.start()
+                while True:
+                    current_time = datetime.now()
+                    op_time = (current_time-start_time).total_seconds()
+                    if op_time>time_limit:
+                        controller.stop()
+                        break
+                    elif not(controller.get_op_running()):
+                        break
+            else: print(op_name + " already done")
+            
+
+
+def sweep_attack(file, time_limit = 24*3600):
+    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    #limit_memory(memory_limit, file.name)
+    global op_list
+    src_des = "bench_ckt"
+    rslt = "src/raw_rslt.txt"
+    ckt_name = (file.name).split("_")[0]
+    src_file = os.path.join(src_des, ckt_name + ".bench")
+
+    if file.is_file():
+        op_name = os.path.basename(file.name)+" SWEEP Attack"
+        if op_name not in op_list:
             start_time = datetime.now()
-            controller = ThreadController(algo,src_file,file,rslt)
+            controller = ThreadController("SWEEP Attack",src_file,file,rslt)
             controller.start()
             while True:
                 current_time = datetime.now()
@@ -83,40 +116,21 @@ def process_file(file, time_limit = 6*3600):
                     controller.stop()
                     break
                 elif not(controller.get_op_running()):
-                    break
-            
-
-
-def sweep_attack(file, time_limit = 24*3600, memory_limit = 75):
-    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    limit_memory(memory_limit, file.name)
-
-    src_des = "bench_ckt"
-    rslt = "src/raw_rslt.txt"
-    ckt_name = (file.name).split("_")[0]
-    src_file = os.path.join(src_des, ckt_name + ".bench")
-
-    if file.is_file():
-        start_time = datetime.now()
-        controller = ThreadController("SWEEP Attack",src_file,file,rslt)
-        controller.start()
-        while True:
-            current_time = datetime.now()
-            op_time = (current_time-start_time).total_seconds()
-            if op_time>time_limit:
-                controller.stop()
-                break
-            elif not(controller.get_op_running()):
-                break            
+                    break  
+        else:   print(op_name + " already done")        
 
 
 # Main Function
 def main():
+    global op_list
+    with open('src/op_list.txt', 'r') as file:
+        op_list = file.read().split(",")
+
     folder_path = Path("obfuscated_ckt/k8")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    """ num_workers =  25# cpu_count()
+    """ num_workers =  cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
@@ -124,24 +138,14 @@ def main():
 
     #sweep attack 
 
-    num_workers = 2 # cpu_count()
-    with Pool(num_workers) as pool:
-        pool.map(sweep_attack, files)
-        pool.close()
-        pool.join()
+    for file in files:
+        sweep_attack(file)
+        time.sleep(60)
+        gc.collect()
 
-    #single file run
-    """ org = ""
-    obfs = ""
-    filename = ""
 
-    result = algo_methods.sat(org, obfs, max_iter=1000, print_str=f"{filename} SAT Attack: ")
-
-    result = algo_methods.appsat(org, obfs, max_iter=1000, print_str=f"{filename} APPSAT Attack: ")
-
-    result = algo_methods.hamming_sweep(org, obfs, max_iter=1000, print_str=f"{filename} SWEEP Attack: ")
-    
-    open("src/raw_rslt.txt", 'a').write(result) """
+    with open('src/op_list.txt', 'w') as file:
+        file.write(",".join(op_list))
 
 
 if __name__ == "__main__":
