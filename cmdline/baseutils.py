@@ -530,7 +530,7 @@ def finddipham(pinwires, keywires, interwires, poutwires, list_dip, list_orgcirc
 #        logging.warning("UNSAT")
 #        return -1, discinp, new_time+exe_time, interval, timeout_array, const_solve
 #    elif intr == 1:
-#        return -2, discinp, new_time+exe_time, interval, timeout_array, const_solve
+#        return -2, discinp, new_time+exe_time, interval, timeout_array, const_solveadd -A
     else:
         #print("UNSAT")
         return -1, discinp, new_time+exe_time, interval, timeout_array, const_solve
