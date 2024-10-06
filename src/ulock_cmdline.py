@@ -12,15 +12,18 @@ if __name__ == "__main__":
 
 
     filename = os.path.basename(args.obfuscated)
-    if args.algorithm.lower() == "sat":  # dn
+    if args.algorithm.lower() == "sat":
+	 print(f"{filename} SAT Attack: ")
         result = algo_methods.sat(args.original, args.obfuscated, max_iter=1000, print_str=f"{filename} SAT Attack: ")
         open("src/raw_rslt.txt", 'a').write(result)
         logging.error(result)
     elif args.algorithm.lower() == "appsat":  # dn
+        print(f"{filename} SAT Attack: ")
         result = algo_methods.appsat(args.original, args.obfuscated, max_iter=1000, print_str=f"{filename} APPSAT Attack: ")
         open("src/raw_rslt.txt", 'a').write(result)
         logging.error(result)
     elif args.algorithm.lower() == "sweep":  # dn
+        print(f"{filename} SAT Attack: ")
         result = algo_methods.hamming_sweep(args.original, args.obfuscated, max_iter=100000, print_str=f"{filename} SWEEP Attack: ")    
         open("src/raw_rslt.txt", 'a').write(result)
         logging.error(result)
