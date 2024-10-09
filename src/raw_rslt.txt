@@ -66,3 +66,27 @@ c1355_antisat_8k.bench SAT Attack: key= 00000000; func_iteration= 16; func_exe_t
 c3540_rll_8k.bench SAT Attack: key= 10110010; func_iteration= 5; func_exe_time= 0.38049817085266113; nonfunc_exe_time= 0
 c1355_antisat_8k.bench APPSAT Attack: key= 01100110; func_iteration= 16; func_exe_time= 1.4492981433868408; nonfunc_exe_time= 0
 c3540_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 11.65327429771423; nonfunc_exe_time= 0
+c1355_antisat_8k.bench SWEEP Attack: key= 01010101; func_iteration= 16; func_exe_time= 55.131412982940674; nonfunc_exe_time= 0
+c3540_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 31.89409637451172; nonfunc_exe_time= 0
+c1355_rll_8k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_libar_8k_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_rll_8k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_cac_8k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_sarlock_8k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_rll_16k.bench SWEEP Attack: key= 1100011010101100; func_iteration= 11; func_exe_time= 1.6003377437591553; nonfunc_exe_time= 0
+c432_cac_16k.bench SWEEP Attack: key= 0110011101101100; func_iteration= 50; func_exe_time= 5.552593469619751; nonfunc_exe_time= 0
+c432_libar_16k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c432_antisat_16k.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c432_sarlock_16k.bench SWEEP Attack: key= 0100011001010101; func_iteration= 50; func_exe_time= 8.058600425720215; nonfunc_exe_time= 0
+c1908_libar_16k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c3540_libar_16k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c1908_sarlock_16k.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c3540_cac_16k.bench SWEEP Attack: key= 0111010011100001; func_iteration= 50; func_exe_time= 33.99206066131592; nonfunc_exe_time= 0
+c1355_libar_16k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c3540_sarlock_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c3540_antisat_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c3540_rll_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_cac_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_rll_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_antisat_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_cac_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
