@@ -135,8 +135,9 @@ def main():
     # Use all available CPU cores
     num_workers =  6#cpu_count()
     with Pool(num_workers) as pool:
-        pool.map(process_file, files)
+        pool.map(sweep_attack, files)
         pool.close()
+        pool.join()
         pool.join()
 
     #sweep attack 
@@ -145,6 +146,7 @@ def main():
         process_file(file)
         time.sleep(60)
         gc.collect() """
+    
 
 
     with open('src/op_list.txt', 'w') as file:
