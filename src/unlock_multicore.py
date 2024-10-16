@@ -67,7 +67,7 @@ def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
 
-def process_file(file, time_limit = 6*3600):
+def process_file(file, time_limit = 12*3600):
     global op_list
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -91,6 +91,9 @@ def process_file(file, time_limit = 6*3600):
                     elif not(controller.get_op_running()):
                         break
             else: print(op_name + " already done")
+
+            time.sleep(60)
+            gc.collect()
             
 
 
@@ -126,22 +129,22 @@ def main():
     with open('src/op_list.txt', 'r') as file:
         op_list = file.read().split(",")
 
-    folder_path = Path("obfuscated_ckt/k8")
+    folder_path = Path("obfuscated_ckt/k32")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    """ num_workers =  cpu_count()
+    num_workers =  6#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
-        pool.join() """
+        pool.join()
 
     #sweep attack 
 
-    for file in files:
-        sweep_attack(file)
+    """ for file in files:
+        process_file(file)
         time.sleep(60)
-        gc.collect()
+        gc.collect() """
 
 
     with open('src/op_list.txt', 'w') as file:
