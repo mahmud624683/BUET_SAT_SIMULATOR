@@ -41,7 +41,7 @@ def get_key(obfkeywires, obfinterwires, obfpoutwires, list_str_dip, list_dip, li
         return print_str+"key= {}; func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}\n".format(''.join(correct_key),iter, exe_func_time, exe_non_func_time)
 
     else:
-        return print_str +"Didn't Found Any Satisfiable Key\n"
+        return print_str +"Didn't Found Any Satisfiable Key; func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}\n".format(iter, exe_func_time, exe_non_func_time)
 
 
 def init_attack(orig_bench_address,obf_bench_address):
@@ -671,58 +671,16 @@ def cac(org_name,obfs_name,cac_file,key_bit_no):
 
 
 
-def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,libar_key_str,libar_percent):
+def hybrid_libar(org_name,obfs_name, other_algo, other_algo_str,rll_key_str, liber_no):
     if other_algo == "sarlock":
-        input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=sarlock(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
+        input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=sarlock(org_name,obfs_name,other_algo_str,init_key_pos=len(rll_key_str),write_file=False)
     elif other_algo == "antisat":
-        input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=anti_sat(org_name,obfs_name,other_algo_str,init_key_pos=len(libar_key_str),write_file=False)
+        input_vars, output_vars, output_vars_pos, assigned_vars, io_lines, gate_lines, selected_output=anti_sat(org_name,obfs_name,other_algo_str,init_key_pos=len(rll_key_str),write_file=False)
+    
     else:
         print("The entered method don't match with anything")
         return None
     
-    if input_vars == None:
-        return None
     
-    gate_visited = [False]*len(gate_lines)
-    as_cone_wires = []
-    backward_propagation(as_cone_wires, selected_output, gate_visited, gate_lines, input_vars, output_vars, assigned_vars)
-    as_cone_wires = list(set(as_cone_wires))
-    cone_len = len(as_cone_wires)
-    gate_num = len(gate_lines)-1
-    libar_no = math.ceil(len(libar_key_str)*libar_percent)
-    if (gate_num-cone_len+len(input_vars))<1:
-        print("Not enough gate exist outside the antisat locked cone")
-        return None
-    
-    i=0
-    for key in libar_key_str:
-        target_pin =""
-        rand_pos = -1
-        while rand_pos<0:
-            wire_index = random.randint(0,gate_num)
-            target_pin = assigned_vars[wire_index]
-            if target_pin not in as_cone_wires:
-                rand_pos = wire_index
-                gate_match = re.findall(r'\b\w+\b', gate_lines[wire_index])
-                target_pin = gate_match[2].strip()
-                break
-        if f"INPUT(keyinput{i})" not in io_lines:
-            io_lines += f"INPUT(keyinput{i})\n"
-        gate_lines[rand_pos]= gate_lines[rand_pos].replace(target_pin,f"RLL{str(i)}")
-        if key=="1":
-            gate_lines.insert(rand_pos,f"RLL{str(i)} = XNOR({target_pin}, keyinput{str(i)})")
-        else:
-            gate_lines.insert(rand_pos,f"RLL{str(i)} = XOR({target_pin}, keyinput{str(i)})")
-        i += 1
-
-    with open(obfs_name, 'w') as file:
-        file.write(io_lines+ "\n" + "\n".join(gate_lines))
-        print(f"Libar, {other_algo} hybrid bench file created")
-
-    txt_content = converts.unroll_bench(obfs_name,  math.ceil(len(libar_key_str)*libar_percent))
-    obfs_name = obfs_name.replace(".bench","_unrolled.bench")
-    with open(obfs_name, 'w') as file:
-        file.write(txt_content)
-        print("Libar bench file Unrolled!!!")
     
     
