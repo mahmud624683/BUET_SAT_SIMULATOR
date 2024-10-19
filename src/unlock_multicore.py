@@ -118,7 +118,7 @@ def main():
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 4#len(files)#cpu_count()
+    num_workers = 10#len(files)#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(sweep_attack, files)
         pool.close()

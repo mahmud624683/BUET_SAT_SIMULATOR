@@ -118,3 +118,7 @@ c3540_libar_32k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
 c1908_libar_32k_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
 c3540_rll_32k.bench SWEEP Attack: TIME LIMIT EXCEEDED
 c3540_sarlock_32k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_antisat_32k.bench SWEEP Attack: key= 00000000000000000000000000000000; func_iteration= 50; func_exe_time= 7.297818183898926; nonfunc_exe_time= 0
+c432_libar_32k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key
+c432_sarlock_32k.bench SWEEP Attack: key= 01100110010101010011110110010111; func_iteration= 50; func_exe_time= 6.381349325180054; nonfunc_exe_time= 0
+c1908_antisat_32k.bench SWEEP Attack: key= 00000000000000000000000000000000; func_iteration= 50; func_exe_time= 48.00271010398865; nonfunc_exe_time= 0
