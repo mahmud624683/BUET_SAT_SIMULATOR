@@ -76,7 +76,8 @@ def process_file(file, time_limit = 0.1*3600):
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
     if file.is_file():
-        algo_name = random.shuffle(["SAT Attack", "APPSAT Attack", "SWEEP Attack"])
+        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
+        random.shuffle(algo_name)
 
         for algo in algo_name:
             op_name = os.path.basename(file.name)+" "+algo
