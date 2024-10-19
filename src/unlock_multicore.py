@@ -117,7 +117,6 @@ def main():
 
     folder_path = Path("obfuscated_ckt/libars")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-    files +=files+files
     random.shuffle(files)
     # Use all available CPU cores
     num_workers = 10#cpu_count()
@@ -127,12 +126,10 @@ def main():
         pool.join()
         pool.join()
 
-    #sweep attack 
+    #sweep attack""" 
 
-    """ for file in files:
+    for file in files:
         process_file(file)
-        time.sleep(60)
-        gc.collect() """
     
 
 
