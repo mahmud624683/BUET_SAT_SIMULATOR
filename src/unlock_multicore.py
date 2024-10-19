@@ -56,7 +56,7 @@ class ThreadController:
 
 
 
-def process_file(file, time_limit = 0.1*3600):
+def process_file(file, time_limit = 0.5*3600):
     global op_list
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -117,24 +117,22 @@ def main():
     with open('src/op_list.txt', 'r') as file:
         op_list = file.read().split(",")
 
-    folder_path = Path("hlibar")
+    folder_path = Path("obfuscated_ckt/libars")
+
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-    files +=files+files
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 10#len(files)#cpu_count()
+    """num_workers = 30#len(files)#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
         pool.join()
         pool.join()
 
-    #sweep attack 
+    #sweep attack""" 
 
-    """ for file in files:
+    for file in files:
         process_file(file)
-        time.sleep(60)
-        gc.collect() """
     
 
 
