@@ -1,66 +1,13 @@
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_rll_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1908_cac_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_sarlock_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1908_rll_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_antisat_8k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1908_libar_8k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c3540_sarlock_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c432_libar_16k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c432_cac_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c432_sarlock_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1355_antisat_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1908_rll_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c432_rll_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c3540_antisat_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1908_cac_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1355_sarlock_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c432_antisat_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c3540_cac_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1355_cac_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1908_sarlock_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1355_libar_16k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c3540_libar_16k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c3540_rll_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1908_antisat_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1355_rll_16k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k16/c1908_libar_16k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1355_sarlock_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c432_libar_24k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c432_antisat_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c432_rll_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c3540_antisat_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1908_cac_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c432_cac_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c432_sarlock_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1355_antisat_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1908_rll_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c3540_sarlock_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c3540_rll_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1908_antisat_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1355_rll_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1355_libar_24k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1908_sarlock_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c3540_libar_24k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1908_libar_24k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c3540_cac_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k24/c1355_cac_24k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c3540_sarlock_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c432_libar_32k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c432_cac_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1908_rll_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c432_sarlock_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1355_antisat_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c432_rll_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c3540_antisat_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1908_cac_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1355_sarlock_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c432_antisat_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c3540_cac_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1355_cac_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1355_libar_32k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1908_sarlock_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c3540_libar_32k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c3540_rll_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1908_libar_32k_unrolled.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1908_antisat_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k32/c1355_rll_32k.bench      --original  bench_ckt/c3540.bench    --design_name cxxx 
+python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_rll_8k.bench      --original  bench_ckt/c1355.bench    --design_name cxxx
+
+# Plot for 1355
+axs[0, 0].plot(x, c1355_rll, label="RLL", marker='o')
+axs[0, 0].plot(x, c1355_as, label="Anti-SAT", marker='x')
+axs[0, 0].plot(x, c1355_sarlock, label="SarLock", marker='s')
+axs[0, 0].plot(x, c1355_cac, label="CAC")
+axs[0, 0].plot(x, c1355_libar, label="LiBAR")
+axs[0, 0].plot(x, c1355_hlibar, label="Hybrid LiBAR")
+axs[0, 0].set_title('C1355')
+axs[0, 0].set_xlabel('Number of Key Bits')
+axs[0, 0].set_ylabel('Iteration Number')
+axs[0, 0].legend()

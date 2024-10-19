@@ -129,13 +129,13 @@ def main():
     with open('src/op_list.txt', 'r') as file:
         op_list = file.read().split(",")
 
-    folder_path = Path("obfuscated_ckt/k32")
+    folder_path = Path("obfuscated_ckt/libars")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers =  6#cpu_count()
+    num_workers =  cpu_count()
     with Pool(num_workers) as pool:
-        pool.map(sweep_attack, files)
+        pool.map(process_file, files)
         pool.close()
         pool.join()
         pool.join()
