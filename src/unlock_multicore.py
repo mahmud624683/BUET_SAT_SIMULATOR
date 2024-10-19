@@ -24,12 +24,12 @@ class ThreadController:
         global op_list
         self.pid = os.getpid()
         print(f"{self.pid} - {self.file.name} attacked by : {self.algo}\n")
-        algo_methods.sat(self.src,self.src)
         if self.algo == "SAT Attack":
             result = algo_methods.sat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SAT Attack: ")
         elif self.algo == "APPSAT Attack":
             result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
         else:
+            algo_methods.sat(self.src,self.src)
             result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
             
         algo_methods.sat("bench_ckt/c17.bench","bench_ckt/c17.bench")
@@ -56,10 +56,10 @@ class ThreadController:
 
 
 
-def process_file(file, time_limit = 0.1*3600):
+def process_file(file, time_limit = 600):
     global op_list
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt.txt"
+    rslt = "src/raw_rslt3.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
@@ -86,11 +86,9 @@ def process_file(file, time_limit = 0.1*3600):
 
 
 def sweep_attack(file, time_limit = 24*3600):
-    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    #limit_memory(memory_limit, file.name)
     global op_list
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt.txt"
+    rslt = "src/raw_rslt3.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
@@ -117,12 +115,12 @@ def main():
     with open('src/op_list.txt', 'r') as file:
         op_list = file.read().split(",")
 
-    folder_path = Path("hlibar")
+    folder_path = Path("obfuscated_ckt/libars")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     files +=files+files
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 10#len(files)#cpu_count()
+    num_workers = 10#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
