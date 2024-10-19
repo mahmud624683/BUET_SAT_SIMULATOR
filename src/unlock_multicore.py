@@ -1,6 +1,6 @@
 from pathlib import Path
 import algo_methods
-import os, random, time, gc 
+import os, random, time
 import signal,resource
 import threading
 from multiprocessing import Pool,cpu_count,freeze_support
@@ -24,6 +24,7 @@ class ThreadController:
         global op_list
         self.pid = os.getpid()
         print(f"{self.pid} - {self.file.name} attacked by : {self.algo}\n")
+        algo_methods.sat(self.src,self.src)
         if self.algo == "SAT Attack":
             result = algo_methods.sat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SAT Attack: ")
         elif self.algo == "APPSAT Attack":
@@ -67,7 +68,7 @@ def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
 
-def process_file(file, time_limit = 12*3600):
+def process_file(file, time_limit = 0.1*3600):
     global op_list
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -75,7 +76,9 @@ def process_file(file, time_limit = 12*3600):
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
     if file.is_file():
-        algo_name = ["SAT Attack", "APPSAT Attack"]
+        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
+        random.shuffle(algo_name)
+
         for algo in algo_name:
             op_name = os.path.basename(file.name)+" "+algo
             if op_name not in op_list:
@@ -91,9 +94,6 @@ def process_file(file, time_limit = 12*3600):
                     elif not(controller.get_op_running()):
                         break
             else: print(op_name + " already done")
-
-            time.sleep(60)
-            gc.collect()
             
 
 
@@ -131,9 +131,14 @@ def main():
 
     folder_path = Path("hlibar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
+    files +=files+files
     random.shuffle(files)
     # Use all available CPU cores
+<<<<<<< HEAD
     num_workers = 20 #cpu_count()
+=======
+    num_workers =  30#cpu_count()
+>>>>>>> b277fa82e52b445fae47e1c9abb234dbb03c1b0d
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
