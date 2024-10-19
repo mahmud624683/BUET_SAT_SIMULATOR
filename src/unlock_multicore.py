@@ -30,7 +30,8 @@ class ThreadController:
             result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
         else:
             result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
-        
+            
+        algo_methods.sat("bench_ckt/c17.bench","bench_ckt/c17.bench")
         open(self.rslt, 'a').write(result)
         result_split = result.split(" Attack:")
         op_list.append(result_split[0].strip())
@@ -51,20 +52,6 @@ class ThreadController:
             except:
                 print("error in terminating the process\n")
         self.thread.join()
-
-
-def limit_memory(memory_limit_percent, filename):
-    
-    soft_limit = memory_limit_percent*(1024**3)
-    memory_info = os.popen('free -b').readlines()
-    available_memory = int(memory_info[1].split()[3]) # Extract available memory (in bytes)
-    if available_memory<soft_limit:
-        soft_limit = available_memory
-    print("{} process was allocated {}GB".format(filename, soft_limit/(1024**3)))
-    resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
-
-def memory_limit_exceeded(signum, frame):
-    raise MemoryError("Memory limit exceeded\n")
 
 
 def process_file(file, time_limit = 6*3600):
