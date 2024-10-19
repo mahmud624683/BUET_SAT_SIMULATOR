@@ -127,7 +127,7 @@ def main():
         op_list = file.read().split(",")
 
 
-    folder_path = Path("obfuscated_ckt/k24")
+    folder_path = Path("obfuscated_ckt/k32")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
