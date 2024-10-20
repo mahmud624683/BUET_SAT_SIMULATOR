@@ -1,7 +1,7 @@
 from pathlib import Path
 import algo_methods
-import os, random, time
-import signal,resource
+import os, random
+import signal
 import threading
 from multiprocessing import Pool,cpu_count,freeze_support
 from datetime import datetime
@@ -29,10 +29,9 @@ class ThreadController:
         elif self.algo == "APPSAT Attack":
             result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
         else:
+            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ") 
             algo_methods.sat(self.src,self.src)
-            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ")
-            
-        algo_methods.sat("bench_ckt/c17.bench","bench_ckt/c17.bench")
+
         open(self.rslt, 'a').write(result)
         result_split = result.split(" Attack:")
         op_list.append(result_split[0].strip())
@@ -56,10 +55,10 @@ class ThreadController:
 
 
 
-def process_file(file, time_limit = 600):
+def process_file(file, time_limit = 0.5*3600):
     global op_list
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt3.txt"
+    rslt = "src/raw_rslt.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
@@ -82,31 +81,7 @@ def process_file(file, time_limit = 600):
                     elif not(controller.get_op_running()):
                         break
             else: print(op_name + " already done")
-            
-
-
-def sweep_attack(file, time_limit = 24*3600):
-    global op_list
-    src_des = "bench_ckt"
-    rslt = "src/raw_rslt3.txt"
-    ckt_name = (file.name).split("_")[0]
-    src_file = os.path.join(src_des, ckt_name + ".bench")
-
-    if file.is_file():
-        op_name = os.path.basename(file.name)+" SWEEP Attack"
-        if op_name not in op_list:
-            start_time = datetime.now()
-            controller = ThreadController("SWEEP Attack",src_file,file,rslt)
-            controller.start()
-            while True:
-                current_time = datetime.now()
-                op_time = (current_time-start_time).total_seconds()
-                if op_time>time_limit:
-                    controller.stop()
-                    break
-                elif not(controller.get_op_running()):
-                    break  
-        else:   print(op_name + " already done")        
+                  
 
 
 # Main Function
@@ -115,21 +90,21 @@ def main():
     with open('src/op_list.txt', 'r') as file:
         op_list = file.read().split(",")
 
-    folder_path = Path("obfuscated_ckt/libars")
+    folder_path = Path("hlibar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 10#cpu_count()
+    num_workers = 6#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
         pool.join()
         pool.join()
 
-    #sweep attack""" 
 
-    for file in files:
-        process_file(file)
+    #standalone attack
+    """ for file in files:
+        process_file(file) """
     
 
 
@@ -138,4 +113,5 @@ def main():
 
 
 if __name__ == "__main__":
+    freeze_support()
     main()
