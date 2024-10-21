@@ -92,9 +92,10 @@ def main():
 
     folder_path = Path("hlibar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
+    files += files
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 6#cpu_count()
+    num_workers = cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
