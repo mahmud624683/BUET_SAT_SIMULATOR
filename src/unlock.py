@@ -2,7 +2,7 @@ from pathlib import Path
 import algo_methods
 import os, random
 import signal
-import threading
+import threading, resource
 from multiprocessing import Pool,cpu_count,freeze_support
 from datetime import datetime
 
@@ -53,9 +53,22 @@ class ThreadController:
                 print("error in terminating the process\n")
         self.thread.join()
 
+def limit_memory(memory_limit_percent, filename):
+    
+    soft_limit = memory_limit_percent*(1024**3)
+    memory_info = os.popen('free -b').readlines()
+    available_memory = int(memory_info[1].split()[3]) # Extract available memory (in bytes)
+    if available_memory<soft_limit:
+        soft_limit = available_memory
+    print("{} process was allocated {}GB".format(filename, soft_limit/(1024**3)))
+    resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
 
+def memory_limit_exceeded(signum, frame):
+    raise MemoryError("Memory limit exceeded\n")
 
 def process_file(file, time_limit = 0.5*3600):
+    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    limit_memory(4, file.name)
     global op_list
     src_des = "bench_ckt"
     rslt = "src/raw_rslt.txt"
@@ -92,10 +105,10 @@ def main():
 
     folder_path = Path("hlibar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-    files += files
+    files = files*3
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = cpu_count()
+    num_workers = 6#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, files)
         pool.close()
