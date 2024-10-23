@@ -10,7 +10,7 @@ global op_list
 op_list = []
 
 class ThreadController:
-    def __init__(self,algo_name,src_file,obfs_file,rslt_file):
+    def __init__(self,algo_name,src_file,obfs_file,rslt_file,file_no):
         self.thread = threading.Thread(target=self.child_thread,args=())
         self.pid = None
         self.algo = algo_name
@@ -18,21 +18,23 @@ class ThreadController:
         self.file = obfs_file
         self.rslt = rslt_file
         self.op_running = True
+	self.file_no = file_no
 
 
     def child_thread(self):
         global op_list
         self.pid = os.getpid()
-        print(f"{self.pid} - {self.file.name} attacked by : {self.algo}\n")
+        print(f"{self.pid} - {self.file_no}. {self.file.name} attacked by : {self.algo}\n")
         if self.algo == "SAT Attack":
-            result = algo_methods.sat(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} SAT Attack: ")
+            result = algo_methods.sat(self.src, str(self.file), print_str=f"{self.file.name} SAT Attack: ")
         elif self.algo == "APPSAT Attack":
-            result = algo_methods.appsat(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} APPSAT Attack: ")
+            result = algo_methods.appsat(self.src, str(self.file), print_str=f"{self.file.name} APPSAT Attack: ")
         else:
             result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} SWEEP Attack: ") 
             algo_methods.sat(self.src,self.src)
 
-        open(self.rslt, 'a').write(result)
+        algo_methods.sat(self.src, str(self.file), max_iter=1)
+	open(self.rslt, 'a').write(result)
         result_split = result.split(" Attack:")
         op_list.append(result_split[0].strip())
         
@@ -66,7 +68,7 @@ def limit_memory(memory_limit_percent, filename):
 def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
-def process_file(file, time_limit = 3*3600):
+def process_file(file, no_files, time_limit = 12*3600):
     #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     #limit_memory(4, file.name)
     global op_list
@@ -76,14 +78,14 @@ def process_file(file, time_limit = 3*3600):
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
     if file.is_file():
-        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
+        algo_name = ["SAT Attack", "APPSAT Attack"]
         random.shuffle(algo_name)
 
         for algo in algo_name:
             op_name = os.path.basename(file.name)+" "+algo
             if op_name not in op_list:
                 start_time = datetime.now()
-                controller = ThreadController(algo,src_file,file,rslt)
+                controller = ThreadController(algo,src_file,file,rslt,file_no)
                 controller.start()
                 while True:
                     current_time = datetime.now()
@@ -105,12 +107,12 @@ def main():
 
     folder_path = Path("non_libar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-    files = files
+    no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
     num_workers = 6#cpu_count()
     with Pool(num_workers) as pool:
-        pool.map(process_file, files)
+        pool.map(process_file, (files,no_files))
         pool.close()
         pool.join()
         pool.join()
