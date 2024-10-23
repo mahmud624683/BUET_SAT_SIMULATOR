@@ -92,7 +92,8 @@ def sat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str = "
         if iter>max_iter:
             print("MAX ITERATION LIMIT EXCEEDED!!!")
             print("func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
-            return None
+            return print_str +"MAX ITERATION LIMIT EXCEEDED; func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}\n".format(iter, exe_func_time, exe_non_func_time)
+
         res, dscinp, new_func_time = baseutils.finddip(obfpinwires, obfkeywires, obfinterwires, obfpoutwires, list_dip,
                                                        list_orgcirc, keyin1, keyin2, exe_func_time)
 
@@ -134,7 +135,7 @@ def appsat(orig_bench_address,obf_bench_address,max_iter=sys.maxsize, print_str 
         if iter>max_iter:
             print("MAX ITERATION LIMIT EXCEEDED!!!")
             print(print_str+"func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
-            return None
+            return print_str +"MAX ITERATION LIMIT EXCEEDED; func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}\n".format(iter, exe_func_time, exe_non_func_time)
         res, dscinp, new_func_time = baseutils.double_dip(obfpinwires, obfkeywires, obfinterwires, obfpoutwires, list_dip,
                                                        list_orgcirc, keyin1, keyin2, keyin3, keyin4, exe_func_time)
 
@@ -201,7 +202,7 @@ def hamming_sweep(orig_bench_address,obf_bench_address, max_iter=sys.maxsize,pri
         if(iter>max_iter):
             print("MAX ITERATION LIMIT EXCEEDED!!!")
             print(print_str +"func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}".format(iter-1, exe_func_time, exe_non_func_time))
-            return None
+            return print_str +"MAX ITERATION LIMIT EXCEEDED; func_iteration= {}; func_exe_time= {}; nonfunc_exe_time= {}\n".format(iter, exe_func_time, exe_non_func_time)
         
         res, dscinp, new_func_time, interval, timeout_array, const_solve = baseutils.finddipham(obfpinwires, obfkeywires, obfinterwires, obfpoutwires, list_dip,
                                                        list_orgcirc, keyin1, keyin2, exe_func_time, interval, timeout_array, const_solve)  # duplicate and find dip

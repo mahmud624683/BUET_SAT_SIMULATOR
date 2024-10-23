@@ -1,0 +1,126 @@
+c432_rll_24k.bench APPSAT Attack: key= 001110101111000111011101; func_iteration= 23; func_exe_time= 0.6631999015808105; nonfunc_exe_time= 0
+c432_rll_24k.bench SAT Attack: key= 001010101111000101011101; func_iteration= 7; func_exe_time= 0.042493581771850586; nonfunc_exe_time= 0
+c432_rll_24k.bench SWEEP Attack: key= 001010101111000101011101; func_iteration= 15; func_exe_time= 0.27869176864624023; nonfunc_exe_time= 0
+c432_antisat_16k.bench SWEEP Attack: key= 0000000000000000; func_iteration= 50; func_exe_time= 1.3195643424987793; nonfunc_exe_time= 0
+c432_antisat_16k.bench SAT Attack: key= 0010100000101000; func_iteration= 256; func_exe_time= 11.239887714385986; nonfunc_exe_time= 0
+c3540_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 15.44297480583191; nonfunc_exe_time= 0
+c3540_antisat_8k.bench SWEEP Attack: key= 11011101; func_iteration= 16; func_exe_time= 40.86746549606323; nonfunc_exe_time= 0
+c3540_antisat_8k.bench SAT Attack: key= 00010001; func_iteration= 16; func_exe_time= 1.7808983325958252; nonfunc_exe_time= 0
+c432_antisat_16k.bench APPSAT Attack: key= 0010000000100000; func_iteration= 256; func_exe_time= 26.87613558769226; nonfunc_exe_time= 0
+c3540_antisat_8k.bench APPSAT Attack: key= 00010001; func_iteration= 16; func_exe_time= 1.6221625804901123; nonfunc_exe_time= 0
+c1908_rll_8k.bench APPSAT Attack: key= 00000000; func_iteration= 1; func_exe_time= 0.013602733612060547; nonfunc_exe_time= 0
+c1908_rll_8k.bench SAT Attack: key= 01111000; func_iteration= 2; func_exe_time= 0.013295412063598633; nonfunc_exe_time= 0
+c3540_sarlock_8k.bench SAT Attack: key= 10110010; func_iteration= 255; func_exe_time= 32.260324239730835; nonfunc_exe_time= 0
+c1908_rll_8k.bench SWEEP Attack: key= 00000000; func_iteration= 1; func_exe_time= 58.164726972579956; nonfunc_exe_time= 0
+c3540_sarlock_8k.bench APPSAT Attack: key= 10110010; func_iteration= 254; func_exe_time= 81.26348543167114; nonfunc_exe_time= 0
+c3540_cac_32k.bench SWEEP Attack: key= 01011011100000000000100101110110; func_iteration= 50; func_exe_time= 17.057942390441895; nonfunc_exe_time= 0
+c1355_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 442.98113465309143; nonfunc_exe_time= 0
+c1355_sarlock_8k.bench APPSAT Attack: key= 00000010; func_iteration= 254; func_exe_time= 43.53277897834778; nonfunc_exe_time= 0
+c1355_sarlock_8k.bench SAT Attack: key= 10110010; func_iteration= 255; func_exe_time= 16.51451802253723; nonfunc_exe_time= 0
+c3540_rll_24k.bench SAT Attack: key= 001010101111000101011101; func_iteration= 10; func_exe_time= 0.4465796947479248; nonfunc_exe_time= 0
+c3540_rll_24k.bench APPSAT Attack: key= 001010101111000101011101; func_iteration= 8; func_exe_time= 0.6572163105010986; nonfunc_exe_time= 0
+c3540_rll_24k.bench SWEEP Attack: key= 001010101111000101011101; func_iteration= 7; func_exe_time= 8.215998888015747; nonfunc_exe_time= 0
+c1908_cac_24k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 954.5407588481903; nonfunc_exe_time= 0
+c1355_antisat_24k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 945.4461133480072; nonfunc_exe_time= 0
+c1908_cac_24k.bench SWEEP Attack: key= 010111101110000100101111; func_iteration= 50; func_exe_time= 254.76091742515564; nonfunc_exe_time= 0
+c1355_cac_24k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 1295.8032584190369; nonfunc_exe_time= 0
+c1355_cac_24k.bench SWEEP Attack: key= 010111001000100011100000; func_iteration= 50; func_exe_time= 276.70739579200745; nonfunc_exe_time= 0
+c3540_cac_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 1933.4070365428925; nonfunc_exe_time= 0
+c3540_antisat_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1355_sarlock_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 1310.2495555877686; nonfunc_exe_time= 0
+c1908_cac_24k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3200.1454746723175; nonfunc_exe_time= 0
+c432_sarlock_16k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 477.1139507293701; nonfunc_exe_time= 0
+c432_sarlock_16k.bench SWEEP Attack: key= 0100111111100111; func_iteration= 50; func_exe_time= 18.866648197174072; nonfunc_exe_time= 0
+c1355_antisat_24k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 4844.929130554199; nonfunc_exe_time= 0
+c1355_cac_24k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3959.578881263733; nonfunc_exe_time= 0
+c432_antisat_8k.bench SAT Attack: key= 00010001; func_iteration= 16; func_exe_time= 33.24827814102173; nonfunc_exe_time= 0
+c432_antisat_8k.bench APPSAT Attack: key= 00000000; func_iteration= 16; func_exe_time= 0.2665371894836426; nonfunc_exe_time= 0
+c432_antisat_8k.bench SWEEP Attack: key= 00000000; func_iteration= 16; func_exe_time= 0.28121352195739746; nonfunc_exe_time= 0
+c1908_cac_16k.bench SWEEP Attack: key= 0010011101001000; func_iteration= 50; func_exe_time= 53.731465578079224; nonfunc_exe_time= 0
+c432_sarlock_16k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 1838.7163121700287; nonfunc_exe_time= 0
+c3540_rll_8k.bench SWEEP Attack: key= 10110010; func_iteration= 2; func_exe_time= 17.180177927017212; nonfunc_exe_time= 0
+c3540_rll_8k.bench APPSAT Attack: key= 10110110; func_iteration= 4; func_exe_time= 0.09980535507202148; nonfunc_exe_time= 0
+c3540_rll_8k.bench SAT Attack: key= 10110010; func_iteration= 8; func_exe_time= 0.8327887058258057; nonfunc_exe_time= 0
+c432_rll_8k.bench SAT Attack: key= 10110010; func_iteration= 7; func_exe_time= 0.05434679985046387; nonfunc_exe_time= 0
+c432_rll_8k.bench SWEEP Attack: key= 10110010; func_iteration= 10; func_exe_time= 0.1011362075805664; nonfunc_exe_time= 0
+c432_rll_8k.bench APPSAT Attack: key= 10110010; func_iteration= 3; func_exe_time= 0.027480125427246094; nonfunc_exe_time= 0
+c1908_sarlock_8k.bench SAT Attack: key= 10110010; func_iteration= 255; func_exe_time= 14.82823896408081; nonfunc_exe_time= 0
+c1908_sarlock_8k.bench APPSAT Attack: key= 11100001; func_iteration= 254; func_exe_time= 61.844780683517456; nonfunc_exe_time= 0
+c1908_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 132.20856356620789; nonfunc_exe_time= 0
+c432_cac_32k.bench SWEEP Attack: key= 01010111011001100100000000011100; func_iteration= 50; func_exe_time= 1.5358264446258545; nonfunc_exe_time= 0
+c3540_cac_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c432_cac_24k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 4919.987557172775; nonfunc_exe_time= 0
+c1908_cac_16k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 2909.19051527977; nonfunc_exe_time= 0
+c1355_sarlock_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c432_antisat_32k.bench SWEEP Attack: key= 00000000000000000000000000000000; func_iteration= 50; func_exe_time= 1.389197826385498; nonfunc_exe_time= 0
+c1908_antisat_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 999.93514752388; nonfunc_exe_time= 0
+c1908_antisat_32k.bench SWEEP Attack: key= 00000000000000000000000000000000; func_iteration= 50; func_exe_time= 166.99729657173157; nonfunc_exe_time= 0
+c432_cac_32k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 2849.1866953372955; nonfunc_exe_time= 0
+c432_antisat_32k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 1967.6311149597168; nonfunc_exe_time= 0
+c1908_cac_16k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3775.0004115104675; nonfunc_exe_time= 0
+c1908_antisat_32k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3048.2236003875732; nonfunc_exe_time= 0
+c432_rll_32k.bench APPSAT Attack: key= 10011000111110101010111101010101; func_iteration= 24; func_exe_time= 53.49887442588806; nonfunc_exe_time= 0
+c432_rll_32k.bench SAT Attack: key= 10011000111110101010111101010101; func_iteration= 29; func_exe_time= 0.37191128730773926; nonfunc_exe_time= 0
+c1355_antisat_16k.bench APPSAT Attack: key= 0000100100001001; func_iteration= 256; func_exe_time= 795.8871448040009; nonfunc_exe_time= 0
+c432_rll_32k.bench SWEEP Attack: key= 10011000111110101010111101010101; func_iteration= 23; func_exe_time= 0.4908895492553711; nonfunc_exe_time= 0
+c1355_rll_32k.bench SAT Attack: key= 10011000111110101010111101010101; func_iteration= 33; func_exe_time= 2.252897024154663; nonfunc_exe_time= 0
+c1355_rll_32k.bench APPSAT Attack: key= 00011000111110100010111101010101; func_iteration= 18; func_exe_time= 3.6036810874938965; nonfunc_exe_time= 0
+c1355_antisat_16k.bench SAT Attack: key= 0000000000000000; func_iteration= 256; func_exe_time= 21.547490119934082; nonfunc_exe_time= 0
+.DS_Store SWEEP Attack: TIME LIMIT EXCEEDED
+c3540_antisat_16k.bench SWEEP Attack: key= 0000000000000000; func_iteration= 50; func_exe_time= 28.14757990837097; nonfunc_exe_time= 0
+c432_cac_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 4060.3263080120087; nonfunc_exe_time= 0
+c3540_antisat_16k.bench APPSAT Attack: key= 0010011000100110; func_iteration= 256; func_exe_time= 196.60920310020447; nonfunc_exe_time= 0
+c3540_antisat_16k.bench SAT Attack: key= 0011101100111011; func_iteration= 256; func_exe_time= 103.24763226509094; nonfunc_exe_time= 0
+c1908_cac_8k.bench APPSAT Attack: key= 10110101; func_iteration= 254; func_exe_time= 42.06393384933472; nonfunc_exe_time= 0
+c432_cac_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c3540_rll_16k.bench SAT Attack: key= 1100011010101100; func_iteration= 7; func_exe_time= 0.18255329132080078; nonfunc_exe_time= 0
+c3540_rll_16k.bench APPSAT Attack: key= 1100011010001100; func_iteration= 5; func_exe_time= 0.18116235733032227; nonfunc_exe_time= 0
+c432_sarlock_8k.bench SAT Attack: key= 10110010; func_iteration= 255; func_exe_time= 479.88842844963074; nonfunc_exe_time= 0
+c3540_rll_16k.bench SWEEP Attack: key= 1100011010101100; func_iteration= 5; func_exe_time= 4.2153661251068115; nonfunc_exe_time= 0
+c432_sarlock_8k.bench APPSAT Attack: key= 00111001; func_iteration= 254; func_exe_time= 42.56743144989014; nonfunc_exe_time= 0
+c432_sarlock_8k.bench SWEEP Attack: key= 00000000; func_iteration= 50; func_exe_time= 1.1799261569976807; nonfunc_exe_time= 0
+c1908_cac_8k.bench SWEEP Attack: key= 01111000; func_iteration= 50; func_exe_time= 146.41339802742004; nonfunc_exe_time= 0
+c1908_cac_8k.bench SAT Attack: key= 10011001; func_iteration= 255; func_exe_time= 15.161925315856934; nonfunc_exe_time= 0
+c432_antisat_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3034.5247032642365; nonfunc_exe_time= 0
+c3540_sarlock_32k.bench SWEEP Attack: key= 01100010101010101111111001100010; func_iteration= 50; func_exe_time= 91.81362557411194; nonfunc_exe_time= 0
+c1908_sarlock_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 1641.3774816989899; nonfunc_exe_time= 0
+c1908_sarlock_32k.bench SWEEP Attack: key= 01001000010100010100000011100111; func_iteration= 50; func_exe_time= 130.31108331680298; nonfunc_exe_time= 0
+c1908_sarlock_24k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3703.8951449394226; nonfunc_exe_time= 0
+c3540_sarlock_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 2346.454518556595; nonfunc_exe_time= 0
+c1355_rll_32k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c432_rll_16k.bench SAT Attack: key= 1100011010101100; func_iteration= 15; func_exe_time= 0.12813854217529297; nonfunc_exe_time= 0
+c432_rll_16k.bench SWEEP Attack: key= 1100011010101100; func_iteration= 11; func_exe_time= 0.13080573081970215; nonfunc_exe_time= 0
+c432_rll_16k.bench APPSAT Attack: key= 1100011010001100; func_iteration= 20; func_exe_time= 0.32001519203186035; nonfunc_exe_time= 0
+c1355_antisat_16k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c3540_rll_32k.bench APPSAT Attack: key= 10011000111110101010111101010101; func_iteration= 11; func_exe_time= 0.4983088970184326; nonfunc_exe_time= 0
+c3540_rll_32k.bench SAT Attack: key= 10011000111110101010111101010110; func_iteration= 9; func_exe_time= 0.36002540588378906; nonfunc_exe_time= 0
+c1908_antisat_16k.bench SWEEP Attack: key= 0000000000000000; func_iteration= 50; func_exe_time= 55.59581208229065; nonfunc_exe_time= 0
+c3540_rll_32k.bench SWEEP Attack: key= 10011000111110101010111101010110; func_iteration= 7; func_exe_time= 4.653313875198364; nonfunc_exe_time= 0
+c1908_antisat_16k.bench APPSAT Attack: key= 0111100001111000; func_iteration= 256; func_exe_time= 56.5756733417511; nonfunc_exe_time= 0
+c1908_antisat_16k.bench SAT Attack: key= 0010011000100110; func_iteration= 256; func_exe_time= 31.069072723388672; nonfunc_exe_time= 0
+c3540_cac_8k.bench SAT Attack: key= 10011001; func_iteration= 255; func_exe_time= 45.69735550880432; nonfunc_exe_time= 0
+c3540_antisat_24k.bench SWEEP Attack: key= 000000000000000000000000; func_iteration= 50; func_exe_time= 20.121830463409424; nonfunc_exe_time= 0
+c3540_cac_8k.bench APPSAT Attack: key= 10011001; func_iteration= 254; func_exe_time= 102.97560453414917; nonfunc_exe_time= 0
+c1908_sarlock_24k.bench SWEEP Attack: key= 010111011100111011011000; func_iteration= 50; func_exe_time= 1189.024397611618; nonfunc_exe_time= 0
+c3540_cac_8k.bench SWEEP Attack: key= 01010000; func_iteration= 50; func_exe_time= 21.343681812286377; nonfunc_exe_time= 0
+c1908_rll_32k.bench APPSAT Attack: key= 00101100111110101010111101010101; func_iteration= 8; func_exe_time= 0.8164942264556885; nonfunc_exe_time= 0
+c1908_rll_32k.bench SAT Attack: key= 11010001000000101010111101010101; func_iteration= 7; func_exe_time= 0.1295168399810791; nonfunc_exe_time= 0
+c1355_sarlock_24k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_sarlock_24k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 967.2853674888611; nonfunc_exe_time= 0
+c1908_sarlock_32k.bench APPSAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 3920.9822969436646; nonfunc_exe_time= 0
+c3540_sarlock_16k.bench SWEEP Attack: key= 0100101100010100; func_iteration= 50; func_exe_time= 130.52120089530945; nonfunc_exe_time= 0
+c3540_sarlock_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c432_cac_8k.bench APPSAT Attack: key= 00100010; func_iteration= 254; func_exe_time= 13.46912145614624; nonfunc_exe_time= 0
+c432_cac_8k.bench SWEEP Attack: key= 01010000; func_iteration= 50; func_exe_time= 1.3494586944580078; nonfunc_exe_time= 0
+c432_cac_8k.bench SAT Attack: key= 10011001; func_iteration= 255; func_exe_time= 5.8304009437561035; nonfunc_exe_time= 0
+c3540_antisat_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1908_sarlock_16k.bench SWEEP Attack: key= 0011011110011101; func_iteration= 50; func_exe_time= 44.037359952926636; nonfunc_exe_time= 0
+c1908_rll_32k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_cac_8k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1908_antisat_8k.bench SWEEP Attack: key= 10001000; func_iteration= 16; func_exe_time= 36.32962346076965; nonfunc_exe_time= 0
+c1908_antisat_8k.bench SAT Attack: key= 00100010; func_iteration= 16; func_exe_time= 0.49052906036376953; nonfunc_exe_time= 0
+c1908_antisat_8k.bench APPSAT Attack: key= 00000000; func_iteration= 16; func_exe_time= 3.4537246227264404; nonfunc_exe_time= 0
+c3540_cac_16k.bench SAT Attack: TIME LIMIT EXCEEDED
+c3540_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1908_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1908_rll_24k.bench SWEEP Attack: TIME LIMIT EXCEEDED

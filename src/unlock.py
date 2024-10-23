@@ -25,11 +25,11 @@ class ThreadController:
         self.pid = os.getpid()
         print(f"{self.pid} - {self.file.name} attacked by : {self.algo}\n")
         if self.algo == "SAT Attack":
-            result = algo_methods.sat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SAT Attack: ")
+            result = algo_methods.sat(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} SAT Attack: ")
         elif self.algo == "APPSAT Attack":
-            result = algo_methods.appsat(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} APPSAT Attack: ")
+            result = algo_methods.appsat(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} APPSAT Attack: ")
         else:
-            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=1000, print_str=f"{self.file.name} SWEEP Attack: ") 
+            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} SWEEP Attack: ") 
             algo_methods.sat(self.src,self.src)
 
         open(self.rslt, 'a').write(result)
@@ -66,12 +66,12 @@ def limit_memory(memory_limit_percent, filename):
 def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
-def process_file(file, time_limit = 0.5*3600):
-    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    limit_memory(4, file.name)
+def process_file(file, time_limit = 3*3600):
+    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    #limit_memory(4, file.name)
     global op_list
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt.txt"
+    rslt = "src/raw_rslt4.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
@@ -103,9 +103,9 @@ def main():
     with open('src/op_list.txt', 'r') as file:
         op_list = file.read().split(",")
 
-    folder_path = Path("hlibar")
+    folder_path = Path("non_libar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-    files = files*3
+    files = files
     random.shuffle(files)
     # Use all available CPU cores
     num_workers = 6#cpu_count()
