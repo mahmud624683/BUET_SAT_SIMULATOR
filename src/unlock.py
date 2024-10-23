@@ -96,10 +96,9 @@ def main():
     with open("src/queue.txt", 'r') as file:
         op_list = file.read().split(",")
     
-    files =[Path(file).resolve() for file in op_list]
     
-    """ folder_path = Path("rll_libar")
-    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()] """
+    folder_path = Path("non_libar")
+    files = [file.resolve() for file in folder_path.rglob('*') if str(file.resolve()) in op_list]
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
@@ -114,7 +113,7 @@ def main():
 
     #standalone attack
     """ for file in files:
-        process_file(file) """
+        process_file((files[0],no_files[0])) """
     
 
 
