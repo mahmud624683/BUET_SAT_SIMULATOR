@@ -6,8 +6,6 @@ import threading, resource
 from multiprocessing import Pool,cpu_count,freeze_support
 from datetime import datetime
 
-global op_list
-op_list = []
 
 class ThreadController:
     def __init__(self,algo_name,src_file,obfs_file,rslt_file,file_no):
@@ -18,11 +16,10 @@ class ThreadController:
         self.file = obfs_file
         self.rslt = rslt_file
         self.op_running = True
-	self.file_no = file_no
+        self.file_no = file_no
 
 
     def child_thread(self):
-        global op_list
         self.pid = os.getpid()
         print(f"{self.pid} - {self.file_no}. {self.file.name} attacked by : {self.algo}\n")
         if self.algo == "SAT Attack":
@@ -34,10 +31,7 @@ class ThreadController:
             algo_methods.sat(self.src,self.src)
 
         algo_methods.sat(self.src, str(self.file), max_iter=1)
-	open(self.rslt, 'a').write(result)
-        result_split = result.split(" Attack:")
-        op_list.append(result_split[0].strip())
-        
+        open(self.rslt, 'a').write(result)
         self.op_running = False
 
     def start(self):
@@ -68,12 +62,13 @@ def limit_memory(memory_limit_percent, filename):
 def memory_limit_exceeded(signum, frame):
     raise MemoryError("Memory limit exceeded\n")
 
-def process_file(file, no_files, time_limit = 12*3600):
-    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    #limit_memory(4, file.name)
-    global op_list
+def process_file(process_file, time_limit = 12*3600):
+    file, file_no = process_file
+    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    limit_memory(4, file.name)
+
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt4.txt"
+    rslt = "src/raw_rslt5.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
 
@@ -81,38 +76,36 @@ def process_file(file, no_files, time_limit = 12*3600):
         algo_name = ["SAT Attack", "APPSAT Attack"]
         random.shuffle(algo_name)
 
-        for algo in algo_name:
-            op_name = os.path.basename(file.name)+" "+algo
-            if op_name not in op_list:
-                start_time = datetime.now()
-                controller = ThreadController(algo,src_file,file,rslt,file_no)
-                controller.start()
-                while True:
-                    current_time = datetime.now()
-                    op_time = (current_time-start_time).total_seconds()
-                    if op_time>time_limit:
-                        controller.stop()
-                        break
-                    elif not(controller.get_op_running()):
-                        break
-            else: print(op_name + " already done")
+        for algo in algo_name:           
+            start_time = datetime.now()
+            controller = ThreadController(algo,src_file,file,rslt,file_no)
+            controller.start()
+            while True:
+                current_time = datetime.now()
+                op_time = (current_time-start_time).total_seconds()
+                if op_time>time_limit:
+                    controller.stop()
+                    break
+                elif not(controller.get_op_running()):
+                    break
                   
 
 
 # Main Function
 def main():
-    global op_list
-    with open('src/op_list.txt', 'r') as file:
+    with open('src/queue.txt', 'r') as file:
         op_list = file.read().split(",")
+    
+    files =[Path(file) for file in op_list]
 
-    folder_path = Path("non_libar")
-    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
+    """ folder_path = Path("rll_libar")
+    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()] """
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 6#cpu_count()
+    num_workers = 1#cpu_count()
     with Pool(num_workers) as pool:
-        pool.map(process_file, (files,no_files))
+        pool.map(process_file, zip(files,no_files))
         pool.close()
         pool.join()
         pool.join()
@@ -124,8 +117,7 @@ def main():
     
 
 
-    with open('src/op_list.txt', 'w') as file:
-        file.write(",".join(op_list))
+    
 
 
 if __name__ == "__main__":

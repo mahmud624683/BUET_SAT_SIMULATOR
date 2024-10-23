@@ -1,13 +1,1 @@
-python3 cmdline/smt_tool.py  --algorithm smt_hamming    --obfuscated  obfuscated_ckt/k8/c1355_rll_8k.bench      --original  bench_ckt/c1355.bench    --design_name cxxx
-
-# Plot for 1355
-axs[0, 0].plot(x, c1355_rll, label="RLL", marker='o')
-axs[0, 0].plot(x, c1355_as, label="Anti-SAT", marker='x')
-axs[0, 0].plot(x, c1355_sarlock, label="SarLock", marker='s')
-axs[0, 0].plot(x, c1355_cac, label="CAC")
-axs[0, 0].plot(x, c1355_libar, label="LiBAR")
-axs[0, 0].plot(x, c1355_hlibar, label="Hybrid LiBAR")
-axs[0, 0].set_title('C1355')
-axs[0, 0].set_xlabel('Number of Key Bits')
-axs[0, 0].set_ylabel('Iteration Number')
-axs[0, 0].legend()
+/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c3540_sarlock_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_antisat_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c432_sarlock_32k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_cac_16k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_antisat_8k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_cac_8k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_rll_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c432_antisat_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_sarlock_16k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1908_antisat_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_sarlock_32k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_antisat_32k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c3540_cac_16k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_rll_8k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c3540_antisat_32k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/.DS_Store,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_rll_16k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1908_rll_16k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1908_cac_32k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c432_cac_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1908_rll_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_cac_32k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c432_cac_16k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c432_sarlock_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c1355_sarlock_24k.bench,/Users/mahmudulhasan/Documents/BUET_SAT_SIMULATOR/non_libar/c3540_cac_24k.bench
