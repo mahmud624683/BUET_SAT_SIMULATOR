@@ -98,7 +98,7 @@ def main():
     
     
     folder_path = Path("non_libar")
-    files = [file.resolve() for file in folder_path.rglob('*') if str(file.resolve()) in op_list]
+    files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
