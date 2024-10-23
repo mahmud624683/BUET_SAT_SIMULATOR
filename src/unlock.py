@@ -64,8 +64,8 @@ def memory_limit_exceeded(signum, frame):
 
 def process_file(process_file, time_limit = 12*3600):
     file, file_no = process_file
-    signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    limit_memory(4, file.name)
+    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
+    #limit_memory(4, file.name)
 
     src_des = "bench_ckt"
     rslt = "src/raw_rslt5.txt"
@@ -103,7 +103,7 @@ def main():
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
-    num_workers = 1#cpu_count()
+    num_workers = 6#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, zip(files,no_files))
         pool.close()
