@@ -71,7 +71,7 @@ def process_file(process_file, time_limit = 12*3600):
     rslt = "src/raw_rslt5.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
-
+    
     if file.is_file():
         algo_name = ["SAT Attack", "APPSAT Attack"]
         random.shuffle(algo_name)
@@ -93,16 +93,17 @@ def process_file(process_file, time_limit = 12*3600):
 
 # Main Function
 def main():
-    with open('src/queue.txt', 'r') as file:
+    with open("src/queue.txt", 'r') as file:
         op_list = file.read().split(",")
     
-    files =[Path(file) for file in op_list]
-
+    files =[Path(file).resolve() for file in op_list]
+    
     """ folder_path = Path("rll_libar")
     files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()] """
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
+    print("Total file number - ",len(files))
     num_workers = 6#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, zip(files,no_files))
