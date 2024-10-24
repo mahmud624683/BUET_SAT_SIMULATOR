@@ -59,21 +59,21 @@ def limit_memory(memory_limit_percent, filename):
     print("{} process was allocated {}GB".format(filename, soft_limit/(1024**3)))
     resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
 
-def memory_limit_exceeded(signum, frame):
+def memory_limit_exceeded(signup, frame):
     raise MemoryError("Memory limit exceeded\n")
 
-def process_file(process_file, time_limit = 12*3600):
+def process_file(process_file, time_limit = 3*3600):
     file, file_no = process_file
     #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     #limit_memory(4, file.name)
 
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt5.txt"
+    rslt = "src/raw_rslt7.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
     
     if file.is_file():
-        algo_name = ["SAT Attack", "APPSAT Attack"]
+        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
         random.shuffle(algo_name)
 
         for algo in algo_name:           
@@ -97,13 +97,15 @@ def main():
         op_list = file.read().split(",")
     
     
-    folder_path = Path("non_libar")
-    files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
+    #folder_path = Path("hlibar")
+    folder_path = Path("obfuscated_ckt/libars")
+    #files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
+    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
     print("Total file number - ",len(files))
-    num_workers = 6#cpu_count()
+    num_workers = cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, zip(files,no_files))
         pool.close()

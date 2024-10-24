@@ -1,0 +1,2 @@
+c3540_antisat+libar_8k_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 6; func_exe_time= 1.984588861465454; nonfunc_exe_time= 0
+c3540_antisat+libar_8k_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 1; func_exe_time= 0.06355786323547363; nonfunc_exe_time= 0
