@@ -105,7 +105,7 @@ def main():
     random.shuffle(files)
     # Use all available CPU cores
     print("Total file number - ",len(files))
-    num_workers = 6#cpu_count()
+    num_workers = 4#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, zip(files,no_files))
         pool.close()
