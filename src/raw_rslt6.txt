@@ -78,3 +78,5 @@ c1908_cac+libar_16k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Ke
 c1908_cac+libar_16k_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 1; func_exe_time= 0.02167510986328125; nonfunc_exe_time= 0
 c1908_cac+libar_16k_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 3; func_exe_time= 0.28130102157592773; nonfunc_exe_time= 0
 c1355_sarlock+libar_32k_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 3; func_exe_time= 0.13847827911376953; nonfunc_exe_time= 0
+c3540_antisat+libar_8k_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 6; func_exe_time= 1.984588861465454; nonfunc_exe_time= 0
+c3540_antisat+libar_8k_unrolled.bench SAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 1; func_exe_time= 0.06355786323547363; nonfunc_exe_time= 0

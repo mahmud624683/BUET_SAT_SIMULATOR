@@ -66,7 +66,6 @@ c432_rll_32k.bench SWEEP Attack: key= 10011000111110101010111101010101; func_ite
 c1355_rll_32k.bench SAT Attack: key= 10011000111110101010111101010101; func_iteration= 33; func_exe_time= 2.252897024154663; nonfunc_exe_time= 0
 c1355_rll_32k.bench APPSAT Attack: key= 00011000111110100010111101010101; func_iteration= 18; func_exe_time= 3.6036810874938965; nonfunc_exe_time= 0
 c1355_antisat_16k.bench SAT Attack: key= 0000000000000000; func_iteration= 256; func_exe_time= 21.547490119934082; nonfunc_exe_time= 0
-.DS_Store SWEEP Attack: TIME LIMIT EXCEEDED
 c3540_antisat_16k.bench SWEEP Attack: key= 0000000000000000; func_iteration= 50; func_exe_time= 28.14757990837097; nonfunc_exe_time= 0
 c432_cac_32k.bench SAT Attack: MAX ITERATION LIMIT EXCEEDED; func_iteration= 2001; func_exe_time= 4060.3263080120087; nonfunc_exe_time= 0
 c3540_antisat_16k.bench APPSAT Attack: key= 0010011000100110; func_iteration= 256; func_exe_time= 196.60920310020447; nonfunc_exe_time= 0
@@ -124,3 +123,13 @@ c3540_cac_16k.bench SAT Attack: TIME LIMIT EXCEEDED
 c3540_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c1908_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c1908_rll_24k.bench SWEEP Attack: TIME LIMIT EXCEEDED
+c1355_rll_24k.bench SAT Attack: key= 001010101111000101011101; func_iteration= 23; func_exe_time= 0.7960855960845947; nonfunc_exe_time= 0
+c1355_rll_24k.bench APPSAT Attack: key= 001010101111000101011101; func_iteration= 19; func_exe_time= 3.777881145477295; nonfunc_exe_time= 0
+c1355_antisat_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c432_sarlock_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1355_cac_32k.bench SAT Attack: TIME LIMIT EXCEEDED
+c3540_sarlock_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c432_antisat_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+c1355_rll_16k.bench SAT Attack: key= 1100011010101100; func_iteration= 22; func_exe_time= 0.46472644805908203; nonfunc_exe_time= 0
+c1355_rll_16k.bench APPSAT Attack: key= 1101111110001100; func_iteration= 8; func_exe_time= 0.7663586139678955; nonfunc_exe_time= 0
+c1908_antisat_24k.bench SAT Attack: TIME LIMIT EXCEEDED
