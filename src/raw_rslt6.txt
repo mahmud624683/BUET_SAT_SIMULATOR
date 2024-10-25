@@ -134,3 +134,4 @@ c432_antisat+libar_16k_unrolled.bench SAT Attack: Didn't Found Any Satisfiable K
 c1908_cac+libar_8k_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 2; func_exe_time= 0.35329437255859375; nonfunc_exe_time= 0
 c1355_antisat+libar_16k_unrolled.bench APPSAT Attack: Didn't Found Any Satisfiable Key; func_iteration= 8; func_exe_time= 1.3535974025726318; nonfunc_exe_time= 0
 c1908_cac+libar_8k_unrolled.bench SWEEP Attack: Didn't Found Any Satisfiable Key; func_iteration= 4; func_exe_time= 71.12323594093323; nonfunc_exe_time= 0
+c1355_cac+libar_8k_unrolled.bench SWEEP Attack: TIME LIMIT EXCEEDED
