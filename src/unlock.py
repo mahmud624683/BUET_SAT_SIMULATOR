@@ -68,7 +68,7 @@ def process_file(process_file, time_limit = 3*3600):
     #limit_memory(4, file.name)
 
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt7.txt"
+    rslt = "src/raw_rslt6.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
     
@@ -97,10 +97,10 @@ def main():
         op_list = file.read().split(",")
     
     
-    #folder_path = Path("hlibar")
-    folder_path = Path("obfuscated_ckt/libars")
-    #files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
-    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
+    folder_path = Path("hlibar")
+    #folder_path = Path("obfuscated_ckt/libars")
+    files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
+    #files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
