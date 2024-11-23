@@ -62,18 +62,18 @@ def limit_memory(memory_limit_percent, filename):
 def memory_limit_exceeded(signup, frame):
     raise MemoryError("Memory limit exceeded\n")
 
-def process_file(process_file, time_limit = 3*3600):
+def process_file(process_file, time_limit = 48*3600):
     file, file_no = process_file
     #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
     #limit_memory(4, file.name)
 
     src_des = "bench_ckt"
-    rslt = "src/raw_rslt6.txt"
+    rslt = "src/final_raw_rslt.txt"
     ckt_name = (file.name).split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
     
     if file.is_file():
-        algo_name = ["SAT Attack", "APPSAT Attack", "SWEEP Attack"]
+        algo_name = ["SAT Attack", "APPSAT Attack"]#, "SWEEP Attack"]
         random.shuffle(algo_name)
 
         for algo in algo_name:           
@@ -97,15 +97,15 @@ def main():
         op_list = file.read().split(",")
     
     
-    folder_path = Path("hlibar")
+    folder_path = Path("non_libar")
     #folder_path = Path("obfuscated_ckt/libars")
-    files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
-    #files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
+    #files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
+    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
     no_files = range(len(files))
     random.shuffle(files)
     # Use all available CPU cores
     print("Total file number - ",len(files))
-    num_workers = 4#cpu_count()
+    num_workers = 8#cpu_count()
     with Pool(num_workers) as pool:
         pool.map(process_file, zip(files,no_files))
         pool.close()
