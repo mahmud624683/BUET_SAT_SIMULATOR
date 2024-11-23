@@ -30,7 +30,7 @@ class ThreadController:
             result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} SWEEP Attack: ") 
             algo_methods.sat(self.src,self.src)
 
-        algo_methods.sat(self.src, str(self.file), max_iter=1)
+        algo_methods.sat(self.src, str(self.file), max_iter=2)
         open(self.rslt, 'a').write(result)
         self.op_running = False
 
