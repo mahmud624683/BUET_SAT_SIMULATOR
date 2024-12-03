@@ -13,7 +13,7 @@ class ThreadController:
         self.pid = None
         self.algo = algo_name
         self.src = src_file
-        self.file = obfs_file
+        self.obfs = obfs_file
         self.rslt = rslt_file
         self.op_running = True
         self.file_no = file_no
@@ -21,16 +21,16 @@ class ThreadController:
 
     def child_thread(self):
         self.pid = os.getpid()
-        print(f"{self.pid} - {self.file_no}. {self.file.name} attacked by : {self.algo}\n")
-        if self.algo == "SAT Attack":
-            result = algo_methods.sat(self.src, str(self.file), print_str=f"{self.file.name} SAT Attack: ")
-        elif self.algo == "APPSAT Attack":
-            result = algo_methods.appsat(self.src, str(self.file), print_str=f"{self.file.name} APPSAT Attack: ")
+        print(f"{self.pid} - {self.file_no}. {self.obfs} attacked by : {self.algo}\n")
+        if self.algo == "SAT":
+            result = algo_methods.sat(self.src, str(self.obfs), print_str=f"{self.obfs} SAT Attack: ")
+        elif self.algo == "APPSAT":
+            result = algo_methods.appsat(self.src, str(self.obfs), print_str=f"{self.obfs} APPSAT Attack: ")
         else:
-            result = algo_methods.hamming_sweep(self.src, str(self.file), max_iter=2000, print_str=f"{self.file.name} SWEEP Attack: ") 
+            result = algo_methods.hamming_sweep(self.src, str(self.obfs), max_iter=2000, print_str=f"{self.obf} SWEEP Attack: ") 
             algo_methods.sat(self.src,self.src)
 
-        algo_methods.sat(self.src, str(self.file), max_iter=2)
+        algo_methods.sat(self.src, str(self.obf), max_iter=2)
         open(self.rslt, 'a').write(result)
         self.op_running = False
 
@@ -43,71 +43,50 @@ class ThreadController:
         if self.pid != None:
             try:
                 if self.op_running:
-                    open(self.rslt, 'a').write(f"{self.file.name} {self.algo}: TIME LIMIT EXCEEDED\n")
+                    open(self.rslt, 'a').write(f"{self.obf} {self.algo}: TIME LIMIT EXCEEDED\n")
                 os.kill(self.pid, signal.SIGTERM)
             except:
                 print("error in terminating the process\n")
         self.thread.join()
 
-def limit_memory(memory_limit_percent, filename):
-    
-    soft_limit = memory_limit_percent*(1024**3)
-    memory_info = os.popen('free -b').readlines()
-    available_memory = int(memory_info[1].split()[3]) # Extract available memory (in bytes)
-    if available_memory<soft_limit:
-        soft_limit = available_memory
-    print("{} process was allocated {}GB".format(filename, soft_limit/(1024**3)))
-    resource.setrlimit(resource.RLIMIT_AS, (soft_limit, soft_limit))
-
-def memory_limit_exceeded(signup, frame):
-    raise MemoryError("Memory limit exceeded\n")
-
-def process_file(process_file, time_limit = 48*3600):
-    file, file_no = process_file
-    #signal.signal(signal.SIGXCPU, memory_limit_exceeded)
-    #limit_memory(4, file.name)
+                  
+def simulate_queue(file, time_limit = 120*3600):
+    file_no,obfs_file, algo_name = file.split(" ")
 
     src_des = "bench_ckt"
+    obfs_des = "non_libar"
     rslt = "src/final_raw_rslt.txt"
-    ckt_name = (file.name).split("_")[0]
+    ckt_name = obfs_file.split("_")[0]
     src_file = os.path.join(src_des, ckt_name + ".bench")
+    obfs_file = os.path.join(obfs_des, obfs_file)
     
-    if file.is_file():
-        algo_name = ["SAT Attack", "APPSAT Attack"]#, "SWEEP Attack"]
-        random.shuffle(algo_name)
+        
+    start_time = datetime.now()
+    controller = ThreadController(algo_name,src_file,obfs_file,rslt,file_no)
+    controller.start()
+    while True:
+        current_time = datetime.now()
+        op_time = (current_time-start_time).total_seconds()
+        if op_time>time_limit:
+            controller.stop()
+            break
+        elif not(controller.get_op_running()):
+            break
+    
 
-        for algo in algo_name:           
-            start_time = datetime.now()
-            controller = ThreadController(algo,src_file,file,rslt,file_no)
-            controller.start()
-            while True:
-                current_time = datetime.now()
-                op_time = (current_time-start_time).total_seconds()
-                if op_time>time_limit:
-                    controller.stop()
-                    break
-                elif not(controller.get_op_running()):
-                    break
-                  
-
-
-# Main Function
 def main():
     with open("src/queue.txt", 'r') as file:
         op_list = file.read().split(",")
     
+    for i in range(0,len(op_list)):
+        op_list[i] = f"{i} {op_list[i]}"
     
-    folder_path = Path("non_libar")
-    #folder_path = Path("obfuscated_ckt/libars")
-    #files = [file.resolve() for file in folder_path.rglob('*') if file.name in op_list]
-    files = [file.resolve() for file in folder_path.rglob('*') if file.is_file()]
-    no_files = range(len(files))
-    random.shuffle(files)
-    # Use all available CPU cores
-    print("Total file number - ",len(files))
-    num_workers = 8#cpu_count()
+    random.shuffle(op_list)
+    print("Total file number - ",len(op_list))
+    num_workers = 1#cpu_count()
+    
     with Pool(num_workers) as pool:
-        pool.map(process_file, zip(files,no_files))
+        pool.map(simulate_queue, op_list)
         pool.close()
         pool.join()
         pool.join()
@@ -116,9 +95,6 @@ def main():
     #standalone attack
     """ for file in files:
         process_file((files[0],no_files[0])) """
-    
-
-
     
 
 

@@ -1,4 +1,3 @@
-
 c432_rll_8k.bench SAT Attack: key= 10110010; func_iteration= 8; func_exe_time= 0.02529430389404297; nonfunc_exe_time= 0
 c432_rll_8k.bench APPSAT Attack: key= 10110010; func_iteration= 7; func_exe_time= 0.03604006767272949; nonfunc_exe_time= 0
 c432_rll_32k.bench SAT Attack: key= 10011000111110101010111101010101; func_iteration= 24; func_exe_time= 0.14237260818481445; nonfunc_exe_time= 0
@@ -10,20 +9,13 @@ c1355_rll_24k.bench SAT Attack: key= 001010101111000101011101; func_iteration= 4
 c432_sarlock_8k.bench APPSAT Attack: key= 10110011; func_iteration= 254; func_exe_time= 13.656607627868652; nonfunc_exe_time= 0
 c432_sarlock_8k.bench SAT Attack: key= 10110010; func_iteration= 255; func_exe_time= 7.1642255783081055; nonfunc_exe_time= 0
 c432_antisat_24k.bench APPSAT Attack: key= 001010111000001010111000; func_iteration= 4096; func_exe_time= 96720.57161664963; nonfunc_exe_time= 0
-c1908_sarlock_32k.bench SAT Attack: TIME LIMIT EXCEEDED
-c3540_sarlock_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
-c1908_cac_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
-c1355_cac_24k.bench SAT Attack: TIME LIMIT EXCEEDED
-.DS_Store SAT Attack: TIME LIMIT EXCEEDED
 c1908_rll_16k.bench APPSAT Attack: key= 1000100100011100; func_iteration= 4; func_exe_time= 0.16746926307678223; nonfunc_exe_time= 0
 c1908_rll_16k.bench SAT Attack: key= 0000011001101100; func_iteration= 4; func_exe_time= 0.055238962173461914; nonfunc_exe_time= 0
 c1355_rll_8k.bench SAT Attack: key= 10110010; func_iteration= 7; func_exe_time= 0.11708378791809082; nonfunc_exe_time= 0
 c1355_rll_8k.bench APPSAT Attack: key= 10110010; func_iteration= 6; func_exe_time= 0.2440335750579834; nonfunc_exe_time= 0
-c432_sarlock_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c1355_rll_16k.bench APPSAT Attack: key= 1100011010101100; func_iteration= 15; func_exe_time= 2.819303512573242; nonfunc_exe_time= 0
 c1355_rll_16k.bench SAT Attack: key= 1100011010101100; func_iteration= 8; func_exe_time= 0.19524335861206055; nonfunc_exe_time= 0
 c432_cac_8k.bench APPSAT Attack: key= 00100010; func_iteration= 254; func_exe_time= 19.003581762313843; nonfunc_exe_time= 0
-c3540_cac_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c432_antisat_16k.bench APPSAT Attack: key= 0110111001101110; func_iteration= 256; func_exe_time= 45.42992973327637; nonfunc_exe_time= 0
 c432_cac_8k.bench SAT Attack: key= 10011001; func_iteration= 255; func_exe_time= 9.042582988739014; nonfunc_exe_time= 0
 c432_rll_24k.bench APPSAT Attack: key= 001010101111000101011101; func_iteration= 17; func_exe_time= 0.40220022201538086; nonfunc_exe_time= 0
@@ -42,26 +34,13 @@ c3540_rll_8k.bench APPSAT Attack: key= 11110010; func_iteration= 6; func_exe_tim
 c432_rll_16k.bench SAT Attack: key= 1100011010101100; func_iteration= 15; func_exe_time= 0.15866589546203613; nonfunc_exe_time= 0
 c432_rll_16k.bench APPSAT Attack: key= 0100011010101110; func_iteration= 13; func_exe_time= 0.29123878479003906; nonfunc_exe_time= 0
 c432_antisat_24k.bench SAT Attack: key= 010111111000010111111000; func_iteration= 4096; func_exe_time= 72250.67787790298; nonfunc_exe_time= 0
-c3540_antisat_32k.bench SAT Attack: TIME LIMIT EXCEEDED
-c1355_sarlock_16k.bench SAT Attack: TIME LIMIT EXCEEDED
-c432_sarlock_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c1355_antisat_8k.bench SAT Attack: key= 00000000; func_iteration= 16; func_exe_time= 0.5386841297149658; nonfunc_exe_time= 0
 c1355_antisat_8k.bench APPSAT Attack: key= 00110011; func_iteration= 16; func_exe_time= 0.7209296226501465; nonfunc_exe_time= 0
-c1908_antisat_32k.bench SAT Attack: TIME LIMIT EXCEEDED
 c1355_cac_8k.bench SAT Attack: key= 10011001; func_iteration= 255; func_exe_time= 20.669131755828857; nonfunc_exe_time= 0
 c1908_antisat_16k.bench APPSAT Attack: key= 0111100001111000; func_iteration= 256; func_exe_time= 61.63218355178833; nonfunc_exe_time= 0
 c1908_antisat_16k.bench SAT Attack: key= 0011001000110010; func_iteration= 256; func_exe_time= 29.180522680282593; nonfunc_exe_time= 0
 c1355_cac_8k.bench APPSAT Attack: key= 01010011; func_iteration= 254; func_exe_time= 54.30900573730469; nonfunc_exe_time= 0
-c432_cac_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c1908_rll_32k.bench APPSAT Attack: key= 00101100111110101010111101010101; func_iteration= 8; func_exe_time= 0.7699782848358154; nonfunc_exe_time= 0
 c1908_rll_32k.bench SAT Attack: key= 10001100011010101010111101010101; func_iteration= 6; func_exe_time= 0.42674684524536133; nonfunc_exe_time= 0
 c3540_antisat_16k.bench SAT Attack: key= 0101011101010111; func_iteration= 256; func_exe_time= 109.62293028831482; nonfunc_exe_time= 0
-c3540_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
-c3540_sarlock_32k.bench APPSAT Attack: TIME LIMIT EXCEEDED
 c3540_antisat_16k.bench APPSAT Attack: key= 0010110000101100; func_iteration= 256; func_exe_time= 141.27659392356873; nonfunc_exe_time= 0
-c1355_sarlock_32k.bench SAT Attack: TIME LIMIT EXCEEDED
-c432_antisat_32k.bench SAT Attack: TIME LIMIT EXCEEDED
-c432_cac_16k.bench SAT Attack: TIME LIMIT EXCEEDED
-c3540_antisat_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
-c1908_sarlock_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
-c432_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
