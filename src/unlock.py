@@ -27,10 +27,10 @@ class ThreadController:
         elif self.algo == "APPSAT":
             result = algo_methods.appsat(self.src, str(self.obfs), print_str=f"{self.obfs} APPSAT Attack: ")
         else:
-            result = algo_methods.hamming_sweep(self.src, str(self.obfs), max_iter=2000, print_str=f"{self.obf} SWEEP Attack: ") 
+            result = algo_methods.hamming_sweep(self.src, str(self.obfs), max_iter=2000, print_str=f"{self.obfs} SWEEP Attack: ") 
             algo_methods.sat(self.src,self.src)
 
-        algo_methods.sat(self.src, str(self.obf), max_iter=2)
+        algo_methods.sat(self.src, str(self.obfs), max_iter=2)
         open(self.rslt, 'a').write(result)
         self.op_running = False
 
@@ -43,7 +43,7 @@ class ThreadController:
         if self.pid != None:
             try:
                 if self.op_running:
-                    open(self.rslt, 'a').write(f"{self.obf} {self.algo}: TIME LIMIT EXCEEDED\n")
+                    open(self.rslt, 'a').write(f"{self.obfs} {self.algo}: TIME LIMIT EXCEEDED\n")
                 os.kill(self.pid, signal.SIGTERM)
             except:
                 print("error in terminating the process\n")
