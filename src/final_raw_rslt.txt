@@ -44,3 +44,7 @@ c1908_rll_32k.bench APPSAT Attack: key= 00101100111110101010111101010101; func_i
 c1908_rll_32k.bench SAT Attack: key= 10001100011010101010111101010101; func_iteration= 6; func_exe_time= 0.42674684524536133; nonfunc_exe_time= 0
 c3540_antisat_16k.bench SAT Attack: key= 0101011101010111; func_iteration= 256; func_exe_time= 109.62293028831482; nonfunc_exe_time= 0
 c3540_antisat_16k.bench APPSAT Attack: key= 0010110000101100; func_iteration= 256; func_exe_time= 141.27659392356873; nonfunc_exe_time= 0
+non_libar/c1908_rll_24k.bench SAT Attack: key= 101101011111000101011101; func_iteration= 9; func_exe_time= 0.13068890571594238; nonfunc_exe_time= 0
+non_libar/c3540_rll_32k.bench SAT Attack: key= 10011000111110101010111101010110; func_iteration= 9; func_exe_time= 0.9171626567840576; nonfunc_exe_time= 0
+non_libar/c3540_antisat_8k.bench SAT Attack: key= 00010001; func_iteration= 16; func_exe_time= 0.8956525325775146; nonfunc_exe_time= 0
+non_libar/c1355_antisat_24k.bench SAT Attack: key= 001000011000001000011000; func_iteration= 4096; func_exe_time= 18865.15528678894; nonfunc_exe_time= 0
