@@ -83,7 +83,7 @@ def main():
     
     random.shuffle(op_list)
     print("Total file number - ",len(op_list))
-    num_workers = 4#cpu_count()
+    num_workers = 8#cpu_count()
     
     with Pool(num_workers) as pool:
         pool.map(simulate_queue, op_list)
