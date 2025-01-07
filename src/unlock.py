@@ -43,7 +43,7 @@ class ThreadController:
         if self.pid != None:
             try:
                 if self.op_running:
-                    open(self.rslt, 'a').write(f"{self.obfs} {self.algo}: TIME LIMIT EXCEEDED\n")
+                    open(self.rslt, 'a').write(f"{self.obfs} {self.algo} Attack: TIME LIMIT EXCEEDED\n")
                 os.kill(self.pid, signal.SIGTERM)
             except:
                 print("error in terminating the process\n")
