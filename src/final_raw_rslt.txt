@@ -94,3 +94,13 @@ c1355_cac_24k.bench SAT Attack: TIME LIMIT EXCEEDED
 c1355_cac_32k.bench SAT Attack: TIME LIMIT EXCEEDED
 c3540_cac_16k.bench SAT Attack: TIME LIMIT EXCEEDED
 c1908_cac_24k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+non_libar/c1908_rll_8k.bench SAT Attack: key= 01111000; func_iteration= 1; func_exe_time= 0.0027561187744140625; nonfunc_exe_time= 0
+non_libar/c1355_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+non_libar/c3540_sarlock_16k.bench SAT Attack: TIME LIMIT EXCEEDED
+non_libar/c1355_cac_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+non_libar/c1355_sarlock_24k.bench SAT Attack: TIME LIMIT EXCEEDED
+non_libar/c1908_sarlock_16k.bench APPSAT Attack: TIME LIMIT EXCEEDED
+non_libar/c432_sarlock_32k.bench SAT Attack: TIME LIMIT EXCEEDED
+non_libar/c432_cac_32k.bench SAT Attack: TIME LIMIT EXCEEDED
+non_libar/c1908_sarlock_24k.bench SAT Attack: TIME LIMIT EXCEEDED
+non_libar/c1908_rll_8k.bench APPSAT Attack: key= 00000000; func_iteration= 1; func_exe_time= 0.025023937225341797; nonfunc_exe_time= 0
