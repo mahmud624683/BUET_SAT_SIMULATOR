@@ -75,7 +75,7 @@ def simulate_queue(file, time_limit = 120*3600):
     
 
 def main():
-    with open("src/queue.txt", 'r') as file:
+    with open("src/queue2.txt", 'r') as file:
         op_list = file.read().split(",")
     
     for i in range(0,len(op_list)):
