@@ -1,0 +1,14 @@
+non_libar/c1908_rll_8k.bench APPSAT Attack: key= 00000000; func_iteration= 1; func_exe_time= 0.003592252731323242; nonfunc_exe_time= 0
+non_libar/c3540_rll_32k.bench SAT Attack: key= 10011000111110101010111101010110; func_iteration= 9; func_exe_time= 1.0184276103973389; nonfunc_exe_time= 0
+non_libar/c3540_rll_24k.bench SAT Attack: key= 001010101111000101011101; func_iteration= 13; func_exe_time= 0.5240209102630615; nonfunc_exe_time= 0
+non_libar/c432_rll_8k.bench APPSAT Attack: key= 10110010; func_iteration= 3; func_exe_time= 0.00689387321472168; nonfunc_exe_time= 0
+non_libar/c1908_rll_8k.bench APPSAT Attack: key= 00000000; func_iteration= 1; func_exe_time= 0.013549089431762695; nonfunc_exe_time= 0
+non_libar/c3540_rll_8k.bench APPSAT Attack: key= 10110110; func_iteration= 3; func_exe_time= 0.08814835548400879; nonfunc_exe_time= 0
+non_libar/c1355_rll_24k.bench APPSAT Attack: key= 010010101110000101011101; func_iteration= 18; func_exe_time= 1.2213401794433594; nonfunc_exe_time= 0
+non_libar/c1908_rll_24k.bench SAT Attack: key= 001010110100000101011101; func_iteration= 10; func_exe_time= 0.7423264980316162; nonfunc_exe_time= 0
+non_libar/c3540_rll_24k.bench SAT Attack: key= 001010101111000101011101; func_iteration= 12; func_exe_time= 0.48317408561706543; nonfunc_exe_time= 0
+non_libar/c432_sarlock_8k.bench SAT Attack: key= 10110010; func_iteration= 255; func_exe_time= 6.36301326751709; nonfunc_exe_time= 0
+non_libar/c1908_rll_32k.bench SAT Attack: key= 11101100011100101010111101010101; func_iteration= 6; func_exe_time= 0.05138754844665527; nonfunc_exe_time= 0
+non_libar/c1355_rll_16k.bench SAT Attack: key= 1100011010101100; func_iteration= 10; func_exe_time= 0.2299187183380127; nonfunc_exe_time= 0
+non_libar/c1908_cac_8k.bench SAT Attack: key= 10011001; func_iteration= 255; func_exe_time= 17.80006504058838; nonfunc_exe_time= 0
+non_libar/c1355_antisat_24k.bench APPSAT Attack: key= 011001111000011001111000; func_iteration= 4096; func_exe_time= 69036.95991659164; nonfunc_exe_time= 0
